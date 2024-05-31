@@ -6,11 +6,13 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./router/Routers.jsx";
 import { ChakraProvider } from "@chakra-ui/react";
 import UseAuthProvider from "./provider/useAuthProvider.jsx";
+import { Toaster } from "react-hot-toast";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ChakraProvider>
       <UseAuthProvider>
+      <Toaster />
         <RouterProvider router={router}></RouterProvider>
       </UseAuthProvider>
     </ChakraProvider>

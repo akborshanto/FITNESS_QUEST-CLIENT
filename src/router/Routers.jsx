@@ -4,6 +4,11 @@ import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
 import Register from './../pages/register/Register';
 import Errors from "../Error/Error";
+import AllTrainer from "../pages/allTrainer/AllTrainer";
+import AllClassPage from "../pages/allClass/AllClassPage";
+import Comunity from "../pages/comunity/Comunity";
+import Dashboard from './../pages/Dashboard/Dashboard';
+import PrivateRoute from "../private/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -24,7 +29,28 @@ export const router = createBrowserRouter([
 {
     path:'/register',
     element:<Register></Register>
-}
+},
+{
+    path:'/all-trainer',
+    element:<AllTrainer></AllTrainer>
+},
+{
+    path:'/all-class',
+    element:<AllClassPage></AllClassPage>
+},
+{
+    path:'/comunity',
+    element:<Comunity></Comunity>
+},
+{
+    path:'/dashboard',
+    element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+},
+/* DASBOARD................. */
+
+
+
+
 
 
       ]
