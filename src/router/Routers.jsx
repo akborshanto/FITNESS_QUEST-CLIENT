@@ -9,6 +9,9 @@ import AllClassPage from "../pages/allClass/AllClassPage";
 import Comunity from "../pages/comunity/Comunity";
 import Dashboard from './../pages/Dashboard/Dashboard';
 import PrivateRoute from "../private/PrivateRoute";
+import TrainerDetail from "../pages/allTrainer/TrainerDetal/TrainerDetail";
+import TrainerBooking from "../pages/allTrainer/TrainerBooking/TrainerBooking";
+import BecomeATrainer from "../pages/allTrainer/BecomeATrainer/BecomeATrainer";
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +36,18 @@ export const router = createBrowserRouter([
 {
     path:'/all-trainer',
     element:<AllTrainer></AllTrainer>
+},
+{
+    path:'/trainer-detail',
+    element:<TrainerDetail></TrainerDetail>
+},
+{
+    path:'/trainer-booking',
+    element:<TrainerBooking></TrainerBooking>
+},
+{
+    path:'/become-trainer',
+    element:<BecomeATrainer></BecomeATrainer>
 },
 {
     path:'/all-class',

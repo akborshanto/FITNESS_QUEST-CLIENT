@@ -1,11 +1,7 @@
-import React from 'react'
-
+import React from "react";
+import Card from './../../../component/cardHome/Card';
 const ForumPost = () => {
-  return (
-    <div>
-      FORUM POST
-    </div>
-  )
-}
+  return <div>FORUM POST <Card></Card></div>;
+};
 
-export default ForumPost
+export default ForumPost;

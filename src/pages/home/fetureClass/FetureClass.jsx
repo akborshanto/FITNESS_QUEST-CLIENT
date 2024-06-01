@@ -1,9 +1,10 @@
 import React from 'react'
+import Card from '../../../component/cardHome/Card'
 
 const FetureClass = () => {
   return (
-    <div>
-      FETURE CLASS
+    <div className='my-8'>
+<Card></Card>
     </div>
   )
 }

@@ -1,9 +1,10 @@
 import React from 'react'
+import UseSlider from '../../../component/slider/UseSlider'
 
 const Banner = () => {
   return (
     <div>
-      BANNER
+    <UseSlider></UseSlider>
     </div>
   )
 }
