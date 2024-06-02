@@ -1,6 +1,7 @@
 import React from "react";
 import UseButton from "../../../component/button/Button";
 import useAxiosSecure from "../../../AxiosSecure/AxiosSecure";
+import { toast } from 'react-hot-toast';
 
 const NewsLetter = () => {
 const axiosSecure=useAxiosSecure()
@@ -15,9 +16,18 @@ const handleSubmit=async(e)=>{
   }
 
   /* user axios secure */
-  const {data}=await axiosSecure.post('/newsLetter',userInfo)
-  console.log(data)
+  const data=await axiosSecure.post('/newsLetter',userInfo)
+.then(res=>{
+if(res.status == 200){
+  console.log(res)
+  toast.success("successfully sucscribe")
 
+}
+  
+})
+
+
+  
 
 
 

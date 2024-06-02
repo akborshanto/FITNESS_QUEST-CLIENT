@@ -13,6 +13,11 @@ import TrainerDetail from "../pages/allTrainer/TrainerDetal/TrainerDetail";
 import TrainerBooking from "../pages/allTrainer/TrainerBooking/TrainerBooking";
 import BecomeATrainer from "../pages/allTrainer/BecomeATrainer/BecomeATrainer";
 import Payment from "../pages/PAYMENT/Payment";
+import NewsLetterAdmin from "../pages/Dashboard/admin/newLetter/NewsLetter";
+import AllTrainerAdmin from './../pages/Dashboard/admin/allTrainer/AllTrainerAdmin';
+import AppliedTrainerAdmin from './../pages/Dashboard/admin/Applied Trainer/AppliedTrainer';
+import BalanceAdmin from './../pages/Dashboard/admin/balance/BalanceAdmin';
+import AddNewClassAdmin from './../pages/Dashboard/admin/addNewClss/AddNewClass';
 
 export const router = createBrowserRouter([
     {
@@ -65,6 +70,10 @@ export const router = createBrowserRouter([
 
 /* DASBOARD................. */
 
+{
+    path:'/dashboard',
+    element:<Dashboard></Dashboard>
+},
 
 
 
@@ -83,7 +92,28 @@ children:[
 
 /* 🚩ADMIN🚩 */
 {
-    path:'new-letter',
+    path:'news-letter',
+    element:<NewsLetterAdmin></NewsLetterAdmin>
+
+},
+,{
+    path:'all-trainer',
+    element:<AllTrainerAdmin></AllTrainerAdmin>
+
+},
+,{
+    path:'applied-trainer',
+    element:<AppliedTrainerAdmin></AppliedTrainerAdmin>
+
+},
+,{
+    path:'balance',
+    element:<BalanceAdmin></BalanceAdmin>
+
+},
+,{
+    path:'add-newClass',
+    element:<AddNewClassAdmin></AddNewClassAdmin>
 
 },
 
@@ -97,3 +127,4 @@ children:[
 
 
   ]);
+  

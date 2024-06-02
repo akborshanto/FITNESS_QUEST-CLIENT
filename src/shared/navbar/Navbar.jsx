@@ -21,7 +21,7 @@ const Navbar = () => {
 
       {/* DASHBOARD CONDITON */}
 
-      {user && <NavLink to="/dashboard"> DashBoard</NavLink>}
+ <NavLink to="/dashboard"> DashBoard</NavLink>
     </Fragment>
   );
 

@@ -39,7 +39,7 @@ const BecomeATrainer = () => {
     const formData = new FormData();
     formData.append("image", image);
     const status = "pending";
-  
+
     /* skills */
     const emphaty = form.emphaty.value;
     const timeManagement = form.timeManagement.value;
@@ -47,10 +47,9 @@ const BecomeATrainer = () => {
     const physical = form.physical.value;
     const skills = { emphaty, timeManagement, business, physical };
 
-
     /* Using  AXios secure post method IMG BB  */
     const { data } = await axios.post(image_hoisting_Api, formData);
-    const imgBB=data.data.display_url
+    const imgBB = data.data.display_url;
     /* all user info */
     const allBecomeTrainerInfo = {
       name,
@@ -64,23 +63,13 @@ const BecomeATrainer = () => {
     };
 
     // const  selectDate=form.slectDate.value;
-/* user axios secure  */
-const res= await axiosSecure.post('/become-trainer',allBecomeTrainerInfo)
-.then(res=>{
-
-
-
-toast.success("succefulll addedd")
-
-})
-console.log(res)
-
-
-
-
-
-
-
+    /* user axios secure  */
+    const res = await axiosSecure
+      .post("/become-trainer", allBecomeTrainerInfo)
+      .then((res) => {
+        toast.success("succefulll addedd");
+      });
+    console.log(res);
   };
 
   return (
