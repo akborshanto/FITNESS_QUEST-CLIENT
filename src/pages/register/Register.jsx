@@ -23,8 +23,9 @@ const Register = () => {
     const image = form.image.files[0];
     //console.log(image);
     const name = form.name.value;
+    const role="member";
     const formData = new FormData();
-    const role="member"
+  
     formData.append("image", image);
    
 

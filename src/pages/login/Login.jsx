@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import useAxiosSecure from "../../AxiosSecure/AxiosSecure";
 import { useMutation } from "@tanstack/react-query";
@@ -8,6 +8,9 @@ import toast from "react-hot-toast";
 
 const Login = () => {
 const axiosSecure=useAxiosSecure()
+const navigate=useNavigate()
+const location=useLocation()
+const from= location.state?.from?.pathname ||  "/"
 const {GoogleLogin,Login}=useAuth()
 const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,6 +49,7 @@ const googleLogin=()=>{
 
   GoogleLogin()
 .then(res=>{
+  navigate(from,{replace:true})
   toast.success("Successfully logged in Google")
 })
 

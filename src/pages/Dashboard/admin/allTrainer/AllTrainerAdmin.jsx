@@ -1,11 +1,6 @@
-
-
 import React from 'react'
 
-const TanStackQuery = () => {
-
-
-
+const AllTrainerAdmin = () => {
   return (
     <div>
       
@@ -13,4 +8,4 @@ const TanStackQuery = () => {
   )
 }
 
-export default TanStackQuery
+export default AllTrainerAdmin

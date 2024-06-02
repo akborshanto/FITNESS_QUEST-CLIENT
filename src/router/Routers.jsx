@@ -12,6 +12,7 @@ import PrivateRoute from "../private/PrivateRoute";
 import TrainerDetail from "../pages/allTrainer/TrainerDetal/TrainerDetail";
 import TrainerBooking from "../pages/allTrainer/TrainerBooking/TrainerBooking";
 import BecomeATrainer from "../pages/allTrainer/BecomeATrainer/BecomeATrainer";
+import Payment from "../pages/PAYMENT/Payment";
 
 export const router = createBrowserRouter([
     {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
     element:<BecomeATrainer></BecomeATrainer>
 },
 {
+    path:'/payment',
+    element:<Payment></Payment>
+},
+{
     path:'/all-class',
     element:<AllClassPage></AllClassPage>
 },
@@ -57,10 +62,7 @@ export const router = createBrowserRouter([
     path:'/comunity',
     element:<Comunity></Comunity>
 },
-{
-    path:'/dashboard',
-    element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>
-},
+
 /* DASBOARD................. */
 
 
@@ -70,4 +72,28 @@ export const router = createBrowserRouter([
 
       ]
     },
+/* ========= DASHBOARD🚩🏴‍☠️========
+============================ */
+
+{
+
+path:'dashboard',
+element:<Dashboard></Dashboard>,
+children:[
+
+/* 🚩ADMIN🚩 */
+{
+    path:'new-letter',
+
+},
+
+
+
+
+]
+
+
+}
+
+
   ]);
