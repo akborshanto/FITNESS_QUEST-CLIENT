@@ -7,58 +7,66 @@ import useAuth from "./../../auth/Auth";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import ChekOutForm from "./ChekOut";
+import useAxiosSecure from "../../AxiosSecure/AxiosSecure";
 
 const stripePromise = loadStripe(`${import.meta.env.VITE_STRIPE}`);
+import { useMutation } from '@tanstack/react-query';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 
 const Payment = () => {
   const { user } = useAuth([]);
- 
+const axiosSecure=useAxiosSecure()
   const saveData = JSON.parse(localStorage.getItem("booking"));
+  const { trainerName, slot, classs, packages, price } = saveData;
 
+  /*  */
+  const userInfo = {
+    userName: user?.displayName,
+    userEmail: user?.email,
+    userPhoto: user?.photoURL,
+  };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  const handleConfirm = (e) => {
+  const handleConfirm =async (e) => {
     e.preventDefault();
+    const IntPrice = parseInt(price);
+    const role = "member";
+    const trainerBookingInfo = {
+      trainerName,
+      slot,
+      classs,
+      packages,
+      userInfo,
+      IntPrice,
+      role
+    };
+    console.log(trainerBookingInfo)
+/* axios secure */
 
-    toast.success("succefully payment");
-  
+const data=  await axiosSecure.post('/trainer-booking',trainerBookingInfo)
+
+if(data.status == 200){
+  toast.success("succefuly Payment")
+}
+
+console.log(data)
   };
 
   return (
     <div>
- 
+      {/* PAYMENT  to Stripe */}
+
+  {/*     <Elements stripe={stripePromise}>
+      <ChekOutForm price={price}></ChekOutForm>
+    </Elements>
+ */}
       <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md text-black">
         <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">
           Account settings
         </h2>
 
         <form onSubmit={handleConfirm}>
-
-     {/* PAYMENT  to Stripe */}
-
-     <Elements stripe={stripePromise}>
-     <ChekOutForm price={saveData.price}></ChekOutForm>
-   </Elements>
-
-
-
-
           <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
               <label class="text-gray-700 text-black" for="username">
@@ -123,7 +131,6 @@ const Payment = () => {
                 <option value="10">$10</option>
                 <option value="50">50</option>
                 <option value="100">100</option>
-              
               </Select>
             </div>
 

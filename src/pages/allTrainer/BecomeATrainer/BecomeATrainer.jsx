@@ -39,6 +39,7 @@ const BecomeATrainer = () => {
     const formData = new FormData();
     formData.append("image", image);
     const status = "pending";
+    const role= "trainer"
 //const role="Trainer"
     /* skills */
     const emphaty = form.emphaty.value;
@@ -60,16 +61,17 @@ const BecomeATrainer = () => {
       imgBB,
       skills,
       status,
-      //role
+      role
     };
     // const  selectDate=form.slectDate.value;
     /* user axios secure  */
     const res = await axiosSecure
       .post("/become-trainer", allBecomeTrainerInfo)
-      .then((res) => {
-        toast.success("succefulll addedd");
-      });
-    console.log(res);
+      if(res.status == 200){
+        toast.success("succefuly Payment")
+      }
+      
+
   };
 
   return (

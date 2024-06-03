@@ -5,25 +5,15 @@ import Glide from "@glidejs/glide"
 const Reviews = () => {
   useEffect(() => {
     const slider = new Glide(".glide-08", {
-      type: "carousel",
-      focusAt: 1,
-      animationDuration: 4000,
-      autoplay: 4500,
-      autoplay: true,
-      rewind: true,
-      perView: 2,
-      gap: 48,
+      type: "slider",
+      focusAt: "center",
+      perView: 1,
+      autoplay: 3000,
+      animationDuration: 700,
+      gap: 0,
       classes: {
         nav: {
           active: "[&>*]:bg-wuiSlate-700",
-        },
-      },
-      breakpoints: {
-        1024: {
-          perView: 2,
-        },
-        640: {
-          perView: 1,
         },
       },
     }).mount()

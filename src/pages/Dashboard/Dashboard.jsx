@@ -11,7 +11,7 @@ if(isLoading){
 }
 console.log(role)
   const links=<Fragment>
-  
+  {/* 🚩🏴  TRAINERERER*🚩🏴‍☠️🚩*/}
   
 {
 
@@ -34,9 +34,20 @@ Applied Trainer
 <Link to='/dashboard/balance'>
 Balance
 </Link>
+
+
+
 <Link to='/dashboard/add-newClass'>
 Add new Class
 </Link>
+
+{/* 🚩🏴  TRAINERERER*🚩🏴‍☠️🚩*/}
+<Link to='/dashboard/addNew-forum'>
+Add new NewTrainer
+</Link>
+
+
+
 
 
   </Fragment>

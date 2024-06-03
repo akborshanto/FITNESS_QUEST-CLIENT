@@ -18,6 +18,7 @@ import AllTrainerAdmin from './../pages/Dashboard/admin/allTrainer/AllTrainerAdm
 import AppliedTrainerAdmin from './../pages/Dashboard/admin/Applied Trainer/AppliedTrainer';
 import BalanceAdmin from './../pages/Dashboard/admin/balance/BalanceAdmin';
 import AddNewClassAdmin from './../pages/Dashboard/admin/addNewClss/AddNewClass';
+import AddNewForum from "../pages/Dashboard/trainer/addNewForum/AddNewForum";
 
 export const router = createBrowserRouter([
     {
@@ -114,6 +115,12 @@ children:[
 ,{
     path:'add-newClass',
     element:<AddNewClassAdmin></AddNewClassAdmin>
+
+},
+/* 🚩TRAINERs🚩 */
+,{
+    path:'addNew-forum',
+    element:<AddNewForum></AddNewForum>
 
 },
 

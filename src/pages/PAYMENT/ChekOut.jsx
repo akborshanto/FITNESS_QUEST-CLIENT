@@ -6,43 +6,39 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import useAxiosSecure from "../../AxiosSecure/AxiosSecure";
+import useAuth from "../../auth/Auth";
 const ChekOutForm = ({ price }) => {
-  const [clientSecret,setClientSecret]=useState('')
-  const [cardError,setCardError]=useState('')
-  const [processing,setProcessing]=useState(false)
-    const stripe = useStripe();
-    const elements = useElements();
-  
+
+  const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-//const [clientSecret,setClientSecret]=useStripe('')
+  const [clientSecret, setClientSecret] = useState("");
+  const [cardError, setCardError] = useState("");
+  const [processing, setProcessing] = useState(false);
+  const stripe = useStripe();
+  const elements = useElements();
+  const priceInts = parseInt(price);
+
+  //const [clientSecret,setClientSecret]=useStripe('')
+
+  useEffect(() => {
+    const {res}=axiosSecure.post("/create-payment-intent", {totalPrice:priceInts})
+    console.log(res)
+  //  console.log( priceInts)
 
 
 
-useEffect(()=>{
+  }, [axiosSecure,priceInts]);
 
-axiosSecure.post('/create-payment-intent',{price})
-.then(res=>{
+  //   getClientSecret()
 
-   // console.log(res.data)
-   setClientSecret(res.data.clientSecret)
-})
+  // const getClientSecret=async(price)=>{
 
-},[axiosSecure,price])
+  // const {data}= await axiosSecure.post('create-payment-intent',parseInt(price))
 
-console.log(clientSecret)
-//   getClientSecret()
-
-// const getClientSecret=async(price)=>{
-
-// const {data}= await axiosSecure.post('create-payment-intent',parseInt(price))
-
-// console.log(data)
-// }
-
-
+  // console.log(data)
+  // }
 
   const handleSubmit = async (event) => {
-
     // Block native form submission.
     event.preventDefault();
 
@@ -69,20 +65,41 @@ console.log(clientSecret)
 
     if (error) {
       console.log("[error]", error);
-      setCardError(error)
-      return
+      //setCardError(error);
+      return;
     } else {
       console.log("[PaymentMethod]", paymentMethod);
+      console.log("PAYMENT METHOD?", paymentMethod);
     }
-/* confir tm method */
+    /* confir tm method */
+    // const { error: cofirmErro, paymentIntent } =
+    //   await stripe.confirmCardPayment(clientSecret, {
+    //     payment_method: {
+    //       card: card,
+    //       billing_details: {
+    //         email: user?.email,
+    //         name: user?.displayName,
+    //       },
+    //     },
+    //   });
 
+    /* error */
+    // if(cofirmErro){
+    // console.log(cofirmErro.message)
+    // setCardError(cofirmErro.message)
+    // setProcessing(false)
+    // return
+    // }
+    /* success */
+    // if(paymentIntent.status === 'succeeded'){
+    //   const paymentInfo={
 
+    // transactionId:paymentIntent.id,
+    // date:new Date()
 
-
-
-
-
-
+    //   }
+    //   console.log(paymentInfo)
+    // }
   };
   return (
     <div>
@@ -103,10 +120,15 @@ console.log(clientSecret)
             },
           }}
         />
-        <button  type="submit" disabled={!stripe  || !processing || !clientSecret}>
+        <button
+          type="submit"
+          disabled={!stripe  || !clientSecret}
+        >
           Pay
         </button>
-        {cardError && <p className="text-red-500" >SORRY ! YOUR PAYMENT DON'T ACCECT</p>}
+        {cardError && (
+          <p className="text-red-500">SORRY ! YOUR PAYMENT DON'T ACCECT</p>
+        )}
       </form>
     </div>
   );
