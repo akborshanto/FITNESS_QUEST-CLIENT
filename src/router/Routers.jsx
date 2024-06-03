@@ -93,7 +93,7 @@ children:[
 /* 🚩ADMIN🚩 */
 {
     path:'news-letter',
-    element:<NewsLetterAdmin></NewsLetterAdmin>
+    element:<PrivateRoute><NewsLetterAdmin></NewsLetterAdmin></PrivateRoute>
 
 },
 ,{

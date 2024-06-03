@@ -1,16 +1,27 @@
 import React, { Fragment, useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
+import useRole from '../../hook/useRole'
 
 const Dashboard = () => {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false)
 
-
+const [role,isLoading]=useRole()
+if(isLoading){
+  return <h1>dksafjskdlfj</h1>
+}
+console.log(role)
   const links=<Fragment>
   
   
-<Link to='/dashboard/news-letter'>
+{
+
+role === "Admin" && <Link to='/dashboard/news-letter'>
 News Letter
 </Link>
+
+}
+
+
 
 <Link to='/dashboard/all-trainer'>
 All Trainer

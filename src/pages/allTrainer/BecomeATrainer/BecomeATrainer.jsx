@@ -39,7 +39,7 @@ const BecomeATrainer = () => {
     const formData = new FormData();
     formData.append("image", image);
     const status = "pending";
-
+//const role="Trainer"
     /* skills */
     const emphaty = form.emphaty.value;
     const timeManagement = form.timeManagement.value;
@@ -60,8 +60,8 @@ const BecomeATrainer = () => {
       imgBB,
       skills,
       status,
+      //role
     };
-
     // const  selectDate=form.slectDate.value;
     /* user axios secure  */
     const res = await axiosSecure

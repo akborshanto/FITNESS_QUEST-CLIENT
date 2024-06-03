@@ -4,7 +4,7 @@ import Be_A_Trainer from './Be A Trainer/Be_A_Trainer'
 
 const TrainerDetail = () => {
   return (
-    <div>
+    <div className='my-8'>
 
 {/* Trainer Detail card */}
 <TrainerDetailCard></TrainerDetailCard>

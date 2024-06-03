@@ -32,13 +32,13 @@ Login(email,password)
 .then(res=>{
 
 toast.success("succeffulefly login")
-  console.log(res)
+ // console.log(res)
 
 })
 
 
-const {data}= await axiosSecure.post('/user',userInfo)
-console.log(data)
+// const {data}= await axiosSecure.post('/user',userInfo)
+// //console.log(data)
 
 
 

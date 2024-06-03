@@ -23,9 +23,8 @@ const Register = () => {
     const image = form.image.files[0];
     //console.log(image);
     const name = form.name.value;
-    const role="member";
     const formData = new FormData();
-  
+    const role="member"
     formData.append("image", image);
    
 
@@ -44,9 +43,7 @@ const Register = () => {
     createUser(email, password).then((res) => {
       /* update profile */
 
-      updateProfiles(name, data.data.display_url).then((res) => {
-     
-      });
+      updateProfiles(name, data.data.display_url)
     });
 
     /* POST THE DATA IN USER COLLECTION */

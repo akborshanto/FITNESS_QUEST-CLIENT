@@ -10,8 +10,10 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import axios from "axios";
 export const AuthContext = createContext();
 const UseAuthProvider = ({ children }) => {
+  
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   console.log(user);
@@ -34,12 +36,33 @@ const UseAuthProvider = ({ children }) => {
     return signInWithPopup(auth, provider);
   };
 
+  /* USER INFO CN =============================
+===============================*/
+  const saveUser = async (user) => {
+    /* current user */
+    const currentUser = {
+      email: user?.email,
+      role: "member",
+    };
+
+    const { data } = await axios.put(
+      `${import.meta.env.VITE_API_URL}/userCn`,
+      currentUser
+    );
+
+    return data;
+  };
+
   /* ON AUTH STATE CHANGE */
 
   useEffect(() => {
     setLoading(true);
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      /* USER CN */
+
       setUser(currentUser);
+      saveUser(currentUser);
+
       setLoading(false);
     });
 
@@ -48,20 +71,14 @@ const UseAuthProvider = ({ children }) => {
     };
   }, []);
 
-/* update profile */
-const updateProfiles=(displayName,photoURL)=>{
-setLoading(true)
-return updateProfile(auth.currentUser,{
-
-displayName:displayName,photoURL:photoURL
-
-
-
-})
-
-
-}
-
+  /* update profile */
+  const updateProfiles = (displayName, photoURL) => {
+    setLoading(true);
+    return updateProfile(auth.currentUser, {
+      displayName: displayName,
+      photoURL: photoURL,
+    });
+  };
 
   /* logout */
   const logOut = () => {

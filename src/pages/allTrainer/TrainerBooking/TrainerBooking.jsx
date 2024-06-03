@@ -1,21 +1,30 @@
 import React, { useState } from "react";
 import UseButton from "./../../../component/button/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, json, useNavigate } from "react-router-dom";
 import { Select } from "@chakra-ui/react";
 
 import useAxiosSecure from "../../../AxiosSecure/AxiosSecure";
-import { useQuery } from "@tanstack/react-query";
 
 const TrainerBooking = () => {
+  const navigate=useNavigate()
   const axiosSecure = useAxiosSecure();
+  const [booking,setBooking]=useState()
   const handleSubmit = async (e) => {
-    const navigate=useNavigate()
     e.preventDefault();
+  
     const form = e.target;
     const trainerName = form.name.value;
     const slot = form.slot.value;
     const classs = form.class.value;
     const packages = form.package.value;
+    const price = form.price.value;
+
+  //   if(packages === "basic") return  ;
+
+  // if(packages === "premium") return   ;
+
+  // if(packages === "standard") return   ;
+
 
     /* BASIC PACAGEHE */
 
@@ -23,8 +32,9 @@ const TrainerBooking = () => {
     const basic1 = "Access to gym facilities duringregular operating hours.";
     const basic12 = "Use of cardio and strength training equipment..";
     const basic13 = "Access to locker rooms and showers";
-    const basicInfo = { basicPrice, basic1, basic12, basic13 };
-    const Basic = packages === "basic" ? basicInfo : null;
+    const basicInfo = { packages,basicPrice, basic1, basic12, basic13 };
+
+    // const Basic = packages === "basic" ? basicInfo : null;
 
     /* STANDARD PACKAGE */
     const standardPrice = 50;
@@ -33,8 +43,8 @@ const TrainerBooking = () => {
       "Access to group fitness classes such as yoga, spinning, and Zumbap.";
     const standard3 =
       "Use of additional amenities like a sauna or steam room..";
-    const standardInfo = { standardPrice, standard1, standard2, standard3 };
-    const Standard = packages === "standard" ? standardInfo : null;
+    const standardInfo = { packages,standardPrice, standard1, standard2, standard3 };
+    //const Standard = packages === "standard" ? standardInfo : null;
 
     /* PREMIUM PACKAGES */
     const premiumPrice = 100;
@@ -45,26 +55,35 @@ const TrainerBooking = () => {
     const premium3 =
       "Discounts on additional services such as massage therapy or nutrition counseling.";
 
-    const premiumInfo = { premiumPrice, premium1, premium2, premium3 };
-    const Premium = packages === "premium" ? premiumInfo : null;
+    const premiumInfo = {packages, premiumPrice, premium1, premium2, premium3 };
+
+    // const Premium = packages === "premium" ? premiumInfo : null;
     // console.log(Premium)
+
     const bookingInfo = {
       trainerName,
       slot,
       classs,
       packages,
-      Basic,
-      Premium,
-      Standard,
+      price
+
+      
+  
     };
 
-    /*  TANSCTACK QUERY*/
+ 
 
+
+
+const saveData= localStorage.setItem('booking',JSON.stringify(bookingInfo))
+console.log(saveData)
+    /*  TANSCTACK QUERY*/
+navigate('/payment')
     /* use axios secure */
 
-    const res = await axiosSecure.post("/trainer-booking", bookingInfo)
+    //const res = await axiosSecure.post("/trainer-booking", bookingInfo);
 
-  }
+  };
   return (
     <div>
       <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md text-black">
@@ -92,10 +111,22 @@ const TrainerBooking = () => {
               </label>
 
               <Select placeholder="Select option" name="slot">
-                <option value="yoga">Yoga</option>
-                <option value="pilates">pilates</option>
-                <option value="spinning">spinning</option>
-                <option value="zumba">zumba</option>
+                <option value="morning">morning</option>
+                <option value="noon">noon</option>
+                <option value="afternoon">afternoon</option>
+                <option value="night">night</option>
+              </Select>
+            </div>
+            <div>
+              <label class="text-gray-700 text-black" for="emailAddress">
+                Price
+              </label>
+
+              <Select placeholder="Select Price" name="price">
+                <option value="10">$10</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              
               </Select>
             </div>
 
@@ -129,12 +160,11 @@ const TrainerBooking = () => {
           </div>
 
           <div class="flex justify-end mt-6">
-        
-            <Link to="/payment">
-       <UseButton btnHeading="JOIN NOW"></UseButton>
-           
-            </Link>
+         <UseButton btnHeading='Join Now'></UseButton>
           </div>
+      {/*     <Link to="/payment"> 
+      asdfasf
+          </Link> */}
         </form>
       </section>
     </div>
