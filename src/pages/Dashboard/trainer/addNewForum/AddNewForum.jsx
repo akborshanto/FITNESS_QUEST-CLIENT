@@ -36,7 +36,7 @@ const axiosSecure=useAxiosSecure()
 /* save data  post Court Of Justice*/
     const res=await axiosSecure.post('/forum',comunityInfo)
 if(res.status == 200){
-  toast.success("success Add")
+  toast.success("succes")
 }
 
   console.log(res)

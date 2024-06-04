@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import UseButton from '../../../component/button/Button';
 import useForum from '../../../hook/userForum';
 const ForumPostCard = ({forum}) => {
-    const [forum]=useForum()
-    console.log(forum)
+
    
   return (
     <div>
@@ -44,7 +43,7 @@ src={forum?.userInfo.photo}
     <div className="flex justify-end gap-2 p-2 pt-0">
 
 
-<Link to={`/forum/${forum._id}`}>
+<Link to={`/forums/${forum?._id}`}>
 <UseButton btnHeading="Explore Now "></UseButton>
 </Link >
      

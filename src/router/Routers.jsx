@@ -45,15 +45,18 @@ export const router = createBrowserRouter([
 
 {
     path:'/forum/:id',
-    element:<ExploreForum></ExploreForum>
+    element:<ExploreForum></ExploreForum>,
+    loader:({params})=> fetch(`{import.meta.env}/forum/${params.id}`)
+
 },
 {
     path:'/all-trainer',
     element:<AllTrainer></AllTrainer>
 },
 {
-    path:'/trainer-detail',
-    element:<TrainerDetail></TrainerDetail>
+    path:'/trainer-detail/:id',
+    element:<TrainerDetail></TrainerDetail>,
+   // loader:({params})=>fetch(`${import.meta.env>VITE_API_URL}/forum/${params.id}`)
 },
 {
     path:'/trainer-booking',

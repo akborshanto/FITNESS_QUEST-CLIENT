@@ -34,14 +34,14 @@ console.log(data)
 
 
 {
-  data?.slice(3,9).map((feture)=>{
+  data?.slice(0,6).map((feture)=>{
 return (
 
   <div key={ Math.random()} className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
   <div className="p-6">
   <h1>{feture.classs}</h1>
     <h3 className="mb-4 text-xl font-medium text-slate-700">
-   Total Booking:
+   Total Booking:{feture?.totalBooking}
     </h3>
     <h3>Packages:{feture.packages}</h3>
     <p>

@@ -78,7 +78,7 @@ const BecomeATrainer = () => {
     <div>
       {/* REACT SELECT PACKAGE */}
       <Select
-        isMulti
+        
         defaultValue={selectedOption}
         onChange={setSelectedOption}
         options={options}
