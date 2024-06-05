@@ -19,7 +19,7 @@ import AppliedTrainerAdmin from './../pages/Dashboard/admin/Applied Trainer/Appl
 import BalanceAdmin from './../pages/Dashboard/admin/balance/BalanceAdmin';
 import AddNewClassAdmin from './../pages/Dashboard/admin/addNewClss/AddNewClass';
 import AddNewForum from "../pages/Dashboard/trainer/addNewForum/AddNewForum";
-import ExploreForum from "../pages/home/forumPost/ExploreForum";
+// import ExploreForum from "../pages/home/forumPost/ExploreForum";
 
 export const router = createBrowserRouter([
     {
@@ -43,12 +43,12 @@ export const router = createBrowserRouter([
 },
 /* FOEUM POAR */
 
-{
-    path:'/forum/:id',
-    element:<ExploreForum></ExploreForum>,
-    loader:({params})=> fetch(`{import.meta.env}/forum/${params.id}`)
+// {
+//     path:'/forum/:id',
+//     element:<ExploreForum></ExploreForum>,
+//     loader:({params})=> fetch(`{import.meta.env}/forum/${params.id}`)
 
-},
+// },
 {
     path:'/all-trainer',
     element:<AllTrainer></AllTrainer>

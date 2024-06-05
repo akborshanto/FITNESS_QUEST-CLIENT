@@ -6,7 +6,7 @@ import Feture from './feature/Feture'
 import About from './about/About'
 import FetureClass from './fetureClass/FetureClass'
 import Reviews from './Reviews/Reviews';
-import ForumPost from './forumPost/ForumPost'
+//import ForumPost from './forumPost/ForumPost'
 import NewsLetter from './newsLetter/NewsLetter'
 import TeamSection from './teamSection/TeamSection';
 
@@ -27,7 +27,7 @@ const Home = () => {
 {/* TESTIMONAL */}
 <Reviews></Reviews>
 {/* FORUMS COUMUNTIRY */}
-<ForumPost></ForumPost>
+{/* <ForumPost></ForumPost> */}
 {/* NEWSLETTER */}
 <NewsLetter></NewsLetter>
 {/* Team Section */}

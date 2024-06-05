@@ -1,10 +1,62 @@
 import React from "react";
 import useAllTrainer from "../../../../hook/useAllTrainer";
-import { CloseButton } from '@chakra-ui/react'
-import useRole from './../../../../hook/useRole';
-const AllTrainerAdmin = () => {
-  const [data] = useAllTrainer();
+import { CloseButton } from "@chakra-ui/react";
+import useRole from "./../../../../hook/useRole";
+import { useMutation } from "@tanstack/react-query";
+import useAuth from "../../../../auth/Auth";
+import useAxiosSecure, { axiosSecure } from "../../../../AxiosSecure/AxiosSecure";
+import toast from "react-hot-toast";
+import Swal from 'sweetalert2'
 
+const AllTrainerAdmin = () => {
+  const [data,refetch] = useAllTrainer();
+const axiosSecure=useAxiosSecure()
+
+
+
+
+
+
+  const handleDelete = (id,role) => {
+    console.log(id,role)
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const {data}= axiosSecure.delete(`/delete-trainer/${id}`)
+        refetch()
+        if(data?.data.deletedCount >0){
+        
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success"
+          });
+
+
+/* update role */
+
+
+
+
+
+
+
+        }
+      }
+    });
+
+    const  {data}= axiosSecure.patch(`/trainer-role/${id}`,role)
+    console.log(data?.data)
+    
+
+  };
   return (
     <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
       <h2 className="mb-4 text-2xl font-semibold leading-tight">Contacts</h2>
@@ -27,7 +79,6 @@ const AllTrainerAdmin = () => {
               <th className="p-3">Time</th>
               <th className="p-3">Email</th>
               <th className="p-3">Delete</th>
-          
             </tr>
           </thead>
 
@@ -47,7 +98,7 @@ const AllTrainerAdmin = () => {
                 </td>
                 <td className="px-3 py-2">
                   <span>{trainer?.skills?.business}</span>
-            
+
                   <p className="dark:text-gray-600">White Wolf Brews</p>
                 </td>
                 <td className="px-3 py-2">
@@ -57,16 +108,11 @@ const AllTrainerAdmin = () => {
                   <p>{trainer.email}</p>
                 </td>
                 <td className="px-3 py-2">
-
-
-                <CloseButton  />
+                  <CloseButton onClick={() => handleDelete(trainer?._id,trainer?.role)} />
                 </td>
-          
               </tr>
               <tr>
                 <td className="px-3 text-2xl font-medium dark:text-gray-600"></td>
-         
-               
               </tr>
             </tbody>
           ))}
