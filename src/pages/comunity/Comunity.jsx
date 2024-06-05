@@ -1,23 +1,11 @@
 import React from 'react'
-import useAxiosSecure from '../../AxiosSecure/AxiosSecure'
-import { useQuery } from '@tanstack/react-query';
+
 import ComunityCard from './CounityCard';
+import useForum from '../../hook/userForum';
 
 const Comunity = () => {
-const axiosSecure= useAxiosSecure()
 
-
-/* use tanstck */
-const {data,refetch}=useQuery({
-
-
-  queryKey:['forum'],
-  queryFn:async ()=>{
-
-const {data}=await axiosSecure.get('/become-trainer')
-return data
-  }
-})
+const [forum]=useForum()
 
 
   return (
@@ -28,7 +16,7 @@ return data
 
 
     {
-      data?.map(forum=> <ComunityCard></ComunityCard>)
+      forum?.map(forum=> <ComunityCard  forum={forum} key={Math.random()}></ComunityCard>)
     }
     
     

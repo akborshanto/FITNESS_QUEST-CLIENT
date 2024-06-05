@@ -2,7 +2,8 @@ import React from "react";
 import UseButton from "../../../component/button/Button";
 import { Link } from "react-router-dom";
 
-const TrainerDetailCard = () => {
+const TrainerDetailCard = ({tDetail}) => {
+  const {name,skills,time,image,age,day,imgBB}=tDetail
   return (
     <div>
       <header class="bg-white text-black">
@@ -11,7 +12,7 @@ const TrainerDetailCard = () => {
             <div class="lg:max-w-lg">
               <figure className="h-30">
                 <img
-                  src="https://picsum.photos/id/493/800/600"
+                  src={imgBB}
                   alt="card asfdsafimage"
                   className="aspect-video w-full  "
                 />
@@ -33,7 +34,7 @@ const TrainerDetailCard = () => {
                     />
                   </svg>
 
-                  <span class="mx-3">Trainer Name</span>
+                  <span class="mx-3">Trainer Name{name}</span>
                 </div>
 
                 <div class="flex items-center  -px-3 -200">
@@ -52,7 +53,7 @@ const TrainerDetailCard = () => {
                     />
                   </svg>
 
-                  <span class="mx-3">Details</span>
+                  <span class="mx-3">Age{ age}</span>
                 </div>
 
                 <div class="flex items-center text-gray-800 -px-3 -200">
@@ -71,7 +72,9 @@ const TrainerDetailCard = () => {
                     />
                   </svg>
 
-                  <span class="mx-3">Expertise</span>
+                  <span class="mx-3">Expertise{skills?.emphaty}</span>
+                  <span class="mx-3">Expertise{skills?.timemanagement}</span>
+                 
                 </div>
 
                 <div class="flex items-center text-gray-800 -px-3 -200">

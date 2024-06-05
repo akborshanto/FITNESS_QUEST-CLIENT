@@ -1,30 +1,60 @@
 import React from 'react'
 import Card from '../../component/cardHome/Card'
 
-const AllCassCard = () => {
+const AllCassCard = ({trainerClss}) => {
+  const {
+    trainerName,
+    slot,
+    classs,
+    packages,
+    userInfo,
+    IntPrice,
+    role,
+imgBB,
+    inc,
+    totalBooking,
+  }=trainerClss
   return (
-    <div className='my-8 '>
-    <div class="relative max-w-sm mx-auto mt-20 text-center bg-white rounded shadow-lg group shadow-slate-20 text-slate-500 lg:max-md-full">
-    <img src="" alt="emerald" class="absolute left-1/2 block w-32 -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_16px_16px_#84cc1650] group-hover:-translate-y-2/3 transition-transform duration-700" />
-    <div class="flex flex-col">
-      <header class="flex flex-col gap-6 p-6 pt-28 text-slate-400">
-        <h3 class="text-xl font-medium uppercase text-emerald-500">Emerald</h3>
-      </header>
-      <div class="w-3 h-3 mx-auto rounded-full bg-emerald-500"></div>
-      <div class="p-6">
-        <ul class="space-y-4">
-          <li class="w-full gap-2">1 public project</li>
-          <li class="w-full gap-2">public working space</li>
-          <li class="w-full gap-2">unlimited pages</li>
-          <li class="w-full gap-2">5 revisions</li>
-        </ul>
-      </div>
-      <footer>
-        <button class="inline-flex items-center justify-center h-12 gap-2 px-6 text-sm font-medium tracking-wide text-white transition duration-300 translate-y-1/2 rounded shadow-xl whitespace-nowrap bg-emerald-500 shadow-emerald-100 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none"><span>Start now</span>- <span>$0</span></button>
-      </footer>
-    </div>
-  </div>
-    </div>
+   <div className="flex  flex-col overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 sm:flex-row">
+   {/*  <!-- Image --> */}
+   <figure className="flex-1">
+     <img
+       src={imgBB}
+       alt="card image"
+       className="object-cover min-h-full aspect-auto"
+     />
+   </figure>
+   {/*  <!-- Body--> */}
+   <div className="flex-1 p-6 sm:mx-6 sm:px-0">
+     <header className="flex gap-4 mb-4">
+       <a
+         href="#"
+         className="relative inline-flex items-center justify-center w-12 h-12 text-white rounded-full"
+       >
+         <img
+           src="https://i.pravatar.cc/48?img=24"
+           alt="user name"
+           title="user name"
+           width="48"
+           height="48"
+           className="max-w-full rounded-full"
+         />
+       </a>
+       <div>
+         <h3 className="text-xl font-medium text-slate-700">
+           A day in the sun
+         </h3>
+         <p className="text-sm text-slate-400"> By Sue, jun 3 2023</p>
+       </div>
+     </header>
+     <p>
+       After a walk through history, there is nothing left to do but admire
+       the hypnotizing landscapes that exist in every direction. From vast
+       deserts to rainbow mountains, and everything in between.
+     </p>
+   </div>
+ </div>
+
   )
 }
 

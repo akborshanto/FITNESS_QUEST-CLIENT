@@ -22,10 +22,13 @@ import { useTheme } from "@emotion/react";
 // recreating the `Stripe` object on every render.
 
 const Payment = () => {
+  const [isShowing, setIsShowing] = useState(false);
+
+const wrapperRef = useRef(null);
+
   const { user } = useAuth([]);
   const axiosSecure = useAxiosSecure();
   const saveData = JSON.parse(localStorage.getItem("booking"));
-  const { trainerName, slot, classs, packages, price } = saveData;
 
   /*  */
   const userInfo = {
@@ -35,6 +38,8 @@ const Payment = () => {
   };
   const handleConfirm = async (e) => {
     e.preventDefault();
+    const { trainerName, slot, classs, packages, price } = saveData;
+
     const IntPrice = parseInt(price);
     const role = "member";
     const inc = "total";
@@ -52,24 +57,21 @@ const Payment = () => {
       inc,
       totalBooking,
     };
-    console.log(trainerBookingInfo);
+    //console.log(trainerBookingInfo);
     /* axios secure */
 
     const data = await axiosSecure.post("/trainer-booking", trainerBookingInfo);
 
-    if (data.status == 200) {
-      toast.success("succefuly Payment");
-    }
+    // if (data.status == 200) {
+    //   toast.success("succefuly Payment");
+    // }
 
-    console.log(data);
+  //  console.log(data);
   };
 
   /* ===🚩🚩RATING COMPONENT MODAL🚩🚩=====
 ================================ */
 
-  const [isShowing, setIsShowing] = useState(false);
-
-  const wrapperRef = useRef(null);
 
   useTheme();
 
@@ -152,7 +154,7 @@ const Payment = () => {
 
     const ratinInfo = { name, email, photo, date, descriptions };
     /* axiiso secure */
-    console.log(ratinInfo);
+ //   console.log(ratinInfo);
     const res = await axiosSecure.post("/rating", ratinInfo);
   };
 
