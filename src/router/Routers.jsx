@@ -20,6 +20,8 @@ import BalanceAdmin from './../pages/Dashboard/admin/balance/BalanceAdmin';
 import AddNewClassAdmin from './../pages/Dashboard/admin/addNewClss/AddNewClass';
 import AddNewForum from "../pages/Dashboard/trainer/addNewForum/AddNewForum";
 // import ExploreForum from "../pages/home/forumPost/ExploreForum";
+import ManageSlots from './../pages/Dashboard/trainer/manageSlots/ManageSlots';
+import AddNewSlot from './../pages/Dashboard/trainer/addNewSLot/AddNewSlot';
 
 export const router = createBrowserRouter([
     {
@@ -128,6 +130,16 @@ children:[
 
 },
 /* 🚩TRAINERs🚩 */
+,{
+    path:'manage-slot',
+    element:<ManageSlots></ManageSlots>
+
+},
+,{
+    path:'add-new-slot',
+    element:<AddNewSlot></AddNewSlot>
+
+},
 ,{
     path:'addNew-forum',
     element:<AddNewForum></AddNewForum>

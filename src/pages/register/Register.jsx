@@ -16,7 +16,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    toast.success("successfully updated profile")
+
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
@@ -43,12 +43,14 @@ const Register = () => {
     createUser(email, password).then((res) => {
       /* update profile */
 
-      updateProfiles(name, data.data.display_url)
+      updateProfiles(name, data.data.display_url).then(res=>{
+        console.log(res)
+      })
     });
 
     /* POST THE DATA IN USER COLLECTION */
 
-        const {data:userData} = await axiosSecure.post("/user",userInfo);
+        const {data:userData} = await axiosSecure.post("/user",{userInfo});
 
         console.log(userData);
       

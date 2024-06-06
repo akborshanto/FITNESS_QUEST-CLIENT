@@ -1,13 +1,14 @@
 import React from 'react'
 import AllTrainerCad from './AllTrainerCad'
 import useAllTrainer from '../../hook/useAllTrainer'
+import useRole from '../../hook/useRole'
 
 const AllTrainer = () => {
-
+const [role]=useRole()
+console.log(role)
 const[data,isLoading]=useAllTrainer()
+
 console.log(data)
-
-
 
 
   return (

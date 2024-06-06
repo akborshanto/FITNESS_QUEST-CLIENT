@@ -13,7 +13,7 @@ const AllClassPage = () => {
   const {data}=useQuery({
     queryKey:['fetureclass'],
     queryFn:async ()=>{
-  const {data}=await axiosSecure.get('/trainer-booking')
+  const {data}=await axiosSecure.get('/addnewClassAdmin')
   return data
   
     }
@@ -29,7 +29,7 @@ const AllClassPage = () => {
 
 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6' >
 {
-  data?.map(trainerClss=>     <AllCassCard key={Math.random()} trainerClss={trainerClss}></AllCassCard>)
+  data?.map(addNewClassAdmin=>     <AllCassCard key={Math.random()} addNewClassAdmin={addNewClassAdmin}></AllCassCard>)
 }
 
 </div>

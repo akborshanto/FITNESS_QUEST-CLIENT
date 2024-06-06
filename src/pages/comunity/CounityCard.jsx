@@ -2,7 +2,10 @@ import React from 'react'
 import Card from '../../component/cardHome/Card'
 import { Link } from 'react-router-dom'
 import UseButton from '../../component/button/Button'
+import { GrUserAdmin, GrYoga } from "react-icons/gr";
 const ComunityCard = ({forum}) => {
+console.log(forum)
+
   return (
     <div>
     <div>
@@ -40,7 +43,10 @@ src={forum?.userInfo.photo}
     {/*  <!-- Action base sized link button --> */}
     <div className="flex justify-end gap-2 p-2 pt-0">
 
+<h1 className="text-2xl text-green-800">
 
+  {forum.userInfo.role ==="Admin" ? <GrUserAdmin />:<GrYoga className='text-blue-400' />}
+</h1>
 
      
     </div>

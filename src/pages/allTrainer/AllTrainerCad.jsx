@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import UseButton from '../../component/button/Button';
 const AllTrainerCad = ({trainer}) => {
   console.log(trainer)
-
   const  {
     _id,
     name,

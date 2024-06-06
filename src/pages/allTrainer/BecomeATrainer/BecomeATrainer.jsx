@@ -7,11 +7,13 @@ import useAuth from "../../../auth/Auth";
 import useAxiosSecure from "../../../AxiosSecure/AxiosSecure";
 import axios from "axios";
 import toast from "react-hot-toast";
+import useRole from "../../../hook/useRole";
 
 /* const IMG BB */
 const image_hoisting_key = import.meta.env.VITE_IMGBB;
 const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_key}`;
 const BecomeATrainer = () => {
+  
   const options = [
     { value: "chocolate", label: "Chocolate" },
     { value: "strawberry", label: "Strawberry" },
@@ -24,6 +26,7 @@ const BecomeATrainer = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const [role]=useRole()
   console.log(selectedOption);
 
   const handleSubmit = async (e) => {
@@ -39,7 +42,8 @@ const BecomeATrainer = () => {
     const formData = new FormData();
     formData.append("image", image);
     const status = "pending";
-    const role= "trainer"
+    const trainerRole= role
+
 //const role="Trainer"
     /* skills */
     const emphaty = form.emphaty.value;
@@ -61,8 +65,9 @@ const BecomeATrainer = () => {
       imgBB,
       skills,
       status,
-      role
+      trainerRole
     };
+    console.log(allBecomeTrainerInfo)
     // const  selectDate=form.slectDate.value;
     /* user axios secure  */
     const res = await axiosSecure

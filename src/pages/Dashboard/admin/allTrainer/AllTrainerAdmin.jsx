@@ -10,9 +10,11 @@ import Swal from 'sweetalert2'
 
 const AllTrainerAdmin = () => {
   const [data,refetch] = useAllTrainer();
+  const [role]=useRole()
+
 const axiosSecure=useAxiosSecure()
 
-
+console.log(role)
 
 
 
@@ -92,7 +94,11 @@ const axiosSecure=useAxiosSecure()
             </tr>
           </thead>
 
-          {data?.filter(member=> member.role === "trainer").map((trainer) => (
+  
+          {/*   filter(member=> member.role === "trainer") */}
+            
+            
+          {data?.map((trainer) => (
             <tbody className="border-b dark:bg-gray-50 dark:border-gray-300">
               <tr>
                 <td className="px-3 text-2xl font-medium dark:text-gray-600">

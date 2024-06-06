@@ -1,19 +1,14 @@
 import React from 'react'
 import Card from '../../component/cardHome/Card'
 
-const AllCassCard = ({trainerClss}) => {
+const AllCassCard = ({addNewClassAdmin}) => {
   const {
-    trainerName,
-    slot,
-    classs,
-    packages,
-    userInfo,
-    IntPrice,
-    role,
-imgBB,
-    inc,
-    totalBooking,
-  }=trainerClss
+    
+      classs,
+      imgBB,
+      description,
+    
+  }=addNewClassAdmin
   return (
    <div className="flex  flex-col overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 sm:flex-row">
    {/*  <!-- Image --> */}

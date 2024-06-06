@@ -40,14 +40,14 @@ const UseAuthProvider = ({ children }) => {
 ===============================*/
   const saveUser = async (user) => {
     /* current user */
-    const currentUser = {
+    const userInfo = {
       email: user?.email,
       role: "member",
     };
-
+//console.log(currentUser)
     const { data } = await axios.put(
       `${import.meta.env.VITE_API_URL}/userCn`,
-      currentUser
+      userInfo
     );
 
     return data;
@@ -74,10 +74,10 @@ const UseAuthProvider = ({ children }) => {
   /* update profile */
   const updateProfiles = (displayName, photoURL) => {
     setLoading(true);
-    return updateProfile(auth.currentUser, {
+    return updateProfile(auth.currentUser, ({...user,
       displayName: displayName,
       photoURL: photoURL,
-    });
+    }));
   };
 
   /* logout */
