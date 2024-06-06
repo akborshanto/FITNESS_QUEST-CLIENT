@@ -17,46 +17,56 @@ const axiosSecure=useAxiosSecure()
 
 
 
-  const handleDelete = (id,role) => {
-    console.log(id,role)
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const {data}= axiosSecure.delete(`/delete-trainer/${id}`)
-        refetch()
-        if(data?.data.deletedCount >0){
+//   const handleDelete = async(id,role) => {
+// //     console.log(id,role)
+// //     Swal.fire({
+// //       title: "Are you sure?",
+// //       text: "You won't be able to revert this!",
+// //       icon: "warning",
+// //       showCancelButton: true,
+// //       confirmButtonColor: "#3085d6",
+// //       cancelButtonColor: "#d33",
+// //       confirmButtonText: "Yes, delete it!"
+// //     }).then((result) => {
+// //       if (result.isConfirmed) {
+// //         const {data}= axiosSecure.delete(`/delete-trainer/${id}`)
+// //         refetch()
+// //         if(data?.data.deletedCount >0){
         
-          Swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
-            icon: "success"
-          });
+// //           Swal.fire({
+// //             title: "Deleted!",
+// //             text: "Your file has been deleted.",
+// //             icon: "success"
+// //           });
 
 
-/* update role */
-
-
-
+// // /* update role */
 
 
 
 
-        }
-      }
-    });
 
-    const  {data}= axiosSecure.patch(`/trainer-role/${id}`,role)
-    console.log(data?.data)
+
+
+// //         }
+// //       }
+
+
+
+// //     });
+
+// //     const  {data}=await axiosSecure.patch(`/trainer-role/${id}`,role)
+    
+// // if(data?.modifiedCount > 0 ){
+// // toast.success("Updated Role")
+// //  // refetch()
+
+// // }
+
+//   //  console.log(data)
     
 
-  };
+//   };
   return (
     <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
       <h2 className="mb-4 text-2xl font-semibold leading-tight">Contacts</h2>
@@ -82,7 +92,7 @@ const axiosSecure=useAxiosSecure()
             </tr>
           </thead>
 
-          {data?.map((trainer) => (
+          {data?.filter(member=> member.role === "trainer").map((trainer) => (
             <tbody className="border-b dark:bg-gray-50 dark:border-gray-300">
               <tr>
                 <td className="px-3 text-2xl font-medium dark:text-gray-600">
@@ -108,7 +118,9 @@ const axiosSecure=useAxiosSecure()
                   <p>{trainer.email}</p>
                 </td>
                 <td className="px-3 py-2">
-                  <CloseButton onClick={() => handleDelete(trainer?._id,trainer?.role)} />
+
+
+                  <button   className="text-green-400">Enable </button>
                 </td>
               </tr>
               <tr>
