@@ -155,7 +155,10 @@ const wrapperRef = useRef(null);
     const ratinInfo = { name, email, photo, date, descriptions };
     /* axiiso secure */
  //   console.log(ratinInfo);
-    const res = await axiosSecure.post("/rating", ratinInfo);
+ await axiosSecure.post("/rating", ratinInfo)
+ .then(res=>{
+  toast.success("Thank Your For Feedback")
+ })
   };
 
   return (
@@ -358,6 +361,12 @@ const wrapperRef = useRef(null);
                         <div className="flex flex-col gap-6">
                           {/*                <!-- Input field --> */}
 
+
+
+
+
+
+                          
                           <div className="relative">
                             <textarea
                               id="id-b02"
@@ -374,6 +383,16 @@ const wrapperRef = useRef(null);
                               Write your message
                             </label>
                           </div>
+
+
+
+
+
+
+
+
+
+
                           {/*<!-- End Plain base size basic textarea --> */}
                         </div>
                       </div>

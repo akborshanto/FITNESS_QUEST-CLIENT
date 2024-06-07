@@ -9,6 +9,7 @@ import Reviews from './Reviews/Reviews';
 //import ForumPost from './forumPost/ForumPost'
 import NewsLetter from './newsLetter/NewsLetter'
 import TeamSection from './teamSection/TeamSection';
+import ComunitySection from './ComuntiySection/ComunitySection'
 
 const Home = () => {
   return (
@@ -28,6 +29,7 @@ const Home = () => {
 <Reviews></Reviews>
 {/* FORUMS COUMUNTIRY */}
 {/* <ForumPost></ForumPost> */}
+<ComunitySection></ComunitySection>
 {/* NEWSLETTER */}
 <NewsLetter></NewsLetter>
 {/* Team Section */}

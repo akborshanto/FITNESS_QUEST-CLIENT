@@ -22,6 +22,8 @@ import AddNewForum from "../pages/Dashboard/trainer/addNewForum/AddNewForum";
 // import ExploreForum from "../pages/home/forumPost/ExploreForum";
 import ManageSlots from './../pages/Dashboard/trainer/manageSlots/ManageSlots';
 import AddNewSlot from './../pages/Dashboard/trainer/addNewSLot/AddNewSlot';
+import SingeleApplid from "../pages/Dashboard/admin/Applied Trainer/SingeleApplid";
+import ComunityDetail from "../pages/home/ComuntiySection/ComunityDetail";
 
 export const router = createBrowserRouter([
     {
@@ -80,6 +82,10 @@ export const router = createBrowserRouter([
     path:'/comunity',
     element:<Comunity></Comunity>
 },
+{
+    path:'/comunityDetail/:id',
+    element:<ComunityDetail></ComunityDetail>
+},
 
 /* DASBOARD................. */
 
@@ -119,6 +125,15 @@ children:[
     element:<AppliedTrainerAdmin></AppliedTrainerAdmin>
 
 },
+
+/* practiceeeee======================= */
+,{
+    path:'singelApplie',
+    element:<SingeleApplid></SingeleApplid>
+
+},/* ============================================== */
+
+
 ,{
     path:'balance',
     element:<BalanceAdmin></BalanceAdmin>
