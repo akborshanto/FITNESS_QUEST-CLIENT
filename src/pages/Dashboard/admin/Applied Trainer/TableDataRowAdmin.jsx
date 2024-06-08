@@ -29,14 +29,17 @@ const TableDataRowAdmin = ({ trainer,TrainerSingleData }) => {
         <p>{trainer.status}</p>
       </td>
       <td className="px-3 py-2">
-        <p>{trainer.status}</p>
+        <p>{trainer.role}</p>
       </td>
       <td className="px-3 py-2">
-  
+  <Link to={`/dashboard/singelApplied/${trainer?._id}`}>
+     <FaEye className="text-2xl " ></FaEye>
+{/*      <FaEye className="text-2xl "  onClick={()=>TrainerSingleData(trainer?._id)}></FaEye>
 
-        <FaEye className="text-2xl "  onClick={()=>TrainerSingleData(trainer?._id)}></FaEye>
+       */}
+  </Link>"
 
-      
+     
       </td>
     </div>
   );

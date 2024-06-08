@@ -3,7 +3,7 @@ import UseButton from "../../../component/button/Button";
 import { Link } from "react-router-dom";
 
 const TrainerDetailCard = ({tDetail}) => {
-  const {name,skills,time,image,age,day,imgBB}=tDetail
+  const {name,skills,time,image,age,day,imgBB,experience}=tDetail
   return (
     <div>
       <header class="bg-white text-black">
@@ -53,7 +53,7 @@ const TrainerDetailCard = ({tDetail}) => {
                     />
                   </svg>
 
-                  <span class="mx-3">Age{ age}</span>
+                  <span class="mx-3">Experience{ experience}</span>
                 </div>
 
                 <div class="flex items-center text-gray-800 -px-3 -200">
@@ -72,7 +72,7 @@ const TrainerDetailCard = ({tDetail}) => {
                     />
                   </svg>
 
-                  <span class="mx-3">Expertise{skills?.emphaty}</span>
+               
                   <span class="mx-3">Expertise{skills?.timemanagement}</span>
                  
                 </div>
@@ -112,7 +112,16 @@ const TrainerDetailCard = ({tDetail}) => {
                     />
                   </svg>
 
-                  <span class="mx-3">Availave Slot</span>
+                  <span class="mx-3 text-3xl">
+             
+            
+                  </span>
+                  
+                  <span class="mx-3">Availave Time{time}
+                  
+            
+                  </span>
+                  
                 </div>
               </div>
             </div>
@@ -123,11 +132,12 @@ const TrainerDetailCard = ({tDetail}) => {
         "
           >
 <div className="text-center">
- <h1 className="text-green-600 my-8 text-xl lg:text-6xl"> Aviailabel Slot</h1>
-
+ <h1 className="text-green-600 my-8 text-xl lg:text-2xl"> Available Slot
+</h1>
+<h2 className="text-2xl">  {time}</h2>
 {/* TIME TRAINER FREEE */}
 
-<h1 className="text-2xl text-red-400 mb-6" >Trainer Slot Time</h1>
+<h1 className="text-2xl text-red-400 mb-6" >Trainer Slot {day}</h1>
 
 
 <Link to="/trainer-booking">

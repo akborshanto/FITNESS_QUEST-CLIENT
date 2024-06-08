@@ -14,7 +14,8 @@ const AllTrainerCad = ({trainer}) => {
     imgBB,
     skills,
     status,
-    role
+    role,
+    experience
   }=trainer
   /*  */
 
@@ -40,10 +41,10 @@ const AllTrainerCad = ({trainer}) => {
           <h3 className="text-xl font-medium text-slate-700">
             Trainer Name:{name}
           </h3>
-          <p className=" text-slate-400"> Social icons</p>
+          <p className=" text-slate-400">SOCIAL ICON</p>
         </header>
         <p>
-        Age : {age}
+        Experience : {experience}
         </p>
       </div>
       {/*  <!-- Action base sized basic button --> */}

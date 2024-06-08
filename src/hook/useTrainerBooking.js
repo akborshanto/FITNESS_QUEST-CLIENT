@@ -14,7 +14,7 @@ return data
         }
     })
   return (
-  [allTrainerClass]
+  [allTrainerClass,refetch]
 
 
   )

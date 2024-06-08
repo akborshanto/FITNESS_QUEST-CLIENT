@@ -1,6 +1,6 @@
-import { Select } from "@chakra-ui/react";
+
 import React, { useState } from "react";
-import select from "react-select";
+
 import UseButton from "../../../component/button/Button";
 import { Link } from "react-router-dom";
 import useAuth from "../../../auth/Auth";
@@ -8,28 +8,26 @@ import useAxiosSecure from "../../../AxiosSecure/AxiosSecure";
 import axios from "axios";
 import toast from "react-hot-toast";
 import useRole from "../../../hook/useRole";
-
+import select from 'react-select';
+import { Select } from "@chakra-ui/react";
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' },
+];
 /* const IMG BB */
 const image_hoisting_key = import.meta.env.VITE_IMGBB;
 const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_key}`;
 const BecomeATrainer = () => {
   
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
   const [selectedOption, setSelectedOption] = useState(null);
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [role]=useRole()
-  console.log(selectedOption);
 
+console.log(role)
   const handleSubmit = async (e) => {
+ 
     e.preventDefault();
     console.log("dsf");
     const form = e.target;
@@ -50,6 +48,7 @@ const BecomeATrainer = () => {
     const timeManagement = form.timeManagement.value;
     const business = form.business.value;
     const physical = form.physical.value;
+    const experience = form.experience.value;
     const skills = { emphaty, timeManagement, business, physical };
 
     /* Using  AXios secure post method IMG BB  */
@@ -65,7 +64,8 @@ const BecomeATrainer = () => {
       imgBB,
       skills,
       status,
-      trainerRole
+      trainerRole,
+      experience
     };
     console.log(allBecomeTrainerInfo)
     // const  selectDate=form.slectDate.value;
@@ -83,12 +83,10 @@ const BecomeATrainer = () => {
     <div>
       {/* REACT SELECT PACKAGE */}
       <Select
-        
-        defaultValue={selectedOption}
-        onChange={setSelectedOption}
-        options={options}
-        placeholder="seldct a opton"
-      />
+      defaultValue={selectedOption}
+      onChange={setSelectedOption}
+      options={options}
+    />
 
       <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md text-black">
         <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">
@@ -146,6 +144,24 @@ const BecomeATrainer = () => {
                 class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
+
+{/* EXPERIENCE */}
+
+<div>
+<label class="text-gray-700 text-black" for="emailAddress">
+  Experience
+</label>
+
+<input
+id="username"
+type="number"
+name="experience"
+class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+/>
+</div>
+
+
+
             {/* skills */}
 
             <div class="relative flex flex-wrap items-center">
@@ -234,12 +250,15 @@ const BecomeATrainer = () => {
                 Availabe Time in a Week
               </label>
 
-              <Select placeholder="Select classess" name="time">
-                <option value="4hours">4 Hours</option>
-                <option value="6hours"> 5 Hours</option>
-                <option value="6hours">6 Hours</option>
-                <option value="7hours">7 Hours</option>
-                <option value="8hours"> 8 Hours</option>
+              <Select placeholder="Select slot" name="time">
+                <option value="Morning">Morning</option>
+       
+                <option value="Noon">Noon</option>
+       
+                <option value="AfterNoon">AfterNoon</option>
+       
+                <option value="Night">Night</option>
+       
               </Select>
             </div>
 

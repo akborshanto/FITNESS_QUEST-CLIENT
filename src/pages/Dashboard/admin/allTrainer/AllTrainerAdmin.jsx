@@ -21,25 +21,25 @@ console.log(role)
 
 //   const handleDelete = async(id,role) => {
 // //     console.log(id,role)
-// //     Swal.fire({
-// //       title: "Are you sure?",
-// //       text: "You won't be able to revert this!",
-// //       icon: "warning",
-// //       showCancelButton: true,
-// //       confirmButtonColor: "#3085d6",
-// //       cancelButtonColor: "#d33",
-// //       confirmButtonText: "Yes, delete it!"
-// //     }).then((result) => {
-// //       if (result.isConfirmed) {
-// //         const {data}= axiosSecure.delete(`/delete-trainer/${id}`)
-// //         refetch()
-// //         if(data?.data.deletedCount >0){
+//     Swal.fire({
+//       title: "Are you sure?",
+// text: "You won't be able to revert this!",
+// icon: "warning",
+// showCancelButton: true,
+// confirmButtonColor: "#3085d6",
+// cancelButtonColor: "#d33",
+// confirmButtonText: "Yes, delete it!"
+// // //     }).then((result) => {
+// if (result.isConfirmed) {
+//   const {data}= axiosSecure.delete(`/delete-trainer/${id}`)
+//   refetch()
+//   if(data?.data.deletedCount >0){
         
-// //           Swal.fire({
-// //             title: "Deleted!",
-// //             text: "Your file has been deleted.",
-// //             icon: "success"
-// //           });
+//     Swal.fire({
+//       title: "Deleted!",
+//       text: "Your file has been deleted.",
+//       icon: "success"
+//     });
 
 
 // // /* update role */
@@ -98,7 +98,7 @@ console.log(role)
           {/*   filter(member=> member.role === "trainer") */}
             
             
-          {data?.map((trainer) => (
+          {data?.filter(member=> member.role === "trainer").map((trainer) => (
             <tbody className="border-b dark:bg-gray-50 dark:border-gray-300">
               <tr>
                 <td className="px-3 text-2xl font-medium dark:text-gray-600">
@@ -122,7 +122,9 @@ console.log(role)
                 </td>
                 <td className="px-3 py-2">
                   <p>{trainer.email}</p>
-                </td>
+<p>{trainer?.role}</p>
+
+                                  </td>
                 <td className="px-3 py-2">
 
 

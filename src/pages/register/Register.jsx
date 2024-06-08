@@ -24,7 +24,7 @@ const Register = () => {
     //console.log(image);
     const name = form.name.value;
     const formData = new FormData();
-    const role="member"
+    //const role="member"
     formData.append("image", image);
    
 
@@ -36,7 +36,7 @@ const Register = () => {
       imgBB,
       email,
       password,
-      role,
+     // role,
     };
 
     // console.log(data.data.display_url);
@@ -44,7 +44,7 @@ const Register = () => {
       /* update profile */
 
       updateProfiles(name, data.data.display_url).then(res=>{
-        console.log(res)
+       toast.success("succesfully Register")
       })
     });
 
@@ -52,7 +52,7 @@ const Register = () => {
 
         const {data:userData} = await axiosSecure.post("/user",{userInfo});
 
-        console.log(userData);
+        
       
     
   };

@@ -13,7 +13,6 @@ import {
 import axios from "axios";
 export const AuthContext = createContext();
 const UseAuthProvider = ({ children }) => {
-  
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   console.log(user);
@@ -44,7 +43,7 @@ const UseAuthProvider = ({ children }) => {
       email: user?.email,
       role: "member",
     };
-//console.log(currentUser)
+    //console.log(currentUser)
     const { data } = await axios.put(
       `${import.meta.env.VITE_API_URL}/userCn`,
       userInfo
@@ -74,10 +73,11 @@ const UseAuthProvider = ({ children }) => {
   /* update profile */
   const updateProfiles = (displayName, photoURL) => {
     setLoading(true);
-    return updateProfile(auth.currentUser, ({...user,
+    return updateProfile(auth.currentUser, {
+      ...user,
       displayName: displayName,
       photoURL: photoURL,
-    }));
+    });
   };
 
   /* logout */

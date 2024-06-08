@@ -102,7 +102,6 @@ export const router = createBrowserRouter([
     },
 /* ========= DASHBOARD🚩🏴‍☠️========
 ============================ */
-
 {
 
 path:'dashboard',
@@ -128,8 +127,9 @@ children:[
 
 /* practiceeeee======================= */
 ,{
-    path:'singelApplie',
+    path:'singelApplied/:id',
     element:<SingeleApplid></SingeleApplid>
+    ,loader:({params})=>fetch(`${import.meta.env.VITE_API_URL}/singleTrainerData/${params.id}`)
 
 },/* ============================================== */
 

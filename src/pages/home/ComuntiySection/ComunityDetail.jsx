@@ -34,7 +34,7 @@ const {data}=useQuery({
      
         </div>
 
-        <img src={data?.userInfo.photo} class="w-full object-cover lg:rounded" />
+        <img src={data?.userInfo?.photo} class="w-full object-cover lg:rounded" />
       </div>
 
       <div class="flex flex-col lg:flex-row lg:space-x-12">
@@ -48,10 +48,10 @@ const {data}=useQuery({
         <div class="w-full lg:w-1/4 m-auto mt-12 max-w-screen-sm">
           <div class="p-4 border-t border-b md:border md:rounded">
             <div class="flex py-2">
-              <img src={data.userInfo.photo}
+              <img src={data?.userInfo?.photo}
                 class="h-10 w-10 rounded-full mr-2 object-cover" />
               <div>
-               <p class="font-semibold text-gray-600 text-xs"> {data?.userInfo.name} </p>
+               <p class="font-semibold text-gray-600 text-xs"> {data?.userInfo?.name} </p>
                 <p class="font-semibold text-gray-600 text-xs"> {data?.userInfo?.role} </p>
               </div>
             </div>

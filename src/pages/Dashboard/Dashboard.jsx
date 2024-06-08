@@ -9,30 +9,31 @@ const Dashboard = () => {
   if (isLoading) {
     return <h1>dksafjskdlfj</h1>;
   }
-  console.log(role);
+
   const links = (
     <Fragment>
       {/* 🚩🏴  ADMIN*🚩🏴‍☠️🚩*/}
 
       {role === "Admin" && <Link to="/dashboard/news-letter">News Letter</Link>}
-      {role === "Admin" && <Link to="/dashboard/all-trainer">All Trainer</Link>}
-
+      {/*       {role === "Admin" && <Link to="/dashboard/all-trainer">All Trainer</Link>}
+       */}
+      {/* 
       {role === "Admin" && (
         <Link to="/dashboard/applied-trainer">Applied Trainer</Link>
-      )}
-
-      {role === "Admin" && <Link to="/dashboard/balance">Balance</Link>}
-
-      {role === "Admin" && (
+      )} */}
+{/*       <Link to="/dashboard/applied-trainer">Applied Trainer</Link>
+      <Link to="/dashboard/all-trainer">All Trainer</Link> */}
+       {role === "Admin" && <Link to="/dashboard/balance">Balance</Link>}
+      
+{/*       <Link to="/dashboard/balance">Balance</Link> */}
+{/*       {role === "Admin" && (
         <Link to="/dashboard/add-newClass">Add new Class</Link>
       )}
 
+ */}
 
-
-
-        <Link to="/dashboard/addNew-forum">Add new Class</Link>
-   
-
+      
+ <Link to="/dashboard/add-newClass">Add new Class</Link>
       {/* 
       <Link to="/dashboard/applied-trainer">Applied Trainer</Link>
 
@@ -42,25 +43,11 @@ const Dashboard = () => {
  */}
       {/* 🚩🏴====================================================  TRAINERERER*🚩🏴‍☠️🚩==================================*/}
 
+      <Link to="/dashboard/manage-slot">Mangae Slot</Link>
 
-
-<Link to='/dashboard/manage-slot'>Mangae Slot</Link>
-
-<Link to='/dashboard/add-new-slot'>Add New Slot</Link>
-
-
-
-
-
-
-
-
-
-
-  
+      <Link to="/dashboard/add-new-slot">Add New Slot</Link>
     </Fragment>
   );
-
 
   return (
     <div className=" flex lg:ml-10 container mx-auto ">
