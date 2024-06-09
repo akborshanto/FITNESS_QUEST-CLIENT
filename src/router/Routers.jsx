@@ -79,12 +79,14 @@ export const router = createBrowserRouter([
 },
 {
     path:'/all-class',
-    element:<AllClassPage></AllClassPage>
+    element:<AllClassPage></AllClassPage>,
+    loader:()=>fetch(`${import.meta.env.VITE_API_URL}/addNewClassAdmins`)
+  
 },
 {
     path:'/comunity',
     element:<Comunity></Comunity>,
-    loader:()=>fetch('http://localhost:5000/all-forum-count')
+    loader:()=>fetch(`${import.meta.env.VITE_API_URL}/all-forum-count`)
 },
 {
     path:'/comunityDetail/:id',
