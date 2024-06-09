@@ -31,9 +31,11 @@ const Dashboard = () => {
       )}
 
  */}
-
+ {role === "Admin" && (
+  <Link to="/dashboard/add-newClass">Add new Class</Link>
+)}
       
- <Link to="/dashboard/add-newClass">Add new Class</Link>
+
       {/* 
       <Link to="/dashboard/applied-trainer">Applied Trainer</Link>
 
@@ -46,6 +48,17 @@ const Dashboard = () => {
       <Link to="/dashboard/manage-slot">Mangae Slot</Link>
 
       <Link to="/dashboard/add-new-slot">Add New Slot</Link>
+      
+      <Link to="/dashboard/addNew-forum">Add New Forum</Link>
+
+      {/* 🚩🏴====================================================  MEMBER*🚩🏴‍☠️🚩==================================*/}
+      <Link to="/dashboard/activity-log">Activity-log</Link>
+
+      <Link to="/dashboard/profile-page">profile-paget</Link>
+      
+      <Link to="/dashboard/recomend-class">Recomend-class</Link>
+
+
     </Fragment>
   );
 

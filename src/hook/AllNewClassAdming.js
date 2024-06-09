@@ -3,21 +3,21 @@ import { useQuery } from "@tanstack/react-query"
 import useAxiosSecure from "../AxiosSecure/AxiosSecure"
 import useAuth from "../auth/Auth"
 
- const useForum=()=>{
+ const useClassAdmin=()=>{
 const {user}=useAuth()
 const axiosSecure=useAxiosSecure()
 
-const {data: forum ,refetch,isLoading}=useQuery({
-    queryKey:['userForum'],
+const {data: allClassAdmin ,refetch,isLoading}=useQuery({
+    queryKey:['newClsssAdmin'],
     queryFn: async ()=>{
-        const {data}= await axiosSecure.get('/forum')
+        const {data}= await axiosSecure.get('/addnewClassAdmin')
       //  console.log(data)
         return data
     }
 })
 
 
-return [forum]
+return [allClassAdmin]
 
 
 
@@ -26,4 +26,4 @@ return [forum]
 
 
 }
-export default useForum
+export default useClassAdmin

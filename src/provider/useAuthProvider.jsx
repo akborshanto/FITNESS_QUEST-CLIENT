@@ -37,38 +37,38 @@ const UseAuthProvider = ({ children }) => {
 
   /* USER INFO CN =============================
 ===============================*/
-  const saveUser = async (user) => {
-    /* current user */
-    const userInfo = {
-      email: user?.email,
-      role: "member",
-    };
-    //console.log(currentUser)
-    const { data } = await axios.put(
-      `${import.meta.env.VITE_API_URL}/userCn`,
-      userInfo
-    );
 
-    return data;
-  };
 
   /* ON AUTH STATE CHANGE */
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      /* USER CN */
+        /* USER CN */
 
-      setUser(currentUser);
-      saveUser(currentUser);
+        setUser(currentUser)
+        if (currentUser) {
+            const userInfo = {
+                email: user?.email,
+                role: 'member',
+            }
+            const { data } = axios.post(
+                `${ import.meta.env.VITE_API_URL }/user-add`,
+                userInfo,
+            )
 
-      setLoading(false);
-    });
+            if (data) {
+                console.log(data);
+            }
+        }
+
+        setLoading(false)
+    })
 
     return () => {
-      return unsubscribe();
-    };
-  }, []);
+        return unsubscribe()
+    }
+}, [])
 
   /* update profile */
   const updateProfiles = (displayName, photoURL) => {

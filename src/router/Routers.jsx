@@ -24,6 +24,9 @@ import ManageSlots from './../pages/Dashboard/trainer/manageSlots/ManageSlots';
 import AddNewSlot from './../pages/Dashboard/trainer/addNewSLot/AddNewSlot';
 import SingeleApplid from "../pages/Dashboard/admin/Applied Trainer/SingeleApplid";
 import ComunityDetail from "../pages/home/ComuntiySection/ComunityDetail";
+import ActivateLog from "../pages/Dashboard/member/activityLog/ActivateLog";
+import ProfilePage from './../pages/Dashboard/member/profilepage/ProfilePage';
+import RecomendClass from './../pages/Dashboard/member/recomendClass/RecomendClass';
 
 export const router = createBrowserRouter([
     {
@@ -161,7 +164,19 @@ children:[
 
 },
 
-
+/* 🚩MEMBER🚩 */
+{
+    path:'activity-log',
+    element:<ActivateLog></ActivateLog>
+},
+{
+    path:'profile-page',
+    element:<ProfilePage></ProfilePage>
+},
+{
+    path:'recomend-class',
+    element:<RecomendClass></RecomendClass>
+},
 
 
 ]

@@ -8,7 +8,7 @@ const TrainerDetail = () => {
   const axiosSecure=useAxiosSecure()
 const [trainerDetail,setTrainerDetail]=useState({})
   const  {id}=useParams()
-console.log(id)
+//console.log(id)
 useEffect(()=>{
 
 ( async ()=>{

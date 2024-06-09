@@ -3,13 +3,13 @@ import useAuth from "../../../../auth/Auth";
 import UseButton from "../../../../component/button/Button";
 import useRole from "../../../../hook/useRole";
 import useAxiosSecure from "../../../../AxiosSecure/AxiosSecure";
-import { toast } from 'react-hot-toast';
+import { toast } from "react-hot-toast";
 
 const AddNewForum = () => {
   const { user } = useAuth();
   const [role] = useRole();
-const axiosSecure=useAxiosSecure()
-  const handleSubmit = async(e) => {
+  const axiosSecure = useAxiosSecure();
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -32,15 +32,11 @@ const axiosSecure=useAxiosSecure()
       userInfo,
     };
 
-
-/* save data  post Court Of Justice*/
-    const res=await axiosSecure.post('/forum',comunityInfo)
-if(res.status == 200){
-  toast.success("succes")
-}
-
-  console.log(res)
-    
+    /* save data  post Court Of Justice*/
+    const res = await axiosSecure.post("/forum", comunityInfo);
+    if (res.status == 200) {
+      toast.success("succes");
+    }
   };
 
   return (
@@ -50,27 +46,25 @@ if(res.status == 200){
           Arti settings
         </h2>
         <header className="mb-4 flex gap-4">
-        <a
-          href="#"
-          className="relative inline-flex h-12 w-12 items-center justify-center rounded-full text-white"
-        >
-          <img
-            src={user?.photoURL}
-            title={user?.displayName}
-            width="48"
-            height="48"
-            className="max-w-full rounded-full"
-          />
-        </a>
-        <div>
-          <h3 className="text-xl font-medium text-slate-700">
-    {user?.displayName}
-          </h3>
-          <p className="text-sm text-slate-400">
-            By {user?.displayName}
-          </p>
-        </div>
-      </header>
+          <a
+            href="#"
+            className="relative inline-flex h-12 w-12 items-center justify-center rounded-full text-white"
+          >
+            <img
+              src={user?.photoURL}
+              title={user?.displayName}
+              width="48"
+              height="48"
+              className="max-w-full rounded-full"
+            />
+          </a>
+          <div>
+            <h3 className="text-xl font-medium text-slate-700">
+              {user?.displayName}
+            </h3>
+            <p className="text-sm text-slate-400">By {user?.displayName}</p>
+          </div>
+        </header>
         <form onSubmit={handleSubmit}>
           <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-1">
             <div>

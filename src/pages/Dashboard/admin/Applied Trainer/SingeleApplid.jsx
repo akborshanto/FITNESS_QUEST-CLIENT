@@ -19,12 +19,12 @@ const SingeleApplid = ({ refetch }) => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [role]=useRole()
- console.log(role)
+
   // const {id}= useParams();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const item = useLoaderData();
-console.log(item)
+
   /* hadnle reject */
 
 
@@ -43,7 +43,7 @@ const users={
   role:"trainer",
 }
 const response=await mutateAsync(users)
-console.log(response)
+
 if(response.modifiedCount >0){
 refetch()
 toast.success("successFuullly ")

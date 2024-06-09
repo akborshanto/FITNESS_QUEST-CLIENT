@@ -4,8 +4,6 @@ import ComunityCard from './ComunityCard'
 
 const ComunitySection = () => {
 const [forum]=useForum()
-console.log(forum)
-
 
 
   return (

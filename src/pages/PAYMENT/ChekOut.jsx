@@ -22,7 +22,7 @@ const ChekOutForm = ({ price }) => {
 
   useEffect(() => {
     const {res}=axiosSecure.post("/create-payment-intent", {totalPrice:priceInts})
-    console.log(res)
+
   //  console.log( priceInts)
 
 

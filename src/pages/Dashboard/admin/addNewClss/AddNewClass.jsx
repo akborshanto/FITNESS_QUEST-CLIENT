@@ -13,7 +13,7 @@ const AddNewClassAdmin = () => {
     const form = e.target;
     const classs = form.class.value;
     const photo = form.photo.files[0];
-    console.log(photo)
+   // console.log(photo)
     const description = form.description.value;
 
 const formData=new FormData()
@@ -23,7 +23,6 @@ formData.append('image',photo)
 /* imgage post in imgbb web */
 const { data } = await axios.post(image_hoisting_Api, formData);
 const imgBB = data.data.display_url;
-console.log(imgBB)
 
     const information = {
       classs,
@@ -38,7 +37,7 @@ console.log(imgBB)
 await axiosSecure.post('/addnewClassAdmin',information)
 .then(res=>{
 
-console.log(res)
+
 if(res.status === 200){
   toast.success("succfeully added")
 }

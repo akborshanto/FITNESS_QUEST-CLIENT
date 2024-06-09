@@ -25,11 +25,11 @@ const BecomeATrainer = () => {
   const axiosSecure = useAxiosSecure();
   const [role]=useRole()
 
-console.log(role)
+
   const handleSubmit = async (e) => {
  
     e.preventDefault();
-    console.log("dsf");
+
     const form = e.target;
     const name = form.name.value;
     const email = user?.email;
@@ -164,68 +164,71 @@ class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200
 
             {/* skills */}
 
+            <div>
             <div class="relative flex flex-wrap items-center">
-              <h1 className=" px-4">SKills</h1>
-              <br />
-              <input
-                class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
-                type="checkbox"
-                id="id-c04"
-                name="emphaty"
-                value="emphaty"
-              />
-              <label
-                class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
-                for="id-c04"
-              >
-                Emphaty
-              </label>
-              <input
-                value="timemanagement"
-                class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
-                type="checkbox"
-                id="id-c04"
-                name="timeManagement"
-              />
-              <label
-                class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
-                for="id-c04"
-              >
-                Time management
-              </label>
-              <br />
-            </div>
-            <div class="relative flex flex-wrap items-center">
-              <br />
-              <input
-                name="business"
-                value="business"
-                class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
-                type="checkbox"
-                id="id-c04"
-              />
-              <label
-                class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
-                for="id-c04"
-              >
-                Business skills
-              </label>
-              <input
-                class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
-                type="checkbox"
-                id="id-c04"
-                name="physical"
-                value="physical"
-              />
-              <label
-                class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
-                for="id-c04"
-              >
-                physical skills
-              </label>{" "}
-              <br />
-            </div>
+            <h1 className=" px-4">SKills</h1>
+            <br />
+            <input
+              class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
+              type="checkbox"
+              id="id-c04"
+              name="emphaty"
+              value="emphaty"
+            />
+            <label
+              class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
+              for="id-c04"
+            >
+              Emphaty
+            </label>
+            <input
+              value="timemanagement"
+              class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
+              type="checkbox"
+              id="id-c04"
+              name="timeManagement"
+            />
+            <label
+              class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
+              for="id-c04"
+            >
+              Time management
+            </label>
+            <br />
+          </div>
+          <div class="relative flex flex-wrap items-center">
+            <br />
+            <input
+              name="business"
+              value="business"
+              class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
+              type="checkbox"
+              id="id-c04"
+            />
+            <label
+              class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
+              for="id-c04"
+            >
+              Business skills
+            </label>
+            <input
+              class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
+              type="checkbox"
+              id="id-c04"
+              name="physical"
+              value="physical"
+            />
+            <label
+              class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
+              for="id-c04"
+            >
+              physical skills
+            </label>{" "}
+            <br />
+          </div>
 
+            </div>
+     
             {/* DAY WITHOUT REACT SELECT */}
 
             <div>

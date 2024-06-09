@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import UseButton from '../../component/button/Button'
 import { GrUserAdmin, GrYoga } from "react-icons/gr";
 const ComunityCard = ({forum}) => {
-console.log(forum)
+// console.log(forum)
 
   return (
     <div>

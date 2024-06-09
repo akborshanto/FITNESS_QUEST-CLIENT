@@ -21,7 +21,7 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const image = form.image.files[0];
-    //console.log(image);
+    console.log(image);
     const name = form.name.value;
     const formData = new FormData();
     //const role="member"
@@ -30,27 +30,32 @@ const Register = () => {
 
     /* POST  METHOD IMG BB */
     const { data } = await axiosSecure.post(image_hoisting_Api, formData);
-    const imgBB=data.data.display_url
-    const userInfo = {
-      name,
-      imgBB,
-      email,
-      password,
-     // role,
-    };
+    console.log(data)
+   // const imgBB=data.data.display_url
+    // const userInfo = {
+    //   name,
+    //   imgBB,
+    //   email,
+    //   password,
+    //  // role,
+    // };
+if(data.success){
+  console.log(data.data.display_url);
+  createUser(email, password).then((res) => {
+    /* update profile */
+if(res.user){
+  updateProfiles(name, data.data.display_url).then(res=>{
+    toast.success("succesfully Register")
+   })
+}
+  
+  });
+}
 
-    // console.log(data.data.display_url);
-    createUser(email, password).then((res) => {
-      /* update profile */
-
-      updateProfiles(name, data.data.display_url).then(res=>{
-       toast.success("succesfully Register")
-      })
-    });
 
     /* POST THE DATA IN USER COLLECTION */
 
-        const {data:userData} = await axiosSecure.post("/user",{userInfo});
+        // const {data:userData} = await axiosSecure.post("/user",{userInfo});
 
         
       

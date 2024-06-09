@@ -18,7 +18,7 @@ const AllClassPage = () => {
   
     }
   })
-  console.log(data)
+ // console.log(data)
   
   
 

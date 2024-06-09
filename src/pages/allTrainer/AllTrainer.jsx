@@ -5,10 +5,8 @@ import useRole from '../../hook/useRole'
 
 const AllTrainer = () => {
 const [role]=useRole()
-console.log(role)
-const[data,isLoading]=useAllTrainer()
 
-console.log(data)
+const[data,isLoading]=useAllTrainer()
 
 
   return (

@@ -12,7 +12,7 @@ const {data}=useQuery({
     queryFn:async ()=>{
 
         const {data}=await axiosSecure.get(`/forums/${id}`)
-        console.log(data)
+   
         return data
     }
 })

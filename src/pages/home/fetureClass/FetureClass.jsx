@@ -17,7 +17,6 @@ return data
 
   }
 })
-console.log(data)
 
 
 
