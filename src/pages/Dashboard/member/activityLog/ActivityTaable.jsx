@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom'
 import { propNames } from '@chakra-ui/react'
 
 const ActivityTaable = ({activity}) => {
-    console.log(activity)
-
-
+  
     const {name,age,imgBB,day,experience,email,status}=activity
   return (
     <div>

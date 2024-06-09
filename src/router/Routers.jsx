@@ -83,7 +83,8 @@ export const router = createBrowserRouter([
 },
 {
     path:'/comunity',
-    element:<Comunity></Comunity>
+    element:<Comunity></Comunity>,
+    loader:()=>fetch('http://localhost:5000/all-forum-count')
 },
 {
     path:'/comunityDetail/:id',

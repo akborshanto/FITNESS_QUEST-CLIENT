@@ -30,7 +30,7 @@ const Register = () => {
 
     /* POST  METHOD IMG BB */
     const { data } = await axiosSecure.post(image_hoisting_Api, formData);
-    console.log(data)
+
    // const imgBB=data.data.display_url
     // const userInfo = {
     //   name,
