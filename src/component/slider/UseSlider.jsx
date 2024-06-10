@@ -1,10 +1,14 @@
-import React, { useEffect } from "react"
-import Glide from '@glidejs/glide'
-import UseButton from "../button/Button"
-import { Link } from "react-router-dom"
-export default function UseSlider() {
+import React, { useEffect } from "react";
+
+import UseButton from "../button/Button";
+import { Link } from "react-router-dom";
+
+import Glide from "@glidejs/glide";
+import { Heading } from '@chakra-ui/react';
+
+export default function UseSlider({ img }) {
   useEffect(() => {
-    const slider = new Glide(".glide-05", {
+    const slider = new Glide(".glide-01", {
       type: "slider",
       focusAt: "center",
       perView: 1,
@@ -16,98 +20,143 @@ export default function UseSlider() {
           active: "[&>*]:bg-wuiSlate-700",
         },
       },
-    }).mount()
+    }).mount();
 
     return () => {
-      slider.destroy()
-    }
-  }, [])
+      slider.destroy();
+    };
+  }, []);
 
   return (
     <>
       {/*<!-- Component: Slider with indicators outside --> */}
-      <div className="relative w-full glide-05 my-8">
-        {/*    <!-- Slides --> */}
-        <div className="overflow-hidden" data-glide-el="track"> 
-        
-        <ul className="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0">
 
-        
-            <li className=" relatve min-h-screen h-[100%]">
-              <img 
-                src="https://Tailwindmix.b-cdn.net/image-03.jpg"
-                className="w-full max-w-full max-h-full m-auto  "
-              />
-              <div className="  flex   justify-center  ">
-              <div className=" absolute   top-28 lg:top-[50%] ">
-              <h1>BANNER SECTION</h1>
-              <p>lorem...</p>
-            <Link to='/all-class'>  <UseButton btnHeading='ALL CLASS'></UseButton></Link>
+      <div className="relative w-full glide-01">
+        {/*    <!-- Slides --> */}
+        <div className="overflow-hidden" data-glide-el="track">
+          <ul
+            className="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden]
+         [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0"
+          >
+            <div
+              className="hero min-h-screen my-8"
+              style={{
+                backgroundImage:
+                  "url(https://img.freepik.com/free-photo/young-healthy-man-athlete-doing-exercise-with-ropes-gym-single-male-model-practicing-hard-training-his-upper-body-concept-healthy-lifestyle-sport-fitness-bodybuilding-wellbeing_155003-27879.jpg?t=st=1717952545~exp=1717956145~hmac=94e045195c58d14a6ca3dba03328b2772b1378446f39f01460ef5f1a1c477723&w=900)",
+              }}
+            >
+              <div className="hero-overlay bg-opacity-60"></div>
+              <div className="hero-content text-center text-neutral-content">
+                <div className="max-w-md">
+                  {/*       <h1 className="mb-5 text-5xl font-bold">MALAYSIA</h1>
+          <p className="mb-5">Malaysia represents fantastic value for money at almost all levels. Costs for food, lodging, fuel and internal transportation are very reasonable.</p>
+     */}{" "}
+                  <div className="text-center">
+                    <h1 className="text-3xl font-semibold text-white lg:text-4xl">
+                      <h1 className="font-bold text-2xl lg:text-4xl">
+                        {" "}
+                        ALL CLASS
+                      </h1>
+                    </h1>
+                    <br />
+
+                    <h1>
+                      {" "}
+                      GoodLife Fitness's membership will give you access to
+                      Virtual Fitness Classes, cardio, strength, training, and
+                      mind and body classes.
+                    </h1>
+                  <Link to='/all-class' className="my-4">  <UseButton btnHeading={'Class'}></UseButton></Link>
+                  </div>
+                </div>
               </div>
+            </div>
+            <li>
+              <div
+                className="hero min-h-screen my-8"
+                style={{
+                  backgroundImage:
+                    "url(https://img.freepik.com/free-photo/couple-training-together-gym_1303-26968.jpg?t=st=1717952542~exp=1717956142~hmac=d8cf333b242ad8839863d3d7aabf0dc9d93a6b58bb8187425445b426fd73a538&w=900)",
+                }}
+              >
+                <div className="hero-overlay bg-opacity-60"></div>
+                <div className="hero-content text-center text-neutral-content">
+                  <div className="max-w-md">
+                    {/*       <h1 className="mb-5 text-5xl font-bold">MALAYSIA</h1>
+              <p className="mb-5">Malaysia represents fantastic value for money at almost all levels. Costs for food, lodging, fuel and internal transportation are very reasonable.</p>
+         */}{" "}
+                    <div className="text-center">
+                      <h1 className="text-3xl font-semibold text-white lg:text-4xl">
+                        <h1 className="font-bold text-2xl lg:text-4xl">
+                          {" "}
+                          ALL CLASS
+                        </h1>
+                      </h1>
+                      <br />
+                      
+                      <h2 className="my-4">   GoodLife Fitness's membership will give you access to
+                      Virtual Fitness Classes, cardio, strength, training,
+                      and mind and body classes.</h2>
+                      <Link to="/all-class">
+                  <UseButton btnHeading={"CLASS "}></UseButton>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </div>
             </li>
-           {/*  <li>
-              <img
-                src="https://Tailwindmix.b-cdn.net/image-04.jpg"
-                className="w-full max-w-full max-h-full m-auto"
-              />
-            </li>
-            <li>
-              <img
-                src="https://Tailwindmix.b-cdn.net/image-05.jpg"
-                className="w-full max-w-full max-h-full m-auto"
-              />
-            </li>
-            <li>
-              <img
-                src="https://Tailwindmix.b-cdn.net/image-01.jpg"
-                className="w-full max-w-full max-h-full m-auto"
-              />
-            </li>
-            <li>
-              <img
-                src="https://Tailwindmix.b-cdn.net/image-02.jpg"
-                className="w-full max-w-full max-h-full m-auto"
-              />
-            </li> */}
           </ul>
         </div>
-        {/*    <!-- Indicators --> */}
+        {/*    <!-- Controls --> */}
         <div
-          className="flex items-center justify-center w-full gap-2"
-          data-glide-el="controls[nav]"
+          className="absolute left-0 flex items-center justify-between w-full h-0 px-4 top-1/2 "
+          data-glide-el="controls"
         >
           <button
-            className="p-4 group"
-            data-glide-dir="=0"
-            aria-label="goto slide 1"
+            className="inline-flex items-center justify-center w-8 h-8 transition duration-300 border rounded-full border-slate-700 bg-white/20 text-slate-700 hover:border-slate-900 hover:text-slate-900 focus-visible:outline-none lg:h-12 lg:w-12"
+            data-glide-dir="<"
+            aria-label="prev slide"
           >
-            <span className="block w-2 h-2 transition-colors duration-300 rounded-full bg-white/20 ring-1 ring-slate-700 focus:outline-none"></span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-5 h-5"
+            >
+              <title>prev slide</title>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+              />
+            </svg>
           </button>
           <button
-            className="p-4 group"
-            data-glide-dir="=1"
-            aria-label="goto slide 2"
+            className="inline-flex items-center justify-center w-8 h-8 transition duration-300 border rounded-full border-slate-700 bg-white/20 text-slate-700 hover:border-slate-900 hover:text-slate-900 focus-visible:outline-none lg:h-12 lg:w-12"
+            data-glide-dir=">"
+            aria-label="next slide"
           >
-            <span className="block w-2 h-2 transition-colors duration-300 rounded-full bg-white/20 ring-1 ring-slate-700 focus:outline-none"></span>
-          </button>
-          <button
-            className="p-4 group"
-            data-glide-dir="=2"
-            aria-label="goto slide 3"
-          >
-            <span className="block w-2 h-2 transition-colors duration-300 rounded-full bg-white/20 ring-1 ring-slate-700 focus:outline-none"></span>
-          </button>
-          <button
-            className="p-4 group"
-            data-glide-dir="=3"
-            aria-label="goto slide 4"
-          >
-            <span className="block w-2 h-2 transition-colors duration-300 rounded-full bg-white/20 ring-1 ring-slate-700 focus:outline-none"></span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-5 h-5"
+            >
+              <title>next slide</title>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+              />
+            </svg>
           </button>
         </div>
       </div>
       {/*<!-- End Slider with indicators outside --> */}
     </>
-  )
+  );
 }

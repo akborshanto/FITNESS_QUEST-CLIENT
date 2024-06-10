@@ -5,59 +5,47 @@ import { useMutation } from "@tanstack/react-query";
 import useAuth from "../../auth/Auth";
 import toast from "react-hot-toast";
 
-
 const Login = () => {
-const axiosSecure=useAxiosSecure()
-const navigate=useNavigate()
-const location=useLocation()
-const from= location.state?.from?.pathname ||  "/"
-const {GoogleLogin,Login}=useAuth()
-const handleSubmit = async (e) => {
+  const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const { GoogleLogin, Login } = useAuth();
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     const role = "member";
-  
+
     const userInfo = {
       email,
       password,
       role,
     };
 
-
     /*Login  */
-Login(email,password)
-.then(res=>{
+    Login(email, password).then((res) => {
+      toast.success("succeffulefly login");
+      navigate("/")
+      // console.log(res)
+    });
 
-toast.success("succeffulefly login")
- // console.log(res)
-
-})
-
-
-// const {data}= await axiosSecure.post('/user',userInfo)
-// //console.log(data)
-
-
-
+    // const {data}= await axiosSecure.post('/user',userInfo)
+    // //console.log(data)
   };
 
-const googleLogin=()=>{
-
-
-  GoogleLogin()
-.then(res=>{
-  navigate(from,{replace:true})
-  toast.success("Successfully logged in Google")
-})
-
-}
-
+  const googleLogin = () => {
+    GoogleLogin().then((res) => {
+      navigate(from, { replace: true });
+      
+      toast.success("Successfully logged in Google");
+    });
+  };
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
+    <div className="flex justify-center items-center min-h-screen lg:my-4">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold">Log In</h1>
@@ -107,7 +95,7 @@ const googleLogin=()=>{
           <div>
             <button
               type="submit"
-              className="bg-rose-500 w-full rounded-md py-3 text-white"
+              className="bg-[#1E90FF] w-full rounded-md py-3 text-white"
             >
               Continue
             </button>
@@ -126,7 +114,7 @@ const googleLogin=()=>{
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
         <div className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer">
-          <FcGoogle  onClick={googleLogin} size={32} />
+          <FcGoogle onClick={googleLogin} size={32} />
 
           <p>Continue with Google</p>
         </div>

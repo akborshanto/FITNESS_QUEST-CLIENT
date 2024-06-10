@@ -62,11 +62,11 @@ const wrapperRef = useRef(null);
 
     const data = await axiosSecure.post("/trainer-booking", trainerBookingInfo);
 
-    // if (data.status == 200) {
-    //   toast.success("succefuly Payment");
-    // }
+    if (data.status == 200) {
+      toast.success("succefuly Payment");
+    }
 
-  //  console.log(data);
+
   };
 
   /* ===🚩🚩RATING COMPONENT MODAL🚩🚩=====
@@ -157,7 +157,7 @@ const wrapperRef = useRef(null);
  //   console.log(ratinInfo);
  await axiosSecure.post("/rating", ratinInfo)
  .then(res=>{
-  toast.success("Thank Your For Feedback")
+  toast.success("Thanks For Feedback")
  })
   };
 
@@ -357,7 +357,7 @@ const wrapperRef = useRef(null);
                   <div id="content-4a" className="flex-1">
                     <div className="flex flex-col gap-6">
                       {/*                <!-- Input field --> */}
-                      <div id="content-4a" className="flex-1">
+                      <div id="content-4a" className="flex-1 w-[300px]">
                         <div className="flex flex-col gap-6">
                           {/*                <!-- Input field --> */}
 
@@ -380,7 +380,7 @@ const wrapperRef = useRef(null);
                               for="id-b02"
                               className="absolute left-2 -top-2 z-[1] cursor-text px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:cursor-default peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent"
                             >
-                              Write your message
+                              Write your feedback
                             </label>
                           </div>
 
@@ -405,7 +405,7 @@ const wrapperRef = useRef(null);
                       onSubmit={handleRating}
                       className="inline-flex h-10 w-full items-center justify-center gap-2 whitespace-nowrap rounded bg-emerald-500 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
                     >
-                      <span>Click</span>
+                      <span>Submit</span>
                     </button>
                   </div>
                 </form>

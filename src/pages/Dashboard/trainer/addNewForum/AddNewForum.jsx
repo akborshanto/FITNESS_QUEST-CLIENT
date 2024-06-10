@@ -4,7 +4,8 @@ import UseButton from "../../../../component/button/Button";
 import useRole from "../../../../hook/useRole";
 import useAxiosSecure from "../../../../AxiosSecure/AxiosSecure";
 import { toast } from "react-hot-toast";
-
+const image_hoisting_key = import.meta.env.VITE_IMGBB;
+const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_key}`;
 const AddNewForum = () => {
   const { user } = useAuth();
   const [role] = useRole();
@@ -16,7 +17,12 @@ const AddNewForum = () => {
     //  / const trainerName = form.name.value;
     const article = form.article.value;
     const classs = form.class.value;
-
+    const image = form.image.files[0];
+    const formData = new FormData();
+    //const role="member"
+    formData.append("image", image);
+    const { data } = await axiosSecure.post(image_hoisting_Api, formData);
+const imgBB=data.data.display_url
     const userInfo = {
       role: role,
       name: user?.displayName,
@@ -30,10 +36,12 @@ const AddNewForum = () => {
       article,
       classs,
       userInfo,
+      imgBB
     };
-
+console.log(data)
     /* save data  post Court Of Justice*/
     const res = await axiosSecure.post("/forum", comunityInfo);
+    console.log(res)
     if (res.status == 200) {
       toast.success("succes");
     }
@@ -78,6 +86,18 @@ const AddNewForum = () => {
                 class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
+            <div>
+            <label htmlFor="image" className="block mb-2 text-sm">
+              Select Image:
+            </label>
+            <input
+              required
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+            />
+          </div>
             <div>
               <div className="relative">
                 <textarea

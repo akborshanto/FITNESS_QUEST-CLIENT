@@ -76,7 +76,7 @@ const TrainerBooking = () => {
 
 
 const saveData= localStorage.setItem('booking',JSON.stringify(bookingInfo))
-console.log(saveData)
+
     /*  TANSCTACK QUERY*/
 navigate('/payment')
     /* use axios secure */
@@ -99,7 +99,7 @@ navigate('/payment')
               </label>
               <input
                 id="username"
-                type="text"
+                type="text" required
                 name="name"
                 class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
@@ -110,7 +110,7 @@ navigate('/payment')
                 Selected slot
               </label>
 
-              <Select placeholder="Select option" name="slot">
+              <Select placeholder="Select option" name="slot" required>
                 <option value="morning">morning</option>
                 <option value="noon">noon</option>
                 <option value="afternoon">afternoon</option>
@@ -122,7 +122,7 @@ navigate('/payment')
                 Price
               </label>
 
-              <Select placeholder="Select Price" name="price">
+              <Select placeholder="Select Price" name="price" required>
                 <option value="10">$10</option>
                 <option value="50">50</option>
                 <option value="100">100</option>
@@ -135,7 +135,7 @@ navigate('/payment')
                 Classes
               </label>
 
-              <Select placeholder="Select option" name="class">
+              <Select placeholder="Select option" name="class" required>
                 <option value="yoga">Yoga</option>
                 <option value="pilates">pilates</option>
                 <option value="spinning">spinning</option>
@@ -151,7 +151,7 @@ navigate('/payment')
                 packages:
               </label>
 
-              <Select placeholder="Select packages" name="package">
+              <Select placeholder="Select packages" name="package" required>
                 <option value="basic">Basic</option>
                 <option value="standard">Standard</option>
                 <option value="premium">Premium</option>

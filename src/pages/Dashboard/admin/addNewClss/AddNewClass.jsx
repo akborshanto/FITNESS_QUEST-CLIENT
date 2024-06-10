@@ -4,15 +4,25 @@ import UseButton from "../../../../component/button/Button";
 import useAxiosSecure from "../../../../AxiosSecure/AxiosSecure";
 import axios from "axios";
 import toast from "react-hot-toast";
+import useAuth from "../../../../auth/Auth";
 const image_hoisting_key = import.meta.env.VITE_IMGBB;
 const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_key}`;
 const AddNewClassAdmin = () => {
   const axiosSecure=useAxiosSecure()
+  const {user}=useAuth()
   const handleSubmit = async(e) => {
     e.preventDefault();
     const form = e.target;
     const classs = form.class.value;
     const photo = form.photo.files[0];
+    const name=user?.displayName;
+    const image=user?.photoURL
+    const email=user?.email
+    const userInfo={
+      name,
+      image,
+      email
+    }
    // console.log(photo)
     const description = form.description.value;
 
@@ -28,6 +38,7 @@ const imgBB = data.data.display_url;
       classs,
       imgBB,
       description,
+  userInfo
     };
 
 

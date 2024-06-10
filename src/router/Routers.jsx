@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
 {
     path:'/trainer-detail/:id',
     element:<TrainerDetail></TrainerDetail>,
-   // loader:({params})=>fetch(`${import.meta.env>VITE_API_URL}/forum/${params.id}`)
+   //loader:({params})=>fetch(`${import.meta.env>VITE_API_URL}/trainer-detail/${params.id}`)
 },
 {
     path:'/trainer-booking',
@@ -127,7 +127,8 @@ children:[
 },
 ,{
     path:'applied-trainer',
-    element:<AppliedTrainerAdmin></AppliedTrainerAdmin>
+    element:<AppliedTrainerAdmin></AppliedTrainerAdmin>,
+    
 
 },
 

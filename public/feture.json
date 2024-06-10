@@ -1,0 +1,32 @@
+[
+    {
+        "name":"CLASSSIC YOGA",
+    "description":"Yoga is a group of physical, mental, and spiritual practices or disciplines which originated in ancient India and aim to control (yoke) and still the mind,",
+    "img":"https://img.freepik.com/free-vector/different-yoga-poses-colorful-women-silhouette-yoga-day_1017-38812.jpg?t=st=1717954500~exp=1717958100~hmac=3e4cc183694f2f04675d691b57509b13da3d904038ff420696fe6bf1655dca4a&w=740"
+    },
+    {
+        "name":"MUSCULATION",
+    "description":"Yoga is a group of physical, mental, and spiritual practices or disciplines which originated in ancient India and aim to control (yoke) and still the mind,",
+    "img":"https://img.freepik.com/free-photo/suntanned-confident-man-with-stylish-hairdo-bristle-appealing-eyes-standing-topless-keeping-hands-crossed_176532-9329.jpg?t=st=1717954695~exp=1717958295~hmac=213093f0e5a086e80628391340b7e684283d70b6fbaeed0dc14f5467b976dbb4&w=900"
+    },
+    {
+        "name":"FITNESS RUNNING",
+    "description":"Running is the action of rapidly propelling yourself forward on foot",
+    "img":"https://img.freepik.com/free-photo/female-rugby-player-sportswear_23-2148993526.jpg?t=st=1717954737~exp=1717958337~hmac=da571038127a51e9f1dee1af0b6ed2ce94a79a0080cfe92fd3866e049d64ef18&w=900"
+    },
+    {
+        "name":"WEIGHT LIFTING",
+    "description":"developing physical strength; promoting health and fitness; competing in weightlifting sports; and developing a muscular and aesthetic physique.",
+    "img":"https://img.freepik.com/free-photo/young-guy-raises-bar-stadium_1153-6285.jpg?t=st=1717954617~exp=1717958217~hmac=6204bad9a422393eafd991bb271a12d2839a719fe8162d180203dab3ae1d8959&w=900"
+    },
+    {
+        "name":"BODY BUILDING",
+    "description":"How Bodybuilder Julian Smith Sculpted the World's Most Impressive Quads.",
+    "img":"https://img.freepik.com/free-photo/powerful-stylish-bodybuilder-with-tattoo-his-arm-doing-exercises-with-dumbbells-isolated-dark-background_613910-5209.jpg?t=st=1717954774~exp=1717958374~hmac=a642ed70633c428ef2075ef9ff63a84dde02de7b7bec8f6695d5bc94be858748&w=900"
+    },
+    {
+        "name":"ZUMBA",
+    "description":"Zumba is a group of physical, mental, and spiritual practices or disciplines which originated in ancient India and aim to control (yoke) and still the mind,",
+    "img":"https://img.freepik.com/free-photo/woman-helping-man-gym_23-2149627070.jpg?t=st=1717953966~exp=1717957566~hmac=0b09d68afa50fdcf99a73a6ae60de83c8fc66ef250fe7d6dcd904b6a21c56001&w=900"
+    }
+]

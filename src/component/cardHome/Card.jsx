@@ -1,41 +1,52 @@
 import React from 'react'
-
+import Select from 'react-select';
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
 const Card = () => {
+
+
+  const handleSUmb=(e)=>{
+    e.preventDefault()
+    const option=e.target.colors.value;
+    const ak=e.target.ak.value;
+   
+
+    console.log(res)
+  }
   return (
     <div>
-    <>
-    {/*<!-- Component: E-commerce card --> */}
-    <div className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200 w-[300px] h-auto">
-      {/*  <!-- Image --> */}
-      <figure>
-        <img
-          src="https://picsum.photos/id/493/800/600"
-          alt="card image"
-          className="aspect-video w-full"
-        />
-      </figure>
-      {/*  <!-- Body--> */}
-      <div className="p-6">
-        <header className="mb-4">
-          <h3 className="text-xl font-medium text-slate-700">
-            Greek breakfast
-          </h3>
-          <p className=" text-slate-400"> $8.99</p>
-        </header>
-        <p>
-          Blueberry Superpower: Vanilla Greek Yogurt + Fresh Blueberries +
-          Granola + Honey.
-        </p>
-      </div>
-      {/*  <!-- Action base sized basic button --> */}
-      <div className="flex justify-end p-6 pt-0">
-        <button className="inline-flex h-10 w-full items-center justify-center gap-2 whitespace-nowrap rounded bg-emerald-500 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
-          <span>Order now!</span>
-        </button>
-      </div>
-    </div>
-    {/*<!-- End E-commerce card --> */}
-    </>
+
+
+
+
+
+<form onSubmit={handleSUmb}>
+<input type="text" name='ak' />
+<Select
+defaultValue={[options[2], options[3]]}
+isMulti
+name="colors"
+options={options}
+className="basic-multi-select"
+classNamePrefix="select"></Select>
+
+<button type='sumbit'>SUBMI</button>
+</form>
+
+
+
+
+<div className="glass-card p-6 max-w-sm mx-auto bg-white/20 rounded-xl shadow-md backdrop-blur-md border border-white/30">
+<h2 className="text-2xl font-bold text-black">Glassmosadfasdfsdfrphism Card</h2>
+<p className="text-white mt-4">This is a sample card demonstrating the glassmorphism effect.</p>
+</div>
+
+
+
+
     </div>
   )
 }

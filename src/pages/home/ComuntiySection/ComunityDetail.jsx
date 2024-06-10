@@ -23,54 +23,50 @@ const {data}=useQuery({
     <div class="max-w-screen-lg mx-auto">
   
   
-    <main class="mt-10">
-
-      <div class="mb-4 md:mb-0 w-full mx-auto relative">
-        <div class="px-4 lg:px-0">
-          <h2 class="text-4xl font-semibold text-gray-800 leading-tight text-3xl">
-          {data?.classs}
-          </h2>
-   
-     
-        </div>
-
-        <img src={data?.userInfo?.photo} class="w-full object-cover lg:rounded" />
-      </div>
-
-      <div class="flex flex-col lg:flex-row lg:space-x-12">
-
-        <div class="px-4 lg:px-0 mt-12 text-gray-700 text-lg leading-relaxed w-full lg:w-3/4">
-          <p class="pb-6">{data?.aritcle}.</p>
-
-       
-        </div>
-
-        <div class="w-full lg:w-1/4 m-auto mt-12 max-w-screen-sm">
-          <div class="p-4 border-t border-b md:border md:rounded">
-            <div class="flex py-2">
-              <img src={data?.userInfo?.photo}
-                class="h-10 w-10 rounded-full mr-2 object-cover" />
-              <div>
-               <p class="font-semibold text-gray-600 text-xs"> {data?.userInfo?.name} </p>
-                <p class="font-semibold text-gray-600 text-xs"> {data?.userInfo?.role} </p>
-              </div>
-            </div>
-            <p class="text-gray-700 py-3">
-              Mike writes about technology
-              Yourself required no at thoughts delicate landlord it be. Branched dashwood do is whatever it.
-            </p>
-            <button class="px-2 py-1 text-gray-100 bg-green-700 flex w-full items-center justify-center rounded">
-              Follow 
-              <i class='bx bx-user-plus ml-2' ></i>
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </main>
 
   </div>
+  <div className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200 w-[400px] h-auto mx-auto my-8 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] ">
+        {/*  <!-- Image --> */}
+       <figure>
+      
+      {/*     <img
+            src="https://picsum.photos/id/114/800/600"
+            alt="card image"
+            className="aspect-video w-full"
+          /> */}
+        </figure>
+        {/*  <!-- Body--> */}
+        <div className="p-6">
+          <header className="mb-4 flex gap-4">
+            <a
+              href="#"
+              className="relative inline-flex h-12 w-12 items-center justify-center rounded-full text-white"
+            >
+              <img
+   src={data?.userInfo?.photo}
+                alt="user name"
+                title="user name"
+                width="48"
+                height="48"
+                className="max-w-full rounded-full"
+              />
+            </a>
+            <div>
 
+              <h3 className="text-xl font-medium text-slate-700">
+              {data?.userInfo?.name} 
+              </h3>
+              <p className="text-sm text-slate-400">
+               
+              </p>
+            </div>
+          </header>
+           <h1 className="text-2xl font-bold my-5">{data?.classs}</h1>
+          <p>
+           {data?.article}
+          </p>
+        </div>
+      </div>
 
     </div>
   )

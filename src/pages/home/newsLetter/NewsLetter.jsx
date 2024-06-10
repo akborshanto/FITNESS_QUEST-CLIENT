@@ -41,46 +41,52 @@ if(res.status == 200){
        NEWS LETTER
           </h1>
           <p class="max-w-md mx-auto mt-5 text-gray-500 dark:text-gray-400">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Perferendis, minus tempora nemo quos
+          The fitness newsletter is a core part of your email marketing strategy. Learn here how you can write a variety of fitness news letters for your gym.
+
           </p>
 
          <form action="" onSubmit={handleSubmit}>
          <div class="">
-         <div>
-           <label
-             for="name"
-             class="block text-sm text-gray-500 dark:text-gray-300"
-           >
-             Name 
-           </label>
 
-           <input
-             type="text"
-             name="name"
+         <div className="relative my-6">
+         <input
+           id="id-b02"
+           type="text"
+      name="name"
+      required
              placeholder="Your Name"
-             class="mt-2 block w-full placeholder-gray-400/70 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
-           />
 
-      
-         </div>
-         <div>
-           <label
-             for="email"
-             class="block text-sm text-gray-500 dark:text-gray-300"
-           >
-             Email 
-           </label>
-
-           <input
-             type="email"
-             name="email"
+           className="peer relative h-10 w-full border-b border-slate-200 px-4 text-sm text-slate-500 placeholder-transparent outline-none transition-all autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-slate-400"
+    
+         />
+         <label
+           htmlFor="id-b02"
+           className="absolute left-2 -top-2 z-[1] cursor-text px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-autofill:-top-2 peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:cursor-default peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent"
+         >
+           Your name
+         </label>
+       </div>
+       <div className="relative my-6">
+       <input
+         id="id-b02"
+         type="text"
+          name="email"
+          required
              placeholder="Your Email..."
-             class="mt-2 block w-full placeholder-gray-400/70 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-blue-300"
-           />
 
-        
-         </div>
+         className="peer relative h-10 w-full border-b border-slate-200 px-4 text-sm text-slate-500 placeholder-transparent outline-none transition-all autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
+  
+       />
+       <label
+         htmlFor="id-b02"
+         className="absolute left-2 -top-2 z-[1] cursor-text px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-autofill:-top-2 peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:cursor-default peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent"
+       >
+         Your Email
+       </label>
+     </div>
+
+
+ 
        </div>
        <UseButton btnHeading="SUBSCRIBE NOW"></UseButton>
          </form>

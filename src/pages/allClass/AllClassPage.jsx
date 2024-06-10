@@ -24,11 +24,10 @@ const AllClassPage = () => {
   /* classs filter */
   /* ================================================= */
   const [itemPerPage, setItemPerPage] = useState(6);
-  const [pagin,setPagin]=useState([])
+  const [pagin, setPagin] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
 
   const { count } = useLoaderData();
-
 
   const numbeOfPage = Math.ceil(count / itemPerPage);
   //const pages=[]
@@ -37,7 +36,7 @@ const AllClassPage = () => {
     //4
     //  console.log(e.target.value)
     const val = parseInt(e.target.value);
- 
+
     setItemPerPage(val);
     setCurrentPage(0);
   };
@@ -54,44 +53,41 @@ const AllClassPage = () => {
     }
   };
 
-
   useEffect(() => {
     fetch(
-      `${import.meta.env.VITE_API_URL}/addnewClassAdmin?page=${currentPage}&size=${itemPerPage}`
+      `${
+        import.meta.env.VITE_API_URL
+      }/addnewClassAdmin?page=${currentPage}&size=${itemPerPage}`
     )
       .then((res) => res.json())
       .then((data) => setPagin(data));
   }, [currentPage, itemPerPage]);
 
-
-
-
   /* =================================================== */
 
-  const searchFunction=pagin?.filter(item=> item.classs.toLowerCase().includes(serachClass.toLowerCase()))
-  console.log(searchFunction)
+  const searchFunction = pagin?.filter((item) =>
+    item.classs.toLowerCase().includes(serachClass.toLowerCase())
+  );
+  console.log(searchFunction);
 
   return (
     <div>
-      <div className="relative my-6">
-        <input
-          id="id-b02"
-          type="text"
-          name="id-b02"
-          placeholder="your name"
-          value={serachClass}
-          className="peer relative h-10 w-full border-b border-slate-200 px-4 text-sm text-slate-500 placeholder-transparent outline-none transition-all autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
-          onChange={(e) => setSearchClass(e.target.value)}
-        />
-        <label
-          htmlFor="id-b02"
-          className="absolute left-2 -top-2 z-[1] cursor-text px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-autofill:-top-2 peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:cursor-default peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent"
-        >
-          Your name
-        </label>
+      <div className="mx-auto text-center my-8">
+        <div className="relative my-6">
+          <input
+            id="id-b02"
+            type="text"
+            name="id-b02"
+            placeholder="Search Heree...."
+            value={serachClass}
+            class=" bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-full px-4 py-2 shadow-md focus:shadow-lg focus:shadow-rose-400 dark:shadow-md dark:shadow-purple-500"
+            autocomplete="off"
+            onChange={(e) => setSearchClass(e.target.value)}
+          />
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 ">
         {searchFunction?.map((addNewClassAdmin) => (
           <AllCassCard
             key={Math.random()}
@@ -99,38 +95,54 @@ const AllClassPage = () => {
           ></AllCassCard>
         ))}
 
-        <div className="flex ">
-          <h1>{currentPage}</h1>
-          <button className="btn btn-danger" onClick={handlePrev}>
-            PREV
-          </button>
-          {pages.map((page) => (
-            <button
-              className={`${
-                currentPage === page && "selected btn btn-primary mx-6 "
-              } btn  btn-primary mx-4`}
-              key={Math.random()}
-              onClick={() => setCurrentPage(page)}
-            >
-              {page}
-            </button>
-          ))}
-          <button className="btn btn-danger" onClick={hadnleNext}>
-            NEXT
-          </button>
-          <select
-            name=""
-            value={itemPerPage}
-            id=""
-            onChange={handleIterPerPage}
-          >
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="10">30</option>
-          </select>
-        </div>
+   
       </div>
+
+
+{/* pagination */}
+
+<div className="text-center my-6 mx-auto">
+    <h1 className="text-2xl ">{currentPage}</h1>
+     <div className="my-6">
+
+     <button
+       className="inline-flex bg-green-400 h-10 items-center justify-center gap-4 rounded stroke-slate-700 px-4 text-sm font-medium text-slate-700 transition duration-300 hover:bg-emerald-50 hover:stroke-emerald-500 hover:text-emerald-500 focus:bg-emerald-50 focus:stroke-emerald-600 focus:text-emerald-600 focus-visible:outline-none"
+       onClick={handlePrev}
+     >
+       PREV
+     </button>
+     {pages.map((page) => (
+       <button
+         className={`${
+           currentPage === page && "selected btn btn-primary mx-6 "
+         } btn  btn-primary mx-4`}
+         key={Math.random()}
+         onClick={() => setCurrentPage(page)}
+       >
+         {page}
+       </button>
+     ))}
+     <button
+       className="inline-flex bg-green-400 h-10 items-center justify-center gap-4 rounded stroke-slate-700 px-4 text-sm font-medium text-slate-700 transition duration-300 hover:bg-emerald-50 hover:stroke-emerald-500 hover:text-emerald-500 focus:bg-emerald-50 focus:stroke-emerald-600 focus:text-emerald-600 focus-visible:outline-none"
+       onClick={hadnleNext}
+     >
+       NEXT
+     </button>
+     <select
+       name=""
+       value={itemPerPage}
+       id=""
+       onChange={handleIterPerPage}
+     >
+       <option value="5">5</option>
+       <option value="10">10</option>
+       <option value="20">20</option>
+       <option value="10">30</option>
+     </select>
+   </div>
+</div>
+   
+
     </div>
   );
 };

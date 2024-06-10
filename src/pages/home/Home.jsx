@@ -10,11 +10,11 @@ import Reviews from './Reviews/Reviews';
 import NewsLetter from './newsLetter/NewsLetter'
 import TeamSection from './teamSection/TeamSection';
 import ComunitySection from './ComuntiySection/ComunitySection'
+import Card from '../../component/cardHome/Card'
 
 const Home = () => {
   return (
-    <div  className='p-6'>
-
+    <div  className='   ml-3 mr-3'>
 
 
 {/* SLIDER SECTION */}
@@ -26,7 +26,7 @@ const Home = () => {
 {/* FEATURE CLAASSS */}
 <FetureClass></FetureClass>
 {/* TESTIMONAL */}
-<Reviews></Reviews>
+{/* <Reviews></Reviews> */}
 {/* FORUMS COUMUNTIRY */}
 {/* <ForumPost></ForumPost> */}
 <ComunitySection></ComunitySection>

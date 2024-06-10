@@ -1,33 +1,62 @@
-import React from 'react'
+import React from "react";
+import useAllTrainer from "../../../hook/useAllTrainer";
+import UseTitle from "../../../hook/useTitle";
 
 const TeamSection = () => {
+  const [data] = useAllTrainer();
+  // const allBecomeTrainerInfo = {
+  //   name,
+  //   email,
+  //   age,
+  //   day,
+  //   time,
+  //   imgBB,
+  //   skills,
+  //   status,
+  //   trainerRole,
+  //   experience
+  // };
   return (
-    <div class="overflow-hidden text-center bg-white rounded shadow-md text-slate-500 shadow-slate-200">
+    <div>
+      <UseTitle
+        heading="OUR  TEAM"
+        description={
+          " team trainer is a professional who teaches and develops the skills of employees to increase operational efficiency and maximize productivity"
+        }
+      ></UseTitle>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4  justify-items-center my-8">
+        {data?.slice(0, 3).map((trainer) => (
+          <div class="flex w-[300px] flex-col items-center p-4 border sm:p-6 rounded-xl dark:border-gray-700">
+            <img
+              class="object-cover w-full rounded-xl aspect-square h-[250px]"
+              src={trainer?.imgBB}
+            />
 
-  <figure class="p-6 pb-0">
-    <span class="relative inline-flex items-center justify-center w-20 h-20 text-white rounded-full">
-      <img src="https://i.pravatar.cc/80?img=22" alt="user name" title="user name" width="80" height="80" class="max-w-full rounded-full" />
-    </span>
-  </figure>
+            <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-black">
 
-  <div class="p-6">
-    <header class="mb-4">
-      <h3 class="text-xl font-medium text-slate-700">Nichole Jones</h3>
-      <p class=" text-slate-400">Senior Designer</p>
-    </header>
-  </div>
+            </h1>
 
-  <div class="flex justify-end gap-2 p-6 pt-0">
+            <p class="mt-2 text-gray-500 capitalize dark:text-black">
+             {trainer.name}
+             
+            </p>
 
+            <div class="flex mt-3 -mx-2">
+            <p class="mt-2 text-gray-500 capitalize dark:text-black">
+          Experience:  {trainer.experience}
+            
+           </p>
+            <p class="mt-2 text-gray-500 capitalize dark:text-black">
+          Age:  {trainer.age}
+            
+           </p>
 
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
-
-
-
-  
-  </div>
-</div>
-  )
-}
-
-export default TeamSection
+export default TeamSection;

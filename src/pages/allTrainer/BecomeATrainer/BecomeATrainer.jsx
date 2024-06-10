@@ -67,7 +67,7 @@ const BecomeATrainer = () => {
       trainerRole,
       experience
     };
-    console.log(allBecomeTrainerInfo)
+ 
     // const  selectDate=form.slectDate.value;
     /* user axios secure  */
     const res = await axiosSecure
@@ -102,6 +102,7 @@ const BecomeATrainer = () => {
               <input
                 id="username"
                 type="text"
+                required
                 name="name"
                 class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
@@ -112,7 +113,7 @@ const BecomeATrainer = () => {
               </label>
               <input
                 disabled
-                id="username"
+                id="username" required
                 placeholder="read only"
                 type="text"
                 name="email"
@@ -125,7 +126,7 @@ const BecomeATrainer = () => {
                 AGE
               </label>
 
-              <Select placeholder="Select Age" name="age">
+              <Select placeholder="Select Age" name="age" required>
                 <option value="30">30 </option>
                 <option value="40">40</option>
                 <option value="50">50</option>
@@ -137,7 +138,7 @@ const BecomeATrainer = () => {
               <label class="text-gray-700 text-black" for="username">
                 Upload Image
               </label>
-              <input
+              <input required
                 id="username"
                 type="file"
                 name="photo"
@@ -153,7 +154,7 @@ const BecomeATrainer = () => {
 </label>
 
 <input
-id="username"
+id="username" required
 type="number"
 name="experience"
 class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
@@ -172,7 +173,7 @@ class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200
               class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
               type="checkbox"
               id="id-c04"
-              name="emphaty"
+              name="emphaty" 
               value="emphaty"
             />
             <label
@@ -185,7 +186,7 @@ class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200
               value="timemanagement"
               class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
               type="checkbox"
-              id="id-c04"
+              id="id-c04" 
               name="timeManagement"
             />
             <label
@@ -200,7 +201,7 @@ class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200
             <br />
             <input
               name="business"
-              value="business"
+              value="business" 
               class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
               type="checkbox"
               id="id-c04"
@@ -215,7 +216,7 @@ class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200
               class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
               type="checkbox"
               id="id-c04"
-              name="physical"
+              name="physical" 
               value="physical"
             />
             <label
@@ -236,7 +237,7 @@ class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200
                 Availabe Day in a Week
               </label>
 
-              <Select placeholder="Select Day" name="day">
+              <Select placeholder="Select Day" name="day" required>
                 <option value="saturday">saturday</option>
                 <option value="sunday">sunday</option>
                 <option value="monday">monday</option>
@@ -253,7 +254,7 @@ class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200
                 Availabe Time in a Week
               </label>
 
-              <Select placeholder="Select slot" name="time">
+              <Select placeholder="Select slot" name="time" required>
                 <option value="Morning">Morning</option>
        
                 <option value="Noon">Noon</option>

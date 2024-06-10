@@ -18,7 +18,7 @@ import useRole from "../../../../hook/useRole";
 const SingeleApplid = ({ refetch }) => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  const [role]=useRole()
+  const [role] = useRole();
 
   // const {id}= useParams();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -27,29 +27,23 @@ const SingeleApplid = ({ refetch }) => {
 
   /* hadnle reject */
 
-
-const {mutateAsync}=useMutation({
-
-  mutationFn:async (users)=>{
-
-const {data}=await axiosSecure.patch(`/user/${user?.email}`,users)
-return data
-
-  }
-})
+  const { mutateAsync } = useMutation({
+    mutationFn: async (users) => {
+      const { data } = await axiosSecure.patch(`/user/${user?.email}`, users);
+      return data;
+    },
+  });
 
   const handleConfirm = async (role) => {
-const users={
-  role:"trainer",
-}
-const response=await mutateAsync(users)
+    const users = {
+      role: "trainer",
+    };
+    const response = await mutateAsync(users);
 
-if(response.modifiedCount >0){
-refetch()
-toast.success("successFuullly ")
-}
-
-
+    if (response.modifiedCount > 0) {
+      refetch();
+      toast.success("successFuullly ");
+    }
   };
 
   const handleFeedback = (e) => {
@@ -142,7 +136,7 @@ toast.success("successFuullly ")
                   <h3 className="text-xl font-medium text-slate-700">
                     {item?.name}
                   </h3>
-            
+
                   <p className=" text-slate-400"> Age{item?.age}</p>
                   <p className=" text-slate-400">Time{item?.time}</p>
                 </header>
@@ -151,7 +145,7 @@ toast.success("successFuullly ")
             </div>
           </div>
           <div className="flex justify-between">
-                <h1>{item?.role}</h1>
+            <h1>{item?.role}</h1>
             <button
               className="btn btn-success "
               onClick={() => handleConfirm(item.email)}

@@ -2,6 +2,7 @@ import React from 'react'
 import Card from '../../component/cardHome/Card'
 import { Link } from 'react-router-dom';
 import UseButton from '../../component/button/Button';
+import { CiFacebook } from "react-icons/ci";
 const AllTrainerCad = ({trainer}) => {
   console.log(trainer)
   const  {
@@ -26,7 +27,7 @@ const AllTrainerCad = ({trainer}) => {
     <div>
     <>
     {/*<!-- Component: E-commerce card --> */}
-    <div className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200 w-[300px] h-auto">
+    <div className="overflow-hidden rounded bg-white  text-slate-500 shadow-md shadow-slate-200 w-[350px] h-auto shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]">
       {/*  <!-- Image --> */}
       <figure>
         <img
@@ -41,7 +42,11 @@ const AllTrainerCad = ({trainer}) => {
           <h3 className="text-xl font-medium text-slate-700">
             Trainer Name:{name}
           </h3>
-          <p className=" text-slate-400">SOCIAL ICON</p>
+         
+          <div className='flex items-center gap-5 my-5 '>
+           <p className=" text-slate-400">SOCIAL ICON </p>
+           <CiFacebook className=' text-2xl bg-blue-50 '/>
+           </div>
         </header>
         <p>
         Experience : {experience}

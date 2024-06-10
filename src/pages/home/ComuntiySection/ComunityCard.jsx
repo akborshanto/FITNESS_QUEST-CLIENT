@@ -1,13 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import UseButton from './../../../component/button/Button';
 
 const ComunityCard = ({comunity}) => {
     const { article,
         classs,
-        userInfo,_id}=comunity
+        userInfo,_id,}=comunity
+        console.log(comunity)
   return (
     <div>
-    <div className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200 w-[300px] h-auto">
+    <div className="overflow-hidden rounded bg-white text-slate-500 p-2 shadow-slate-200 w-[300px] h-auto shadow-[-10px_-10px_30px_4px_rgba(0,0,0,0.1),_10px_10px_30px_4px_rgba(45,78,255,0.15)]" >
     {/*  <!-- Image --> */}
     <figure>
       <img
@@ -19,21 +21,20 @@ const ComunityCard = ({comunity}) => {
     {/*  <!-- Body--> */}
     <div className="p-6">
       <header className="mb-4">
-        <h3 className="text-xl font-medium text-slate-700">
+        <h3 className=" font-medium text-slate-700 text-2xl font-sans">
        {classs}
         </h3>
   
       </header>
-      <p>
-       {article.slice(0,20)}
+      <p className=' font-serif' title={article}>
+       {article.slice(0,20)}......
       </p>
     </div>
     {/*  <!-- Action base sized basic button --> */}
     <div className="flex justify-end p-6 pt-0">
      <Link to={`/comunityDetail/${_id}`}>
-     <button className="inline-flex h-10 w-full items-center justify-center gap-2 whitespace-nowrap rounded bg-emerald-500 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-emerald-600 focus:bg-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
-     <span>Explore Now</span>
-   </button>
+  <UseButton btnHeading="Explore Now"></UseButton>
+ 
      </Link>
     </div>
   </div>

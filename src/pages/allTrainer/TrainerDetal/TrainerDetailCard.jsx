@@ -6,7 +6,7 @@ const TrainerDetailCard = ({tDetail}) => {
   const {name,skills,time,image,age,day,imgBB,experience}=tDetail
   return (
     <div>
-      <header class="bg-white text-black">
+      <header class="bg-white text-black mx-auto p-6 ">
         <div class="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center">
           <div class="w-full lg:w-1/2">
             <div class="lg:max-w-lg">

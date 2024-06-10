@@ -20,12 +20,15 @@ import toast from "react-hot-toast";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import TableDataRowAdmin from "./TableDataRowAdmin";
+import { useLoaderData, useParams } from "react-router-dom";
 
 /* modal */
 
 const AppliedTrainerAdmin = () => {
   const { isOpen, onOpen, onClose } = useDisclosure({});
   const { item, setItem } = useState(null);
+  const id=useLoaderData()
+  console.log(id)
   // const [data, refetch] = useAllTrainer();
   // console.log(data);
   const axiosSecure = useAxiosSecure();
@@ -108,68 +111,83 @@ console.log("dfsadsfdsaff")
 
   const handleReject = (e) => {};
   return (
-    <div>
-      <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
-        <h2 className="mb-4 text-2xl font-semibold leading-tight">Contacts</h2>
 
-        <div className="w-full overflow-x-auto">
-          <table
-            className="w-full text-left border-collapse rounded w-overflow-x-auto "
-            cellspacing="0"
-          >
-            <tbody>
-              <tr className="border-b border-slate-300">
-                <th
-                  scope="col"
-                  className="h-12 px-6 text-sm font-medium stroke-slate-700 text-slate-700 "
-                >
-                  Name
-                </th>
-                <th
-                  scope="col"
-                  className="h-12 px-6 text-sm font-medium stroke-slate-700 text-slate-700 "
-                >
-                  Title
-                </th>
-                <th
-                  scope="col"
-                  className="h-12 px-6 text-sm font-medium stroke-slate-700 text-slate-700 "
-                >
-                  Company
-                </th>
-                <th
-                  scope="col"
-                  className="h-12 px-6 text-sm font-medium stroke-slate-700 text-slate-700 "
-                >
-                  Role
-                </th>
-                <th
-                  scope="col"
-                  className="h-12 px-6 text-sm font-medium stroke-slate-700 text-slate-700 "
-                >
-                  Username
-                </th>
-              </tr>
-              {/* MASPING */}
-              <tr>
-                {allBecomeTrainerData?.map((trainer) => (
-                  <TableDataRowAdmin
-                    trainer={trainer}
-               
-                    handleFeedback={handleFeedback}
-                    handleConfirm={handleConfirm}
-                    refetch={refetch}
-                  ></TableDataRowAdmin>
-                ))}
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        {/*<!-- End Underline Table --> */}
+    <>
 
+    <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
    
-      </div>
-    </div>
+
+    <div className="overflow-x-auto">
+    <table className="w-full p-6 text-xs text-left whitespace-nowrap">
+      <colgroup>
+        <col className="w-5" />
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+        <col className="w-5" />
+      </colgroup>
+      <thead className="mb-4">
+        <tr className="dark:bg-gray-300">
+          <th className="p-">Profile</th>
+          <th className="p-3">Name</th>
+      
+          <th className="p-3">Time</th>
+          <th className="p-3">Email</th>
+          <th className="p-3">Delete</th>
+        </tr>
+      </thead>
+
+
+      {/*   filter(member=> member.role === "trainer") */}
+        
+        
+      {allBecomeTrainerData?.map((trainer) => (
+        <tbody className="border-b dark:bg-gray-50 dark:border-gray-300 my-6">
+          
+        <tr>
+
+        
+ {       <TableDataRowAdmin
+        trainer={trainer}
+   
+        handleFeedback={handleFeedback}
+        handleConfirm={handleConfirm}
+        refetch={refetch}
+      ></TableDataRowAdmin>}
+        </tr>
+       
+        </tbody>
+      ))}
+    </table>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+  </div>
+    
+    </>
+  
   );
 };
 
