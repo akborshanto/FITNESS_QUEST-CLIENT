@@ -39,7 +39,7 @@ console.log(id)
 {/* Trainer Detail card */}
 <TrainerDetailCard tDetail={data}></TrainerDetailCard>
 
-
+<Be_A_Trainer></Be_A_Trainer>
     
     </div>
   )

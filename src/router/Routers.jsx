@@ -73,9 +73,9 @@ export const router = createBrowserRouter([
 },
 {
     path:'/become-trainer',
-    element:<PrivateRoute>
+    element:
     <BecomeATrainer></BecomeATrainer>
-    </PrivateRoute>
+    
 },
 {
     path:'/payment',

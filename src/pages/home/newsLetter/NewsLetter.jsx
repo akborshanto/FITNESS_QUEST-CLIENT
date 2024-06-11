@@ -2,9 +2,11 @@ import React from "react";
 import UseButton from "../../../component/button/Button";
 import useAxiosSecure from "../../../AxiosSecure/AxiosSecure";
 import { toast } from "react-hot-toast";
+import useAuth from './../../../auth/Auth';
 
 const NewsLetter = () => {
   const axiosSecure = useAxiosSecure();
+  const user=useAuth()
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -13,6 +15,7 @@ const NewsLetter = () => {
     const userInfo = {
       name,
       email,
+    img:user?.photoURL
     };
 
     /* user axios secure */
@@ -26,6 +29,8 @@ const NewsLetter = () => {
 
   return (
     <div>
+
+    
       <section class="bg-white dark:bg-gray-900">
         <div class="max-w-3xl px-6 py-16 mx-auto text-center">
           <h1 class="text-3xl font-semibold text-gray-800 dark:text-gray-100">

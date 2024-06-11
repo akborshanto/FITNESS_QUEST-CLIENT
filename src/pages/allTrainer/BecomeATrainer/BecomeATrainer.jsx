@@ -9,18 +9,22 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import useRole from "../../../hook/useRole";
 import select from 'react-select';
+//import Select from 'react-select';
+
 import { Select } from "@chakra-ui/react";
+
+
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
   { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' },
-];
+  { value: 'vanilla', label: 'Vanilla' }
+]
 /* const IMG BB */
 const image_hoisting_key = import.meta.env.VITE_IMGBB;
 const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_key}`;
 const BecomeATrainer = () => {
   
-  const [selectedOption, setSelectedOption] = useState(null);
+
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [role]=useRole()
@@ -49,7 +53,7 @@ const BecomeATrainer = () => {
     const business = form.business.value;
     const physical = form.physical.value;
     const experience = form.experience.value;
-    const skills = { emphaty, timeManagement, business, physical };
+    const skills =  [emphaty, timeManagement, business, physical ];
 
     /* Using  AXios secure post method IMG BB  */
     const { data } = await axios.post(image_hoisting_Api, formData);
@@ -72,8 +76,9 @@ const BecomeATrainer = () => {
     /* user axios secure  */
     const res = await axiosSecure
       .post("/become-trainer", allBecomeTrainerInfo)
-      if(res.status == 200){
-        toast.success("succefuly Payment")
+      console.log(res.data)
+      if(res.data.insertedId){
+        toast.success("Succesfully Reequest For Be A Traiener")
       }
       
 
@@ -81,13 +86,14 @@ const BecomeATrainer = () => {
 
   return (
     <div>
-      {/* REACT SELECT PACKAGE */}
-      <Select
-      defaultValue={selectedOption}
-      onChange={setSelectedOption}
-      options={options}
-    />
-
+{/*     <Select
+    defaultValue={[colourOptions[2], colourOptions[3]]}
+    isMulti
+    name="colors"
+    options={colourOptions}
+    className="basic-multi-select"
+    classNamePrefix="select"
+  /> */}
       <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md text-black">
         <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">
           Account settings
@@ -104,7 +110,7 @@ const BecomeATrainer = () => {
                 type="text"
                 required
                 name="name"
-                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
             <div>
@@ -117,7 +123,7 @@ const BecomeATrainer = () => {
                 placeholder={user?.email || "your email"}
                 type="text"
                 name="email"
-                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
 
@@ -142,7 +148,7 @@ const BecomeATrainer = () => {
                 id="username"
                 type="file"
                 name="photo"
-                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
 
@@ -157,78 +163,12 @@ const BecomeATrainer = () => {
 id="username" required
 type="number"
 name="experience"
-class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
 />
 </div>
 
 
 
-            {/* skills */}
-
-            <div>
-            <div class="relative flex flex-wrap items-center">
-            <h1 className=" px-4">SKills</h1>
-            <br />
-            <input
-              class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
-              type="checkbox"
-              id="id-c04"
-              name="emphaty" 
-              value="emphaty"
-            />
-            <label
-              class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
-              for="id-c04"
-            >
-              Emphaty
-            </label>
-            <input
-              value="timemanagement"
-              class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
-              type="checkbox"
-              id="id-c04" 
-              name="timeManagement"
-            />
-            <label
-              class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
-              for="id-c04"
-            >
-              Time management
-            </label>
-            <br />
-          </div>
-          <div class="relative flex flex-wrap items-center">
-            <br />
-            <input
-              name="business"
-              value="business" 
-              class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
-              type="checkbox"
-              id="id-c04"
-            />
-            <label
-              class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
-              for="id-c04"
-            >
-              Business skills
-            </label>
-            <input
-              class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
-              type="checkbox"
-              id="id-c04"
-              name="physical" 
-              value="physical"
-            />
-            <label
-              class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
-              for="id-c04"
-            >
-              physical skills
-            </label>{" "}
-            <br />
-          </div>
-
-            </div>
      
             {/* DAY WITHOUT REACT SELECT */}
 
@@ -266,6 +206,82 @@ class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200
               </Select>
             </div>
 
+            {/* skills */}
+
+            <div  >
+            <div class="relative flex flex-wrap items-center  gap-4">
+            <h1 className=" px-4">SKills</h1>
+            <br />
+
+
+<div>
+
+<input
+class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
+type="checkbox"
+id="id-c04"
+name="emphaty" 
+value="emphaty"
+/>
+<label
+class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
+for="id-c04"
+>
+Emphaty
+</label>
+<input
+value="timemanagement"
+class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
+type="checkbox"
+id="id-c04" 
+name="timeManagement"
+/>
+<label
+class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
+for="id-c04"
+>
+Time management
+</label>
+
+</div>
+<div>
+
+</div>
+        
+            <br />
+          </div>
+          <div class="relative flex flex-wrap items-center">
+            <br />
+            <input
+              name="business"
+              value="business" 
+              class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
+              type="checkbox"
+              id="id-c04"
+            />
+            <label
+              class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
+              for="id-c04"
+            >
+              Business skills
+            </label>
+            <input
+              class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
+              type="checkbox"
+              id="id-c04"
+              name="physical" 
+              value="physical"
+            />
+            <label
+              class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
+              for="id-c04"
+            >
+              physical skills
+            </label>{" "}
+            <br />
+          </div>
+
+            </div>
             {/*  */}
           </div>
 
