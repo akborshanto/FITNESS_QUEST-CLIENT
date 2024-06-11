@@ -11,8 +11,11 @@ import NewsLetter from './newsLetter/NewsLetter'
 import TeamSection from './teamSection/TeamSection';
 import ComunitySection from './ComuntiySection/ComunitySection'
 import Card from '../../component/cardHome/Card'
+import useRole from '../../hook/useRole'
 
 const Home = () => {
+  const [role]= useRole()
+  console.log(role)
   return (
     <div  className='   ml-3 mr-3'>
 

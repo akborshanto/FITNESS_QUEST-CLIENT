@@ -48,22 +48,22 @@ const UseAuthProvider = ({ children }) => {
 
       setUser(currentUser);
 
-      if (currentUser) {
-        const userInfo = {
-          email: user?.email,
-          role: "member",
-        };
+      // if (currentUser) {
+      //   const userInfo = {
+      //     email: user?.email,
+      //     role: "member",
+      //   };
 
-        useEffect(() => {
-          fetch(`http://localhost:5000//user-add`, {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(userInfo),
-          });
-        }, [userInfo]);
-      }
+      //   useEffect(() => {
+      //     fetch(`http://localhost:5000//user-add`, {
+      //       method: "POST",
+      //       headers: {
+      //         "content-type": "application/json",
+      //       },
+      //       body: JSON.stringify(userInfo),
+      //     });
+      //   }, [userInfo]);
+      // }
 
       setLoading(false);
     });

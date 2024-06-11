@@ -25,7 +25,7 @@ fetch('/feture.json')
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     
     {
-      feture.map(item=>    <div className="overflow-hidden text-center bg-white rounded shadow-md text-slate-500 shadow-slate-200">
+      feture.map(item=>    <div key={Math.random()} className="overflow-hidden text-center bg-white rounded shadow-md text-slate-500 shadow-slate-200">
         {/*  <!-- Icon --> */}
         <figure className="p-6 pb-0">
         <title id="title-01">{item.name}</title>

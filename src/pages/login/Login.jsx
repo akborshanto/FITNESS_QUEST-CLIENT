@@ -12,6 +12,7 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
   const { GoogleLogin, Login } = useAuth();
   const handleSubmit = async (e) => {
+    const axiosSecure=useAxiosSecure()
     e.preventDefault();
 
     const form = e.target;
@@ -38,8 +39,17 @@ const Login = () => {
 
   const googleLogin = () => {
     GoogleLogin().then((res) => {
+
+const info={
+  email:res.user?.email,
+  name:res.user?.displayName,
+  role:"member"
+}
+axiosSecure.post('/moduleUser',info)
+navigate('/')
       navigate(from, { replace: true });
-      console.log(res)
+     
+
       toast.success("Successfully logged in Google");
     });
   };

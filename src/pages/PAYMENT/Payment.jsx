@@ -10,25 +10,28 @@ import toast from "react-hot-toast";
 import "./paymentCommon.css";
 import useAuth from "./../../auth/Auth";
 import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+
 import ChekOutForm from "./ChekOut";
 import useAxiosSecure from "../../AxiosSecure/AxiosSecure";
 
-const stripePromise = loadStripe(`${import.meta.env.VITE_STRIPE}`);
+
 import { useMutation } from "@tanstack/react-query";
 import { useTheme } from "@emotion/react";
+import { loadStripe } from '@stripe/stripe-js';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
+const stripePromise = loadStripe("pk_test_51PLR8p03Qkng4Wl6PMn1whpo62R1pV6wf4UFGsJBHVtSLxVYkl5l22XAX3bQgpsYf5WaysAkXs89HKFNhBbf1hqq00okjx3Udk");
 
 const Payment = () => {
   const [isShowing, setIsShowing] = useState(false);
 
-const wrapperRef = useRef(null);
+  const wrapperRef = useRef(null);
 
   const { user } = useAuth([]);
   const axiosSecure = useAxiosSecure();
   const saveData = JSON.parse(localStorage.getItem("booking"));
+  const IntPrice = parseInt(saveData.price);
 
   /*  */
   const userInfo = {
@@ -38,9 +41,9 @@ const wrapperRef = useRef(null);
   };
   const handleConfirm = async (e) => {
     e.preventDefault();
-    const { trainerName, slot, classs, packages, price } = saveData;
+    const { trainerName, slot, classs, packages } = saveData;
 
-    const IntPrice = parseInt(price);
+ 
     const role = "member";
     const inc = "total";
     const totalBooking = 0;
@@ -65,13 +68,10 @@ const wrapperRef = useRef(null);
     if (data.status == 200) {
       toast.success("succefuly Payment");
     }
-
-
   };
 
   /* ===🚩🚩RATING COMPONENT MODAL🚩🚩=====
 ================================ */
-
 
   useTheme();
 
@@ -154,21 +154,34 @@ const wrapperRef = useRef(null);
 
     const ratinInfo = { name, email, photo, date, descriptions };
     /* axiiso secure */
- //   console.log(ratinInfo);
- await axiosSecure.post("/rating", ratinInfo)
- .then(res=>{
-  toast.success("Thanks For Feedback")
- })
+    //   console.log(ratinInfo);
+    await axiosSecure.post("/rating", ratinInfo).then((res) => {
+      toast.success("Thanks For Feedback");
+    });
   };
 
   return (
     <div>
       {/* PAYMENT  to Stripe */}
 
-      {/*     <Elements stripe={stripePromise}>
-      <ChekOutForm price={price}></ChekOutForm>
+      <Elements stripe={stripePromise}>
+< ChekOutForm  IntPrice={IntPrice}></ChekOutForm>
     </Elements>
- */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md text-black">
         <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">
           Account settings
@@ -361,12 +374,6 @@ const wrapperRef = useRef(null);
                         <div className="flex flex-col gap-6">
                           {/*                <!-- Input field --> */}
 
-
-
-
-
-
-                          
                           <div className="relative">
                             <textarea
                               id="id-b02"
@@ -383,15 +390,6 @@ const wrapperRef = useRef(null);
                               Write your feedback
                             </label>
                           </div>
-
-
-
-
-
-
-
-
-
 
                           {/*<!-- End Plain base size basic textarea --> */}
                         </div>

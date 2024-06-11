@@ -1,45 +1,29 @@
-import React, { useEffect, useState } from "react";
-import {
-  PaymentElement,
-  CardElement,
-  useStripe,
-  useElements,
-} from "@stripe/react-stripe-js";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import useAxiosSecure from "../../AxiosSecure/AxiosSecure";
 import useAuth from "../../auth/Auth";
-const ChekOutForm = ({ price }) => {
-
-  const { user } = useAuth();
+import { useEffect, useState } from "react";
+const ChekOutForm = ({ IntPrice }) => {
   const axiosSecure = useAxiosSecure();
-  const [clientSecret, setClientSecret] = useState("");
+  console.log(IntPrice);
   const [cardError, setCardError] = useState("");
-  const [processing, setProcessing] = useState(false);
+  const [clientSecret, setClientSecret] = useState("");
+  const { user } = useAuth();
+
   const stripe = useStripe();
   const elements = useElements();
-  const priceInts = parseInt(price);
 
-  //const [clientSecret,setClientSecret]=useStripe('')
-
+  /* useEffect usee  */
   useEffect(() => {
-    const {res}=axiosSecure.post("/create-payment-intent", {totalPrice:priceInts})
+    axiosSecure
+      .post("/create-payment-intent", { price: IntPrice })
+      .then((data) => {
+        console.log(res.data.clientSecret);
+        setClientSecret(res.data.clientSecret);
+      });
+  }, [axiosSecure,clientSecret]);
 
-  //  console.log( priceInts)
-
-
-
-  }, [axiosSecure,priceInts]);
-
-  //   getClientSecret()
-
-  // const getClientSecret=async(price)=>{
-
-  // const {data}= await axiosSecure.post('create-payment-intent',parseInt(price))
-
-  // console.log(data)
-  // }
-
+  /* hable sumbit */
   const handleSubmit = async (event) => {
-    // Block native form submission.
     event.preventDefault();
 
     if (!stripe || !elements) {
@@ -47,10 +31,6 @@ const ChekOutForm = ({ price }) => {
       // form submission until Stripe.js has loaded.
       return;
     }
-
-    // Get a reference to a mounted CardElement. Elements knows how
-    // to find your CardElement because the            re can only ever be one of
-    // each type of element.
     const card = elements.getElement(CardElement);
 
     if (card == null) {
@@ -65,47 +45,37 @@ const ChekOutForm = ({ price }) => {
 
     if (error) {
       console.log("[error]", error);
-      //setCardError(error);
-      return;
+      setCardError(error.message);
     } else {
       console.log("[PaymentMethod]", paymentMethod);
-      console.log("PAYMENT METHOD?", paymentMethod);
+      setCardError("");
     }
-    /* confir tm method */
-    // const { error: cofirmErro, paymentIntent } =
-    //   await stripe.confirmCardPayment(clientSecret, {
-    //     payment_method: {
-    //       card: card,
-    //       billing_details: {
-    //         email: user?.email,
-    //         name: user?.displayName,
-    //       },
-    //     },
-    //   });
+    console.log(clientSecret);
+    /* confitm */
+    const { paymentIntent, error: confirmError } =
+      await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: "card",
+          billing_details: {
+            email: user?.email || "ANOSNYMOUS",
+            name: user?.displayName || "ANONYMOUS",
+          },
+        },
+      });
 
-    /* error */
-    // if(cofirmErro){
-    // console.log(cofirmErro.message)
-    // setCardError(cofirmErro.message)
-    // setProcessing(false)
-    // return
-    // }
-    /* success */
-    // if(paymentIntent.status === 'succeeded'){
-    //   const paymentInfo={
-
-    // transactionId:paymentIntent.id,
-    // date:new Date()
-
-    //   }
-    //   console.log(paymentInfo)
-    // }
+    if (confirmError) {
+      console.log("confrim errm");
+    } else {
+      console.log("payment intent", paymentIntent);
+    }
   };
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <CardElement
           options={{
+            clientSecret,
+
             style: {
               base: {
                 fontSize: "16px",
@@ -120,10 +90,7 @@ const ChekOutForm = ({ price }) => {
             },
           }}
         />
-        <button
-          type="submit"
-          disabled={!stripe  || !clientSecret}
-        >
+        <button type="submit" disabled={!stripe}>
           Pay
         </button>
         {cardError && (

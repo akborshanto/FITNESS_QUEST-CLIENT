@@ -5,6 +5,7 @@ import useAuth from "../../auth/Auth";
 import useAxiosSecure from "../../AxiosSecure/AxiosSecure";
 import { useMutation } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
 
 const image_hoisting_key = import.meta.env.VITE_IMGBB;
 const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_key}`;
@@ -38,31 +39,42 @@ const Register = () => {
 //   headers:{'content-type': 'multipart/form-'}
 // })
 
-    const { data } = await axiosSecure.post(image_hoisting_Api, formData,{
+    const { data } = await axios.post(image_hoisting_Api, formData,{
       headers:{"content-type": "multipart/form-data" },
     });
     // {
     //   headers: { "content-type": "multipart/form-data" },
     // }
     console.log(data);
-    if (data.success) {
-      console.log(data.data.display_url);
-      createUser(email, password).then((res) => {
-        toast.success("successfull create a user");
-        /* update profile */
-        if (res.user) {
-          updateProfiles(name, data.data.display_url).then((res) => {
-            toast.success("succesfully Register");
-          const info={
-            name:name,
-            email:email
-          }
-          const data = axiosSecure.post('/moduleUser',info)
-console.log(data)
-          });
+    createUser(email, password).then((res) => {
+      toast.success("successfull create a user");
+      /* update profile */
+      if (res.user) {
+        updateProfiles(name, data.data.display_url).then((res) => {
+          toast.success("succesfully Register");
+        const info={
+          name:name,
+          email:email,
+          role:"member"
         }
-      });
+        const data = axiosSecure.post('/moduleUser',info)
+
+        });
+      }
+    });
+
+    if (data.success) {
+
+  
+      
+
+
+
     }
+
+
+
+
   };
 
   return (

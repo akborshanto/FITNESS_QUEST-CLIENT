@@ -75,7 +75,7 @@ const Reviews = () => {
 
     {
       data?.map(review=>  <li>
-        <div className="w-full">
+        <div className="w-full" key={Math.random()}>
           {/*                    <!-- Start Testimonial --> */}
           <div className="overflow-hidden ">
             <div className="relative p-6">

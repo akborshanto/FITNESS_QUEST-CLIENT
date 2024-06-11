@@ -17,7 +17,7 @@ const [forum]=useForum()
    {
    
    
-       forum?.slice(14,20).map(comunity=><ComunityCard comunity={comunity}></ComunityCard>)
+       forum?.slice(14,20).map(comunity=><ComunityCard comunity={comunity} key={Math.random()}></ComunityCard>)
    }
    
        </div>

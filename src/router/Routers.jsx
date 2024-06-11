@@ -68,14 +68,14 @@ export const router = createBrowserRouter([
 {
     path:'/trainer-booking',
     element:
-   <TrainerBooking></TrainerBooking>
+ <TrainerBooking></TrainerBooking>
   
 },
 {
     path:'/become-trainer',
-    element:
+    element:<PrivateRoute>
     <BecomeATrainer></BecomeATrainer>
-   
+    </PrivateRoute>
 },
 {
     path:'/payment',
