@@ -67,15 +67,21 @@ export const router = createBrowserRouter([
 },
 {
     path:'/trainer-booking',
-    element:<TrainerBooking></TrainerBooking>
+    element:
+   <TrainerBooking></TrainerBooking>
+  
 },
 {
     path:'/become-trainer',
-    element:<BecomeATrainer></BecomeATrainer>
+    element:
+    <BecomeATrainer></BecomeATrainer>
+   
 },
 {
     path:'/payment',
-    element:<Payment></Payment>
+    element:
+    <Payment></Payment>
+  
 },
 {
     path:'/all-class',
@@ -95,10 +101,12 @@ export const router = createBrowserRouter([
 
 /* DASBOARD................. */
 
-{
-    path:'/dashboard',
-    element:<Dashboard></Dashboard>
-},
+// {
+//     path:'/dashboard',
+//     element:<PrivateRoute>
+//     <Dashboard></Dashboard>
+//     </PrivateRoute>
+// },
 
 
 
@@ -117,7 +125,7 @@ children:[
 /* 🚩ADMIN🚩 */
 {
     path:'news-letter',
-    element:<PrivateRoute><NewsLetterAdmin></NewsLetterAdmin></PrivateRoute>
+    element:<NewsLetterAdmin></NewsLetterAdmin>
 
 },
 ,{

@@ -15,7 +15,7 @@ export const AuthContext = createContext();
 const UseAuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
-  console.log(user);
+
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
   /* create a user */
@@ -26,6 +26,7 @@ const UseAuthProvider = ({ children }) => {
 
   /* sign ing with email and password */
   const Login = (email, password) => {
+    setLoading(true)
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -38,37 +39,39 @@ const UseAuthProvider = ({ children }) => {
   /* USER INFO CN =============================
 ===============================*/
 
-
   /* ON AUTH STATE CHANGE */
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-        /* USER CN */
+      /* USER CN */
 
-        setUser(currentUser)
-        if (currentUser) {
-            const userInfo = {
-                email: user?.email,
-                role: 'member',
-            }
-            const { data } = axios.post(
-                `${ import.meta.env.VITE_API_URL }/user-add`,
-                userInfo,
-            )
+      setUser(currentUser);
 
-            if (data) {
-                console.log(data);
-            }
-        }
+      if (currentUser) {
+        const userInfo = {
+          email: user?.email,
+          role: "member",
+        };
 
-        setLoading(false)
-    })
+        useEffect(() => {
+          fetch(`http://localhost:5000//user-add`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(userInfo),
+          });
+        }, [userInfo]);
+      }
+
+      setLoading(false);
+    });
 
     return () => {
-        return unsubscribe()
-    }
-}, [])
+      return unsubscribe();
+    };
+  }, []);
 
   /* update profile */
   const updateProfiles = (displayName, photoURL) => {
@@ -82,6 +85,7 @@ const UseAuthProvider = ({ children }) => {
 
   /* logout */
   const logOut = () => {
+    setLoading(true)
     return signOut(auth);
   };
 

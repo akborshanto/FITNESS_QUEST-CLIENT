@@ -3,7 +3,7 @@ import UseButton from "../../../component/button/Button";
 import { Link } from "react-router-dom";
 
 const TrainerDetailCard = ({tDetail}) => {
-  const {name,skills,time,image,age,day,imgBB,experience}=tDetail
+  const {name,skills,time,image,age,day,imgBB,experience}=tDetail || {}
   return (
     <div>
       <header class="bg-white text-black mx-auto p-6 ">

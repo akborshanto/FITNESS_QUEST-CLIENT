@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../auth/Auth";
@@ -21,52 +21,54 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
     const image = form.image.files[0];
-    console.log(image);
-    const name = form.name.value;
-    const formData = new FormData();
-    //const role="member"
-    formData.append("image", image);
+    console.log(email,password,image)
    
+    const name = form.name.value;
+      const formData = new FormData();
+
+      //const role="member"
+      formData.append("image", image);
+     console.log(formData)
 
     /* POST  METHOD IMG BB */
-    const { data } = await axiosSecure.post(image_hoisting_Api, formData);
+// console.log({image:form.image.files[0]})
 
-   // const imgBB=data.data.display_url
-    // const userInfo = {
-    //   name,
-    //   imgBB,
-    //   email,
-    //   password,
-    //  // role,
-    // };
-if(data.success){
-  console.log(data.data.display_url);
-  createUser(email, password).then((res) => {
-    toast.success("successfull create a user")
-    /* update profile */
-if(res.user){
-  updateProfiles(name, data.data.display_url).then(res=>{
-    toast.success("succesfully Register")
-   })
-}
-  
-  });
-}
+// fetch(image_hoisting_Api,{
+//   method:"POST",
+//   headers:{'content-type': 'multipart/form-'}
+// })
 
-
-    /* POST THE DATA IN USER COLLECTION */
-
-        // const {data:userData} = await axiosSecure.post("/user",{userInfo});
-
-        
-      
-    
+    const { data } = await axiosSecure.post(image_hoisting_Api, formData,{
+      headers:{"content-type": "multipart/form-data" },
+    });
+    // {
+    //   headers: { "content-type": "multipart/form-data" },
+    // }
+    console.log(data);
+    if (data.success) {
+      console.log(data.data.display_url);
+      createUser(email, password).then((res) => {
+        toast.success("successfull create a user");
+        /* update profile */
+        if (res.user) {
+          updateProfiles(name, data.data.display_url).then((res) => {
+            toast.success("succesfully Register");
+          const info={
+            name:name,
+            email:email
+          }
+          const data = axiosSecure.post('/moduleUser',info)
+console.log(data)
+          });
+        }
+      });
+    }
   };
 
   return (
     <div>
-    <Toaster />
-      <div className="flex justify-center items-center min-h-screen my-6 lg:my-4" >
+      <Toaster />
+      <div className="flex justify-center items-center min-h-screen my-6 lg:my-4">
         <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
           <div className="mb-8 text-center">
             <h1 className="my-3 text-4xl font-bold">Sign Up</h1>
@@ -145,7 +147,7 @@ if(res.user){
               </button>
             </div>
           </form>
-    
+
           <p className="px-6 text-sm text-center text-gray-400">
             Already have an account?{" "}
             <Link

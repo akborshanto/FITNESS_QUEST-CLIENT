@@ -5,11 +5,10 @@ import useRole from '../../hook/useRole'
 import UseTitle from './../../hook/useTitle';
 
 const AllTrainer = () => {
-const [role]=useRole()
 
 const[data,isLoading]=useAllTrainer()
 
-
+// if(isLoading)return <h2>sdfs</h2>
   return (
 
 <div>

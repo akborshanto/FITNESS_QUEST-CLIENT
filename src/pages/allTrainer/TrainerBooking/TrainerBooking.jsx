@@ -76,7 +76,7 @@ const TrainerBooking = () => {
 
 
 const saveData= localStorage.setItem('booking',JSON.stringify(bookingInfo))
-
+console.log(saveData)
     /*  TANSCTACK QUERY*/
 navigate('/payment')
     /* use axios secure */
@@ -122,7 +122,7 @@ navigate('/payment')
                 Price
               </label>
 
-              <Select placeholder="Select Price" name="price" required>
+              <Select placeholder="Select Price" name="price">
                 <option value="10">$10</option>
                 <option value="50">50</option>
                 <option value="100">100</option>
@@ -135,7 +135,7 @@ navigate('/payment')
                 Classes
               </label>
 
-              <Select placeholder="Select option" name="class" required>
+              <Select placeholder="Select option" name="class">
                 <option value="yoga">Yoga</option>
                 <option value="pilates">pilates</option>
                 <option value="spinning">spinning</option>
@@ -151,7 +151,7 @@ navigate('/payment')
                 packages:
               </label>
 
-              <Select placeholder="Select packages" name="package" required>
+              <Select placeholder="Select packages" name="package">
                 <option value="basic">Basic</option>
                 <option value="standard">Standard</option>
                 <option value="premium">Premium</option>

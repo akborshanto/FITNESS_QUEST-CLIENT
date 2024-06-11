@@ -39,7 +39,7 @@ const Login = () => {
   const googleLogin = () => {
     GoogleLogin().then((res) => {
       navigate(from, { replace: true });
-      
+      console.log(res)
       toast.success("Successfully logged in Google");
     });
   };

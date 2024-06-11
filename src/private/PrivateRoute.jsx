@@ -7,7 +7,7 @@ const PrivateRoute = ({children}) => {
 const {user,loading}=useAuth()
 const location=useLocation()
 
-if(loading)return <Spiner></Spiner>
+if(loading)return <h1>Dfks</h1>
 if(user){
     return children
 }

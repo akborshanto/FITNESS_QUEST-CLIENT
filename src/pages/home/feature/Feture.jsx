@@ -5,11 +5,12 @@ const Feture = () => {
 const [feture,setFeture]=useState([])
 useEffect(() => {
 fetch('/feture.json')
+
 .then(res=>res.json())
 .then(data=> setFeture(data))
 }, [])
 
-console.log(feture)
+
   return (
     <div>
 

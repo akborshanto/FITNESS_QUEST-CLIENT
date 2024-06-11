@@ -2,7 +2,7 @@
 import React, { Fragment, useState } from "react";
 import useAuth from "../../auth/Auth";
 import { Link, NavLink } from "react-router-dom";
-import { Avatar } from '@chakra-ui/react';
+import { Avatar } from "@chakra-ui/react";
 import UseButton from "../../component/button/Button";
 
 const Navbar = () => {
@@ -13,11 +13,12 @@ const Navbar = () => {
 
   const links = (
     <Fragment>
-
-
-
-    <li>  <NavLink to="/" className='text-[#1E90FF] lg:mx-5 lg:hover:border' >Home</NavLink>
-    </li>
+      <li>
+        {" "}
+        <NavLink to="/" className="text-[#1E90FF] lg:mx-5 lg:hover:border">
+          Home
+        </NavLink>
+      </li>
       <NavLink to="/all-trainer">All Trainer Page</NavLink>
       <NavLink to="/all-class"> All Classes page</NavLink>
       <NavLink to="/comunity"> Comunity</NavLink>
@@ -30,9 +31,6 @@ const Navbar = () => {
 
   return (
     <div className="mt-6">
-    
-
-
       <div className="">
         <div className="mx-auto grid w-full max-w-full grid-cols-4 gap-6 px-6 py-2 text-sm  md:grid-cols-8 lg:max-w-5xl lg:grid-cols-12 xl:max-w-7xl 2xl:max-w-[96rem]">
           <div className="col-span-2 items-center md:col-span-4 lg:col-span-6">
@@ -157,28 +155,8 @@ const Navbar = () => {
               className="flex items-center gap-2 whitespace-nowrap py-3 text-lg focus:outline-none lg:flex-1"
               href="javascript:void(0)"
             >
-              <svg
-                width="300"
-                height="300"
-                viewBox="0 0 300 300"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-12 w-12 bg-emerald-500"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M88.1121 88.1134L150.026 150.027L150.027 150.027L150.027 150.027L150.028 150.027L150.027 150.026L88.1133 88.1122L88.1121 88.1134ZM273.878 273.877C272.038 274.974 196.128 319.957 165.52 289.349L88.1124 211.942L26.1434 273.911C26.1434 273.911 -20.3337 196.504 10.651 165.519L88.1121 88.1134L26.1417 26.1433C26.1417 26.1433 69.6778 0.00338007 104.519 0H0V300H300V0H104.533C116.144 0.00112664 126.789 2.90631 134.534 10.651L211.941 88.1123L273.877 26.177C274.974 28.0159 319.957 103.926 289.349 134.535L211.942 211.942L273.878 273.877ZM273.878 273.877L273.912 273.857V273.911L273.878 273.877ZM273.877 26.177L273.911 26.1429H273.857C273.857 26.1429 273.863 26.1544 273.877 26.177Z"
-                  fill="white"
-                />
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M0 0H300V300H0V0ZM150.026 150.025C121.715 99.731 88.1131 88.1122 88.1131 88.1122L10.6508 165.519C10.6508 165.519 26.143 150.027 150.026 150.027H150.027C150.026 150.027 150.026 150.027 150.026 150.027L150.026 150.027C99.731 178.339 88.1124 211.941 88.1124 211.941L165.52 289.348C165.52 289.348 150.032 273.86 150.027 150.027H150.029C178.341 200.323 211.944 211.942 211.944 211.942L289.352 134.535C289.352 134.535 273.864 150.023 150.027 150.027V150.027L150.027 150.027C200.322 121.715 211.941 88.1125 211.941 88.1125L134.534 10.651C134.534 10.651 150.026 26.1431 150.026 150.025ZM150.027 150.027L150.026 150.027C150.026 150.026 150.026 150.026 150.026 150.025C150.026 150.025 150.027 150.026 150.027 150.027ZM150.027 150.027L150.027 150.026L150.027 150.027C150.027 150.027 150.027 150.027 150.027 150.027L150.027 150.027ZM150.027 150.027C150.027 150.027 150.027 150.027 150.027 150.027H150.027L150.027 150.027Z"
-                  fill="rgba(255,255,255,.2)"
-                />
-              </svg>
-              Trainer Queest
+         
+       <h1 className="text-2xl font-serif">       <span className="text-blue-400  text-3xl"> Trainer</span> Queest</h1>
             </a>
             {/*      <!-- Mobile trigger --> */}
             <button
@@ -210,171 +188,120 @@ const Navbar = () => {
             </button>
             {/*      <!-- Navigation links --> */}
             <ul
-            role="menubar"
-            aria-label="Select page"
-            className={`absolute left-0 top-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${
-              isToggleOpen
-                ? "visible opacity-100 backdrop-blur-sm"
-                : "invisible opacity-0"
-            }`}
-          >
+              role="menubar"
+              aria-label="Select page"
+              className={`absolute left-0 top-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${
+                isToggleOpen
+                  ? "visible opacity-100 backdrop-blur-sm"
+                  : "invisible opacity-0"
+              }`}
+            >
+              <li role="none" className="flex items-stretch">
+                <NavLink
+                  to="/"
+                  role="menuitem"
+                  aria-haspopup="false"
+                  className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                  href="javascript:void(0)"
+                >
+                  <span>Home</span>
+                </NavLink>
+              </li>
 
+              <li role="none" className="flex items-stretch">
+                <NavLink
+                  to="/all-trainer"
+                  role="menuitem"
+                  aria-haspopup="false"
+                  className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                  href="javascript:void(0)"
+                >
+                  <span>ALl Trainer</span>
+                </NavLink>
+              </li>
+              <li role="none" className="flex items-stretch">
+                <NavLink
+                  to="/all-class"
+                  role="menuitem"
+                  aria-haspopup="false"
+                  className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                  href="javascript:void(0)"
+                >
+                  <span>ALl Class</span>
+                </NavLink>
+              </li>
 
+              <li role="none" className="flex items-stretch">
+                <NavLink
+                  to="/comunity"
+                  role="menuitem"
+                  aria-haspopup="false"
+                  className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                  href="javascript:void(0)"
+                >
+                  <span>Comunity</span>
+                </NavLink>
+              </li>
 
-
-
-
-          
-            <li role="none" className="flex items-stretch">
-              <NavLink to='/'
-                role="menuitem"
-                aria-haspopup="false"
-                className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
-                href="javascript:void(0)"
-              >
-                <span>Home</span>
-              </NavLink>
-            </li>
-          
-            <li role="none" className="flex items-stretch">
-              <NavLink to='/all-trainer'
-                role="menuitem"
-                aria-haspopup="false"
-                className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
-                href="javascript:void(0)"
-              >
-                <span>ALl Trainer</span>
-              </NavLink>
-            </li>
-            <li role="none" className="flex items-stretch">
-              <NavLink to='/all-class'
-                role="menuitem"
-                aria-haspopup="false"
-                className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
-                href="javascript:void(0)"
-              >
-                <span>ALl Class</span>
-              </NavLink>
-            </li>
-          
-            <li role="none" className="flex items-stretch">
-              <NavLink to='/comunity'
-                role="menuitem"
-                aria-haspopup="false"
-                className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
-                href="javascript:void(0)"
-              >
-                <span>Comunity</span>
-              </NavLink>
-            </li>
-          
-
-{/* DAASHBOAR */}
-  
-          
-     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          </ul>
+              {/* DAASHBOAR */}
+            </ul>
             {/*      <!-- Actions --> */}
             <div className="ml-auto flex items-center justify-end px-6 lg:ml-0 lg:flex-1 lg:p-0">
-            <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0">
-         
+              <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0">
+                {user && (
+                  <li role="none" className="flex items-stretch">
+                    <NavLink
+                      to="/dashboard"
+                      role="menuitem"
+                      aria-haspopup="false"
+                      className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
+                      href="javascript:void(0)"
+                    >
+                      <span>DashBoard</span>
+                    </NavLink>
+                  </li>
+                )}
 
-{
-  user && <li role="none" className="flex items-stretch">
-  <NavLink to='/dashboard'
-    role="menuitem"
-    aria-haspopup="false"
-    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8"
-    href="javascript:void(0)"
-  >
-    <span>DashBoard</span>
-  </NavLink>
-</li>
-}
-
-
-
-
-         
-            {/*        <!-- Avatar --> */}
-            <a
-              href="#"
-              className="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-white"
-            >
-
-         {
-          user &&    <Avatar name={user?.displayName}  src={user?.photoURL} />
-
-             
-         }
-
-              <span
-                className={`absolute bottom-0 right-0 inline-flex items-center justify-center gap-1 rounded-full border-2 border-white ${
-                  user ? "bg-green-600" : "bg-pink-500"
-                }  p-1 text-sm text-white`}
-              >
-                <span className="sr-only"> 7 new emails </span>
-              </span>
-            </a>
-
-            {user ? (
-              <>
-                <div
-                  onClick={logOut}
-                  className="px-4 py-3  border-[#1E90FF] transition font-semibold cursor-pointer"
+                {/*        <!-- Avatar --> */}
+                <a
+                  href="#"
+                  className="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-white"
                 >
-                <UseButton btnHeading="LogOut"></UseButton>
+                  {user && (
+                    <Avatar name={user?.displayName} src={user?.photoURL} />
+                  )}
 
-                </div>
-              </>
-            ) : (
-              <>
-                <Link
-                  to="/login"
-                  className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
-                >
-                  <UseButton btnHeading="Login"></UseButton>
-                </Link>
-              </>
-            )}
+                  <span
+                    className={`absolute bottom-0 right-0 inline-flex items-center justify-center gap-1 rounded-full border-2 border-white ${
+                      user ? "bg-green-600" : "bg-pink-500"
+                    }  p-1 text-sm text-white`}
+                  >
+                    <span className="sr-only"> 7 new emails </span>
+                  </span>
+                </a>
 
-            {/*        <!-- End Avatar --> */}
-          </div>
+                {user ? (
+                  <>
+                    <div
+                      onClick={logOut}
+                      className="px-4 py-3  border-[#1E90FF] transition font-semibold cursor-pointer"
+                    >
+                      <UseButton btnHeading="LogOut"></UseButton>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      to="/login"
+                      className="px-4 py-3 hover:bg-neutral-100 transition font-semibold"
+                    >
+                      <UseButton btnHeading="Login"></UseButton>
+                    </Link>
+                  </>
+                )}
+
+                {/*        <!-- End Avatar --> */}
+              </div>
             </div>
           </nav>
         </div>

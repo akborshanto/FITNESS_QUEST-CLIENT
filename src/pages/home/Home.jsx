@@ -26,7 +26,7 @@ const Home = () => {
 {/* FEATURE CLAASSS */}
 <FetureClass></FetureClass>
 {/* TESTIMONAL */}
-{/* <Reviews></Reviews> */}
+{<Reviews></Reviews>}
 {/* FORUMS COUMUNTIRY */}
 {/* <ForumPost></ForumPost> */}
 <ComunitySection></ComunitySection>

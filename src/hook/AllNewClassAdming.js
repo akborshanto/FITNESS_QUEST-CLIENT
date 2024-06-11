@@ -17,7 +17,7 @@ const {data: allClassAdmin ,refetch,isLoading}=useQuery({
 })
 
 
-return [allClassAdmin]
+return [allClassAdmin,isLoading]
 
 
 
