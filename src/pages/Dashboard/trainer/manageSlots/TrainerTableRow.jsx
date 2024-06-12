@@ -45,10 +45,7 @@ const TrainerTableRow = ({allBookingSlot,deleteSlot}) => {
     <td className="px-3 py-2">
 
 
-    <Link onClick={()=>deleteSlot(_id)}>
-        
-  <UseButton btnHeading="DELETE" ></UseButton>
-    </Link>
+    
 
     </td>
   </div>

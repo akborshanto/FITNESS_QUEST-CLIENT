@@ -4,11 +4,13 @@ import UseButton from "../../../../component/button/Button";
 import useRole from "../../../../hook/useRole";
 import useAxiosSecure from "../../../../AxiosSecure/AxiosSecure";
 import { toast } from "react-hot-toast";
+import axios from "axios";
 const image_hoisting_key = import.meta.env.VITE_IMGBB;
 const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_key}`;
 const AddNewForum = () => {
   const { user } = useAuth();
   const [role] = useRole();
+  console.log(role)
   const axiosSecure = useAxiosSecure();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,8 +42,8 @@ const imgBB=data.data.display_url
     };
 
     /* save data  post Court Of Justice*/
-    const res = await axiosSecure.post("/forum", comunityInfo);
-    console.log(res)
+    const res = await axios.post("/forum", comunityInfo);
+   
     if (res.status == 200) {
       toast.success("succes");
     }

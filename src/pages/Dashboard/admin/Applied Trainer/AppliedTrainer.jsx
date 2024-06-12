@@ -22,12 +22,15 @@ import axios from "axios";
 import TableDataRowAdmin from "./TableDataRowAdmin";
 import { useLoaderData, useParams } from "react-router-dom";
 import AllTrainerAdminCard from "./TableDataRowAdmin";
+import useRole from './../../../../hook/useRole';
 
 /* modal */
 
 const AppliedTrainerAdmin = () => {
   const { isOpen, onOpen, onClose } = useDisclosure({});
   const { item, setItem } = useState(null);
+  const   [role]=useRole()
+  console.log(role)
   const id = useLoaderData();
   console.log(id);
   // const [data, refetch] = useAllTrainer();
@@ -51,7 +54,7 @@ const AppliedTrainerAdmin = () => {
   // };
 
   const { data: allBecomeTrainerData, refetch } = useQuery({
-    queryKey: ["AllTrainer"],
+    queryKey: ["AllTrainers"],
     queryFn: async (req, res) => {
       const { data } = await axiosSecure.get("/become-trainer");
       return data;
@@ -60,9 +63,7 @@ const AppliedTrainerAdmin = () => {
 
   /* update trainer role */
 
-  const handleConfirm = () => {
-    console.log("dfsadsfdsaff");
-  };
+
 
   const TrainerSingleData = (id) => {
     // useEffect(() => {
@@ -95,7 +96,7 @@ const AppliedTrainerAdmin = () => {
     e.preventDefault();
     const form = e.target;
     const feedback = form.feedback.value;
-    //console.log(feedback);
+    
 
     const { data } = await axiosSecure.post("/");
   };
@@ -109,7 +110,8 @@ const AppliedTrainerAdmin = () => {
  <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 md:grid-cols-2 justify-items-center lg:ml-40">
  
  {
-  allBecomeTrainerData?.map(trainer=><AllTrainerAdminCard  trainer={trainer}></AllTrainerAdminCard>)
+
+  allBecomeTrainerData?.map(trainer=><AllTrainerAdminCard  trainer={trainer} refetcha={refetch}></AllTrainerAdminCard>) 
 }
  </div>
       

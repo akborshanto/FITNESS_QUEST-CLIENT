@@ -17,7 +17,7 @@ const {data}=useQuery({
 queryFn:async()=>{
 
   const {data}=await axiosSecure.get(`/addNewSlotTrainer/${user?.email}`)
-
+    console.log(data)
     return data
 }
 

@@ -74,10 +74,10 @@ const BecomeATrainer = () => {
  
     // const  selectDate=form.slectDate.value;
     /* user axios secure  */
-    const res = await axiosSecure
+await axios
       .post("/become-trainer", allBecomeTrainerInfo)
-      console.log(res.d)
-      if(res.data.insertedId){
+  
+      if(data.insertedId){
         toast.success("Succesfully Reequest For Be A Traiener")
       }
       
@@ -106,7 +106,7 @@ const BecomeATrainer = () => {
                 Full Name
               </label>
               <input
-                id="username"
+                id="username" aria-required
                 type="text"
                 required
                 name="name"

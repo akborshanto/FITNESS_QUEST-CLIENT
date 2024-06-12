@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import {
   Modal,
@@ -18,17 +18,18 @@ import useAxiosSecure from "../../../../AxiosSecure/AxiosSecure";
 import useRole from "../../../../hook/useRole";
 import UseButton from "../../../../component/button/Button";
 import axios from "axios";
-import { toast } from 'react-hot-toast';
-const SingeleApplid = ({ refetch }) => {
+import { toast } from "react-hot-toast";
+const SingeleApplid = ({ refetcha }) => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [role] = useRole();
-const navigate=useNavigate()
+  const navigate = useNavigate();
   // const {id}= useParams();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const item = useLoaderData();
-  const { name, skills, time, image, age, day, imgBB, experience,email,_id } = item || {};
+  const { name, skills, time, image, age, day, imgBB, experience, email, _id } =
+    item || {};
   /* hadnle reject */
 
   // const { mutateAsync } = useMutation({
@@ -39,21 +40,26 @@ const navigate=useNavigate()
   // });
 
   const handleConfirm = async () => {
+ 
+try{
+
+  await axiosSecure.patch(`/role/admin/${email}`).then((res) => {
+if(res.data.modifiedCount >0){
+  toast.success("successfyllyy updated")
+}else{
+  toast.error("you have already Accecpetd")
+
+}
+
+  });
+
+}catch(err){
+
+  console.log(err)
 
 
-    useEffect(()=>{
-fetch(`/role/admin/${_id}`,{
-  method:"PATCH",
-  headers:{'content-type':'application/json'}
-})
 
-
-    })
-await axiosSecure.patch(`/role/admin/${_id}`)
-.then(res=>{
-  console.log(res.data)
-})
-
+}
     // const response = await mutateAsync(users);
 
     // if (response.modifiedCount > 0) {
@@ -65,9 +71,22 @@ await axiosSecure.patch(`/role/admin/${_id}`)
   const handleFeedback = (e) => {
     e.preventDefault();
     const feedback = e.target.feedback.value;
-    console.log(feedback)
-    navigate('/dashboard/applied-trainer')
-    toast.success("Thanks For Feedbahcak ")
+    console.log(feedback);
+try{
+
+
+axiosSecure.patch(`/feedback/${_id}`,{feedback})
+.then(res=>{
+  console.log(res.data)
+})
+
+}catch(err){
+  console.log(err)
+}
+
+
+    navigate("/dashboard/applied-trainer");
+    toast.success("Thanks For Feedbahcak ");
   };
 
   return (
@@ -198,8 +217,8 @@ await axiosSecure.patch(`/role/admin/${_id}`)
               </button>
 
               <Button onClick={onOpen} className="btn btn-success my-16">
-              Reject
-            </Button>
+                Reject
+              </Button>
             </div>
           </div>
         </div>
@@ -213,9 +232,8 @@ await axiosSecure.patch(`/role/admin/${_id}`)
             {/*  <!-- Image --> */}
             <figure className="p-6 pb-0">
               <span className="relative inline-flex h-20 w-20 items-center justify-center rounded-full text-white">
-               
-                  <Avatar name={user?.displayName}    src={user?.photoURL}  />
-       {/*          <img
+                <Avatar name={user?.displayName} src={user?.photoURL} />
+                {/*          <img
                   src={user?.photoURL}
                   alt="user name"
                   title="user name"
@@ -250,9 +268,8 @@ await axiosSecure.patch(`/role/admin/${_id}`)
                 placeholder="Write your message"
                 className="peer relative w-full border-b border-slate-200 px-4 py-2 text-sm text-slate-500 placeholder-transparent outline-none transition-all autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
               ></textarea>
-          
-<UseButton btnHeading="Submit"></UseButton>
 
+              <UseButton btnHeading="Submit"></UseButton>
             </form>
             <label
               for="id-b02"
@@ -269,7 +286,6 @@ await axiosSecure.patch(`/role/admin/${_id}`)
       </Modal>
 
       {/* Put this part before </body> tag */}
-     
     </div>
   );
 };

@@ -5,11 +5,13 @@ import useAxiosSecure from "../../../../AxiosSecure/AxiosSecure";
 import axios from "axios";
 import toast from "react-hot-toast";
 import useAuth from "../../../../auth/Auth";
+import { useNavigate } from "react-router-dom";
 const image_hoisting_key = import.meta.env.VITE_IMGBB;
 const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_key}`;
 const AddNewClassAdmin = () => {
   const axiosSecure=useAxiosSecure()
   const {user}=useAuth()
+  const navigate=useNavigate()
   const handleSubmit = async(e) => {
     e.preventDefault();
     const form = e.target;
@@ -51,6 +53,7 @@ await axiosSecure.post('/addnewClassAdmin',information)
 
 if(res.status === 200){
   toast.success("succfeully added")
+  navigate('/dashboard')
 }
 
   });
@@ -69,7 +72,7 @@ if(res.status === 200){
                 Classes
               </label>
 
-              <Select placeholder="Select option" name="class">
+              <Select placeholder="Select option" name="class" required>
                 <option value="yoga">Yoga</option>
                 <option value="pilates">pilates</option>
                 <option value="spinning">spinning</option>
@@ -81,7 +84,7 @@ if(res.status === 200){
               <label class="text-gray-700 text-black" for="username">
                 Upload Image
               </label>
-              <input
+              <input required
                 id="username"
                 type="file"
                 name="photo"
@@ -91,7 +94,7 @@ if(res.status === 200){
             <div className="my-6">
               <div className="relative">
                 <textarea
-                  id="id-b02"
+                  id="id-b02" required
                   type="text"
                   name="description"
                   rows="3"
