@@ -68,7 +68,7 @@ const handleRating = async (e) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2  gap-8">
     {
-data?.map((data)=>{
+data?.length === 0 ?  <h1 className="text-2xl font-bold" >PLASE   BOOKING THE TRAINER{data?.length} </h1> :data?.map((data)=>{
     
     const  {
       trainerName,

@@ -13,11 +13,29 @@ import {
   useDisclosure,
   Button
 } from '@chakra-ui/react'
+import UseButton from '../../../../component/button/Button';
+import toast from 'react-hot-toast';
 const ActivateLog = () => {
   const [data]=useAllTrainer()
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 
+  const handleFeedback = (e) => {
+    e.preventDefault();
+    const feedback = e.target.feedback.value;
+    console.log(feedback);
+try{
+
+toast.success("thanck for feedback")
+// axiosSecure.patch(`/feedback/${_id}`,{feedback})
+// .then(res=>{
+//   console.log(res.data)
+//   toast.success("Thandls for Feedback")
+// })
+
+}catch(err){
+  console.log(err)
+}}
   return (
     <div>
 
@@ -153,7 +171,7 @@ const ActivateLog = () => {
                       <div class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
              
                         <h2 class="text-sm font-normal text-emerald-500">
-                      {trainer?.status  === "pendindg" ? trainer?.status  :             <Button onClick={onOpen}> <FaRegEye className=' text-2xl  text-blue-500' /></Button>
+                      {trainer?.status  === "pending" ? trainer?.status  :             <Button onClick={onOpen}> <FaRegEye className=' text-2xl  text-blue-500' /></Button>
                     }
          
                         </h2>
@@ -189,10 +207,21 @@ const ActivateLog = () => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>Give Your Feedback</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-          dsafsafd
+          <form onSubmit={handleFeedback}>
+          <textarea
+            id="id-b02"
+            type="text"
+            name="feedback"
+            rows="3"
+            placeholder="Write your message"
+            className="peer relative w-full border-b border-slate-200 px-4 py-2 text-sm text-slate-500 placeholder-transparent outline-none transition-all autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
+          ></textarea>
+
+          <UseButton btnHeading="Submit"></UseButton>
+        </form>
           </ModalBody>
 
           <ModalFooter>
