@@ -71,15 +71,21 @@ const BecomeATrainer = () => {
       trainerRole,
       experience
     };
- 
+ console.log(allBecomeTrainerInfo)
     // const  selectDate=form.slectDate.value;
     /* user axios secure  */
-await axios
+    try{
+      await axiosSecure
       .post("/become-trainer", allBecomeTrainerInfo)
   
       if(data.insertedId){
+        console.log(data)
         toast.success("Succesfully Reequest For Be A Traiener")
       }
+    }catch(err){
+console.log(err)
+    }
+
       
 
   };

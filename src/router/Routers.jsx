@@ -26,7 +26,8 @@ import SingeleApplid from "../pages/Dashboard/admin/Applied Trainer/SingeleAppli
 import ComunityDetail from "../pages/home/ComuntiySection/ComunityDetail";
 import ActivateLog from "../pages/Dashboard/member/activityLog/ActivateLog";
 import ProfilePage from './../pages/Dashboard/member/profilepage/ProfilePage';
-import RecomendClass from './../pages/Dashboard/member/recomendClass/RecomendClass';
+import RecomendClass from "../pages/Dashboard/member/review/RecomendClass";
+import BookedTrainer from './../pages/Dashboard/member/bookedTrainr/BookedTrainer';
 
 export const router = createBrowserRouter([
     {
@@ -98,17 +99,6 @@ export const router = createBrowserRouter([
     path:'/comunityDetail/:id',
     element:<ComunityDetail></ComunityDetail>
 },
-
-/* DASBOARD................. */
-
-// {
-//     path:'/dashboard',
-//     element:<PrivateRoute>
-//     <Dashboard></Dashboard>
-//     </PrivateRoute>
-// },
-
-
 
 
 
@@ -188,6 +178,10 @@ children:[
 {
     path:'recomend-class',
     element:<RecomendClass></RecomendClass>
+},
+{
+    path:'booked-trainer',
+    element:<BookedTrainer></BookedTrainer>
 },
 
 

@@ -314,7 +314,7 @@ const Dashboard = () => {
               </svg>
             </div>
             <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-              <Link to="/dashboard/profile-page">profile-paget</Link>
+              <Link to="/dashboard/profile-page">Profile Page</Link>
             </div>
           </a>
         </li>
@@ -341,11 +341,12 @@ const Dashboard = () => {
               </svg>
             </div>
             <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-              <Link to="/dashboard/recomend-class">Recomend-class</Link>
+              <Link to="/dashboard/booked-trainer">Book Trainer</Link>
             </div>
           </a>
         </li>
       )}
+ 
     </Fragment>
   );
 
