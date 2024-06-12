@@ -1,8 +1,25 @@
 # React + Vite
+# Fitness Tracker Platform - Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+This is the client-side code for the Fitness Tracker platform, a revolutionary application designed to enhance user fitness experiences through interactive and community-driven features. Built with React.js, this client provides a seamless interface for users to track their fitness progress, set goals, and engage with others.
 
-Currently, two official plugins are available:
+## Features
+- User Authentication (Signup/Login)
+- Dashboard for Tracking Fitness Progress
+- Goal Setting and Monitoring
+- Community Feed
+- Responsive Design
+- STRIPE PAYMENT
+- VOTING SYSTEM
+- JWT 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies
+- React.js
+- Redux (or Context API) for State Management
+- Axios for API Calls
+- React Router for Navigation
+- Styled Components (or any CSS-in-JS library)
+
+- [LIVE LINK  CLIENT FREBASE](https://trainer-quet.web.app/) 
+- [LIVE LINK SERVER VERCEL](https://trainer-quest.vercel.app/) 

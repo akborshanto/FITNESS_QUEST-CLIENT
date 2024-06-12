@@ -5,6 +5,7 @@ import useRole from "../../../../hook/useRole";
 import useAxiosSecure from "../../../../AxiosSecure/AxiosSecure";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import UseTitle from "../../../../hook/useTitle";
 const image_hoisting_key = import.meta.env.VITE_IMGBB;
 const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_key}`;
 const AddNewForum = () => {
@@ -51,7 +52,8 @@ const imgBB=data.data.display_url
 
   return (
     <div>
-      <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md text-black">
+    <UseTitle heading="ADD NEW FOURM"></UseTitle>
+      <section class="max-w-4xl p-6 mx-auto bg-gray-300 rounded-md shadow-md text-black">
         <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">
           Arti settings
         </h2>

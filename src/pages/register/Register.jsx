@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../auth/Auth";
 import useAxiosSecure from "../../AxiosSecure/AxiosSecure";
@@ -12,7 +12,7 @@ const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_
 const Register = () => {
   /* user axios secure */
   const axiosSecure = useAxiosSecure();
-
+const navigate=useNavigate()
   const { createUser, updateProfiles } = useAuth();
 
   const handleSubmit = async (e) => {
@@ -51,13 +51,23 @@ const Register = () => {
       /* update profile */
       if (res.user) {
         updateProfiles(name, data.data.display_url).then((res) => {
-          toast.success("succesfully Register");
-        const info={
+      const info={
           name:name,
           email:email,
           role:"member"
         }
+        navigate("/")
         const data = axiosSecure.post('/moduleUser',info)
+        .then((res)=>{
+          console.log(res)
+          toast.success("succesfully Register");
+          navigate('/')
+  
+        })
+
+
+
+
 
         });
       }

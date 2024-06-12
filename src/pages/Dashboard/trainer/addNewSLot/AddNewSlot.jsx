@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../../auth/Auth';
 import useAxiosSecure from '../../../../AxiosSecure/AxiosSecure';
 import AddNewSlotForm from './AddNewSlotForm';
+import UseTitle from '../../../../hook/useTitle';
 
 const AddNewSlot = () => {
 const {user}=useAuth()
@@ -31,6 +32,7 @@ const handleSubmit=(e)=>{
 
   return (
     <div>
+    <UseTitle heading="ADD A NEW SLOT"></UseTitle>
     <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md text-black">
     <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">
       Account settings

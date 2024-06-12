@@ -25,8 +25,8 @@ const BookedTrainer = () => {
     queryKey: ["bookTrainer", user?.email],
 
     queryFn: async () => {
-//const { data } = await axiosSecure.get(`/bookTrainer/${user?.email}`);
-      console.log(data);
+const { data } = await axiosSecure.get(`/bookTrainer/${user?.email}`);
+      
       return data;
     },
   });
@@ -44,15 +44,15 @@ const handleRating = async (e) => {
   const descriptions = e.target.description.value;
 
   const ratinInfo = { name, email, photo, date, descriptions };
-  console.log(ratinInfo)
+  
   /* axiiso secure */
-  //   console.log(ratinInfo);
+  //   
   await axiosSecure.post("/rating", ratinInfo).then((res) => {
 
     if(res.data.insertedId){
       navigate('/dashboard')
       toast.success("Thanks For Feedback");
-  console.log(res.data)
+  
   
     }
 
@@ -68,7 +68,7 @@ const handleRating = async (e) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2  gap-8">
     {
-  data?.map((data)=>{
+data?.map((data)=>{
     
     const  {
       trainerName,

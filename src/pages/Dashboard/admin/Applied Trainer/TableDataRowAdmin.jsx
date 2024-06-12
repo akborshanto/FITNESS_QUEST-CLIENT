@@ -52,7 +52,7 @@ const AllTrainerAdminCard = ({ trainer,TrainerSingleData }) => {
     {/*  <!-- Action base sized basic button --> */}
     <div className="flex justify-end p-6 pt-0">
     
-{/*     <Link to={`/dashboard/singelApplied/${trainer?._id}`}>
+    <Link to={`/dashboard/singelApplied/${trainer?._id}`}>
       
      <UseButton btnHeading="Trainer Detail"></UseButton>
 
@@ -60,7 +60,7 @@ const AllTrainerAdminCard = ({ trainer,TrainerSingleData }) => {
         
     <Link to={ `/trainer-detail/${_id}`}>
    
-      </Link> */}
+      </Link>
     </div>
   </div>
 

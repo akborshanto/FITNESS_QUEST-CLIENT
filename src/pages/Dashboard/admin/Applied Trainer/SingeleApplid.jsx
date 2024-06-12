@@ -78,6 +78,7 @@ try{
 axiosSecure.patch(`/feedback/${_id}`,{feedback})
 .then(res=>{
   console.log(res.data)
+  toast.success("Thandls for Feedback")
 })
 
 }catch(err){
