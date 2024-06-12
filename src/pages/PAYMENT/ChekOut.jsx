@@ -2,12 +2,14 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import useAxiosSecure from "../../AxiosSecure/AxiosSecure";
 import useAuth from "../../auth/Auth";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 const ChekOutForm = ({ IntPrice }) => {
   const axiosSecure = useAxiosSecure();
+  const {user}=useAuth()
   console.log(IntPrice);
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
-  const { user } = useAuth();
+  const [transcictionId,setTranscictionId] = useState('')
 
   const stripe = useStripe();
   const elements = useElements();
@@ -17,10 +19,10 @@ const ChekOutForm = ({ IntPrice }) => {
     axiosSecure
       .post("/create-payment-intent", { price: IntPrice })
       .then((data) => {
-        console.log(res.data.clientSecret);
-        setClientSecret(res.data.clientSecret);
+        console.log(data);
+      setClientSecret(data.data.clientSecret);
       });
-  }, [axiosSecure,clientSecret]);
+  }, [axiosSecure,IntPrice]);
 
   /* hable sumbit */
   const handleSubmit = async (event) => {
@@ -50,23 +52,43 @@ const ChekOutForm = ({ IntPrice }) => {
       console.log("[PaymentMethod]", paymentMethod);
       setCardError("");
     }
-    console.log(clientSecret);
+    console.log({clientSecret});
     /* confitm */
-    const { paymentIntent, error: confirmError } =
-      await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: "card",
-          billing_details: {
-            email: user?.email || "ANOSNYMOUS",
-            name: user?.displayName || "ANONYMOUS",
-          },
-        },
-      });
+   // confirm payment
+   const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
+    payment_method: {
+        card: card,
+        billing_details: {
+            email: user?.email || 'anonymous',
+            name: user?.displayName || 'anonymous'
+        }
+    }
+})
 
     if (confirmError) {
       console.log("confrim errm");
     } else {
       console.log("payment intent", paymentIntent);
+
+      if(paymentIntent.status === 'succeeded'){
+
+
+        setTranscictionId(paymentIntent.transcictionId)
+
+const payment={
+  name:user?.displayName,
+  email:user?.email,
+  price:IntPrice,
+  photo:user?.photoURL,
+  date:new Date(),
+  trasactionId:paymentIntent.id,
+ 
+
+}
+const res=axiosSecure.post('/payment-card',payment)
+
+        toast.success("successfylly Card add ")
+      }
     }
   };
   return (
@@ -82,20 +104,27 @@ const ChekOutForm = ({ IntPrice }) => {
                 color: "#424770",
                 "::placeholder": {
                   color: "#aab7c4",
+                  
                 },
               },
               invalid: {
                 color: "#9e2146",
+                
               },
             },
           }}
         />
-        <button type="submit" disabled={!stripe}>
-          Pay
-        </button>
+  
         {cardError && (
           <p className="text-red-500">SORRY ! YOUR PAYMENT DON'T ACCECT</p>
         )}
+
+        {
+
+          transcictionId && <h1 className="text-green-400">{transcictionId}</h1>
+        }      <button type="submit" disabled={!stripe } aria-required className=" font-bold btn btn-warning text-white" >
+        Pay
+      </button>
       </form>
     </div>
   );

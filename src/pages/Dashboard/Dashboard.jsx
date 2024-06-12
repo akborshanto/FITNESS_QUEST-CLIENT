@@ -492,13 +492,13 @@ const Dashboard = () => {
   );
 
   return (
-    <div className="flex  justify-center items-center  ">
+    <div className="flex  justify-center items-center ">
       {/*  <!-- Component: Basic side navigation menu --> */}
       {/*  <!-- Mobile trigger --> */}
 
       {/*  <!-- Backdrop --> */}
 
-      <div className=" my-10 ">
+      <div className=" my-6 ">
       <Outlet></Outlet>
     </div>
       <div>

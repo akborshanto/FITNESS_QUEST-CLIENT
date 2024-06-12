@@ -164,9 +164,6 @@ const Payment = () => {
     <div>
       {/* PAYMENT  to Stripe */}
 
-      <Elements stripe={stripePromise}>
-< ChekOutForm  IntPrice={IntPrice}></ChekOutForm>
-    </Elements>
 
 
 
@@ -186,8 +183,12 @@ const Payment = () => {
         <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">
           Account settings
         </h2>
-
+        <Elements stripe={stripePromise}>
+        < ChekOutForm  IntPrice={IntPrice}></ChekOutForm>
+            </Elements>
+        
         <form onSubmit={handleConfirm}>
+
           <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
               <label class="text-gray-700 text-black" for="username">

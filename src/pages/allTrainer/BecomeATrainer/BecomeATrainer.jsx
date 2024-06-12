@@ -76,7 +76,7 @@ const BecomeATrainer = () => {
     /* user axios secure  */
     const res = await axiosSecure
       .post("/become-trainer", allBecomeTrainerInfo)
-      console.log(res.data)
+      console.log(res.d)
       if(res.data.insertedId){
         toast.success("Succesfully Reequest For Be A Traiener")
       }

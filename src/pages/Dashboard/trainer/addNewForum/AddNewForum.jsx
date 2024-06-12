@@ -38,7 +38,7 @@ const imgBB=data.data.display_url
       userInfo,
       imgBB
     };
-console.log(data)
+
     /* save data  post Court Of Justice*/
     const res = await axiosSecure.post("/forum", comunityInfo);
     console.log(res)

@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import BalanceTable from './BalanceTable';
 
 const data = [
   {
@@ -52,7 +53,10 @@ export default class Example extends PureComponent {
   render() {
     return (
 <div>
-fdsafdsfa
+
+<BalanceTable></BalanceTable>
+
+
 <ResponsiveContainer width="100%" height="100%">
 <AreaChart
   width={500}

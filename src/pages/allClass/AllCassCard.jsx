@@ -3,7 +3,7 @@ import Card from "../../component/cardHome/Card";
 import { Avatar, AvatarBadge, AvatarGroup } from '@chakra-ui/react'
 const AllCassCard = ({ addNewClassAdmin }) => {
   const { classs, imgBB, description ,userInfo} = addNewClassAdmin;
-  console.log(addNewClassAdmin)
+
   return (
     <div className="flex  flex-col overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 sm:flex-row shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]" >
       {/*  <!-- Image --> */}
