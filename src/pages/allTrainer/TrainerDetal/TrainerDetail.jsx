@@ -23,15 +23,7 @@ console.log(id)
 
 
 
-// useEffect(()=>{
 
-// ( async ()=>{
-
-//   const res= await axiosSecure.get(`/trainer-detail/${id}`)
-// setTrainerDetail(res.data)
-    
-// })()
-//   },[])
 
   return (
     <div className='my-8'>

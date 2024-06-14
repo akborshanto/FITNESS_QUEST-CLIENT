@@ -91,47 +91,23 @@ data?.length === 0 ?  <h1 className="text-2xl font-bold" >PLASE   BOOKING THE TR
 
 <>
 
-<div class="w-full max-w-sm w-[500px] h-[500px] overflow-hidden  rounded-lg shadow-lg text-black">
-<header className="mb-4 flex gap-4">
-<a
-  href="#"
-  className="relative inline-flex h-12 w-12 items-center justify-center rounded-full "
->
-  <img
-    src={data?.userInfo?.userPhoto}
-    alt="user name"
-    title="user name"
-    width="48"
-    height="48"
-    className="max-w-full rounded-full"
-  />
-</a>
-<div>
-  <h3 className="text-xl font-medium text-slate-700">
- {data?.userInfo?.userName}
-  </h3>
-  <p className="text-sm text-slate-400">
 
-  </p>
-</div>
-</header>
-    <div class="flex items-center px-6 py-3 ">
- 
+<div class="max-w-2xl overflow-hidden bg-white rounded-lg shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]">
 
-        <span class="mx-3">Trainer Name:  {trainerName}</span>
-    </div>
-
-    <div class="px-6 py-4">
+    <div class="p-6">
+        <div>
+   <div class="px-6 py-4">
        
         <div class="flex items-center mt-4 text-gray-7000">
-
-            <span class="mx-3">SLOT:{ slot}</span>
+     <span class="mx-3 font-bold ">Class: <span className="text-xl font-bold font-seriflg:text-2xl text-blue-600 my-4">{ classs}</span></span>
+    
         </div>
-
+      <span class="mx-3">SLOT: <span className="text-xl font-bold font-seriflg:text-2xl text-blue-600">{ slot}</span></span>
+      
         <div class="flex items-center mt-4 text-gray-7000">
           
 
-        <span class="mx-3">Price :{IntPrice}</span>
+       <span class="mx-3">Price: <span className="text-xl font-bold font-seriflg:text-2xl text-blue-600">{ IntPrice}</span></span>
         </div>
 
         <div class="flex items-center mt-4 text-gray-7000">
@@ -139,13 +115,40 @@ data?.length === 0 ?  <h1 className="text-2xl font-bold" >PLASE   BOOKING THE TR
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M3.00977 5.83789C3.00977 5.28561 3.45748 4.83789 4.00977 4.83789H20C20.5523 4.83789 21 5.28561 21 5.83789V17.1621C21 18.2667 20.1046 19.1621 19 19.1621H5C3.89543 19.1621 3 18.2667 3 17.1621V6.16211C3 6.11449 3.00333 6.06765 3.00977 6.0218V5.83789ZM5 8.06165V17.1621H19V8.06199L14.1215 12.9405C12.9499 14.1121 11.0504 14.1121 9.87885 12.9405L5 8.06165ZM6.57232 6.80554H17.428L12.7073 11.5263C12.3168 11.9168 11.6836 11.9168 11.2931 11.5263L6.57232 6.80554Z"/>
             </svg>
 
-            <span class="mx-3">Packages:{packages}</span>
+         <span class="mx-3">Pacages: <span className="text-xl font-bold font-seriflg:text-2xl text-blue-600">{ slot}</span></span>
          
         </div>
 
-        <Button onClick={onOpen}>Review</Button>
+        <button  onClick={onOpen} className="btn btn-danger text-blue-800 my-6" onClick={onOpen}>Review</button>
 
     </div>
+        </div>
+
+        <div class="mt-4">
+            <div class="flex items-center">
+                <div class="flex items-center">
+                   <img class="object-cover h-10 rounded-full" src={user?.photoURL} alt="Avatar"/>
+                    <a href="#" class="mx-2 font-semibold  "  tabindex="0" role="link">{user?.displayName}</a>
+                </div>
+                <span class="mx-1 text-xs text-gray-600 dark:text-gray-300">21 SEP 2015</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -208,7 +211,6 @@ data?.length === 0 ?  <h1 className="text-2xl font-bold" >PLASE   BOOKING THE TR
       </ModalFooter>
     </ModalContent>
   </Modal>
-</div>
 
 
 

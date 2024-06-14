@@ -44,24 +44,20 @@ const imgBB = data.data.display_url;
     };
 
 
-
 /* axios secure */
 
-await axiosSecure.post('/addnewClassAdmin',information)
-.then(res=>{
-
-
-if(res.status === 200){
+const res=await axiosSecure.post('/addnewClassAdmin',information)
+toast.success("succefully added")
+if(res.data.inssertedId){
   toast.success("succfeully added")
-  navigate('/dashboard')
+
 }
 
-  });
 }
   return (
     <div>
       <div>
-        <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md text-black">
+        <section class="max-w-4xl p-6 mx-auto shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] rounded-md  text-black">
           <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">
             Account settings
           </h2>
@@ -111,7 +107,7 @@ if(res.status === 200){
             </div>
 
             <div class="flex justify-end mt-6">
-              <UseButton btnHeading="Submit "></UseButton>
+           <button className=" btn btn-info">SUBMIT</button>
             </div>
           </form>
         </section>

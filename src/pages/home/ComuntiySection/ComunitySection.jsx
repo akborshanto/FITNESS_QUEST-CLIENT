@@ -5,7 +5,7 @@ import UseTitle from '../../../hook/useTitle'
 import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 const ComunitySection = () => {
 const [forum]=useForum()
-
+console.log(forum)
 
   return (
    <div className='my-8'>
@@ -17,7 +17,7 @@ const [forum]=useForum()
    {
    
    
-       forum?.slice(14,20).map(comunity=><ComunityCard comunity={comunity} key={Math.random()}></ComunityCard>)
+       forum?.slice(25,31).map(comunity=><ComunityCard comunity={comunity} key={Math.random()}></ComunityCard>)
    }
    
        </div>

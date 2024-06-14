@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 
 import UseButton from "../../../component/button/Button";
@@ -8,30 +7,30 @@ import useAxiosSecure from "../../../AxiosSecure/AxiosSecure";
 import axios from "axios";
 import toast from "react-hot-toast";
 import useRole from "../../../hook/useRole";
-import select from 'react-select';
+
 //import Select from 'react-select';
 
-import { Select } from "@chakra-ui/react";
-
+import Select from 'react-select'
 
 const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
+  { value: 'Saturday', label: 'Saturday' },
+  { value: 'Sunday', label: 'Sunday' },
+  { value: 'Monday', label: 'Monday' },
+  { value: 'TuesDay', label: 'TuesDay' },
+  { value: 'WednesDay', label: 'WednesDay' },
+  { value: 'ThursDay', label: 'ThursDay' },
+  { value: 'Friday', label: 'Friday' },
 ]
+
 /* const IMG BB */
 const image_hoisting_key = import.meta.env.VITE_IMGBB;
 const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_key}`;
 const BecomeATrainer = () => {
-  
-
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const [role]=useRole()
-
+  const [role] = useRole();
 
   const handleSubmit = async (e) => {
- 
     e.preventDefault();
 
     const form = e.target;
@@ -44,16 +43,16 @@ const BecomeATrainer = () => {
     const formData = new FormData();
     formData.append("image", image);
     const status = "pending";
-    const trainerRole= role
+    const trainerRole = role;
 
-//const role="Trainer"
+    //const role="Trainer"
     /* skills */
     const emphaty = form.emphaty.value;
     const timeManagement = form.timeManagement.value;
     const business = form.business.value;
     const physical = form.physical.value;
     const experience = form.experience.value;
-    const skills =  [emphaty, timeManagement, business, physical ];
+    const skills = [emphaty, timeManagement, business, physical];
 
     /* Using  AXios secure post method IMG BB  */
     const { data } = await axios.post(image_hoisting_Api, formData);
@@ -69,30 +68,24 @@ const BecomeATrainer = () => {
       skills,
       status,
       trainerRole,
-      experience
+      experience,
     };
- console.log(allBecomeTrainerInfo)
+console.log(allBecomeTrainerInfo)
     // const  selectDate=form.slectDate.value;
     /* user axios secure  */
-    try{
-      await axiosSecure
-      .post("/become-trainer", allBecomeTrainerInfo)
-  
-      if(data.insertedId){
-        console.log(data)
-        toast.success("Succesfully Reequest For Be A Traiener")
-      }
-    }catch(err){
-console.log(err)
-    }
 
-      
+     const res= await axiosSecure.post("/become-trainer", allBecomeTrainerInfo);
+console.log(res)
+      if (res.data.insertedId) {
+  
+        toast.success("Succesfully Reequest For Be A Traiener");
+      }
 
   };
 
   return (
     <div>
-{/*     <Select
+      {/*     <Select
     defaultValue={[colourOptions[2], colourOptions[3]]}
     isMulti
     name="colors"
@@ -112,7 +105,8 @@ console.log(err)
                 Full Name
               </label>
               <input
-                id="username" aria-required
+                id="username"
+                aria-required
                 type="text"
                 required
                 name="name"
@@ -125,7 +119,8 @@ console.log(err)
               </label>
               <input
                 disabled
-                id="username" required
+                id="username"
+                required
                 placeholder={user?.email || "your email"}
                 type="text"
                 name="email"
@@ -138,52 +133,63 @@ console.log(err)
                 AGE
               </label>
 
-              <Select placeholder="Select Age" name="age" required>
+              <select placeholder="Select Age" name="age" required className="select select-info w-full max-w-xs text-blue-600 font-bold border ">
                 <option value="30">30 </option>
                 <option value="40">40</option>
                 <option value="50">50</option>
                 <option value="55">55</option>
-              </Select>
+              </select>
             </div>
             {/* image */}
             <div>
               <label class="text-gray-700 text-black" for="username">
                 Upload Image
               </label>
-              <input required
+              <input
+                required
                 id="username"
                 type="file"
                 name="photo"
+                class="block text-blue-600 font-bold border w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+              />
+            </div>
+
+            {/* EXPERIENCE */}
+
+            <div>
+              <label class="text-gray-700 text-black" for="emailAddress">
+                Experience
+              </label>
+
+              <input
+                id="username"
+                required
+                type="number"
+                name="experience"
                 class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
 
-{/* EXPERIENCE */}
-
-<div>
-<label class="text-gray-700 text-black" for="emailAddress">
-  Experience
-</label>
-
-<input
-id="username" required
-type="number"
-name="experience"
-class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-/>
-</div>
-
-
-
-     
             {/* DAY WITHOUT REACT SELECT */}
 
             <div>
-              <label class="text-gray-700 text-black" for="password">
-                Availabe Day in a Week
-              </label>
 
-              <Select placeholder="Select Day" name="day" required>
+            <label class="text-gray-700 text-black" for="password">
+            Availabe Day in a Week
+          </label>
+            <Select
+         
+            isMulti
+            name="day"
+            options={options}
+            className="basic-multi-select   bg-blue-400 select-info w-full"
+            classNamePrefix="select"
+          />
+            {/*   <label class="text-gray-700 text-black" for="password">
+                Availabe Day in a Week
+              </label> */}
+
+           {/*    <select placeholder="Select Day" name="day" required className="select select-info w-full max-w-xs text-blue-600 font-bold border ">
                 <option value="saturday">saturday</option>
                 <option value="sunday">sunday</option>
                 <option value="monday">monday</option>
@@ -191,108 +197,104 @@ class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200
                 <option value="wednesday">wednesday</option>
                 <option value="thursday">thursday</option>
                 <option value="friday">friday</option>
-              </Select>
+              </select> */}
             </div>
             {/* Available time in a day */}
 
             <div>
-              <label class="text-gray-700 text-black" for="password">
+              <label class=" text-black" for="password">
                 Availabe Time in a Week
               </label>
 
-              <Select placeholder="Select slot" name="time" required>
+              <select placeholder="Select slot" name="time" required className="select select-info w-full my-5  text-blue-600 font-bold borde text-blue-600 font-bold border">
                 <option value="Morning">Morning</option>
-       
+
                 <option value="Noon">Noon</option>
-       
+
                 <option value="AfterNoon">AfterNoon</option>
-       
+
                 <option value="Night">Night</option>
-       
-              </Select>
+              </select>
+
+
+             
             </div>
 
             {/* skills */}
 
-            <div  >
-            <div class="relative flex flex-wrap items-center  gap-4">
-            <h1 className=" px-4">SKills</h1>
-            <br />
+            <div>
+              <div class="relative flex flex-wrap items-center  gap-4">
+                <h1 className=" px-4">SKills</h1>
+                <br />
 
+                <div>
+                  <input
+                    class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
+                    type="checkbox"
+                    id="id-c04"
+                    name="emphaty"
+                    value="emphaty"
+                  />
+                  <label
+                    class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
+                    for="id-c04"
+                  >
+                    Emphaty
+                  </label>
+                  <input
+                    value="timemanagement"
+                    class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
+                    type="checkbox"
+                    id="id-c04"
+                    name="timeManagement"
+                  />
+                  <label
+                    class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
+                    for="id-c04"
+                  >
+                    Time management
+                  </label>
+                </div>
+                <div></div>
 
-<div>
-
-<input
-class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
-type="checkbox"
-id="id-c04"
-name="emphaty" 
-value="emphaty"
-/>
-<label
-class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
-for="id-c04"
->
-Emphaty
-</label>
-<input
-value="timemanagement"
-class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
-type="checkbox"
-id="id-c04" 
-name="timeManagement"
-/>
-<label
-class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
-for="id-c04"
->
-Time management
-</label>
-
-</div>
-<div>
-
-</div>
-        
-            <br />
-          </div>
-          <div class="relative flex flex-wrap items-center">
-            <br />
-            <input
-              name="business"
-              value="business" 
-              class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
-              type="checkbox"
-              id="id-c04"
-            />
-            <label
-              class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
-              for="id-c04"
-            >
-              Business skills
-            </label>
-            <input
-              class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
-              type="checkbox"
-              id="id-c04"
-              name="physical" 
-              value="physical"
-            />
-            <label
-              class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
-              for="id-c04"
-            >
-              physical skills
-            </label>{" "}
-            <br />
-          </div>
-
+                <br />
+              </div>
+              <div class="relative flex flex-wrap items-center">
+                <br />
+                <input
+                  name="business"
+                  value="business"
+                  class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
+                  type="checkbox"
+                  id="id-c04"
+                />
+                <label
+                  class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
+                  for="id-c04"
+                >
+                  Business skills
+                </label>
+                <input
+                  class="w-4 h-4 transition-colors bg-white border-2 rounded appearance-none cursor-pointer focus-visible:outline-none peer border-slate-500 checked:border-emerald-500 checked:bg-emerald-200 checked:hover:border-emerald-600 checked:hover:bg-emerald-300 focus:outline-none checked:focus:border-emerald-700 checked:focus:bg-emerald-400 disabled:cursor-not-allowed disabled:border-slate-100 disabled:bg-slate-50"
+                  type="checkbox"
+                  id="id-c04"
+                  name="physical"
+                  value="physical"
+                />
+                <label
+                  class="pl-2 cursor-pointer text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400"
+                  for="id-c04"
+                >
+                  physical skills
+                </label>{" "}
+                <br />
+              </div>
             </div>
             {/*  */}
           </div>
 
           <div class="flex justify-end mt-6">
-            <UseButton btnHeading="Applied "></UseButton>
+            <button className="btn btn-info text-white font-bold text-xl">Applied</button>
           </div>
         </form>
       </section>

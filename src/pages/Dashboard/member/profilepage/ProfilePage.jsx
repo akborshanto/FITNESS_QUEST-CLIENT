@@ -44,7 +44,7 @@ const ProfilePage = () => {
   return (
     <div>
       {/*<!-- Component: User profile card --> */}
-      <div className="overflow-hidden lg:w-[500px] lg:h-[400px]lg: my-8 bg-gray-300 rounded bg-white text-center text-slate-500 shadow-md shadow-slate-200">
+      <div className="overflow-hidden lg:w-[500px] lg:h-[400px]lg: my-8 bg-white ounded shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] text-center text-slate-500 ">
         {/*  <!-- Image --> */}
         <figure className="p-6 pb-0">
           <span className="relative inline-flex h-20 w-20 items-center justify-center rounded-full text-white">

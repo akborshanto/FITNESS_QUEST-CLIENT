@@ -1,58 +1,55 @@
 import React from "react";
 import useAllTrainer from "../../../hook/useAllTrainer";
 import UseTitle from "../../../hook/useTitle";
+import { GrYoga } from "react-icons/gr";
 
 const TeamSection = () => {
   const [data] = useAllTrainer();
-  // const allBecomeTrainerInfo = {
-  //   name,
-  //   email,
-  //   age,
-  //   day,
-  //   time,
-  //   imgBB,
-  //   skills,
-  //   status,
-  //   trainerRole,
-  //   experience
-  // };
+
+
+
   return (
-    <div>
+    <div className="my-6 ">
       <UseTitle
         heading="OUR  TEAM"
         description={
           " team trainer is a professional who teaches and develops the skills of employees to increase operational efficiency and maximize productivity"
         }
       ></UseTitle>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4  justify-items-center my-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4  justify-items-center my-8 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]  my-5 p-5">
         {data?.slice(0, 3).map((trainer) => (
-          <div class="flex w-[300px] flex-col items-center p-4 border sm:p-6 rounded-xl dark:border-gray-700">
+          <div className="overflow-hidden rounded bg-white  text-slate-500 shadow-md shadow-slate-200 w-[350px] h-auto shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]">
+          {/*  <!-- Image --> */}
+          <figure>
             <img
-              class="object-cover w-full rounded-xl aspect-square h-[250px]"
-              src={trainer?.imgBB}
+              src={trainer.imgBB}
+              alt="card image"
+              className="aspect-video w-full"
             />
-
-            <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-black">
-
-            </h1>
-
-            <p class="mt-2 text-gray-500 capitalize dark:text-black">
-             {trainer.name}
+          </figure>
+          {/*  <!-- Body--> */}
+          <div className="p-6">
+            <header className="mb-4">
+              <h3 className="text-xl font-medium text-slate-700">
+                Trainer Name: <span className=' text-xl lg:text-2xl text-blue-400 font-sans'>{trainer.name}</span>
+              </h3>
              
+              <div className='flex items-center gap-5 my-5 '>
+               <p className=" text-slate-400">SOCIAL ICON </p>
+               <GrYoga className='text-blue-400 text-2xl  bg-white ' />
+               </div>
+            </header>
+            <p>
+            
+            Experience : {trainer.experience}
             </p>
-
-            <div class="flex mt-3 -mx-2">
-            <p class="mt-2 text-gray-500 capitalize dark:text-black">
-          Experience:  {trainer.experience}
+            <p>
             
-           </p>
-            <p class="mt-2 text-gray-500 capitalize dark:text-black">
-          Age:  {trainer.age}
-            
-           </p>
-
-            </div>
+            Available Slot : {trainer.time}
+            </p>
           </div>
+        
+        </div>
         ))}
       </div>
     </div>

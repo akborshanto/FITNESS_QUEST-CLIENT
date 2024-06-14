@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../../component/cardHome/Card";
 import { Avatar, AvatarBadge, AvatarGroup } from '@chakra-ui/react'
 const AllCassCard = ({ addNewClassAdmin }) => {
-  const { classs, imgBB, description ,userInfo} = addNewClassAdmin;
+  const { classs, imgBB, description ,userInfo} = addNewClassAdmin || {};
 
   return (
     <div className="flex  flex-col overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 sm:flex-row shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]" >
@@ -21,19 +21,13 @@ const AllCassCard = ({ addNewClassAdmin }) => {
             href="#"
             className="relative inline-flex items-center justify-center w-12 h-12 text-white rounded-full"
           >
-            <img
-              src={userInfo?.image}
-              alt="user name"
-              title="user name"
-              width="48"
-              height="48"
-              className="max-w-full rounded-full"
-            />
+
           </a>
           <div>
-            <h3 className="text-xl font-medium text-slate-700">{userInfo?.name}</h3>
+            <h3 className="text-xl font-medium text-green-600">AVAILABLE CLASS</h3>
           </div>
         </header>
+        <h1 className=" text-xl font-bold text-blue-400  my-4 lg:text-2xl ">{classs}</h1>
         <p>
           <p className="text-sm text-slate-400"> {description}</p>
         </p>

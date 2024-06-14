@@ -106,10 +106,7 @@ MANAGE YOUR SLOT
                         scope="col"
                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                       >
-                      <Link onClick={()=>deleteSlot(_id)}>
-        
-                      <UseButton btnHeading="DELETE" ></UseButton>
-                        </Link>
+            Email
                       </th>
 
                       <th

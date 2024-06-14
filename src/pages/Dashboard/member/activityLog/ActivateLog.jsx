@@ -15,8 +15,9 @@ import {
 } from '@chakra-ui/react'
 import UseButton from '../../../../component/button/Button';
 import toast from 'react-hot-toast';
+import useAppliedTrainer from '../../../../hook/appliedTrainer';
 const ActivateLog = () => {
-  const [data]=useAllTrainer()
+  const [data]=useAppliedTrainer()
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 

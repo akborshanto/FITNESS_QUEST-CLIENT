@@ -43,8 +43,8 @@ const imgBB=data.data.display_url
     };
 
     /* save data  post Court Of Justice*/
-    const res = await axios.post("/forum", comunityInfo);
-   
+    const res = await axiosSecure.post("/forum", comunityInfo);
+   console.log(res.data)
     if (res.status == 200) {
       toast.success("succes");
     }
@@ -53,8 +53,8 @@ const imgBB=data.data.display_url
   return (
     <div>
     <UseTitle heading="ADD NEW FOURM"></UseTitle>
-      <section class="max-w-4xl p-6 mx-auto bg-gray-300 rounded-md shadow-md text-black">
-        <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">
+      <section class="max-w-4xl p-6 mx-auto bg-white-300 rounded-md  text-black shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]">
+        <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white ">
           Arti settings
         </h2>
         <header className="mb-4 flex gap-4">
@@ -81,7 +81,7 @@ const imgBB=data.data.display_url
           <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-1">
             <div>
               <label class="text-gray-700 text-black" for="username">
-                Article Name
+                Class Name
               </label>
               <input
                 id="username"

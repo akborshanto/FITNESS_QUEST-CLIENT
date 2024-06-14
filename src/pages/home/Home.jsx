@@ -12,6 +12,7 @@ import TeamSection from './teamSection/TeamSection';
 import ComunitySection from './ComuntiySection/ComunitySection'
 import Card from '../../component/cardHome/Card'
 import useRole from '../../hook/useRole'
+import ReviewCard from './Reviews/ReviewCard'
 
 const Home = () => {
   const [role]= useRole()
@@ -29,7 +30,7 @@ const Home = () => {
 {/* FEATURE CLAASSS */}
 <FetureClass></FetureClass>
 {/* TESTIMONAL */}
-{<Reviews></Reviews>}
+<ReviewCard></ReviewCard>
 {/* FORUMS COUMUNTIRY */}
 {/* <ForumPost></ForumPost> */}
 <ComunitySection></ComunitySection>

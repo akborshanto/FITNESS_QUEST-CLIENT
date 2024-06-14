@@ -28,7 +28,7 @@ const SingeleApplid = ({ refetcha }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const item = useLoaderData();
-  const { name, skills, time, image, age, day, imgBB, experience, email, _id } =
+  const { name, skills, time, image, age, day, imgBB, experience, email, _id ,status} =
     item || {};
   /* hadnle reject */
 
@@ -44,8 +44,39 @@ const SingeleApplid = ({ refetcha }) => {
 try{
 
   await axiosSecure.patch(`/role/admin/${email}`).then((res) => {
+
 if(res.data.modifiedCount >0){
+
+
+  const ALL_TRAINER={
+    name:name,
+    skills:skills,
+    time:time,
+    image:image,
+    age:age,
+    day:day,
+    imgBB:imgBB,
+    experience:experience,
+    email:email,
+    role:"trainer",
+    status:status,
+  } 
+  console.log(ALL_TRAINER)
+  try{
+    const {data}= axiosSecure.post( `${import.meta.env.VITE_API_URL}/allTr`,ALL_TRAINER)
+    console.log(data)
+  }catch(err){
+  console.log(err)
+  }
+  
+
   toast.success("successfyllyy updated")
+
+
+
+
+
+
 }else{
   toast.error("you have already Accecpetd")
 
@@ -60,6 +91,14 @@ if(res.data.modifiedCount >0){
 
 
 }
+
+
+
+//post all TRIARN
+
+
+
+
     // const response = await mutateAsync(users);
 
     // if (response.modifiedCount > 0) {

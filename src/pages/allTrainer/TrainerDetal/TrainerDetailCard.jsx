@@ -1,8 +1,10 @@
 import React from "react";
 import UseButton from "../../../component/button/Button";
 import { Link } from "react-router-dom";
+import { GrYoga } from "react-icons/gr";
 
 const TrainerDetailCard = ({tDetail}) => {
+  console.log(tDetail)
   const {name,skills,time,image,age,day,imgBB,experience}=tDetail || {}
   return (
     <div>
@@ -34,7 +36,8 @@ const TrainerDetailCard = ({tDetail}) => {
                     />
                   </svg>
 
-                  <span class="mx-3">Trainer Name{name}</span>
+                 
+                  <span class="mx-3  text-xl font-bold">Trainer Name:{name} <span></span></span>
                 </div>
 
                 <div class="flex items-center  -px-3 -200">
@@ -53,7 +56,7 @@ const TrainerDetailCard = ({tDetail}) => {
                     />
                   </svg>
 
-                  <span class="mx-3">Experience{ experience}</span>
+                  <span class="mx-3 text-2xl  font-bold">Experience{ tDetail?.experience}</span>
                 </div>
 
                 <div class="flex items-center text-gray-800 -px-3 -200">
@@ -73,8 +76,7 @@ const TrainerDetailCard = ({tDetail}) => {
                   </svg>
 
                
-                  <span class="mx-3">Expertise{skills?.timemanagement}</span>
-                 
+            
                 </div>
 
                 <div class="flex items-center text-gray-800 -px-3 -200">
@@ -93,7 +95,7 @@ const TrainerDetailCard = ({tDetail}) => {
                     />
                   </svg>
 
-                  <span class="mx-3">Social Icon</span>
+                  <span class="mx-3">Social Icon <GrYoga className='text-blue-400 text-xl lg:text-4xl' /></span>
                 </div>
 
                 <div class="flex items-center text-gray-800 -px-3 -200">
@@ -112,8 +114,8 @@ const TrainerDetailCard = ({tDetail}) => {
                     />
                   </svg>
 
-                  <span class="mx-3 text-3xl">
-             
+                  <span class="mx-3 text- lg:text-3xl">
+                  skills{skills?.map(item=><h1 className="text-xl font-bold text-blue-300">{item}</h1>)}
             
                   </span>
                   
@@ -132,12 +134,8 @@ const TrainerDetailCard = ({tDetail}) => {
         "
           >
 <div className="text-center">
- <h1 className="text-green-600 my-8 text-xl lg:text-2xl"> Available Slot
+ <h1 className="text-green-600 my-8 text-xl lg:text-2xl"> Available Slot <span className=" text-xllg:text-3xl font-bold text-blue-600">{time}</span>
 </h1>
-<h2 className="text-2xl">  {time}</h2>
-{/* TIME TRAINER FREEE */}
-
-<h1 className="text-2xl text-red-400 mb-6" >Trainer Slot {day}</h1>
 
 
 <Link to="/trainer-booking">

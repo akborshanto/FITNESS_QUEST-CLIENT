@@ -3,6 +3,7 @@ import Card from '../../component/cardHome/Card'
 import { Link } from 'react-router-dom';
 import UseButton from '../../component/button/Button';
 import { CiFacebook } from "react-icons/ci";
+import { GrYoga } from 'react-icons/gr';
 const AllTrainerCad = ({trainer}) => {
   console.log(trainer)
   const  {
@@ -17,7 +18,7 @@ const AllTrainerCad = ({trainer}) => {
     status,
     role,
     experience
-  }=trainer
+  }=trainer || {}
   /*  */
 
   return (
@@ -40,16 +41,21 @@ const AllTrainerCad = ({trainer}) => {
       <div className="p-6">
         <header className="mb-4">
           <h3 className="text-xl font-medium text-slate-700">
-            Trainer Name:{name}
+            Trainer Name: <span className=' text-xl lg:text-2xl text-blue-400 font-sans'>{name}</span>
           </h3>
          
           <div className='flex items-center gap-5 my-5 '>
            <p className=" text-slate-400">SOCIAL ICON </p>
-           <CiFacebook className=' text-2xl bg-blue-50 '/>
+           <GrYoga className='text-blue-400 text-2xl  bg-white ' />
            </div>
         </header>
         <p>
+        
         Experience : {experience}
+        </p>
+        <p>
+        
+        Available Slot : {time}
         </p>
       </div>
       {/*  <!-- Action base sized basic button --> */}

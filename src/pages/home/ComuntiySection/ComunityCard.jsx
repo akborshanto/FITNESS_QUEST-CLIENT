@@ -5,7 +5,7 @@ import UseButton from './../../../component/button/Button';
 const ComunityCard = ({comunity}) => {
     const { article,
         classs,
-        userInfo,_id,}=comunity
+        userInfo,_id,imgBB}=comunity
 
   return (
     <div>
@@ -13,7 +13,7 @@ const ComunityCard = ({comunity}) => {
     {/*  <!-- Image --> */}
     <figure>
       <img
-        src={userInfo?.photo}
+        src={imgBB}
         alt="card image"
         className="aspect-video w-full"
       />
@@ -27,7 +27,7 @@ const ComunityCard = ({comunity}) => {
   
       </header>
       <p className=' font-serif' title={article}>
-       {article.slice(0,20)}......
+       {article.slice(0,200)}......
       </p>
     </div>
     {/*  <!-- Action base sized basic button --> */}

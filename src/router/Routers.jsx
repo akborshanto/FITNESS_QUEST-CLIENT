@@ -28,6 +28,7 @@ import ActivateLog from "../pages/Dashboard/member/activityLog/ActivateLog";
 import ProfilePage from './../pages/Dashboard/member/profilepage/ProfilePage';
 import RecomendClass from "../pages/Dashboard/member/review/RecomendClass";
 import BookedTrainer from './../pages/Dashboard/member/bookedTrainr/BookedTrainer';
+import DashbordPrivate from "../private/DashbordPrivate";
 
 export const router = createBrowserRouter([
     {
@@ -69,19 +70,19 @@ export const router = createBrowserRouter([
 {
     path:'/trainer-booking',
     element:
- <TrainerBooking></TrainerBooking>
+<PrivateRoute> <TrainerBooking></TrainerBooking></PrivateRoute>
   
 },
 {
     path:'/become-trainer',
     element:
-    <BecomeATrainer></BecomeATrainer>
+<PrivateRoute>    <BecomeATrainer></BecomeATrainer></PrivateRoute>
     
 },
 {
     path:'/payment',
     element:
-    <Payment></Payment>
+   <PrivateRoute> <Payment></Payment></PrivateRoute>
   
 },
 {
@@ -109,13 +110,13 @@ export const router = createBrowserRouter([
 {
 
 path:'dashboard',
-element:<Dashboard></Dashboard>,
+element:<DashbordPrivate><Dashboard></Dashboard></DashbordPrivate>,
 children:[
 
 /* 🚩ADMIN🚩 */
 {
     path:'news-letter',
-    element:<NewsLetterAdmin></NewsLetterAdmin>
+    element:<DashbordPrivate><NewsLetterAdmin></NewsLetterAdmin></DashbordPrivate>
 
 },
 ,{

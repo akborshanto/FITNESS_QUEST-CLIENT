@@ -39,6 +39,7 @@ const AllTrainerAdmin = () => {
     status,
     trainerRole,
     experience,
+    role:rles
   } = data || {};
 
   return (
@@ -176,7 +177,7 @@ const AllTrainerAdmin = () => {
                             <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
 
                             <h2 class="text-sm font-normal text-emerald-500">
-                              Active
+                              {rles}
                             </h2>
                           </div>
                         </td>
