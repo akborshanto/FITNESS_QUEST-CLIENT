@@ -1,4 +1,4 @@
-# React + Vite
+
 # Fitness Tracker Platform - Client
 
 ## Overview
@@ -16,7 +16,7 @@ This is the client-side code for the Fitness Tracker platform, a revolutionary a
 
 ## Technologies
 - React.js
-- Redux (or Context API) for State Management
+
 - Axios for API Calls
 - React Router for Navigation
 - Styled Components (or any CSS-in-JS library)
