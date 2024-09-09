@@ -81,10 +81,3 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 
 
-## Technologies
-- React.js
-
-- Axios for API Calls
-- React Router for Navigation
-- Styled Components (or any CSS-in-JS library)
-
