@@ -3,7 +3,7 @@ import axios from 'axios'
 
 
 export const axiosSecure= axios.create({
- baseURL:import.meta.env.VITE_API_URL,
+ baseURL:"https://trainer-quest.vercel.app",
  //timeout:1000,
 
 
