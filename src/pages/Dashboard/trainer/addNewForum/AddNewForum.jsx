@@ -11,7 +11,7 @@ const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_
 const AddNewForum = () => {
   const { user } = useAuth();
   const [role] = useRole();
-  console.log(role)
+  //consolelog(role)
   const axiosSecure = useAxiosSecure();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,7 +44,7 @@ const imgBB=data.data.display_url
 
     /* save data  post Court Of Justice*/
     const res = await axiosSecure.post("/forum", comunityInfo);
-   console.log(res.data)
+   //consolelog(res.data)
     if (res.status == 200) {
       toast.success("succes");
     }

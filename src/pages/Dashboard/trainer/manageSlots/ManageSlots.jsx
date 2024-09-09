@@ -19,7 +19,7 @@ const ManageSlots = () => {
       return data;
     },
   });
-//console.log(allTrainerClass)
+////consolelog(allTrainerClass)
   const deleteSlot = async (id) => {
     const { data } = await mutateAsync(id);
 

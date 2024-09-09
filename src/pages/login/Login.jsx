@@ -30,11 +30,11 @@ const Login = () => {
     Login(email, password).then((res) => {
       toast.success("succeffulefly login");
       navigate("/")
-      // console.log(res)
+      // //consolelog(res)
     });
 
     // const {data}= await axiosSecure.post('/user',userInfo)
-    // //console.log(data)
+    // ////consolelog(data)
   };
 
   const googleLogin = () => {

@@ -3,6 +3,7 @@ import Card from "../../../component/cardHome/Card";
 import useAxiosSecure from "../../../AxiosSecure/AxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import UseTitle from "../../../hook/useTitle";
+import { Link } from "react-router-dom";
 
 const FetureClass = () => {
   const axiosSecure = useAxiosSecure();
@@ -15,77 +16,99 @@ const FetureClass = () => {
       return data;
     },
   });
-  console.log(data);
+
   return (
-    <div className="my-8">
-      <UseTitle heading={"MOST BOOKED CLASSES"}></UseTitle>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {data?.slice(0,6).map((feture) => {
-          return (
-            <div className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)]">
-              {/*  <!-- Image --> */}
-
-              {/*  <!-- Body--> */}
-              <div className="p-6">
-                <header className="mb-4 flex gap-4">
-                  <a
-                    href="#"
-                    className="relative inline-flex h-12 w-12 items-center justify-center rounded-full e"
-                  >
-                    <img
-                      src={feture?.userInfo?.userPhoto}
-                      alt="user name"
-                      title="user name"
-                      width="48"
-                      height="48"
-                      className="max-w-full rounded-full"
-                    />
-                  </a>
-                  <div>
-                    <h3 className="text-xl font-medium text-slate-700">
-                      Trainer Name{" "}
-                      <span className=" text-blue-400">
-                        {" "}
-                        {feture?.trainerName}
-                      </span>
-                    </h3>
-
-                    <h3 className="text-xl">
-                      Class :
-                      <span className="text-2xl font-bold">
-                        {feture?.classs}
-                      </span>
-                    </h3>
-
-                    <h3 className="text-xl">
-                      {" "}
-                      Pacage:
-                      <span className="text-2xl font-bold">
-                        {" "}
-                        {feture?.packages}
-                      </span>
-                    </h3>
-                    <h3 className="text-xl">
-                      {" "}
-                      Total Booking:
-                      <span className="text-2xl font-bold">
-                        {" "}
-                        {feture?.totalBooking}
-                      </span>
-                    </h3>
-
-                    <h3 className="text-xl font-medium text-slate-700"></h3>
-                    <p className="text-sm text-slate-400"></p>
+  
+    <div className="max-w-7xl px-5 md:px-10 m-auto lg:pt-20">
+    <div className="relative  w-full space-y-4 mb-10 px-5 py-10 max-w-7xl m-auto">
+      <h1 className="lg:text-6xl md:text-5xl text-2xl text-center text-white uppercase">
+        Feature
+        <span className="text-[#007BFF]"> classes</span>
+      </h1>
+      <p className="text-center opacity-60 text-white text-sm  ">
+        Explore a diverse range of classes meticulously crafted to cater to
+        every fitness goal and preference. From high-intensity workouts like
+        HIIT and CrossFit, aimed at pushing your limits and maximizing calorie
+        burn, to mindful practices like Yoga and Meditation.
+      </p>
+    </div>
+    <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2  gap-5 p-1">
+      {data?.slice(0,6)?.map((classItem) => (
+      
+        <div key={Math.random()}>
+          <div
+            className="h-52 bg-cover bg-center rounded-lg hover:-translate-y-[5px]   duration-500"
+            style={{ backgroundImage: `url($
+                    {classItem?.userInfo?.userPhoto}
+                  )` }}
+          >
+            <div className="flex flex-col relative group justify-end h-full text-white bg-gray-800/15 p-4">
+              <h1 className="text-3xl  group-hover:text-4xl duration-500">
+              {classItem?.trainerName}
+              </h1>
+              <div className="absolute top-0 bg-black bg-opacity-30 backdrop-blur-sm px-3 py-1 rounded-b-xl">
+                <div>
+                  <img
+                    src="https://i.ibb.co.com/ypVCycY/favorite.png"
+                    alt=""
+                    className="h-7 w-7"
+                  />
+                </div>
+                <div className="text-center">
+                  <p className="text-sm font-bold">{classItem.bookings}</p>
+                </div>
+              </div>
+              <div
+                className="absolute text-xs right-2 top-2 bg-black text-white
+               rounded-md px-3 py-2 text-center"
+              >
+                {
+                  <div className="w-full h-full">
+                    {data?.length > 0 ? (
+                      <div className="dropdown dropdown-end">
+                        <div
+                          tabIndex={0}
+                          role="button"
+                          className="w-full h-full"
+                        >
+                          Choose a trainer
+                        </div>
+                        <ul
+                          tabIndex={0}
+                          className="dropdown-content menu bg-black bg-opacity-30 backdrop-blur-sm w-32 rounded-box z-[1]  p-2 shadow"
+                        >
+                          {data?.slice(0, 3).map((trainer) => (
+                            <li
+                              key={trainer._id}
+                              className="h-full w-full space-y-1 hover:bg-white/5 rounded-lg duration-500"
+                            >
+                              <Link
+                                to={`/trainers/${trainer._id}`}
+                                className="cursor-pointer flex items-center gap-2 h-full w-full  "
+                              >
+                                <img
+                                  src={classItem?.userInfo?.Photo}
+                                  alt={trainer.name}
+                                  className="h-7 w-7 rounded-full border-2 object-cover object-top"
+                                />
+                                <p className="text-xs">{trainer.name}</p>
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : (
+                      "No trainer available"
+                    )}
                   </div>
-                </header>
-                <p></p>
+                }
               </div>
             </div>
-          );
-        })}
-      </div>
+          </div>
+        </div>
+      ))}
     </div>
+  </div>
   );
 };
 

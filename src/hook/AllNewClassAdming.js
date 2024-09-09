@@ -11,7 +11,7 @@ const {data: allClassAdmin ,refetch,isLoading}=useQuery({
     queryKey:['newClsssAdmin'],
     queryFn: async ()=>{
         const {data}= await axiosSecure.get('/addnewClassAdmin')
-      //  console.log(data)
+      //  //consolelog(data)
         return data
     }
 })

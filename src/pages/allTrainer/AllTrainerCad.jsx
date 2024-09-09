@@ -5,7 +5,7 @@ import UseButton from '../../component/button/Button';
 import { CiFacebook } from "react-icons/ci";
 import { GrYoga } from 'react-icons/gr';
 const AllTrainerCad = ({trainer}) => {
-  console.log(trainer)
+  //consolelog(trainer)
   const  {
     _id,
     name,

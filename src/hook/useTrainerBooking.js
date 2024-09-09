@@ -8,7 +8,7 @@ const useTrainerBooking = () => {
         queryKey:['trainerClassBOoking'],
         queryFn:async()=>{
 const {data}= await axiosSecure.get('/trainer-booking')
-//console.log(data)
+////consolelog(data)
 return data
 
         }

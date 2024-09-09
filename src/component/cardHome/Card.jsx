@@ -14,7 +14,7 @@ const Card = () => {
     const ak=e.target.ak.value;
    
 
-    console.log(res)
+    //consolelog(res)
   }
   return (
     <div>

@@ -18,7 +18,7 @@ const {data}=useQuery({
 queryFn:async()=>{
 
   const {data}=await axiosSecure.get(`/addNewSlotTrainer/${user?.email}`)
-    console.log(data)
+    //consolelog(data)
     return data
 }
 
@@ -27,7 +27,7 @@ queryFn:async()=>{
 
 
 const handleSubmit=(e)=>{
-  console.log("dsf")
+  //consolelog("dsf")
 }
 
   return (

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { GrYoga } from "react-icons/gr";
 
 const TrainerDetailCard = ({tDetail}) => {
-  console.log(tDetail)
+  //consolelog(tDetail)
   const {name,skills,time,image,age,day,imgBB,experience}=tDetail || {}
   return (
     <div>

@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 const ChekOutForm = ({ IntPrice }) => {
   const axiosSecure = useAxiosSecure();
   const {user}=useAuth()
-  console.log(IntPrice);
+  //consolelog(IntPrice);
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [transcictionId,setTranscictionId] = useState('')
@@ -19,7 +19,7 @@ const ChekOutForm = ({ IntPrice }) => {
     axiosSecure
       .post("/create-payment-intent", { price: IntPrice })
       .then((data) => {
-        console.log(data);
+        //consolelog(data);
       setClientSecret(data.data.clientSecret);
       });
   }, [axiosSecure,IntPrice]);
@@ -46,13 +46,13 @@ const ChekOutForm = ({ IntPrice }) => {
     });
 
     if (error) {
-      console.log("[error]", error);
+      //consolelog("[error]", error);
       setCardError(error.message);
     } else {
-      console.log("[PaymentMethod]", paymentMethod);
+      //consolelog("[PaymentMethod]", paymentMethod);
       setCardError("");
     }
-    console.log({clientSecret});
+    //consolelog({clientSecret});
     /* confitm */
    // confirm payment
    const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
@@ -66,9 +66,9 @@ const ChekOutForm = ({ IntPrice }) => {
 })
 
     if (confirmError) {
-      console.log("confrim errm");
+      //consolelog("confrim errm");
     } else {
-      console.log("payment intent", paymentIntent);
+      //consolelog("payment intent", paymentIntent);
 
       if(paymentIntent.status === 'succeeded'){
 

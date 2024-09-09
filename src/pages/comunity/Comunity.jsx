@@ -17,7 +17,7 @@ const Comunity = () => {
   const pages = [...Array(numbeOfPage).keys()];
   const handleIterPerPage = (e) => {
     //4
-    //  console.log(e.target.value)
+    //  //consolelog(e.target.value)
     const val = parseInt(e.target.value);
 
     setItemPerPage(val);
@@ -50,7 +50,7 @@ const Comunity = () => {
     <div className="mt-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         {pagin?.map((forum) => (
-          <ComunityCard forum={forum} key={Math.random()}></ComunityCard>
+          <ComunityCard  forum={forum} key={Math.random()}></ComunityCard>
         ))}
 
         {/* pagingantion */}
@@ -61,7 +61,7 @@ const Comunity = () => {
         <button className="inline-flex h-10 items-center justify-center gap-4 rounded stroke-slate-700 px-4 text-sm font-medium text-slate-700 transition duration-300 hover:bg-emerald-50 hover:stroke-emerald-500 hover:text-emerald-500 focus:bg-emerald-50 focus:stroke-emerald-600 focus:text-emerald-600 focus-visible:outline-none" onClick={handlePrev}>
           PREV
         </button>
-        {pages.map((page) => (
+        {pages?.map((page) => (
           <button
             className={`${
               currentPage === page && "selected btn btn-primary mx-6 "

@@ -7,7 +7,7 @@ import UseTitle from './../../hook/useTitle';
 const AllTrainer = () => {
 
 const[data,isLoading]=useAllTrainer()
-console.log(data)
+//consolelog(data)
 // if(isLoading)return <h2>sdfs</h2>
   return (
 
@@ -18,7 +18,7 @@ console.log(data)
 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-16 my-6 lg:justify-items-center'>
 
 {
-  data?.map(trainer=><AllTrainerCad trainer={trainer}></AllTrainerCad>)
+  data?.map(trainer=><AllTrainerCad      key={Math.random()} trainer={trainer}></AllTrainerCad>)
 }
 
     </div>

@@ -21,7 +21,7 @@ const NewsLetter = () => {
     /* user axios secure */
     const data = await axiosSecure.post("/newsLetter", userInfo).then((res) => {
       if (res.status == 200) {
-        console.log(res);
+        //consolelog(res);
         toast.success("successfully sucscribe");
       }
     });

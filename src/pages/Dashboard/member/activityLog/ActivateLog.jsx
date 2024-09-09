@@ -24,18 +24,18 @@ const ActivateLog = () => {
   const handleFeedback = (e) => {
     e.preventDefault();
     const feedback = e.target.feedback.value;
-    console.log(feedback);
+    //consolelog(feedback);
 try{
 
 toast.success("thanck for feedback")
 // axiosSecure.patch(`/feedback/${_id}`,{feedback})
 // .then(res=>{
-//   console.log(res.data)
+//   //consolelog(res.data)
 //   toast.success("Thandls for Feedback")
 // })
 
 }catch(err){
-  console.log(err)
+  //consolelog(err)
 }}
   return (
     <div>

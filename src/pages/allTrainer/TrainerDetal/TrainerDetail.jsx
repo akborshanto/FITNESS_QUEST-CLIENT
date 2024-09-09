@@ -10,7 +10,7 @@ const TrainerDetail = () => {
 
   const  {id}=useParams()
 
-console.log(id)
+//consolelog(id)
   const {data}=useQuery({
     queryKey:['trainer-detail'],
     queryFn:async ()=>{

@@ -65,11 +65,11 @@ const Payment = () => {
       inc,
       totalBooking,
     };
-    //console.log(trainerBookingInfo);
+    ////consolelog(trainerBookingInfo);
     /* axios secure */
 
     const data = await axiosSecure.post("/trainer-booking", trainerBookingInfo);
-    console.log(data.data);
+    //consolelog(data.data);
     if (data.data.insertedId) {
       toast.success("SUCCESSFULLY BOOKING THE THAINER");
 
@@ -163,7 +163,7 @@ const Payment = () => {
 
     const ratinInfo = { name, email, photo, date, descriptions };
     /* axiiso secure */
-    //   console.log(ratinInfo);
+    //   //consolelog(ratinInfo);
     await axiosSecure.post("/rating", ratinInfo).then((res) => {
       toast.success("Thanks For Feedback");
     });

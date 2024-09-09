@@ -58,7 +58,7 @@ const TrainerBooking = () => {
     const premiumInfo = {packages, premiumPrice, premium1, premium2, premium3 };
 
     // const Premium = packages === "premium" ? premiumInfo : null;
-    // console.log(Premium)
+    // //consolelog(Premium)
 
     const bookingInfo = {
       trainerName,
@@ -76,7 +76,7 @@ const TrainerBooking = () => {
 
 
 const saveData= localStorage.setItem('booking',JSON.stringify(bookingInfo))
-console.log(saveData)
+//consolelog(saveData)
     /*  TANSCTACK QUERY*/
 navigate('/payment')
     /* use axios secure */

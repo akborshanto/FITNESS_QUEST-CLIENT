@@ -23,10 +23,10 @@ import {
 const AllTrainerAdmin = () => {
   const [data, refetch] = useAllTrainer();
   const [role] = useRole();
-  console.log(data);
+  //consolelog(data);
   const axiosSecure = useAxiosSecure();
 
-  console.log(role);
+  //consolelog(role);
 
   const {
     name,

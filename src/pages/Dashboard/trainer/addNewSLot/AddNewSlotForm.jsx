@@ -9,7 +9,7 @@ const AddNewSlotForm = ({ newSlot, handleSubmit }) => {
   const [allClassAdmin] = useClassAdmin();
   const axiosSecure=useAxiosSecure()
   const [clas, setCla] = useState([]);
-  console.log(allClassAdmin);
+  //consolelog(allClassAdmin);
   const {
     name,
     email,
@@ -22,7 +22,7 @@ const AddNewSlotForm = ({ newSlot, handleSubmit }) => {
     trainerRole,
     experience,
   } = newSlot;
-  console.log(newSlot);
+  //consolelog(newSlot);
 
   const classYoga = allClassAdmin
     ?.filter((c) => c.classs === "yoga")
@@ -59,7 +59,7 @@ const AddNewSlotForm = ({ newSlot, handleSubmit }) => {
 
 /* post add new slot */
 const data=await axiosSecure.post('/add-NewSlot-Trainer',information)
-console.log(data)
+//consolelog(data)
 
 if(data.status == 200){
     toast.success("succeffylly Add New SLot")

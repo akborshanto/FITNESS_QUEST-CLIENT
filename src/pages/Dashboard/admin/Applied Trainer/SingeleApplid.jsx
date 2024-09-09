@@ -61,12 +61,12 @@ if(res.data.modifiedCount >0){
     role:"trainer",
     status:status,
   } 
-  console.log(ALL_TRAINER)
+  //consolelog(ALL_TRAINER)
   try{
     const {data}= axiosSecure.post( `${import.meta.env.VITE_API_URL}/allTr`,ALL_TRAINER)
-    console.log(data)
+    //consolelog(data)
   }catch(err){
-  console.log(err)
+  //consolelog(err)
   }
   
 
@@ -86,7 +86,7 @@ if(res.data.modifiedCount >0){
 
 }catch(err){
 
-  console.log(err)
+  //consolelog(err)
 
 
 
@@ -110,18 +110,18 @@ if(res.data.modifiedCount >0){
   const handleFeedback = (e) => {
     e.preventDefault();
     const feedback = e.target.feedback.value;
-    console.log(feedback);
+    //consolelog(feedback);
 try{
 
 
 axiosSecure.patch(`/feedback/${_id}`,{feedback})
 .then(res=>{
-  console.log(res.data)
+  //consolelog(res.data)
   toast.success("Thandls for Feedback")
 })
 
 }catch(err){
-  console.log(err)
+  //consolelog(err)
 }
 
 

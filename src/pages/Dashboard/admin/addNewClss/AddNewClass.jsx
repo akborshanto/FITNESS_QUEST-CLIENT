@@ -25,7 +25,7 @@ const AddNewClassAdmin = () => {
       image,
       email
     }
-   // console.log(photo)
+   // //consolelog(photo)
     const description = form.description.value;
 
 const formData=new FormData()

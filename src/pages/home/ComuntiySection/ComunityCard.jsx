@@ -5,7 +5,7 @@ import UseButton from './../../../component/button/Button';
 const ComunityCard = ({comunity}) => {
     const { article,
         classs,
-        userInfo,_id,imgBB}=comunity
+        userInfo,_id,imgBB}=comunity || {}
 
   return (
     <div>

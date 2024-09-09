@@ -30,15 +30,15 @@ const AppliedTrainerAdmin = () => {
   const { isOpen, onOpen, onClose } = useDisclosure({});
   const { item, setItem } = useState(null);
   const   [role]=useRole()
-  console.log(role)
+  //consolelog(role)
   const id = useLoaderData();
-  console.log(id);
+  //consolelog(id);
   // const [data, refetch] = useAllTrainer();
-  // console.log(data);
+  // //consolelog(data);
   const axiosSecure = useAxiosSecure();
 
   // const handleUpdate = async (id, role) => {
-  //   // console.log(id, role);
+  //   // //consolelog(id, role);
   //   const { data: memberRole } = await axiosSecure.patch(
   //     `/trainer-role/${id}`,
   //     role
@@ -46,7 +46,7 @@ const AppliedTrainerAdmin = () => {
 
   //   if (memberRole?.modifiedCount > 0) {
   //     toast.success("Updated Role");
-  //     //  console.log(memberRole);
+  //     //  //consolelog(memberRole);
   //     refetch();
   //   } else {
   //     toast.error("Already Updated role");
@@ -73,7 +73,7 @@ const AppliedTrainerAdmin = () => {
     //   //   setShowModal(true);
     //   // })
     //   // .catch(error => {
-    //   //   console.error('There was an error fetching the application details!', error);
+    //   //   //consoleerror('There was an error fetching the application details!', error);
     //   // });
     //   axiosSecure.get(`/trainerSingleData/${id}`).then((res) => {
     //     setItem(res.data);
@@ -83,7 +83,7 @@ const AppliedTrainerAdmin = () => {
     //   queryKey:['singleData'],
     //   queryFn:async (id)=>{
     //     const  data  = await axiosSecure.get(`/trainerSingleData/${id}`);
-    //     console.log(data)
+    //     //consolelog(data)
     //       return data;
     //   }
     //     });

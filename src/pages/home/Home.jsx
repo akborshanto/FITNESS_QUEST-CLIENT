@@ -16,7 +16,7 @@ import ReviewCard from './Reviews/ReviewCard'
 
 const Home = () => {
   const [role]= useRole()
-  console.log(role)
+  //consolelog(role)
   return (
     <div  className='   ml-3 mr-3'>
 
@@ -26,9 +26,10 @@ const Home = () => {
 {/* FEATURE SECTION */}
 <Feture></Feture>
 {    /* ABOUT SECTION */}
+<FetureClass></FetureClass>
 <About></About>
 {/* FEATURE CLAASSS */}
-<FetureClass></FetureClass>
+
 {/* TESTIMONAL */}
 <ReviewCard></ReviewCard>
 {/* FORUMS COUMUNTIRY */}

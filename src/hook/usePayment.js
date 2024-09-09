@@ -11,7 +11,7 @@ const usePayment = () => {
     queryKey: ["all-trainer"],
     queryFn: async () => {
       const { data: allTrainer } = await axiosSecure.get("/payment-card");
-     // console.log(allTrainer);
+     // //consolelog(allTrainer);
       return allTrainer;
     },
   });

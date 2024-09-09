@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 
 import UseButton from "../button/Button";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader requires a loader
 import { Link } from "react-router-dom";
 
-import Glide from "@glidejs/glide";
-import { Heading } from '@chakra-ui/react';
 
 export default function UseSlider({ img }) {
-  useEffect(() => {
+/*   useEffect(() => {
     const slider = new Glide(".glide-01", {
       type: "slider",
       focusAt: "center",
@@ -26,136 +26,87 @@ export default function UseSlider({ img }) {
       slider.destroy();
     };
   }, []);
-
+ */
   return (
     <>
       {/*<!-- Component: Slider with indicators outside --> */}
 
-      <div className="relative w-full glide-01">
-        {/*    <!-- Slides --> */}
-        <div className="overflow-hidden" data-glide-el="track">
-          <ul
-            className="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden]
-         [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0"
-          >
-            <div
-              className="hero min-h-screen my-8"
-              style={{
-                backgroundImage:
-                  "url(https://img.freepik.com/free-photo/young-healthy-man-athlete-doing-exercise-with-ropes-gym-single-male-model-practicing-hard-training-his-upper-body-concept-healthy-lifestyle-sport-fitness-bodybuilding-wellbeing_155003-27879.jpg?t=st=1717952545~exp=1717956145~hmac=94e045195c58d14a6ca3dba03328b2772b1378446f39f01460ef5f1a1c477723&w=900)",
-              }}
-            >
-              <div className="hero-overlay bg-opacity-60"></div>
-              <div className="hero-content text-center text-neutral-content">
-                <div className="max-w-md">
-                  {/*       <h1 className="mb-5 text-5xl font-bold">MALAYSIA</h1>
-          <p className="mb-5">Malaysia represents fantastic value for money at almost all levels. Costs for food, lodging, fuel and internal transportation are very reasonable.</p>
-     */}{" "}
-                  <div className="text-center">
-                    <h1 className="text-3xl font-semibold text-white lg:text-4xl">
-                      <h1 className="font-bold text-2xl lg:text-4xl">
-                        {" "}
-                        ALL CLASS
-                      </h1>
-                    </h1>
-                    <br />
+      <div className="relative h-[250px] md:h-96 lg:h-screen ">
+      <div className="h-full   absolute w-full bg-black/20   z-30">
+        <div className="h-full     flex items-center   ">
+          <div className="my-auto    bg-opacity-50   text-center mx-auto">
+            <div className="max-w-7xl m-auto w-full     space-y-5 lg:p-0 md:p-10 p-5">
+              <h1 className="text-white text-center lg:text-7xl md:text-2xl text-2xl z-[10px]  ">
+                DISCOVER THE HIDDEN ALTER <br />{" "}
+                <span className="outline-text">EGO OF YOUR BODY</span>{" "}
+              </h1>
+              <div className="text-white lg:text-base text-sm m-auto text-center w-[60%] md:block hidden ">
+                {" "}
+                Welcome to workout, where the night is not just for sleep;
+                it's for sweat, strength, and self-discovery. Step into our
+                world of after-hours fitness, where the neon lights guide your
+                path to greatness.{" "}
+              </div>
+              <div>
 
-                    <h1>
-                      {" "}
-                      GoodLife Fitness's membership will give you access to
-                      Virtual Fitness Classes, cardio, strength, training, and
-                      mind and body classes.
-                    </h1>
-                  <Link to='/all-class' className="my-4">  <UseButton btnHeading={'Class'}></UseButton></Link>
-                  </div>
-                </div>
+              {/* all class */}
+                <Link to={"/all-trainer"}>
+                  <button className=" md:text-base text-sm px-4 p-2 rounded-full border bg-[#007BFF] font-bold border-[#007BFF]  text-white hover:bg-transparent hover:text-[#007BFF] duration-500">
+                    {" "}
+                    Join Now
+                  </button>
+                </Link>
               </div>
             </div>
-            <li>
-              <div
-                className="hero min-h-screen my-8"
-                style={{
-                  backgroundImage:
-                    "url(https://img.freepik.com/free-photo/couple-training-together-gym_1303-26968.jpg?t=st=1717952542~exp=1717956142~hmac=d8cf333b242ad8839863d3d7aabf0dc9d93a6b58bb8187425445b426fd73a538&w=900)",
-                }}
-              >
-                <div className="hero-overlay bg-opacity-60"></div>
-                <div className="hero-content text-center text-neutral-content">
-                  <div className="max-w-md">
-                    {/*       <h1 className="mb-5 text-5xl font-bold">MALAYSIA</h1>
-              <p className="mb-5">Malaysia represents fantastic value for money at almost all levels. Costs for food, lodging, fuel and internal transportation are very reasonable.</p>
-         */}{" "}
-                    <div className="text-center">
-                      <h1 className="text-3xl font-semibold text-white lg:text-4xl">
-                        <h1 className="font-bold text-2xl lg:text-4xl">
-                          {" "}
-                          ALL CLASS
-                        </h1>
-                      </h1>
-                      <br />
-                      
-                      <h2 className="my-4">   GoodLife Fitness's membership will give you access to
-                      Virtual Fitness Classes, cardio, strength, training,
-                      and mind and body classes.</h2>
-                      <Link to="/all-class">
-                  <UseButton btnHeading={"CLASS "}></UseButton>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
+          </div>
         </div>
-        {/*    <!-- Controls --> */}
+      </div>{" "}
+   <Carousel
+        showArrows={false}
+        showIndicators={false}
+        showStatus={false}
+        infiniteLoop
+        autoPlay
+        transitionTime={1000}
+        emulateTouch
+        stopOnHover
+        swipeable={false}
+
+      >
         <div
-          className="absolute left-0 flex items-center justify-between w-full h-0 px-4 top-1/2 "
-          data-glide-el="controls"
+          className="h-[250px] md:h-96 lg:h-screen    relative  bg-top bg-cover "
+          style={{
+            backgroundImage:
+              "url(https://i.ibb.co/qRdnCyp/background-image.png)",
+          }}
         >
-          <button
-            className="inline-flex items-center justify-center w-8 h-8 transition duration-300 border rounded-full border-slate-700 bg-white/20 text-slate-700 hover:border-slate-900 hover:text-slate-900 focus-visible:outline-none lg:h-12 lg:w-12"
-            data-glide-dir="<"
-            aria-label="prev slide"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-5 h-5"
-            >
-              <title>prev slide</title>
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
-              />
-            </svg>
-          </button>
-          <button
-            className="inline-flex items-center justify-center w-8 h-8 transition duration-300 border rounded-full border-slate-700 bg-white/20 text-slate-700 hover:border-slate-900 hover:text-slate-900 focus-visible:outline-none lg:h-12 lg:w-12"
-            data-glide-dir=">"
-            aria-label="next slide"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-5 h-5"
-            >
-              <title>next slide</title>
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-              />
-            </svg>
-          </button>
+          <h1 className="lg:block hidden  uppercase text-6xl mt-0 absolute rotate-90 -right-20 outline-text-gym top-1/2  -z-30">
+         Fitness Quest
+          </h1>
         </div>
-      </div>
+        <div
+          className="h-full relative  bg-top bg-cover "
+          style={{
+            backgroundImage: "url(https://i.ibb.co/bbHTGYd/footer-bg.jpg)",
+          }}
+        >
+          <h1 className="lg:block hidden  uppercase text-6xl mt-0 absolute rotate-90 -right-20 outline-text-gym top-1/2  -z-30">
+         Fitness Quest
+          </h1>
+        </div>
+        <div
+          className="h-full relative  bg-top bg-cover "
+          style={{
+            backgroundImage: "url(https://i.ibb.co/gw55gCX/hero.jpg)",
+          }}
+        >
+          <h1 className="lg:block hidden  uppercase text-6xl mt-0 absolute rotate-90 -right-20 outline-text-gym top-1/2  -z-30">
+         Fitness Quest
+          </h1>
+        </div>
+       
+      </Carousel> 
+    </div>
       {/*<!-- End Slider with indicators outside --> */}
     </>
   );

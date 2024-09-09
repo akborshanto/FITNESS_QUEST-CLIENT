@@ -5,7 +5,7 @@ import UseTitle from '../../../hook/useTitle'
 import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 const ComunitySection = () => {
 const [forum]=useForum()
-console.log(forum)
+//consolelog(forum)
 
   return (
    <div className='my-8'>

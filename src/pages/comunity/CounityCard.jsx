@@ -6,7 +6,7 @@ import { GrUserAdmin, GrYoga } from "react-icons/gr";
 import { BiUpvote } from 'react-icons/bi';
 import { BiSolidDownvote } from "react-icons/bi";
 const ComunityCard = ({forum}) => {
-// console.log(forum)
+// //consolelog(forum)
 const [voting,setVoting]=useState(0)
   return (
     <div>

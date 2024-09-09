@@ -7,7 +7,7 @@ const Dashboard = () => {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
 
   const [role, isLoading] = useRole();
-  console.log(role);
+  //consolelog(role);
   if (isLoading) {
     return <Spiners></Spiners>;
   }

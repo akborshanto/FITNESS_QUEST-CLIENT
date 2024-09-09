@@ -24,7 +24,7 @@ const ProfilePage = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
 
-    console.log("dsfdsffsda");
+    //consolelog("dsfdsffsda");
     const form = e.target;
     const name = form.name.value;
     const image = form.photo.files[0];

@@ -11,7 +11,7 @@ const {data: forum ,refetch,isLoading}=useQuery({
     queryKey:['userForum'],
     queryFn: async ()=>{
         const {data}= await axiosSecure.get('/forum')
-      //  console.log(data)
+      //  //consolelog(data)
         return data
     }
 })

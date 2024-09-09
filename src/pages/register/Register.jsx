@@ -22,17 +22,17 @@ const navigate=useNavigate()
     const email = form.email.value;
     const password = form.password.value;
     const image = form.image.files[0];
-    console.log(email,password,image)
+    //consolelog(email,password,image)
    
     const name = form.name.value;
       const formData = new FormData();
 
       //const role="member"
       formData.append("image", image);
-     console.log(formData)
+     //consolelog(formData)
 
     /* POST  METHOD IMG BB */
-// console.log({image:form.image.files[0]})
+// //consolelog({image:form.image.files[0]})
 
 // fetch(image_hoisting_Api,{
 //   method:"POST",
@@ -45,7 +45,7 @@ const navigate=useNavigate()
     // {
     //   headers: { "content-type": "multipart/form-data" },
     // }
-    console.log(data);
+    //consolelog(data);
     createUser(email, password).then((res) => {
       toast.success("successfull create a user");
       /* update profile */
@@ -59,7 +59,7 @@ const navigate=useNavigate()
         navigate("/")
         const data = axiosSecure.post('/moduleUser',info)
         .then((res)=>{
-          console.log(res)
+          //consolelog(res)
           toast.success("succesfully Register");
           navigate('/')
   

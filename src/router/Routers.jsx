@@ -92,7 +92,7 @@ export const router = createBrowserRouter([
   
 },
 {
-    path:'/comunity',
+    path:'/community',
     element:<Comunity></Comunity>,
     loader:()=>fetch(`${import.meta.env.VITE_API_URL}/all-forum-count`)
 },

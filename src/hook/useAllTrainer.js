@@ -11,7 +11,7 @@ const useAllTrainer = () => {
     queryKey: ["all-trainer"],
     queryFn: async () => {
       const { data: allTrainer } = await axiosSecure.get("/allTr");
-     // console.log(allTrainer);
+     // //consolelog(allTrainer);
       return allTrainer;
     },
   });

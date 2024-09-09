@@ -14,12 +14,12 @@ const AllClassPage = () => {
   //     queryKey:['fetureclass'],
   //     queryFn:async ()=>{
   //   const {data}=await axiosSecure.get('/addnewClassAdmin')
-  //   console.log(data)
+  //   //consolelog(data)
   //   return data
 
   //     }
   //   })
-  //  // console.log(data)
+  //  // //consolelog(data)
 
   /* classs filter */
   /* ================================================= */
@@ -34,7 +34,7 @@ const AllClassPage = () => {
   const pages = [...Array(numbeOfPage).keys()];
   const handleIterPerPage = (e) => {
     //4
-    //  console.log(e.target.value)
+    //  //consolelog(e.target.value)
     const val = parseInt(e.target.value);
 
     setItemPerPage(val);
@@ -68,7 +68,7 @@ const AllClassPage = () => {
   const searchFunction = pagin?.filter((item) =>
     item.classs.toLowerCase().includes(serachClass.toLowerCase())
   );
-  console.log(searchFunction);
+  //consolelog(searchFunction);
 
   return (
     <div>
