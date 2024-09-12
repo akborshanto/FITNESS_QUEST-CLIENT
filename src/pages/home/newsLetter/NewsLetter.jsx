@@ -28,60 +28,97 @@ const NewsLetter = () => {
   };
 
   return (
-    <div>
+
+    <div className="mx-auto w-full  ">
+
+
+
+
+
+
+
+
 
     
-      <section class="bg-white dark:bg-gray-900">
-        <div class="max-w-3xl px-6 py-16 mx-auto text-center">
-          <h1 class="text-3xl font-semibold text-gray-800 dark:text-gray-100">
-            NEWS LETTER
-          </h1>
-          <p class="max-w-md mx-auto mt-5 text-gray-500 dark:text-gray-400">
-            The fitness newsletter is a core part of your email marketing
-            strategy. Learn here how you can write a variety of fitness news
-            letters for your gym.
-          </p>
+    <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 shadow-2xl  sm:px-24 xl:py-32">
+      <h2 className="mx-auto max-w-2xl text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        Stay Informed
+      </h2>
+      <p className="mx-auto mt-2 max-w-xl text-center text-lg leading-8 text-gray-300">
+        Stay up-to-date with the latest from SecureCloud! Join our mailing
+        list for exclusive updates and insights.
+      </p>
 
-          <form action="" onSubmit={handleSubmit}>
-            <div class="">
-              <div className="relative my-6">
-                <input
-                  id="id-b02"
-                  type="text"
-                  name="name"
-                  required
-                  placeholder="Your Name"
-                  className="peer relative h-10 w-full border-b border-slate-200 px-4 text-sm text-slate-500 placeholder-transparent outline-none transition-all autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-slate-400"
-                />
-                <label
-                  htmlFor="id-b02"
-                  className="absolute left-2 -top-2 z-[1] cursor-text px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-autofill:-top-2 peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:cursor-default peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent"
-                >
-                  Your name
-                </label>
-              </div>
-              <div className="relative my-6">
-                <input
-                  id="id-b02"
-                  type="text"
-                  name="email"
-                  required
-                  placeholder="Your Email..."
-                  className="peer relative h-10 w-full border-b border-slate-200 px-4 text-sm text-slate-500 placeholder-transparent outline-none transition-all autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 focus-visible:outline-none disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
-                />
-                <label
-                  htmlFor="id-b02"
-                  className="absolute left-2 -top-2 z-[1] cursor-text px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-autofill:-top-2 peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:cursor-default peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent"
-                >
-                  Your Email
-                </label>
-              </div>
-            </div>
-            <UseButton btnHeading="SUBSCRIBE NOW"></UseButton>
-          </form>
+      <form
+      onSubmit={handleSubmit}
+        className="mx-auto mt-10 flex max-w-md gap-x-4 lg:flex-row flex-col gap-2"
+      >
+        <div className=" w-full">
+          <label htmlFor="email-address" className="sr-only">
+            Email address
+          </label>
+          <input
+            name="name"
+            type="text"
+            autoComplete="name"
+            required
+      
+            className="min-w-0 w-full flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6"
+            placeholder="Enter your name"
+          />
         </div>
-      </section>
+        <div className=" w-full">
+          <label htmlFor="email-address" className="sr-only">
+            Email address
+          </label>
+          <input
+            id="email-address"
+       name="email"
+            type="email"
+            autoComplete="email"
+            required
+    
+            className="min-w-0 w-full flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6"
+            placeholder="Enter your email"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+        >
+          Notify me
+        </button>
+      </form>
+      <svg
+        viewBox="0 0 1024 1024"
+        className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2"
+        aria-hidden="true"
+      >
+        <circle
+          cx="512"
+          cy="512"
+          r="512"
+          fill="url(#gradient)"
+          fillOpacity="0.7"
+        ></circle>
+        <defs>
+          <radialGradient
+            id="gradient"
+            cx="0"
+            cy="0"
+            r="1"
+            gradientUnits="userSpaceOnUse"
+            gradientTransform="translate(512 512) rotate(90) scale(512)"
+          >
+            <stop stopColor="#7775D6"></stop>
+            <stop offset="1" stopColor="#007BFF" stopOpacity="0"></stop>
+          </radialGradient>
+        </defs>
+      </svg>
     </div>
+  </div>
+
   );
 };
 

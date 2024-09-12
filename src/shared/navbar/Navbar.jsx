@@ -139,7 +139,7 @@ const Navbar = () => {
           <div className="flex items-center">
             {!loading ? (
               user ? (
-                <Avater />
+                <div>AVATAR</div>
               ) : (
                 <div className="flex gap-3">
                   <Link to={"/login"}>
@@ -190,8 +190,8 @@ const Navbar = () => {
                         onClick={handleLogoutBtn}
                         className="gap-3
            px-4 py-2   flex items-center"
-                      >
-                        <CiLogin className="text-xl " /> Sign out
+                      > 
+                     {/*    <CiLogin className="text-xl " /> */}Sign out
                       </a>
                     </li>
                   ) : (

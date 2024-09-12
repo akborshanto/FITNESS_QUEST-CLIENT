@@ -36,9 +36,10 @@ const Home = () => {
 {/* <ForumPost></ForumPost> */}
 <ComunitySection></ComunitySection>
 {/* NEWSLETTER */}
-<NewsLetter></NewsLetter>
+
 {/* Team Section */}
 <TeamSection></TeamSection>
+<NewsLetter></NewsLetter>
     </div>
   )
 }

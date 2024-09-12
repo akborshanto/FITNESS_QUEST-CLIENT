@@ -1,12 +1,12 @@
-import React from 'react'
-import Card from '../../component/cardHome/Card'
-import { Link } from 'react-router-dom';
-import UseButton from '../../component/button/Button';
+import React from "react";
+import Card from "../../component/cardHome/Card";
+import { Link } from "react-router-dom";
+import UseButton from "../../component/button/Button";
 import { CiFacebook } from "react-icons/ci";
-import { GrYoga } from 'react-icons/gr';
-const AllTrainerCad = ({trainer}) => {
+import { GrYoga } from "react-icons/gr";
+const AllTrainerCad = ({ trainer }) => {
   //consolelog(trainer)
-  const  {
+  const {
     _id,
     name,
     email,
@@ -17,63 +17,87 @@ const AllTrainerCad = ({trainer}) => {
     skills,
     status,
     role,
-    experience
-  }=trainer || {}
+    experience,
+  } = trainer || {};
   /*  */
 
   return (
     <div>
-
-
-    <div>
-    <>
-    {/*<!-- Component: E-commerce card --> */}
-    <div className="overflow-hidden rounded bg-white  text-slate-500 shadow-md shadow-slate-200 w-[350px] h-auto shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)]">
-      {/*  <!-- Image --> */}
-      <figure>
-        <img
-          src={imgBB}
-          alt="card image"
-          className="aspect-video w-full"
-        />
-      </figure>
-      {/*  <!-- Body--> */}
-      <div className="p-6">
-        <header className="mb-4">
-          <h3 className="text-xl font-medium text-slate-700">
-            Trainer Name: <span className=' text-xl lg:text-2xl text-blue-400 font-sans'>{name}</span>
-          </h3>
-         
-          <div className='flex items-center gap-5 my-5 '>
-           <p className=" text-slate-400">SOCIAL ICON </p>
-           <GrYoga className='text-blue-400 text-2xl  bg-white ' />
-           </div>
-        </header>
-        <p>
-        
-        Experience : {experience}
-        </p>
-        <p>
-        
-        Available Slot : {time}
-        </p>
+      <div className=" pt-10 md:pt-0  max-w-7xl md:px-10 px-2 pb-10 mx-auto ">
+        {/*  <Helmet>
+      <title>Workout - Trainers</title>
+    </Helmet> */}
+        <div className="container m-auto">
+          <Link
+            to={`/trainer-detail/${_id}`}
+            className=" cursor-pointer"
+            key={trainer._id}
+          >
+            <div className="h-52  shadow-black border border-gray-400/15 shadow-sm p-2 group rounded-[15px] overflow-hidden">
+              <div className="h-full flex gap-3">
+                <Link
+                  to={`/trainer-detail/${_id}`}
+                  className="overflow-hidden h-full w-[200px] rounded-[10px]"
+                >
+                  <img
+                    src={imgBB}
+                    alt={name}
+                    className="h-full w-full group-hover:scale-110 duration-500 object-cover object-top cursor-pointer"
+                  />
+                </Link>
+                <div className="text-white flex-1 md:space-y-2 space-y-1">
+                  <div className="flex justify-between w-full relative">
+                    <h2 className="text-2xl">{name}</h2>
+                    <div className="absolute right-0 ">
+                      <p className="bg-yellow-500/5 border border-gray-700/15 text-xs font-bold   px-2 py-1 rounded-full">
+                        Ex- {experience}+ Year
+                      </p>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="capitalize font-bold text-sm text-gray-300">
+                      expertise :
+                    </p>
+                    <div className="flex flex-wrap gap-1">
+                      SPEciality
+                      {/*                         {trainer.specialties
+                          .slice(0, 3)
+                          .map((specialty, index) => (
+                            <p
+                              key={index}
+                              className="md:text-sm text-[8px] font-bold bg-white text-gray-600 px-2 mt-1 rounded-full border border-gray-500/15 "
+                            >
+                              {specialty}
+                            </p>
+                          ))} */}
+                    </div>
+                  </div>
+                  {/*   {trainer.slots.length !== 0 ? ( */}
+                  <div>
+                    <p className="capitalize font-bold text-sm text-gray-300">
+                      Available slots :-
+                    </p>
+                    <div className="flex flex-col flex-wrap gap-[2px]">
+                      {/*            {trainer.slots.slice(0, 3).map((slot, index) => (
+                            <Link
+                              to={`/trainerbooking?id=${trainer._id}&slot=${slot.name}`}
+                              key={index}
+                              className="md:text-xs text-[10px]   cursor-pointer  border bg-[#007BFF]/30 font-bold   hover:bg-transparent hover:text-[#007BFF] duration-500 text-white py-[2px] px-2 mt-1 rounded-full  border-gray-500/15 "
+                            >
+                              {slot.name} - {slot.time}
+                            </Link>
+                          ))} */}
+                    </div>
+                  </div>
+                  )
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
       </div>
-      {/*  <!-- Action base sized basic button --> */}
-      <div className="flex justify-end p-6 pt-0">
-      <Link to={ `/trainer-detail/${_id}`}>
-        <UseButton btnHeading='Know More' ></UseButton>
-
-        </Link>
-      </div>
     </div>
-    {/*<!-- End E-commerce card --> */}
-    </>
-    </div>
-    
-  
+  );
+};
 
-    </div>
-  )
-}
-
-export default AllTrainerCad
+export default AllTrainerCad;

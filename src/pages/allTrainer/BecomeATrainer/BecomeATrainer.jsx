@@ -10,17 +10,17 @@ import useRole from "../../../hook/useRole";
 
 //import Select from 'react-select';
 
-import Select from 'react-select'
+import Select from "react-select";
 
 const options = [
-  { value: 'Saturday', label: 'Saturday' },
-  { value: 'Sunday', label: 'Sunday' },
-  { value: 'Monday', label: 'Monday' },
-  { value: 'TuesDay', label: 'TuesDay' },
-  { value: 'WednesDay', label: 'WednesDay' },
-  { value: 'ThursDay', label: 'ThursDay' },
-  { value: 'Friday', label: 'Friday' },
-]
+  { value: "Saturday", label: "Saturday" },
+  { value: "Sunday", label: "Sunday" },
+  { value: "Monday", label: "Monday" },
+  { value: "TuesDay", label: "TuesDay" },
+  { value: "WednesDay", label: "WednesDay" },
+  { value: "ThursDay", label: "ThursDay" },
+  { value: "Friday", label: "Friday" },
+];
 
 /* const IMG BB */
 const image_hoisting_key = import.meta.env.VITE_IMGBB;
@@ -70,17 +70,15 @@ const BecomeATrainer = () => {
       trainerRole,
       experience,
     };
-//consolelog(allBecomeTrainerInfo)
+    //consolelog(allBecomeTrainerInfo)
     // const  selectDate=form.slectDate.value;
     /* user axios secure  */
 
-     const res= await axiosSecure.post("/become-trainer", allBecomeTrainerInfo);
-//consolelog(res)
-      if (res.data.insertedId) {
-  
-        toast.success("Succesfully Reequest For Be A Traiener");
-      }
-
+    const res = await axiosSecure.post("/become-trainer", allBecomeTrainerInfo);
+    //consolelog(res)
+    if (res.data.insertedId) {
+      toast.success("Succesfully Reequest For Be A Traiener");
+    }
   };
 
   return (
@@ -93,15 +91,15 @@ const BecomeATrainer = () => {
     className="basic-multi-select"
     classNamePrefix="select"
   /> */}
-      <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md text-black">
-        <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">
+      <section class="max-w-4xl p-6 mx-auto bg-black text-white rounded-md shadow-md text-black">
+        <h2 class="text-lg font-semibold text-white capitalize dark:text-white">
           Account settings
         </h2>
 
-        <form onSubmit={handleSubmit}>
+        <form>
           <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
-              <label class="text-gray-700 text-black" for="username">
+              <label class="text-white " for="username">
                 Full Name
               </label>
               <input
@@ -109,12 +107,11 @@ const BecomeATrainer = () => {
                 aria-required
                 type="text"
                 required
-                name="name"
-                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                class="block w-full px-4 py-2 mt-2 text-black bg-white border border-gray-200 rounded-md k  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
             <div>
-              <label class="text-gray-700 text-black" for="username">
+              <label class="text-white text-black" for="username">
                 Email
               </label>
               <input
@@ -124,16 +121,21 @@ const BecomeATrainer = () => {
                 placeholder={user?.email || "your email"}
                 type="text"
                 name="email"
-                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                class="block w-full px-4 py-2 mt-2 text-white bg-white border border-gray-200 rounded-md text-black  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
 
             <div>
-              <label class="text-gray-700 text-black" for="emailAddress">
+              <label class=" text-bhite" for="emailAddress">
                 AGE
               </label>
 
-              <select placeholder="Select Age" name="age" required className="select select-info w-full max-w-xs text-blue-600 font-bold border ">
+              <select
+                placeholder="Select Age"
+                name="age"
+                required
+                className="select select-info w-full max-w-xs text-blue-600 font-bold border "
+              >
                 <option value="30">30 </option>
                 <option value="40">40</option>
                 <option value="50">50</option>
@@ -142,7 +144,7 @@ const BecomeATrainer = () => {
             </div>
             {/* image */}
             <div>
-              <label class="text-gray-700 text-black" for="username">
+              <label class="text-white text-black" for="username">
                 Upload Image
               </label>
               <input
@@ -150,14 +152,14 @@ const BecomeATrainer = () => {
                 id="username"
                 type="file"
                 name="photo"
-                class="block text-blue-600 font-bold border w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                class="block text-blue-600 font-bold border w-full px-4 py-2 mt-2 text-white bg-white border border-gray-200 rounded-md text-black  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
 
             {/* EXPERIENCE */}
 
             <div>
-              <label class="text-gray-700 text-black" for="emailAddress">
+              <label class="text-white " for="emailAddress">
                 Experience
               </label>
 
@@ -166,30 +168,28 @@ const BecomeATrainer = () => {
                 required
                 type="number"
                 name="experience"
-                class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md text-black  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                class="block w-full px-4 py-2 mt-2 text-white bg-white border border-gray-200 rounded-md text-black  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
 
             {/* DAY WITHOUT REACT SELECT */}
 
             <div>
-
-            <label class="text-gray-700 text-black" for="password">
-            Availabe Day in a Week
-          </label>
-            <Select
-         
-            isMulti
-            name="day"
-            options={options}
-            className="basic-multi-select   bg-blue-400 select-info w-full"
-            classNamePrefix="select"
-          />
-            {/*   <label class="text-gray-700 text-black" for="password">
+              <label class="text-white k" for="password">
+                Availabe Day in a Week
+              </label>
+              <Select
+                isMulti
+                name="day"
+                options={options}
+                className="basic-multi-select   bg-blue-400 select-info w-full text-black"
+                classNamePrefix="select"
+              />
+              {/*   <label class="text-white text-black" for="password">
                 Availabe Day in a Week
               </label> */}
 
-           {/*    <select placeholder="Select Day" name="day" required className="select select-info w-full max-w-xs text-blue-600 font-bold border ">
+              {/*    <select placeholder="Select Day" name="day" required className="select select-info w-full max-w-xs text-blue-600 font-bold border ">
                 <option value="saturday">saturday</option>
                 <option value="sunday">sunday</option>
                 <option value="monday">monday</option>
@@ -206,7 +206,12 @@ const BecomeATrainer = () => {
                 Availabe Time in a Week
               </label>
 
-              <select placeholder="Select slot" name="time" required className="select select-info w-full my-5  text-blue-600 font-bold borde text-blue-600 font-bold border">
+              <select
+                placeholder="Select slot"
+                name="time"
+                required
+                className="select select-info w-full my-5   font-bold borde text-black border"
+              >
                 <option value="Morning">Morning</option>
 
                 <option value="Noon">Noon</option>
@@ -215,9 +220,6 @@ const BecomeATrainer = () => {
 
                 <option value="Night">Night</option>
               </select>
-
-
-             
             </div>
 
             {/* skills */}
@@ -294,9 +296,13 @@ const BecomeATrainer = () => {
           </div>
 
           <div class="flex justify-end mt-6">
-            <button className="btn btn-info text-white font-bold text-xl">Applied</button>
+            <button className="btn btn-info text-white font-bold text-xl">
+              Applied
+            </button>
           </div>
         </form>
+
+    
       </section>
     </div>
   );

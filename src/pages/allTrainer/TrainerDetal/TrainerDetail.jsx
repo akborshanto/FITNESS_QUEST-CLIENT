@@ -31,8 +31,8 @@ const TrainerDetail = () => {
 {/* Trainer Detail card */}
 <TrainerDetailCard tDetail={data}></TrainerDetailCard>
 
-<Be_A_Trainer></Be_A_Trainer>
-    
+{/* <Be_A_Trainer></Be_A_Trainer>
+     */}
     </div>
   )
 }
