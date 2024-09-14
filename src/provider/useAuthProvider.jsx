@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { app } from "../firebase/firebase";
+
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -11,12 +11,14 @@ import {
   updateProfile,
 } from "firebase/auth";
 import axios from "axios";
+import { app } from "../firebase/firebase";
 export const AuthContext = createContext();
 const UseAuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  console.log(user);
   const auth = getAuth(app);
+
   const provider = new GoogleAuthProvider();
   /* create a user */
   const createUser = (email, password) => {
@@ -26,7 +28,7 @@ const UseAuthProvider = ({ children }) => {
 
   /* sign ing with email and password */
   const Login = (email, password) => {
-    setLoading(true)
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -48,23 +50,6 @@ const UseAuthProvider = ({ children }) => {
 
       setUser(currentUser);
 
-      // if (currentUser) {
-      //   const userInfo = {
-      //     email: user?.email,
-      //     role: "member",
-      //   };
-
-      //   useEffect(() => {
-      //     fetch(`http://localhost:5000//user-add`, {
-      //       method: "POST",
-      //       headers: {
-      //         "content-type": "application/json",
-      //       },
-      //       body: JSON.stringify(userInfo),
-      //     });
-      //   }, [userInfo]);
-      // }
-
       setLoading(false);
     });
 
@@ -74,7 +59,22 @@ const UseAuthProvider = ({ children }) => {
   }, []);
 
   /* update profile */
-  const updateProfiles = (displayName, photoURL) => {
+  const updateProfiles = async (displayName, photoURL) => {
+    try {
+      setLoading(true);
+
+      const porfileData = {};
+      if (displayName) {
+        porfileData.displayName = displayName;
+      }
+      if (photoURL) {
+        porfileData.photoURL = photoURL;
+      }
+
+      await updateProfile(auth.currentUser, porfileData);
+      console.log("USR SUCCESSFULLTY");
+    } catch (error) {}
+
     setLoading(true);
     return updateProfile(auth.currentUser, {
       ...user,
@@ -85,7 +85,7 @@ const UseAuthProvider = ({ children }) => {
 
   /* logout */
   const logOut = () => {
-    setLoading(true)
+    setLoading(true);
     return signOut(auth);
   };
 

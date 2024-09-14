@@ -55,91 +55,108 @@ navigate('/')
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen lg:my-4">
-      <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
-        <div className="mb-8 text-center">
-          <h1 className="my-3 text-4xl font-bold">Log In</h1>
-          <p className="text-sm text-gray-400">
-            Sign in to access your account
-          </p>
-        </div>
-        <form
-          onSubmit={handleSubmit}
-          noValidate=""
-          action=""
-          className="space-y-6 ng-untouched ng-pristine ng-valid"
-        >
-          <div className="space-y-4">
-            <div>
-              <label htmlFor="email" className="block mb-2 text-sm">
-                Email address
-              </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                required
-                placeholder="Enter Your Email Here"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
-                data-temp-mail-org="0"
-              />
-            </div>
-            <div>
-              <div className="flex justify-between">
-                <label htmlFor="password" className="text-sm mb-2">
-                  Password
-                </label>
+    <div>
+
+    <div
+    style={{
+      backgroundImage:
+        "Url(https://themewagon.github.io/gymlife/img/gallery/gallery-6.jpg)",
+    }}
+    className="bg-cover bg-center min-h-screen p-10"
+  >
+
+    <div className="md:flex h-full w-full justify-center container m-auto">
+      <div className="">
+        <section className="">
+          <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+            <div className="md:w-[40vw] w-full bg-black bg-opacity-40 backdrop-blur-md duration-500 text-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+              <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <h1 className="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl">
+                  Sign in to your account
+                </h1>
+                <form
+                onSubmit={handleSubmit}
+                  className="space-y-4 md:space-y-6"
+                  action="#"
+                >
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block mb-2 text-sm font-medium text-white"
+                    >
+                      Your email
+                    </label>
+                    <input
+              
+                    type="email"
+    
+                      id="email"
+                      className="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      placeholder="Enter your email"
+                    />
+         {/*            {errors.email && (
+                      <span className="text-red-500">Email is required</span>
+                    )} */}
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="password"
+                      className="block mb-2 text-sm font-medium text-white"
+                    >
+                      Password
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="password"
+                      name="password"
+                        id="password"
+            
+                        placeholder="Enter a strong password"
+                        className="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  
+                        autoComplete="current-password" // Added autocomplete attribute
+                      />
+                      <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
+                        <button
+                          type="button" // Ensure this button does not submit the form
+                          onClick={googleLogin}
+                          className="text-black hover:text-gray-700 focus:outline-none"
+                        >
+                  
+                        </button>
+                      </div>
+                    </div>
+
+             {/*        {errors.password && (
+                      <span className="text-red-500">Password is required</span>
+                    )} */}
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full text-white font-bold bg-[#007BFF] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 headline1 rounded-lg text-sm px-5 py-2.5 text-center"
+                  >
+                    Login
+                  </button>
+                </form>
+            {/*     <Googlebtn />  */}GOOGLE
+                <div className="text-sm font-light text-white">
+                  Don’t have an account yet?
+                  <Link
+                   to="/register"
+                    className="font-medium text-info ml-1 hover:underline"
+                  >
+                    Sign up
+                  </Link>
+                </div>
               </div>
-              <input
-                type="password"
-                name="password"
-                autoComplete="current-password"
-                id="password"
-                required
-                placeholder="*******"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
-              />
             </div>
           </div>
-
-          <div>
-            <button
-              type="submit"
-              className="bg-[#1E90FF] w-full rounded-md py-3 text-white"
-            >
-              Continue
-            </button>
-          </div>
-        </form>
-        <div className="space-y-1">
-          <button className="text-xs hover:underline hover:text-rose-500 text-gray-400">
-            Forgot password?
-          </button>
-        </div>
-        <div className="flex items-center pt-4 space-x-1">
-          <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-          <p className="px-3 text-sm dark:text-gray-400">
-            Login with social accounts
-          </p>
-          <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-        </div>
-        <div className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer">
-          <FcGoogle onClick={googleLogin} size={32} />
-
-          <p>Continue with Google</p>
-        </div>
-        <p className="px-6 text-sm text-center text-gray-400">
-          Don&apos;t have an account yet?{" "}
-          <Link
-            to="/register"
-            className="hover:underline hover:text-rose-500 text-gray-600"
-          >
-            Sign up
-          </Link>
-          .
-        </p>
+        </section>
       </div>
     </div>
+  </div>
+    </div>
+
   );
 };
 

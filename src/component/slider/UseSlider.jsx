@@ -31,7 +31,7 @@ export default function UseSlider({ img }) {
     <>
       {/*<!-- Component: Slider with indicators outside --> */}
 
-      <div className="relative h-[250px] md:h-96 lg:h-screen ">
+      <div className="relative h-[250px] md:h-96 lg:h-screen  overflow-hidden">
       <div className="h-full   absolute w-full bg-black/20   z-30">
         <div className="h-full     flex items-center   ">
           <div className="my-auto    bg-opacity-50   text-center mx-auto">
@@ -71,10 +71,11 @@ export default function UseSlider({ img }) {
         emulateTouch
         stopOnHover
         swipeable={false}
+        
 
       >
         <div
-          className="h-[250px] md:h-96 lg:h-screen    relative  bg-top bg-cover "
+          className="h-[250px] md:h-96 lg:h-screen    relative  bg-top bg-cover overflow-hidden "
           style={{
             backgroundImage:
               "url(https://i.ibb.co/qRdnCyp/background-image.png)",
@@ -85,7 +86,7 @@ export default function UseSlider({ img }) {
           </h1>
         </div>
         <div
-          className="h-full relative  bg-top bg-cover "
+          className="h-full relative  bg-top bg-cover  overflow-hidden"
           style={{
             backgroundImage: "url(https://i.ibb.co/bbHTGYd/footer-bg.jpg)",
           }}
@@ -95,7 +96,7 @@ export default function UseSlider({ img }) {
           </h1>
         </div>
         <div
-          className="h-full relative  bg-top bg-cover "
+          className="h-full relative  bg-top bg-cover overflow-hidden "
           style={{
             backgroundImage: "url(https://i.ibb.co/gw55gCX/hero.jpg)",
           }}

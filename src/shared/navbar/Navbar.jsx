@@ -35,6 +35,7 @@ const Navbar = () => {
 
   const list = (
     <Fragment>
+
     <li>
     <NavLink
       to="/"
@@ -139,7 +140,8 @@ const Navbar = () => {
           <div className="flex items-center">
             {!loading ? (
               user ? (
-                <div>AVATAR</div>
+
+                <div title={user?.email}>AVATAE</div>
               ) : (
                 <div className="flex gap-3">
                   <Link to={"/login"}>
@@ -181,6 +183,9 @@ const Navbar = () => {
                   className="drawer-overlay"
                 ></label>
                 <ul className="menu  bg-black  min-h-full w-80 p-4">
+
+
+
                   {/* Sidebar content here */}
                   {list}
                   {user ? (
