@@ -127,7 +127,7 @@ if(loading){
           <div className="h-full ">
             <Link to={"/"}>
               <img
-                src="https://i.ibb.co/8bY004Y/2024-05-26-00-05-25-Window-removebg-preview.png"
+                src="/public/"
                 alt=""
                 className="h-full"
               />

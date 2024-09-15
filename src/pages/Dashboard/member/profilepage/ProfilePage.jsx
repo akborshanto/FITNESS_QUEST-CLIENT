@@ -15,12 +15,13 @@ import ProfileModal from "./ProfileModal";
 import { axiosSecure } from "../../../../AxiosSecure/AxiosSecure";
 import axios from "axios";
 import toast from "react-hot-toast";
-
+import Loading from "./../../../../component/Loading/Loading";
 const image_hoisting_key = import.meta.env.VITE_IMGBB;
 const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_key}`;
 const ProfilePage = () => {
-  const { user, updateProfiles } = useAuth();
+  const { user, updateProfiles, loading } = useAuth();
 
+  
   const handleUpdate = async (e) => {
     e.preventDefault();
 
@@ -43,39 +44,61 @@ const ProfilePage = () => {
 
   return (
     <div>
-      {/*<!-- Component: User profile card --> */}
-      <div className="overflow-hidden lg:w-[500px] lg:h-[400px]lg: my-8 bg-white ounded shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] text-center text-slate-500 ">
-        {/*  <!-- Image --> */}
-        <figure className="p-6 pb-0">
-          <span className="relative inline-flex h-20 w-20 items-center justify-center rounded-full text-white">
-            <img
-              src={user?.photoURL}
-              alt="user name"
-              title="user name"
-              width="80"
-              height="80"
-              className="max-w-full rounded-full"
-            />
-          </span>
-        </figure>
-        {/*  <!-- Body--> */}
-        <div className="p-6">
-          <header className="mb-4">
-            <h3 className="text-xl font-medium text-slate-700">
-              {user?.email}
-            </h3>
-            <p className=" text-slate-400">{user?.displayName}</p>
-            <p className=" text-slate-400">{user?.metadata.lastSignInTime}</p>
-          </header>
-        </div>
-        {/*  <!-- Action base sized with lead icon buttons  --> */}
-        <div className="flex justify-end gap-2 p-6 pt-0">
-          <ProfileModal handleUpdate={handleUpdate} user={user}>
-            <button className="btn btn-accent">Update</button>
-          </ProfileModal>
-        </div>
+      <div>
+        {/*     <Helmet>
+      <title>Workout - Profile</title>
+    </Helmet> */}
+        {loading ? (
+          <Loading />
+        ) : (
+          <div className="flex items-center justify-center  mt-8 ">
+            <div className="w-full max-w-sm bg-blue-100 border border-gray-200 rounded-lg shadow">
+              <div className="flex flex-col items-center pb-10">
+                <div
+                  className="w-full  "
+                  style={{
+                    backgroundImage:
+                      "url(https://i.ibb.co/7VGkHqb/brick-random-size-lite-blue-260nw-2177706495.jpg)",
+                  }}
+                >
+                  <img
+                    className="w-24 h-24 mb-3 rounded-full shadow-lg ring-2 relative top-14 -right-[140px] "
+                    src={user.photoURL}
+                    alt="User image"
+                  />
+                </div>
+
+                <div className=" p-5 text-center mt-10">
+                  <h5 className="mb-1 text-base bg-red-400 rounded-full font-medium text-gray-900">
+                    {/*       {isAdmin ? "admin" : ""} */} ADMIN
+                  </h5>
+                  <h5 className="mb-1 text-base bg-red-400 rounded-full font-medium text-gray-900">
+                    {/*     {isTrainer ? "Trainer" : ""} */}TRAINER
+                  </h5>
+                  <h5 className="mb-1 text-2xl font-medium text-gray-900">
+                    {user.displayName}
+                  </h5>
+                  <h5 className="mb-1 text-xl font-medium text-gray-900">
+                    {user.email}
+                  </h5>
+                  <span className="text-sm text-gray-500">
+                    Last log in :{/*  {dateOnly} */}
+                    {user?.metadata?.lastSignInTime}
+                  </span>
+                </div>
+                {/*  <!-- Action base sized with lead icon buttons  --> */}
+                <div className="flex justify-end gap-2 p-6 pt-0 mt-6  ">
+                  <ProfileModal handleUpdate={handleUpdate} user={user}>
+                    <button className="mb-1 text-base bg-red-400 rounded-full font-medium text-gray-900">
+                      Update
+                    </button>
+                  </ProfileModal>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
-      {/*<!-- End User profile card --> */}
     </div>
   );
 };

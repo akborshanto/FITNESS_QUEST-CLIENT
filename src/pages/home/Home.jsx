@@ -18,7 +18,7 @@ const Home = () => {
   const [role]= useRole()
   //consolelog(role)
   return (
-    <div  className='  '>
+    <div  className=' overflow-hidden'>
 
 
 {/* SLIDER SECTION */}

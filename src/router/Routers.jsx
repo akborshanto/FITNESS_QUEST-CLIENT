@@ -115,7 +115,7 @@ children:[
 
 /* 🚩ADMIN🚩 */
 {
-    path:'news-letter',
+    path:'subscribe',
     element:<DashbordPrivate><NewsLetterAdmin></NewsLetterAdmin></DashbordPrivate>
 
 },
@@ -173,7 +173,7 @@ children:[
     element:<ActivateLog></ActivateLog>
 },
 {
-    path:'profile-page',
+    path:'',
     element:<ProfilePage></ProfilePage>
 },
 {

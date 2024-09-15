@@ -21,7 +21,7 @@ const onSubmit=(data,e)=>{
 .then((result)=>{
 toast.success("Login successful")
 e.target.reset()
-
+navigate(location?.state ? location.state:"/")
 
 })
 .catch((error)=>{

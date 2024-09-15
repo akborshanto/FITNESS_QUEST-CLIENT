@@ -5,9 +5,9 @@ import Footer from '../shared/footer/Footer'
 
 const Main = () => {
   return (
-    <div className='  mx-auto overflow-hidden '>
+    <div className='   '>
     <Navbar></Navbar>
-    <div className=' min-h-screen '>
+    <div className='  '>
     <Outlet></Outlet>
     </div>
 

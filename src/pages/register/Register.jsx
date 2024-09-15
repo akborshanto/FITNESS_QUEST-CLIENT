@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../auth/Auth";
 import useAxiosSecure from "../../AxiosSecure/AxiosSecure";
@@ -12,8 +12,10 @@ import { useForm } from "react-hook-form";
 // const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_key}`;
 const Register = () => {
   /* user axios secure */
+  const location=useLocation();
+  const navigate=useNavigate();
   const axiosSecure = useAxiosSecure();
-  const navigate = useNavigate();
+
   const { createUser, updateProfiles } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -45,6 +47,7 @@ const Register = () => {
   
 
           updateProfiles(data.name,image)
+          navigate(location?.state ? location.state : "/");
           toast.success("successfully Registered")
 
 
@@ -53,51 +56,7 @@ const Register = () => {
 
       .catch((err) => console.log(err));
 
-    //
-    //   .then((res) => {
-    //     const image = res.data.data.display_url;
-    //     if (res.data.success) {
-    //       createUser(email, password)
-    //         .then((res) => {
-    //           if (res.user) {
-    //             updateProfiles(data.name, image).then(() => {
-    //               const userInfo = {
-    //                 name: data.name,
-    //                 email: data.email,
-    //               };
-    //               // axiosSecure
-    //               //   .post("/users", userInfo)
-    //               //   .then((res) => {
-    //               //     if (res.data.insertedId) {
-
-    //               //       navigate("/");
-    //               //     } else {
-    //               //       navigate("/");
-    //               //     }
-    //               //   })
-    //               //   .catch((err) => console.log(err));
-    //             });
-    //             toast.success("Successfully sign in ");
-    //             navigate(location?.state ? location.state : "/");
-    //           }
-    //         })
-    //         .catch((error) => {
-    //           if (
-    //             error.code ===
-    //               "auth/account-exists-with-different-credential" ||
-    //             error.code === "auth/email-already-in-use"
-    //           ) {
-    //             toast.error("This email alreay exist");
-    //            // setLoading(false);
-    //           }
-    //         });
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-
-    //   .catch((err) => console.log(err));
+    
   };
 
   return (

@@ -3,7 +3,7 @@ import axios from 'axios'
 
 
 export const axiosSecure= axios.create({
- baseURL:"http://localhost:5000",
+baseURL:"http://localhost:5000",
 //  baseURL:"https://trainer-quest.vercel.app",
  //timeout:1000,
 

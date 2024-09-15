@@ -1,16 +1,33 @@
 import React, { Fragment, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import useRole from "../../hook/useRole";
 import Loading from "../../component/Loading/Loading";
+import { ImCross } from "react-icons/im";
+import { CgProfile } from "react-icons/cg";
+import { MdAccountBalanceWallet } from "react-icons/md";
+import { IoMailOpen } from "react-icons/io5";
+import { FaChalkboardTeacher } from "react-icons/fa";
+import { VscGitStashApply } from "react-icons/vsc";
+import { FaBarsStaggered } from "react-icons/fa6";
+import { RxActivityLog } from "react-icons/rx";
+import { SiGoogleclassroom } from "react-icons/si";
+import { GiTeacher } from "react-icons/gi";
 
 const Dashboard = () => {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
+const [role,setRole]=useState("")
 
-  const [role, isLoading] = useRole();
+
+
+  const [isAdmin, setIsAdmin] = useState("isAdmin");
+  const [isTrainer, setIsTrainer] = useState("");
   //consolelog(role);
-  if (isLoading) {
-    return <Loading></Loading>;
-  }
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   const links = (
     <Fragment>
@@ -208,82 +225,223 @@ const Dashboard = () => {
   );
 
   return (
-    <div className="flex  justify-center items-center ">
-      {/*  <!-- Component: Basic side navigation menu --> */}
-      {/*  <!-- Mobile trigger --> */}
+    <div>
 
-      {/*  <!-- Backdrop --> */}
 
-      <div className=" my-6 ">
-        <Outlet></Outlet>
-      </div>
-      <div>
-        <button
-          title="Side navigation"
-          type="button"
-          className={`visible fixed left-6 top-6 z-40 order-10 block h-10 w-10 self-center rounded bg-white opacity-100 lg:hidden ${
-            isSideNavOpen
-              ? "visible opacity-100 [&_span:nth-child(1)]:w-6 [&_span:nth-child(1)]:translate-y-0 [&_span:nth-child(1)]:rotate-45 [&_span:nth-child(3)]:w-0 [&_span:nth-child(2)]:-rotate-45 "
-              : ""
-          }`}
-          aria-haspopup="menu"
-          aria-label="Side navigation"
-          aria-expanded={isSideNavOpen ? " true" : "false"}
-          aria-controls="nav-menu-1"
-          onClick={() => setIsSideNavOpen(!isSideNavOpen)}
-        >
-          <div className="absolute top-1/2 left-1/2 w-6 -translate-x-1/2 -translate-y-1/2 transform">
-            <span
-              aria-hidden="true"
-              className="absolute block h-0.5 w-9/12 -translate-y-2 transform rounded-full bg-slate-700 transition-all duration-300"
-            ></span>
-            <span
-              aria-hidden="true"
-              className="absolute block h-0.5 w-6 transform rounded-full bg-slate-900 transition duration-300"
-            ></span>
-            <span
-              aria-hidden="true"
-              className="absolute block h-0.5 w-1/2 origin-top-left translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"
-            ></span>
-          </div>
-        </button>
+   
 
-        {/*  <!-- Side Navigation --> */}
-        <aside
-          id="nav-menu-1"
-          aria-label="Side navigation"
-          className={`fixed top-0 bottom-0 left-0 z-40 flex w-72 flex-col border-r border-r-slate-200 bg-white transition-transform lg:translate-x-0 ${
-            isSideNavOpen ? "translate-x-0" : " -translate-x-full"
-          }`}
-        >
-          <a
-            aria-label="WindUI logo"
-            className="flex items-center gap-2 whitespace-nowrap p-6 text-xl font-medium focus:outline-none"
-            href="javascript:void(0)"
+
+    <div className=" lg:pt-24 pt-20 bg-[#141414] ">
+
+  {" "}
+  <div className="flex h-screen  relative border-t-2">
+    <aside
+      className={`absolute inset-y-0 left-0 z-10 border-r-2  w-64 overflow-y-auto transition duration-300 transform bg-[#141414]  dark:bg-gray-800 ${
+        isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+      } md:translate-x-0 md:static md:inset-0`}
+    >
+      <div className="flex items-center justify-center pt-8">
+        <div className="text-xl flex  justify-between w-full px-10 font-semibold text-white">
+          Dashboard{" "}
+          <button
+            className="text-gray-500 focus:outline-none md:hidden"
+            onClick={toggleSidebar}
           >
-          
-          <h1 className="text-2xl font-serif">       <span className="text-blue-400  text-3xl"> Trainer</span> Queest</h1>
-          
-          </a>
-          <nav
-            aria-label="side navigation"
-            className="flex-1 divide-y divide-slate-100 overflow-auto"
-          >
-            <div>
-              <ul className="flex flex-1 flex-col gap-1 py-3">{links}</ul>
-            </div>
-          </nav>
-        </aside>
-
-        {/*  <!-- Backdrop --> */}
-        <div
-          className={`fixed top-0 bottom-0 left-0 right-0 z-30 bg-slate-900/20 transition-colors sm:hidden ${
-            isSideNavOpen ? "block" : "hidden"
-          }`}
-          onClick={() => setIsSideNavOpen(false)}
-        ></div>
+            <ImCross className="text-white text-xl" />
+          </button>
+        </div>
       </div>
+      <nav className="">
+        <NavLink
+          to="/dashboard"
+          end
+          className={({ isActive }) =>
+            `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
+              isActive
+                ? "   inter  text-[#007BFF] border-x-0 rounded-none border-t-0 bg-transparent"
+                : "md:text-white text-white"
+            } `
+          }
+        >
+  
+          <CgProfile className="mr-2" /> Profile
+        </NavLink>
+            <>
+      
+            <NavLink
+              to="/dashboard/activity-log"
+              className={({ isActive }) =>
+                `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
+                  isActive
+                    ? "   inter  text-[#007BFF] border-x-0 rounded-none border-t-0 bg-transparent"
+                    : "md:text-white text-white"
+                } `
+              }
+            >
+              <RxActivityLog className="mr-2" /> Activity log
+            </NavLink>
+            <NavLink
+              to="/dashboard/booked-trainer"
+              className={({ isActive }) =>
+                `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
+                  isActive
+                    ? "   inter  text-[#007BFF] border-x-0 rounded-none border-t-0 bg-transparent"
+                    : "md:text-white text-white"
+                } `
+              }
+            >
+              <GiTeacher className="mr-2" /> Booked trainers
+            </NavLink>
+          </>
+            
+        
+
+
+
+
+
+
+
+        {isAdmin  === "isAdmin" && (
+          <>
+            {" "}
+            <NavLink
+              to="/dashboard/balance"
+              className={({ isActive }) =>
+                `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
+                  isActive
+                    ? "   inter  text-[#007BFF] border-x-0 rounded-none border-t-0 bg-transparent"
+                    : "md:text-white text-white"
+                } `
+              }
+            >
+              <MdAccountBalanceWallet className="mr-2" /> balance
+            </NavLink>
+            <NavLink
+              to="/dashboard/subscribe"
+              className={({ isActive }) =>
+                `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
+                  isActive
+                    ? "   inter  text-[#007BFF] border-x-0 rounded-none border-t-0 bg-transparent"
+                    : "md:text-white text-white"
+                } `
+              }
+            >
+              <IoMailOpen className="mr-2" /> subscribe
+            </NavLink>
+            <NavLink
+              to="/dashboard/all-trainer"
+              className={({ isActive }) =>
+                `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
+                  isActive
+                    ? "   inter  text-[#007BFF] border-x-0 rounded-none border-t-0 bg-transparent"
+                    : "md:text-white text-white"
+                } `
+              }
+            >
+              <FaChalkboardTeacher className="mr-2" /> All Trainers
+            </NavLink>
+            <NavLink
+              to="/dashboard/applied-trainer"
+              className={({ isActive }) =>
+                `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
+                  isActive
+                    ? "   inter  text-[#007BFF] border-x-0 rounded-none border-t-0 bg-transparent"
+                    : "md:text-white text-white"
+                } `
+              }
+            >
+              <VscGitStashApply className="mr-2" /> Applied Trainer
+            </NavLink>
+            <NavLink
+              to="/dashboard/add-newClass"
+              className={({ isActive }) =>
+                `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
+                  isActive
+                    ? "   inter  text-[#007BFF] border-x-0 rounded-none border-t-0 bg-transparent"
+                    : "md:text-white text-white"
+                } `
+              }
+            >
+              <SiGoogleclassroom className="mr-2" /> Add new Class
+            </NavLink>
+          </>
+        ) 
+}
+    
+
+{
+ isTrainer && "Trainer"  (
+          <>
+            {" "}
+            <NavLink
+              to="/dashboard/manageClasses"
+              className={({ isActive }) =>
+                `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
+                  isActive
+                    ? "   inter  text-[#007BFF] border-x-0 rounded-none border-t-0 bg-transparent"
+                    : "md:text-white text-white"
+                } `
+              }
+            >
+              <SiGoogleclassroom className="mr-2" /> manage classes
+            </NavLink>
+            <NavLink
+              to="/dashboard/addSession"
+              className={({ isActive }) =>
+                `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
+                  isActive
+                    ? "   inter  text-[#007BFF] border-x-0 rounded-none border-t-0 bg-transparent"
+                    : "md:text-white text-white"
+                } `
+              }
+            >
+              <SiGoogleclassroom className="mr-2" /> Add Session
+            </NavLink>
+          </>
+        )
+}
+       
+        {isAdmin || isTrainer ? (
+          <NavLink
+            to="/dashboard/addNew-forum"
+            className={({ isActive }) =>
+              `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
+                isActive
+                  ? "   inter  text-[#007BFF] border-x-0 rounded-none border-t-0 bg-transparent"
+                  : "md:text-white text-white"
+              } `
+            }
+          >
+         {/*    <RxActivityLog className="mr-2" />  */}Add new Forum
+          </NavLink>
+        ) : (
+          ""
+        )}
+      </nav>
+    </aside>
+
+    <div className="flex flex-col flex-1 w-full overflow-hidden ">
+      <main className="flex-1 overflow-x-hidden overflow-y-auto  bg-[#141414]">
+        <div className="container mx-auto px-6 py-8">
+          <button
+            className="text-gray-500 focus:outline-none md:hidden"
+            onClick={toggleSidebar}
+          >
+            <FaBarsStaggered className="text-white text-xl" />
+          </button>
+          <Outlet />
+        </div>
+      </main>
     </div>
+  </div>
+</div>
+
+
+
+
+    </div>
+
   );
 };
 
