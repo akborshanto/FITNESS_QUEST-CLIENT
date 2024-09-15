@@ -18,7 +18,7 @@ const Home = () => {
   const [role]= useRole()
   //consolelog(role)
   return (
-    <div  className='   ml-3 mr-3'>
+    <div  className='  '>
 
 
 {/* SLIDER SECTION */}

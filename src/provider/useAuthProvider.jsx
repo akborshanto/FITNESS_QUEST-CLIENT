@@ -38,16 +38,11 @@ const UseAuthProvider = ({ children }) => {
     return signInWithPopup(auth, provider);
   };
 
-  /* USER INFO CN =============================
-===============================*/
-
   /* ON AUTH STATE CHANGE */
 
   useEffect(() => {
     setLoading(true);
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      /* USER CN */
-
       setUser(currentUser);
 
       setLoading(false);

@@ -1,59 +1,49 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
+
 import useAxiosSecure from "../../AxiosSecure/AxiosSecure";
 import { useMutation } from "@tanstack/react-query";
 import useAuth from "../../auth/Auth";
 import toast from "react-hot-toast";
-
+import { useForm } from "react-hook-form";
+import { FcGoogle } from "react-icons/fc";
+import Loading from "../../component/Loading/Loading";
 const Login = () => {
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const location = useLocation();
+  const {register,handleSubmit}=useForm()
   const from = location.state?.from?.pathname || "/";
-  const { GoogleLogin, Login } = useAuth();
-  const handleSubmit = async (e) => {
-    const axiosSecure=useAxiosSecure()
-    e.preventDefault();
+  const { GoogleLogin, Login,loading } = useAuth();
 
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    const role = "member";
+  
+const onSubmit=(data,e)=>{
+  Login(data.email,data.password)
+.then((result)=>{
+toast.success("Login successful")
+e.target.reset()
 
-    const userInfo = {
-      email,
-      password,
-      role,
-    };
 
-    /*Login  */
-    Login(email, password).then((res) => {
-      toast.success("succeffulefly login");
-      navigate("/")
-      // //consolelog(res)
-    });
+})
+.catch((error)=>{
+  console.log(error)
+})
 
-    // const {data}= await axiosSecure.post('/user',userInfo)
-    // ////consolelog(data)
-  };
+
+}
+
 
   const googleLogin = () => {
-    GoogleLogin().then((res) => {
+    GoogleLogin()
+.then((res)=>{
 
-const info={
-  email:res.user?.email,
-  name:res.user?.displayName,
-  role:"member"
-}
-axiosSecure.post('/moduleUser',info)
-navigate('/')
-      navigate(from, { replace: true });
-     
+  toast.success("Successfully Google logged in")
+})
 
-      toast.success("Successfully logged in Google");
-    });
-  };
+  }
+// if(loading){
 
+//   return <Loading></Loading>
+// }
   return (
     <div>
 
@@ -75,7 +65,7 @@ navigate('/')
                   Sign in to your account
                 </h1>
                 <form
-                onSubmit={handleSubmit}
+                onSubmit={handleSubmit(onSubmit)}
                   className="space-y-4 md:space-y-6"
                   action="#"
                 >
@@ -89,7 +79,7 @@ navigate('/')
                     <input
               
                     type="email"
-    
+    {...register("email")}
                       id="email"
                       className="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       placeholder="Enter your email"
@@ -100,6 +90,7 @@ navigate('/')
                   </div>
                   <div>
                     <label
+                  
                       htmlFor="password"
                       className="block mb-2 text-sm font-medium text-white"
                     >
@@ -110,7 +101,7 @@ navigate('/')
                         type="password"
                       name="password"
                         id="password"
-            
+            {...register("password")}
                         placeholder="Enter a strong password"
                         className="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                   
@@ -138,7 +129,11 @@ navigate('/')
                     Login
                   </button>
                 </form>
-            {/*     <Googlebtn />  */}GOOGLE
+                <div onClick={googleLogin} className=" cursor-pointer text-4xl text-center flex justify-center  items-center">
+                <FcGoogle />
+                <span className="text-2xl">oogle</span>
+                </div>
+            {/*     <Googlebtn />  */}
                 <div className="text-sm font-light text-white">
                   Don’t have an account yet?
                   <Link

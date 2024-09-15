@@ -61,7 +61,7 @@ export default function UseSlider({ img }) {
           </div>
         </div>
       </div>{" "}
-   <Carousel
+   <Carousel className="overflow-hidden w-full"
         showArrows={false}
         showIndicators={false}
         showStatus={false}

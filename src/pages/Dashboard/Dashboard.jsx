@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import useRole from "../../hook/useRole";
-import Spiners from "./../../component/spinner/Spiner";
+import Loading from "../../component/Loading/Loading";
 
 const Dashboard = () => {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
@@ -9,7 +9,7 @@ const Dashboard = () => {
   const [role, isLoading] = useRole();
   //consolelog(role);
   if (isLoading) {
-    return <Spiners></Spiners>;
+    return <Loading></Loading>;
   }
 
   const links = (

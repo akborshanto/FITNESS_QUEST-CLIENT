@@ -8,8 +8,8 @@ import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 
-//const image_hoisting_key = import.meta.env.VITE_IMGBB;
-//const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_key}`;
+// const image_hoisting_key = import.meta.env.VITE_IMGBB;
+// const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_key}`;
 const Register = () => {
   /* user axios secure */
   const axiosSecure = useAxiosSecure();
@@ -22,29 +22,38 @@ const Register = () => {
   }
   const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {
-
     const password = data.password;
     const email = data.email;
     const imageFile = { image: data.image[0] };
 
+    console.log(imageFile.image);
+
+    createUser(email, password)
+      .then((res) => {
+        axios.post(
+          `https://api.imgbb.com/1/upload?key=e9b3cb55e11b48d4142caf366d77cea6`,
+          imageFile,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        )
+        .then((res)=>{
+
+          const image=res.data.data?.display_url;
+  
+
+          updateProfiles(data.name,image)
+          toast.success("successfully Registered")
 
 
-createUser(email,password)
-.then((res)=>console.log(res))
-.catch((err)=>console.log(err))
+        })
+      })
 
-    
+      .catch((err) => console.log(err));
 
-    // axios
-    //   .post(
-    //     `https://api.imgbb.com/1/upload?key=42dd2e6516077adba24c1c7c9ca6c3d7`,
-    //     imageFile,
-    //     {
-    //       headers: {
-    //         "Content-Type": "multipart/form-data",
-    //       },
-    //     }
-    //   )
+    //
     //   .then((res) => {
     //     const image = res.data.data.display_url;
     //     if (res.data.success) {
@@ -170,6 +179,7 @@ createUser(email,password)
                           <input
                             type="password"
                             name="password"
+                            {...register("password", { required: true })}
                             autoComplete="current-password"
                             id="password"
                             placeholder="Enter a strong password"
