@@ -96,7 +96,7 @@ const TeamSection = () => {
     </div>
     <div className="flex items-center justify-center pb-14">
       {" "}
-      <Link className="" to={"/trainers"}>
+      <Link className="" to={"/all-trainer"}>
         {" "}
         <button className=" flex items-center gap-2 px-4 p-2 mt-5 rounded-full border bg-[#007BFF] font-bold border-[#007BFF] bt text-white hover:bg-transparent hover:text-[#007BFF] duration-500">
           View All <FaArrowAltCircleRight />

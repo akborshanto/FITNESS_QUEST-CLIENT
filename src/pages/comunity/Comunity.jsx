@@ -10,11 +10,12 @@ const Comunity = () => {
   const [pagin, setPagin] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [forum] = useForum();
-  const { count } = useLoaderData();
+  // const { count } = useLoaderData();
+  const { count } =10;
 
   const numbeOfPage = Math.ceil(count / itemPerPage);
   //const pages=[]
-  const pages = [...Array(numbeOfPage).keys()];
+  const pages = [...Array(numbeOfPage).keys()] ;
   const handleIterPerPage = (e) => {
     //4
     //  //consolelog(e.target.value)

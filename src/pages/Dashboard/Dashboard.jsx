@@ -413,7 +413,7 @@ const [role,setRole]=useState("")
               } `
             }
           >
-         {/*    <RxActivityLog className="mr-2" />  */}Add new Forum
+         <RxActivityLog className="mr-2" /> Add new Forum
           </NavLink>
         ) : (
           ""

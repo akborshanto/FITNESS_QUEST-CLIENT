@@ -32,8 +32,7 @@ const skill = [
 ];
 
 /* const IMG BB */
-const image_hoisting_key = import.meta.env.VITE_IMGBB;
-const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_key}`;
+
 const BecomeATrainer = () => {
   const [ability, setAbilit] = useState();
 
@@ -51,17 +50,6 @@ const BecomeATrainer = () => {
     const time = form.time.value;
     const status = "pending";
 
-    /* all user info */
-
-    //consolelog(allBecomeTrainerInfo)
-    // const  selectDate=form.slectDate.value;
-    /* user axios secure  */
-
-    // const res = await axiosSecure.post("/become-trainer", allBecomeTrainerInfo);
-    // //consolelog(res)
-    // if (res.data.insertedId) {
-    //   toast.success("Succesfully Reequest For Be A Traiener");
-    // }
 
     /*===================================== */
     const trainerData = {
@@ -72,15 +60,14 @@ const BecomeATrainer = () => {
       experience,
       skill,
     };
-    console.log(trainerData);
 
     const res = await axiosSecure.post("/fitness/trainer", trainerData)
-    console.log(res.data)
+
   };
   // const specialties = skills.map((skill) => skill.value);
   return (
     <div>
-      <section class="max-w-4xl p-6 mx-auto bg-black text-white rounded-md shadow-md text-black">
+      <section class="max-w-4xl p-8 mt mx-auto bg-black text-white rounded-md shadow-md  ">
         <h2 class="text-lg font-semibold text-white capitalize dark:text-white">
           Account settings
         </h2>
@@ -88,7 +75,7 @@ const BecomeATrainer = () => {
         <form onSubmit={handleSubmit}>
           <h1>{user?.displayName}</h1>
           <h1>{user?.email}</h1>
-          <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+          <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2 items-center">
             {/* image */}
 
             {/* EXPERIENCE */}
@@ -103,6 +90,7 @@ const BecomeATrainer = () => {
                 required
                 type="number"
                 name="experience"
+                placeholder="Experience"
                 class="block w-full px-4 py-2 mt-2 text-black bg-white border border-gray-200 rounded-md text-black  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
@@ -110,7 +98,7 @@ const BecomeATrainer = () => {
             {/* DAY WITHOUT REACT SELECT */}
 
             <div>
-              <label class="text-white k" for="password">
+              <label class="text-white tex k" for="password">
                 Availabe Day in a Week
               </label>
               <Select
@@ -118,6 +106,7 @@ const BecomeATrainer = () => {
                 name="day"
                 options={sevenDays}
                 onChange={setDay}
+                placeholder="Available Day"
                 className="basic-multi-select   bg-blue-400 select-info w-full text-black"
                 classNamePrefix="select"
               />
@@ -134,25 +123,28 @@ const BecomeATrainer = () => {
                 id="username"
                 type="number"
                 name="time"
-                class="block text-blue-600 font-bold border w-full px-4 py-2 mt-2 text-black bg-white border border-gray-200 rounded-md  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                placeholder="Available Time in a Week"
+                className="block text-blue-600  border w-full px-4 py-2 mt-2 text-black bg-white border border-gray-200 rounded-md  dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
+            </div>
+            <div>
+              <label class=" text-white" for="password">
+                Skills
+              </label>
+
+ 
+              <Select
+              required={true}
+              options={skill}
+              onChange={setAbilit}
+              isMulti
+              className="focus:ring-2 focus:ring-blue-600 text-black"
+            />
             </div>
 
             {/* skills */}
 
-            <div>
-              <div class="relative flex flex-wrap items-center  gap-4">
-                <h1 className=" px-4">SKills</h1>
-                <br />
-                <Select
-                  required={true}
-                  options={skill}
-                  onChange={setAbilit}
-                  isMulti
-                  className="focus:ring-2 focus:ring-blue-600 text-black"
-                />
-              </div>
-            </div>
+   
             {/*  */}
           </div>
 
