@@ -7,7 +7,7 @@ const DashboardLayout = () => {
   return (
     <div>
       
-
+<Navbar></Navbar>
     <Outlet></Outlet>
  
     </div>

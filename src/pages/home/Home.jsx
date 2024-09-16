@@ -13,9 +13,11 @@ import ComunitySection from './ComuntiySection/ComunitySection'
 import Card from '../../component/cardHome/Card'
 import useRole from '../../hook/useRole'
 import ReviewCard from './Reviews/ReviewCard'
+import useRoleNew from '../../hook/useRoleNew'
 
 const Home = () => {
-  const [role]= useRole()
+  const [role,isAdmin,isTrainer]= useRoleNew()
+  console.log(isTrainer,"ROLE")
   //consolelog(role)
   return (
     <div  className=' overflow-hidden'>

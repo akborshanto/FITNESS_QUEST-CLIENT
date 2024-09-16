@@ -22,7 +22,7 @@ const UseAuthProvider = ({ children }) => {
   const provider = new GoogleAuthProvider();
   /* create a user */
   const createUser = (email, password) => {
-    setLoading(true);
+    // setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
@@ -67,7 +67,7 @@ const UseAuthProvider = ({ children }) => {
       }
 
       await updateProfile(auth.currentUser, porfileData);
-      console.log("USR SUCCESSFULLTY");
+    setLoading(false)
     } catch (error) {}
 
     setLoading(true);

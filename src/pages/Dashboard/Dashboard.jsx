@@ -12,16 +12,21 @@ import { FaBarsStaggered } from "react-icons/fa6";
 import { RxActivityLog } from "react-icons/rx";
 import { SiGoogleclassroom } from "react-icons/si";
 import { GiTeacher } from "react-icons/gi";
+import useRoleNew from "../../hook/useRoleNew";
 
 const Dashboard = () => {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
-const [role,setRole]=useState("")
 
+const[isAdmin,isTrainer]=useRoleNew()
 
-
-  const [isAdmin, setIsAdmin] = useState("isAdmin");
-  const [isTrainer, setIsTrainer] = useState("");
+// const role=isTrainer ? "trainer": isAdmin? "admin": "member"
+  // const [isAdmin, setIsAdmin] = useState("isAdmin");
+  // const [isTrainer, setIsTrainer] = useState("");
   //consolelog(role);
+
+  // const [isAdmin, isTrainer] = useRole();
+  console.log(isAdmin, isTrainer);
+  // const [applictionBecameTrainer] = UseAplicationFiner();
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -29,200 +34,7 @@ const [role,setRole]=useState("")
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const links = (
-    <Fragment>
-      {/* 🚩🏴  ADMIN*🚩🏴‍☠️🚩*/}
-      <li className="px-3">
-        <a className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">
-          <div className="flex items-center self-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="h-6 w-6"
-              aria-label="Dashboard icon"
-              role="graphics-symbol"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-              />
-            </svg>
-          </div>
-          <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-            <Link to="/">HOME</Link>
-          </div>
-        </a>
-      </li>
 
-      {role === "admin" && (
-        <li className="px-3">
-          <a className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">
-            <div className="flex items-center self-center">
-             
-            </div>
-            <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-              <Link to="/dashboard/news-letter">News Letter</Link>
-            </div>
-          </a>
-        </li>
-      )}
-      {role === "admin" && (
-        <li className="px-3">
-          <a className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">
-            <div className="flex items-center self-center">
-             
-            </div>
-            <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-              <Link to="/dashboard/all-trainer">All Trainer</Link>
-            </div>
-          </a>
-        </li>
-      )}
-      {role === "admin" && (
-        <li className="px-3">
-          <a className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">
-            <div className="flex items-center self-center">
-             
-            </div>
-            <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-              <Link to="/dashboard/applied-trainer">AppliedTrainer</Link>
-            </div>
-          </a>
-        </li>
-      )}
-      {role === "admin" && (
-        <li className="px-3">
-          <a className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">
-            <div className="flex items-center self-center">
-             
-            </div>
-            <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-              <Link to="/dashboard/balance">Balance</Link>
-            </div>
-          </a>
-        </li>
-      )}
-
-      {role === "admin" && (
-        <li className="px-3">
-          <a className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">
-            <div className="flex items-center self-center">
-             
-            </div>
-            <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-              <Link to="/dashboard/add-newClass">Add new Class</Link>
-            </div>
-          </a>
-        </li>
-        
-      )}
-
-
-      {role === "admin"  && (
-        <li className="px-3">
-          <a className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">
-            <div className="flex items-center self-center">
-       
-            </div>
-            <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-              <Link to="/dashboard/addNew-forum">Add New Forum</Link>
-            </div>
-          </a>
-        </li>
-      )}
-
-
-
-
-
-
-
-
-      {/* 🚩🏴====================================================  TRAINERERER*🚩🏴‍☠️🚩==================================*/}
-
-      {role === "trainer" && (
-        <li className="px-3">
-          <a className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">
-            <div className="flex items-center self-center">
-             
-            </div>
-            <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-              <Link to="/dashboard/manage-slot">Mangae Slot</Link>
-            </div>
-          </a>
-        </li>
-      )}
-      {role === "trainer" && (
-        <li className="px-3">
-          <a className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">
-            <div className="flex items-center self-center">
-             
-            </div>
-            <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-              <Link to="/dashboard/add-new-slot">Add New Slot</Link>
-            </div>
-          </a>
-        </li>
-      )}
-  
-      {role === "trainer"  && (
-        <li className="px-3">
-          <a className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">
-            <div className="flex items-center self-center">
-       
-            </div>
-            <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-              <Link to="/dashboard/addNew-forum">Add New Forum</Link>
-            </div>
-          </a>
-        </li>
-      )}
-
-      {/* 🚩🏴====================================================  MEMBER*🚩🏴‍☠️🚩==================================*/}
-
-      {role === "member" && (
-        <li className="px-3">
-          <a className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">
-            <div className="flex items-center self-center">
-             
-            </div>
-            <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-              <Link to="/dashboard/activity-log">Activity-log</Link>
-            </div>
-          </a>
-        </li>
-      )}
-      {role === "member" && (
-        <li className="px-3">
-          <a className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">
-            <div className="flex items-center self-center">
-             
-            </div>
-            <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-              <Link to="/dashboard/profile-page">Profile Page</Link>
-            </div>
-          </a>
-        </li>
-      )}
-      {role === "member" && (
-        <li className="px-3">
-          <a className="flex items-center gap-3 rounded p-3 text-slate-700 transition-colors hover:bg-emerald-50 hover:text-emerald-500 focus:bg-emerald-50 aria-[current=page]:bg-emerald-50 aria-[current=page]:text-emerald-500 ">
-            <div className="flex items-center self-center">
-             
-            </div>
-            <div className="flex w-full flex-1 flex-col items-start justify-center gap-0 overflow-hidden truncate text-sm">
-              <Link to="/dashboard/booked-trainer">Book Trainer</Link>
-            </div>
-          </a>
-        </li>
-      )}
- 
-    </Fragment>
-  );
 
   return (
     <div>
@@ -230,9 +42,10 @@ const [role,setRole]=useState("")
 
    
 
-
     <div className=" lg:pt-24 pt-20 bg-[#141414] ">
-
+{/*     <Helmet>
+    <title>Workout - Dashboard</title>
+  </Helmet> */}
   {" "}
   <div className="flex h-screen  relative border-t-2">
     <aside
@@ -263,13 +76,13 @@ const [role,setRole]=useState("")
             } `
           }
         >
-  
           <CgProfile className="mr-2" /> Profile
         </NavLink>
-            <>
-      
+        {isAdmin === false && isTrainer === false ? (
+          <>
+            {" "}
             <NavLink
-              to="/dashboard/activity-log"
+              to="/dashboard/activity"
               className={({ isActive }) =>
                 `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
                   isActive
@@ -281,7 +94,7 @@ const [role,setRole]=useState("")
               <RxActivityLog className="mr-2" /> Activity log
             </NavLink>
             <NavLink
-              to="/dashboard/booked-trainer"
+              to="/dashboard/bookedTrainers"
               className={({ isActive }) =>
                 `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
                   isActive
@@ -293,16 +106,10 @@ const [role,setRole]=useState("")
               <GiTeacher className="mr-2" /> Booked trainers
             </NavLink>
           </>
-            
-        
-
-
-
-
-
-
-
-        {isAdmin  === "isAdmin" && (
+        ) : (
+          ""
+        )}
+        {isAdmin ? (
           <>
             {" "}
             <NavLink
@@ -318,7 +125,7 @@ const [role,setRole]=useState("")
               <MdAccountBalanceWallet className="mr-2" /> balance
             </NavLink>
             <NavLink
-              to="/dashboard/subscribe"
+              to="/dashboard/subscriber"
               className={({ isActive }) =>
                 `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
                   isActive
@@ -330,7 +137,7 @@ const [role,setRole]=useState("")
               <IoMailOpen className="mr-2" /> subscribe
             </NavLink>
             <NavLink
-              to="/dashboard/all-trainer"
+              to="/dashboard/allTrainers"
               className={({ isActive }) =>
                 `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
                   isActive
@@ -342,7 +149,7 @@ const [role,setRole]=useState("")
               <FaChalkboardTeacher className="mr-2" /> All Trainers
             </NavLink>
             <NavLink
-              to="/dashboard/applied-trainer"
+              to="/dashboard/add-new-slot"
               className={({ isActive }) =>
                 `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
                   isActive
@@ -354,7 +161,7 @@ const [role,setRole]=useState("")
               <VscGitStashApply className="mr-2" /> Applied Trainer
             </NavLink>
             <NavLink
-              to="/dashboard/add-newClass"
+              to="/dashboard/addClasses"
               className={({ isActive }) =>
                 `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
                   isActive
@@ -366,16 +173,11 @@ const [role,setRole]=useState("")
               <SiGoogleclassroom className="mr-2" /> Add new Class
             </NavLink>
           </>
-        ) 
-}
-    
-
-{
- isTrainer && "Trainer"  (
+        ) : isTrainer ? (
           <>
             {" "}
             <NavLink
-              to="/dashboard/manageClasses"
+              to="/dashboard/manage-slot"
               className={({ isActive }) =>
                 `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
                   isActive
@@ -387,7 +189,7 @@ const [role,setRole]=useState("")
               <SiGoogleclassroom className="mr-2" /> manage classes
             </NavLink>
             <NavLink
-              to="/dashboard/addSession"
+              to="/dashboard/addNew-forum"
               className={({ isActive }) =>
                 `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
                   isActive
@@ -399,9 +201,9 @@ const [role,setRole]=useState("")
               <SiGoogleclassroom className="mr-2" /> Add Session
             </NavLink>
           </>
-        )
-}
-       
+        ) : (
+          ""
+        )}
         {isAdmin || isTrainer ? (
           <NavLink
             to="/dashboard/addNew-forum"
@@ -413,7 +215,7 @@ const [role,setRole]=useState("")
               } `
             }
           >
-         <RxActivityLog className="mr-2" /> Add new Forum
+            <RxActivityLog className="mr-2" /> Add new Forum
           </NavLink>
         ) : (
           ""

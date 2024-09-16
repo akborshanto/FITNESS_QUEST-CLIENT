@@ -114,6 +114,7 @@ const Navbar = () => {
 // if(loading){
 //   return <Loading></Loading>
 // }
+
   return (
     <div
       className={`${

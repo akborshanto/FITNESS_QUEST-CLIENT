@@ -54,8 +54,103 @@ if(res.data.inssertedId){
 }
 
 }
+
+const handleFormData=(e)=>{
+e.preventDefault()
+
+}
   return (
     <div>
+
+    <div>
+  {/*   <Helmet>
+      <title>Workout - Add classe</title>
+    </Helmet> */}
+    <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
+      <h2 className="text-4xl text-center font-semibold mb-4">
+        Add New Class
+      </h2>
+      <form onSubmit={(e) => handleFormData(e)}>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="name"
+          >
+            Name
+          </label>
+          <input
+            required={true}
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            name="name"
+            type="text"
+            placeholder="Enter name"
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="title"
+          >
+            Title
+          </label>
+          <input
+            required={true}
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            name="title"
+            type="text"
+            placeholder="Enter title"
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="description"
+          >
+            Description
+          </label>
+          <textarea
+            required={true}
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            name="description"
+            placeholder="Enter description"
+          ></textarea>
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="image"
+          >
+            Image URL
+          </label>
+          <input
+            required={true}
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            name="image"
+            type="file"
+            placeholder="Enter image URL"
+          />
+        </div>
+        <div className="flex items-center justify-center mt-6">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
+            Add Class
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
       <div>
         <section class="max-w-4xl p-6 mx-auto shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] rounded-md  text-black">
           <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">
