@@ -111,9 +111,9 @@ const Navbar = () => {
       </li>
     </Fragment>
   );
-if(loading){
-  return <Loading></Loading>
-}
+// if(loading){
+//   return <Loading></Loading>
+// }
   return (
     <div
       className={`${

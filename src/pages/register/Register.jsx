@@ -7,13 +7,14 @@ import { useMutation } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { data } from "autoprefixer";
 
 // const image_hoisting_key = import.meta.env.VITE_IMGBB;
 // const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_key}`;
 const Register = () => {
   /* user axios secure */
-  const location=useLocation();
-  const navigate=useNavigate();
+  const location = useLocation();
+  const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
 
   const { createUser, updateProfiles } = useAuth();
@@ -32,31 +33,38 @@ const Register = () => {
 
     createUser(email, password)
       .then((res) => {
-        axios.post(
-          `https://api.imgbb.com/1/upload?key=e9b3cb55e11b48d4142caf366d77cea6`,
-          imageFile,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        )
-        .then((res)=>{
+        axios
+          .post(
+            `https://api.imgbb.com/1/upload?key=e9b3cb55e11b48d4142caf366d77cea6`,
+            imageFile,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          )
+          .then((res) => {
+            const image = res.data.data?.display_url;
 
-          const image=res.data.data?.display_url;
-  
+            updateProfiles(data.name, image).then((res) => {
+              const dataInfo = { name: data.name, email: data.email };
+              console.log(data);
+              axiosSecure
+                .post(`/fitness/userFitness`, dataInfo)
+                .then((res) => {
+                  console.log(res.data);
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            });
 
-          updateProfiles(data.name,image)
-          navigate(location?.state ? location.state : "/");
-          toast.success("successfully Registered")
-
-
-        })
+            navigate(location?.state ? location.state : "/");
+            toast.success("successfully Registered");
+          });
       })
 
       .catch((err) => console.log(err));
-
-    
   };
 
   return (
