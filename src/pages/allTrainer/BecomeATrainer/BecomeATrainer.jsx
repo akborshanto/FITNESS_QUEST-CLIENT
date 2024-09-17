@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import UseButton from "../../../component/button/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../auth/Auth";
 import useAxiosSecure from "../../../AxiosSecure/AxiosSecure";
 import axios from "axios";
@@ -26,14 +26,16 @@ const sevenDays = [
 /* const IMG BB */
 
 const BecomeATrainer = () => {
+  const navigate=useNavigate()
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [classFitness, refetch, isLoading] = useBecomeTrainerNew();
   const [skill, setSkill] = useState([]);
   const [day, setAvailableDay] = useState([]);
-console.log(day)
+
   // Create an array of class names
   const classNames = classFitness?.map((item) => item?.name) || [];
+  // const classImage = classFitness?.map((item) => item?.image) || [];
 
   // Transform classNames into the format required by react-select
   const options = classNames.map((name) => ({
@@ -50,20 +52,32 @@ console.log(day)
     const time = form.time.value;
     const status = "pending";
     const availableDays = day.map((day) => day.value);
-    console.log(availableDays, "AVALIALE");
+
     /*===================================== */
     const trainerData = {
-      name: user.name,
+      name: user.displayName,
       email: user.email,
       day,
       time,
       experience,
       skill,
       status,
-    };
+      status,
+      classImage:user?.photoURL,
+    
+    
+    }
+      console.log(trainerData)
+     await axiosSecure.post("/fitness/pending-trainer", trainerData)
+.then((res)=>{
 
-    const res = await axiosSecure.post("/fitness/trainer", trainerData);
+
+  toast.success("Successfully applied trainer")
+  navigate('/dashboard')
+})
+
   };
+
   //const specialties = classFitness.map((item) => skill.value);
   return (
     <div>
