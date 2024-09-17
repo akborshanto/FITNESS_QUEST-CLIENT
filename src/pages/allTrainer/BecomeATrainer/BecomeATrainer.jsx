@@ -11,35 +11,35 @@ import useRole from "../../../hook/useRole";
 //import Select from 'react-select';
 
 import Select from "react-select";
+import useBecomeTrainerNew from "../../../hook/useBecomeTrainerNew";
 
 const sevenDays = [
   { value: "Sun", label: "Sunday" },
-    { value: "Mon", label: "Monday" },
-    { value: "Tue", label: "Tuesday" },
-    { value: "Wed", label: "Wednesday" },
-    { value: "Thu", label: "Thursday" },
-    { value: "Fri", label: "Friday" },
-    { value: "Sat", label: "Saturday" },
-];
-const skill = [
-  { value: "yoga", label: "yoga" },
-  { value: "Surgery", label: "Surgery" },
-  { value: "Balance", label: "Balance" },
-  { value: "LUMBSA", label: "LUMBSA" },
-  { value: "SUMBA", label: "LUMBSA" },
-  { value: "KDKSF", label: "TLUMBSAhursDay" },
-  { value: "dsafsa", label: "FrLUMBSAiday" },
+  { value: "Mon", label: "Monday" },
+  { value: "Tue", label: "Tuesday" },
+  { value: "Wed", label: "Wednesday" },
+  { value: "Thu", label: "Thursday" },
+  { value: "Fri", label: "Friday" },
+  { value: "Sat", label: "Saturday" },
 ];
 
 /* const IMG BB */
 
 const BecomeATrainer = () => {
-  const [ability, setAbilit] = useState();
-
-  const [day, setDay] = useState();
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  // const [role] = useRole();
+  const [classFitness, refetch, isLoading] = useBecomeTrainerNew();
+  const [skill, setSkill] = useState([]);
+  const [day, setAvailableDay] = useState([]);
+console.log(day)
+  // Create an array of class names
+  const classNames = classFitness?.map((item) => item?.name) || [];
+
+  // Transform classNames into the format required by react-select
+  const options = classNames.map((name) => ({
+    value: name,
+    label: name,
+  }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,8 +49,8 @@ const BecomeATrainer = () => {
     const experience = form.experience.value;
     const time = form.time.value;
     const status = "pending";
-
-
+    const availableDays = day.map((day) => day.value);
+    console.log(availableDays, "AVALIALE");
     /*===================================== */
     const trainerData = {
       name: user.name,
@@ -59,12 +59,12 @@ const BecomeATrainer = () => {
       time,
       experience,
       skill,
+      status,
     };
 
-    const res = await axiosSecure.post("/fitness/trainer", trainerData)
-
+    const res = await axiosSecure.post("/fitness/trainer", trainerData);
   };
-  // const specialties = skills.map((skill) => skill.value);
+  //const specialties = classFitness.map((item) => skill.value);
   return (
     <div>
       <section class="max-w-4xl p-8 mt mx-auto bg-black text-white rounded-md shadow-md  ">
@@ -105,7 +105,7 @@ const BecomeATrainer = () => {
                 isMulti
                 name="day"
                 options={sevenDays}
-                onChange={setDay}
+                onChange={setAvailableDay}
                 placeholder="Available Day"
                 className="basic-multi-select   bg-blue-400 select-info w-full text-black"
                 classNamePrefix="select"
@@ -132,19 +132,16 @@ const BecomeATrainer = () => {
                 Skills
               </label>
 
- 
               <Select
-              required={true}
-              options={skill}
-              onChange={setAbilit}
-              isMulti
-              className="focus:ring-2 focus:ring-blue-600 text-black"
-            />
+                options={options}
+                isMulti
+                onChange={setSkill}
+                className="focus:ring-2 focus:ring-blue-600 text-black"
+              />
             </div>
 
             {/* skills */}
 
-   
             {/*  */}
           </div>
 
