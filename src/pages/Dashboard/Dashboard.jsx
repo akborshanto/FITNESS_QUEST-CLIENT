@@ -149,7 +149,7 @@ const[isAdmin,isTrainer]=useRoleNew()
               <FaChalkboardTeacher className="mr-2" /> All Trainers
             </NavLink>
             <NavLink
-              to="/dashboard/add-new-slot"
+              to="/dashboard/applied-trainer"
               className={({ isActive }) =>
                 `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
                   isActive

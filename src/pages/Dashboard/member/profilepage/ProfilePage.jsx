@@ -16,11 +16,12 @@ import { axiosSecure } from "../../../../AxiosSecure/AxiosSecure";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Loading from "./../../../../component/Loading/Loading";
+import useRoleNew from "../../../../hook/useRoleNew";
 const image_hoisting_key = import.meta.env.VITE_IMGBB;
 const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_key}`;
 const ProfilePage = () => {
   const { user, updateProfiles, loading } = useAuth();
-
+const[isAdmin, isTrainer, isRoleLoading, role]=useRoleNew()
   
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -63,17 +64,17 @@ const ProfilePage = () => {
                 >
                   <img
                     className="w-24 h-24 mb-3 rounded-full shadow-lg ring-2 relative top-14 -right-[140px] "
-                    src={user.photoURL}
+                    src={user?.photoURL}
                     alt="User image"
                   />
                 </div>
 
                 <div className=" p-5 text-center mt-10">
                   <h5 className="mb-1 text-base bg-red-400 rounded-full font-medium text-gray-900">
-                    {/*       {isAdmin ? "admin" : ""} */} ADMIN
+                    {       isAdmin ? "admin" : ""} 
                   </h5>
                   <h5 className="mb-1 text-base bg-red-400 rounded-full font-medium text-gray-900">
-                    {/*     {isTrainer ? "Trainer" : ""} */}TRAINER
+                      {isTrainer ? "Trainer" : ""} 
                   </h5>
                   <h5 className="mb-1 text-2xl font-medium text-gray-900">
                     {user.displayName}
