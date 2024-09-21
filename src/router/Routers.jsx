@@ -124,7 +124,7 @@ export const router = createBrowserRouter([
     children: [
       /* 🚩ADMIN🚩 */
       {
-        path: "subscribe",
+        path: "subscriber",
         element: (
           <DashbordPrivate>
             <NewsLetterAdmin></NewsLetterAdmin>

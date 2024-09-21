@@ -19,10 +19,6 @@ const Dashboard = () => {
 
 const[isAdmin,isTrainer]=useRoleNew()
 
-// const role=isTrainer ? "trainer": isAdmin? "admin": "member"
-  // const [isAdmin, setIsAdmin] = useState("isAdmin");
-  // const [isTrainer, setIsTrainer] = useState("");
-  //consolelog(role);
 
   // const [isAdmin, isTrainer] = useRole();
   console.log(isAdmin, isTrainer);
@@ -134,7 +130,7 @@ const[isAdmin,isTrainer]=useRoleNew()
                 } `
               }
             >
-              <IoMailOpen className="mr-2" /> subscribe
+              <IoMailOpen className="mr-2" /> subscriber
             </NavLink>
             <NavLink
               to="/dashboard/allTrainers"

@@ -17,9 +17,9 @@ const NewsLetter = () => {
       email,
     img:user?.photoURL
     };
-
+console.log(userInfo)
     /* user axios secure */
-    const data = await axiosSecure.post("/fitness/newsLetter-Fitness", userInfo).then((res) => {
+    const data = await axiosSecure.post("/fitness/subsciber", userInfo).then((res) => {
       if (res.status == 200) {
       // console.log(res.data);
   

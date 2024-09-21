@@ -15,7 +15,7 @@ const[data,isLoading]=useAllTrainer()
 
 <div className="relative lg:py-28 md:py-16 py-10 w-full space-y-4">
 <h1 className="lg:text-6xl md:text-5xl text-2xl text-center text-white uppercase">
-  Meet our
+Feedback
   <span className="text-[#007BFF]"> trainers</span>
 </h1>
 </div>
