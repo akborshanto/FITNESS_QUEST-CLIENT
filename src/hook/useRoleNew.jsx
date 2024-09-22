@@ -14,7 +14,7 @@ const useRoleNew = () => {
         // enabled: !loading && !!user?.email && !!localStorage.getItem('access-token'),
         queryFn: async () => {
             if (user?.email) {
-                const res = await axiosSecure.get(`/users/role/admin@gmail.com`);
+                const res = await axiosSecure.get(`/users/role/${user?.email}`);
                
                 return res.data?.role;
             }

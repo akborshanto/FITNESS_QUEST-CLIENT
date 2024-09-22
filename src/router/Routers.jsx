@@ -29,6 +29,7 @@ import ProfilePage from "./../pages/Dashboard/member/profilepage/ProfilePage";
 import RecomendClass from "../pages/Dashboard/member/review/RecomendClass";
 import BookedTrainer from "./../pages/Dashboard/member/bookedTrainr/BookedTrainer";
 import DashbordPrivate from "../private/DashbordPrivate";
+import AppliedTrainerDetail from "../pages/Dashboard/admin/Applied Trainer/AppliedTrainerDetail";
 
 export const router = createBrowserRouter([
   {
@@ -140,6 +141,10 @@ export const router = createBrowserRouter([
       {
         path: "applied-trainer",
         element: <AppliedTrainerAdmin></AppliedTrainerAdmin>,
+      },
+      {
+        path: "applied-trainer-detail/:id",
+        element: <AppliedTrainerDetail></AppliedTrainerDetail>,
       },
 
       ,
