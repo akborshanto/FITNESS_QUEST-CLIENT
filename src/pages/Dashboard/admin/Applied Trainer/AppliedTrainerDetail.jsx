@@ -7,6 +7,7 @@ import Loading from "./../../../../component/Loading/Loading";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../AxiosSecure/AxiosSecure";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const AppliedTrainerDetail = () => {
   const { error } = useAppliedNew();
@@ -46,6 +47,41 @@ const AppliedTrainerDetail = () => {
   const isOpen = () => {
     setIsOpenModal(!setIsOpenModal);
   };
+
+
+const handleApproveBtn=(datails)=>{
+
+const statusData="approved";
+
+const data={...datails,statusData};
+axiosSecure.post(`/applictionBecameTrainerUpdata/${datails._id}`)
+.then((res)=>{
+toast.success("Successfully Approved the role")
+console.log(res.data)
+})
+.catch((err)=>{
+  console.log(err)
+})
+
+
+}
+const handleReject=(id)=>{
+
+
+axiosSecure.delete(`/applictionBecameTrainerDelete/${id}`)
+.then((res)=>{
+toast.success("Successfully Reject the role")
+console.log(res.data)
+})
+.catch((err)=>{
+  console.log(err)
+})
+
+
+}
+
+
+
   return (
     <div>
       <Helmet>
@@ -131,7 +167,7 @@ const AppliedTrainerDetail = () => {
               <button
                 className="bg-[#d84c58d3] rounded-full px-5 py-2 capitalize"
                 onClick={() =>
-                  document.getElementById("my_modal_5").showModal()
+              handleReject(trainerData?._id)
                 }
               >
                 Reject
@@ -148,12 +184,12 @@ const AppliedTrainerDetail = () => {
             {/* Feedback Modal */}
 
             {/* Open the modal using document.getElementById('ID').showModal() method */}
-            <dialog
+    {        <dialog
               id="my_modal_5"
               className="modal modal-bottom sm:modal-middle"
             >
               <div className="modal-box">
-                <form
+             {/*    <form
                   onSubmit={(e) => handleReject(e)}
                   className="p-4 text-center"
                 >
@@ -177,7 +213,7 @@ const AppliedTrainerDetail = () => {
                   >
                     Submit
                   </button>
-                </form>
+                </form> */}
                 <div className="modal-action">
                   <form method="dialog">
                     {/* if there is a button in form, it will close the modal */}
@@ -185,7 +221,7 @@ const AppliedTrainerDetail = () => {
                   </form>
                 </div>
               </div>
-            </dialog>
+            </dialog>}
           </div>
         </div>
       )}
