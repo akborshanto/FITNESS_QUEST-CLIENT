@@ -47,7 +47,7 @@ const Register = () => {
             const image = res.data.data?.display_url;
 
             updateProfiles(data.name, image).then((res) => {
-              const dataInfo = { name: data.name, email: data.email };
+              const dataInfo = { name: data.name, email: data.email,image };
               console.log(data);
               axiosSecure
                 .post(`/fitness/userFitness`, dataInfo)
