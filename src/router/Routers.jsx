@@ -165,7 +165,7 @@ export const router = createBrowserRouter([
       },
       ,
       {
-        path: "add-newClass",
+        path: "addClasses",
         element: <AddNewClassAdmin></AddNewClassAdmin>,
       },
       ,

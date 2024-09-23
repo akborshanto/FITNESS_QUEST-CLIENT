@@ -29,7 +29,7 @@ const Register = () => {
     const email = data.email;
     const imageFile = { image: data.image[0] };
 
-    console.log(imageFile.image);
+    console.log(imageFile);
 
     createUser(email, password)
       .then((res) => {

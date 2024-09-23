@@ -15,8 +15,31 @@ import Loading from './../../../../component/Loading/Loading';
 import { FaTrash } from "react-icons/fa6";
 
 const AllTrainerAdmin = () => {
-
+const axiosSecure=useAxiosSecure()
 const {allTrainer,isLoading,refetch}=useTrainerNew()
+
+
+const handleDelete=(email)=>{
+
+
+  axiosSecure.delete(`/fitness/allTrainer/${email}`)
+  .then((res)=>{
+
+  refetch()
+  toast.success("Successfully delet the user")
+
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+
+
+
+refetch()
+
+
+}
+
 
   return (
     <div>
