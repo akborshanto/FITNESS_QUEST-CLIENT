@@ -12,7 +12,7 @@ import PrivateRoute from "../private/PrivateRoute";
 import TrainerDetail from "../pages/allTrainer/TrainerDetal/TrainerDetail";
 import TrainerBooking from "../pages/allTrainer/TrainerBooking/TrainerBooking";
 import BecomeATrainer from "../pages/allTrainer/BecomeATrainer/BecomeATrainer";
-import Payment from "../pages/PAYMENT/Payment";
+
 import NewsLetterAdmin from "../pages/Dashboard/admin/newLetter/NewsLetter";
 import AllTrainerAdmin from "./../pages/Dashboard/admin/allTrainer/AllTrainerAdmin";
 import AppliedTrainerAdmin from "./../pages/Dashboard/admin/Applied Trainer/AppliedTrainer";
@@ -30,6 +30,8 @@ import RecomendClass from "../pages/Dashboard/member/review/RecomendClass";
 import BookedTrainer from "./../pages/Dashboard/member/bookedTrainr/BookedTrainer";
 import DashbordPrivate from "../private/DashbordPrivate";
 import AppliedTrainerDetail from "../pages/Dashboard/admin/Applied Trainer/AppliedTrainerDetail";
+
+import { Payment } from './../pages/PAYMENT/Payment';
 
 export const router = createBrowserRouter([
   {
@@ -64,17 +66,16 @@ export const router = createBrowserRouter([
         element: <AllTrainer></AllTrainer>,
       },
       {
-        path: "/trainer-detail/:id",
+        path: "/trainer/:id",
         element: <TrainerDetail></TrainerDetail>,
         //loader:({params})=>fetch(`${import.meta.env>VITE_API_URL}/trainer-detail/${params.id}`)
       },
       {
         path: "/trainer-booking",
         element: (
-          <PrivateRoute>
-            {" "}
+   
             <TrainerBooking></TrainerBooking>
-          </PrivateRoute>
+       
         ),
       },
       {
@@ -90,7 +91,7 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             {" "}
-            <Payment></Payment>
+        <Payment></Payment>
           </PrivateRoute>
         ),
       },

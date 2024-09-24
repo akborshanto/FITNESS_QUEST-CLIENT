@@ -6,7 +6,6 @@ import useAuth from "../../../auth/Auth";
 import useAxiosSecure from "../../../AxiosSecure/AxiosSecure";
 import axios from "axios";
 import toast from "react-hot-toast";
-import useRole from "../../../hook/useRole";
 
 //import Select from 'react-select';
 
@@ -68,7 +67,7 @@ const BecomeATrainer = () => {
 
     
     }
-      console.log(trainerData)
+      //console.log(trainerData)
      await axiosSecure.post("/fitness/pending-trainer", trainerData)
 .then((res)=>{
 

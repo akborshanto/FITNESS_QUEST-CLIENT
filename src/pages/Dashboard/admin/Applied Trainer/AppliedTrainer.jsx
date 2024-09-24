@@ -64,7 +64,7 @@ const [id, setId] = useState(null);
                 >
                   <div className="flex gap-4 items-center lg:flex-row flex-col ">
                     <img
-                      src={trainer?.classImage}
+                      src={trainer?.image}
                       alt=""
                       className="h-16 rounded-full"
                     />

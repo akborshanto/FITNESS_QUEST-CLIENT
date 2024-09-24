@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import useRole from "../../hook/useRole";
+
 import Loading from "../../component/Loading/Loading";
 import { ImCross } from "react-icons/im";
 import { CgProfile } from "react-icons/cg";
@@ -78,7 +78,7 @@ const[isAdmin,isTrainer]=useRoleNew()
           <>
             {" "}
             <NavLink
-              to="/dashboard/activity"
+              to="/dashboard/activity-log"
               className={({ isActive }) =>
                 `text-base font-bold   px-6 py-2 mt-4 w-full flex items-center   hover:bg-gray-200 dark:hover:bg-gray-700 duration-500 hover:text-gray-700 dark:hover:text-gray-200 uppercase ${
                   isActive

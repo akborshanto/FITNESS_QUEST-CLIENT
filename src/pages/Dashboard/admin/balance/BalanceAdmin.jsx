@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
 import BalanceTable from './BalanceTable';
 import UseTitle from '../../../../hook/useTitle';
-import usePayment from '../../../../hook/usePayment';
+// import usePayment from '../../../../hook/usePayment';
 
 const data = [
   {

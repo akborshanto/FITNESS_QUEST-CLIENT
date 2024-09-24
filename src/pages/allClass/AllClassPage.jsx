@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AllCassCard from "./AllCassCard";
-import useAllTrainer from "../../hook/useAllTrainer";
+
 import useAxiosSecure from "../../AxiosSecure/AxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { useLoaderData } from "react-router-dom";

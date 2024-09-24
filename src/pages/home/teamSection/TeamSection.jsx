@@ -1,12 +1,11 @@
 import React from "react";
-import useAllTrainer from "../../../hook/useAllTrainer";
+
 import UseTitle from "../../../hook/useTitle";
 import { GrYoga } from "react-icons/gr";
 import { FaArrowAltCircleRight, FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 
 const TeamSection = () => {
-  const [data] = useAllTrainer();
 
 
 

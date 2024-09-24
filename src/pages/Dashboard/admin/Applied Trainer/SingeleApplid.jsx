@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import useAuth from "../../../../auth/Auth";
 import useAxiosSecure from "../../../../AxiosSecure/AxiosSecure";
-import useRole from "../../../../hook/useRole";
+
 import UseButton from "../../../../component/button/Button";
 import axios from "axios";
 import { toast } from "react-hot-toast";
@@ -94,17 +94,7 @@ if(res.data.modifiedCount >0){
 
 
 
-//post all TRIARN
 
-
-
-
-    // const response = await mutateAsync(users);
-
-    // if (response.modifiedCount > 0) {
-    //   refetch();
-    //   toast.success("successFuullly ");
-    // }
   };
 
   const handleFeedback = (e) => {

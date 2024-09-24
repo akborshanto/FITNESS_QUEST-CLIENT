@@ -15,7 +15,7 @@ const TrainerDetail = () => {
     queryKey:['trainer-detail'],
     queryFn:async ()=>{
 
-        const {data}=await axiosSecure.get(`/singleTrainerData/${id}`)
+        const {data}=await axiosSecure.get(`/fitness/single-trainer/${id}`)
 
         return data
     }
@@ -29,8 +29,8 @@ const TrainerDetail = () => {
     <div className='my-8'>
 
 {/* Trainer Detail card */}
-<TrainerDetailCard tDetail={data}></TrainerDetailCard>
-
+{<TrainerDetailCard tDetail={data}></TrainerDetailCard>
+}
 {/* <Be_A_Trainer></Be_A_Trainer>
      */}
     </div>

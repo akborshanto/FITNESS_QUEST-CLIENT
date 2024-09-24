@@ -5,7 +5,7 @@ import { GrYoga } from "react-icons/gr";
 
 const TrainerDetailCard = ({tDetail}) => {
   //consolelog(tDetail)
-  const {name,skills,time,image,age,day,imgBB,experience}=tDetail || {}
+  const {name,skill,image,experience}=tDetail || {}
   return (
     <div>
 
@@ -59,7 +59,7 @@ const TrainerDetailCard = ({tDetail}) => {
                 </div>
                 <div className=" lg:mt-0 lg:col-span-5 lg:flex mt-4 md:mt-0">
                   <img
-                  src="https://www.graduateprogram.org/wp-content/uploads/2023/01/Jan-17-How-Schools-are-Revamping-Gym-Classes_web-1024x683.jpg"
+                  src={image}
 
                     alt="mockup"
                     className="rounded-lg"
@@ -132,7 +132,7 @@ const TrainerDetailCard = ({tDetail}) => {
                             className="border-b hover:bg-[#ffffff15]"
                           >
                             <td className="px-4 py-4">{name}</td>
-                            <td className="px-4 py-4">{time}</td>
+                           
                             <td className="px-4 py-4">
                               <Link
                               to="/trainer-booking"

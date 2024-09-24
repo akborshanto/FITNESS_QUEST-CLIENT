@@ -1,40 +1,36 @@
 import React from "react";
+import { CloseButton, } from "@chakra-ui/react";
 
-import { CloseButton } from "@chakra-ui/react";
-import useRole from "./../../../../hook/useRole";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../auth/Auth";
-import useAxiosSecure, {
-  axiosSecure,
-} from "../../../../AxiosSecure/AxiosSecure";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { Helmet } from 'react-helmet-async';
-import useTrainerNew from "../../../../hook/useTrainerNew";
+
 import Loading from './../../../../component/Loading/Loading';
 import { FaTrash } from "react-icons/fa6";
-import useAllTrainerNew from "../../../../hook/useAllTrainerNew";
+import useAxiosSecure from "../../../../AxiosSecure/AxiosSecure";
 
 const AllTrainerAdmin = () => {
 const axiosSecure=useAxiosSecure()
-const { data: trainers, isLoading, refetch, error } = useQuery({
-  queryKey: ['trainer'],
+const { data, isLoading, refetch, error } = useQuery({
+  queryKey: ['trainers'],
   queryFn: async () => {
     const { data } = await axiosSecure.get('/fitness/allTrainerNew');
     return data; // Ensure that data is returned here
   },
 });
-
+console.log("DSFDD",data)
 
 const handleDelete=(email)=>{
 
-
-  axiosSecure.delete(`/fitness/allTrainer/${email}`)
+console.log(email)
+  axiosSecure.delete(`/fitness/allTrainerNewDelete/${email}`)
   .then((res)=>{
 
-  refetch()
   toast.success("Successfully delet the user")
 
+  refetch()
   })
   .catch((err)=>{
     console.log(err)
@@ -72,7 +68,7 @@ refetch()
           {isLoading ? (
             <Loading/>
           ) : (
-            trainers.map((trainer) => (
+            data?.map((trainer) => (
               <tr key={trainer._id} className="bg-[#141414]">
                 <td className="py-2 px-4 border-b border-gray-200">
                   <img
@@ -87,7 +83,7 @@ refetch()
                 <td className="py-2 px-4 border-b border-gray-200">
                   {" "}
                   <button
-                    onClick={() => handleDelete( trainer.email)}
+                    onClick={() => handleDelete( trainer?.email)}
                     className=" bg-rose-600 px-2 rounded-full py-2"
                   >
                     <FaTrash />

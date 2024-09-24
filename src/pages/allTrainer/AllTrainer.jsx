@@ -1,34 +1,33 @@
 import React from 'react'
 import AllTrainerCad from './AllTrainerCad'
-import useAllTrainer from '../../hook/useAllTrainer'
-import useRole from '../../hook/useRole'
+
 import UseTitle from './../../hook/useTitle';
 import useAxiosSecure from '../../AxiosSecure/AxiosSecure';
 import useAuth from '../../auth/Auth';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { ReactLoading } from 'react-loading';
 
 const AllTrainer = () => {
 const {user}=useAuth()
 
   const axiosSecure=useAxiosSecure()
   const { data: trainers, isLoading, refetch, error } = useQuery({
-    queryKey: ['trainer'],
+    queryKey: ['trainera'],
     queryFn: async () => {
       const { data } = await axiosSecure.get('/fitness/allTrainerNew');
       return data; // Ensure that data is returned here
     },
   });
   
-console.log(trainers)
+  
+
   return (
 
 <div> 
 <div className=" pt-10 md:pt-0  max-w-7xl md:px-10 px-2 pb-10 mx-auto ">
 <Helmet>
-  <title>Workout - Trainers</title>
+  <title>Finess Quest - Trainers</title>
 </Helmet>
 <div className="container m-auto">
   <div className="relative lg:py-28 md:py-16 py-10 w-full space-y-4">
@@ -44,13 +43,14 @@ console.log(trainers)
 
     </div>
   ) : (
+    
     <div className="grid  lg:grid-cols-2 grid-cols-1 gap-3 ">
       {trainers?.map((trainer) => (
-        <Link to={`/trainers/${trainer._id}`} className="cursor-default" key={trainer._id}>
+        <Link to={`/trainer/${trainer._id}`} className="cursor-default" key={trainer._id}>
           <div className="h-52  shadow-black border border-gray-400/15 shadow-sm p-2 group rounded-[15px] overflow-hidden">
             <div className="h-full flex gap-3">
               <Link
-                to={`/trainers/${trainer._id}`}
+                to={`/trainer/${trainer._id}`}
                 className="overflow-hidden h-full w-[200px] rounded-[10px]"
               >
                 <img

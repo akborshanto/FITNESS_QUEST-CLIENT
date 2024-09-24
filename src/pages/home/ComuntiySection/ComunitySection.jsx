@@ -1,10 +1,11 @@
 import React from 'react'
-import useForum from '../../../hook/userForum'
+
 import ComunityCard from './ComunityCard'
 import UseTitle from '../../../hook/useTitle'
 import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { useForumNew } from '../../../hook/useForumNew'
 const ComunitySection = () => {
-const [forum]=useForum()
+const {comunity}=useForumNew()
 //consolelog(forum)
 
   return (
@@ -34,7 +35,7 @@ const [forum]=useForum()
    {
    
    
-       forum?.slice(25,31).map(comunity=><ComunityCard comunity={comunity} key={Math.random()}></ComunityCard>)
+    comunity?.map(comunity=><ComunityCard comunity={comunity} key={Math.random()}></ComunityCard>)
    }
    
        </div>
