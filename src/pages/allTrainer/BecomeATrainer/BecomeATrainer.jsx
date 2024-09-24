@@ -57,14 +57,15 @@ const BecomeATrainer = () => {
     const trainerData = {
       name: user.displayName,
       email: user.email,
+      image:user?.photoURL,
       day,
       time,
       experience,
       skill,
       status,
       status,
-      classImage:user?.photoURL,
-    
+
+
     
     }
       console.log(trainerData)

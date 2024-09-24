@@ -1,5 +1,5 @@
 import React from "react";
-import useAllTrainer from "../../../../hook/useAllTrainer";
+
 import { CloseButton } from "@chakra-ui/react";
 import useRole from "./../../../../hook/useRole";
 import { useMutation } from "@tanstack/react-query";
@@ -13,10 +13,17 @@ import { Helmet } from 'react-helmet-async';
 import useTrainerNew from "../../../../hook/useTrainerNew";
 import Loading from './../../../../component/Loading/Loading';
 import { FaTrash } from "react-icons/fa6";
+import useAllTrainerNew from "../../../../hook/useAllTrainerNew";
 
 const AllTrainerAdmin = () => {
 const axiosSecure=useAxiosSecure()
-const {allTrainer,isLoading,refetch}=useTrainerNew()
+const { data: trainers, isLoading, refetch, error } = useQuery({
+  queryKey: ['trainer'],
+  queryFn: async () => {
+    const { data } = await axiosSecure.get('/fitness/allTrainerNew');
+    return data; // Ensure that data is returned here
+  },
+});
 
 
 const handleDelete=(email)=>{
@@ -65,7 +72,7 @@ refetch()
           {isLoading ? (
             <Loading/>
           ) : (
-            allTrainer.map((trainer) => (
+            trainers.map((trainer) => (
               <tr key={trainer._id} className="bg-[#141414]">
                 <td className="py-2 px-4 border-b border-gray-200">
                   <img
