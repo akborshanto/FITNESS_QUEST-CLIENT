@@ -21,7 +21,7 @@ const TrainerDetail = () => {
     }
 })
 
-
+console.log(data)
 
 
 

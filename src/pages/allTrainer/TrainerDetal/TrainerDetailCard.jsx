@@ -5,7 +5,7 @@ import { GrYoga } from "react-icons/gr";
 
 const TrainerDetailCard = ({tDetail}) => {
   //consolelog(tDetail)
-  const {name,skill,image,experience}=tDetail || {}
+  const {name,skill,image,experience,day}=tDetail || {}
   return (
     <div>
 
@@ -41,19 +41,19 @@ const TrainerDetailCard = ({tDetail}) => {
                     {experience}+ Year Experience
                   </h1>
                   <div className="max-w-2xl mb-6 font-light text-white lg:mb-8 md:text-lg   lg:text-xl">
-                  {/*   {trainer.quote} */} QUOTE
+                  Fitness is not about being better than someone else. It's about being better than you used to be.
                   </div>
                   <div>
                     <span className="font-bold lg:mb-8 md:text-lg   lg:text-xl">
                       Specialties:
                     </span>
                     <ul className="list-disc list-inside ml-3">
-                   {/*    {trainer?.specialties.map((specialty, index) => (
+                   {skill?.map((specialty, index) => (
                         <li key={index} className="ml-2">
-                          {specialty}
+                          {specialty.label}
                         </li>
-                      ))} */}
-                       specialties
+                      ))} 
+                   
                     </ul>
                   </div>
                 </div>
@@ -105,11 +105,11 @@ const TrainerDetailCard = ({tDetail}) => {
                       Available days :
                     </h1>
                     <ul className=" flex text-xl font-bold mb-4 ">
-               {/*        {trainer.availableDays.map((availableDay, index) => (
+                {day?.map((availableDay, index) => (
                         <li key={index} className="ml-2">
-                          {availableDay}
+                          {availableDay?.label}
                         </li>
-                      ))} */}
+                      ))} 
                     </ul>
                   </div>
 

@@ -18,7 +18,7 @@ const ComunityCard = ({comunity}) => {
       >
         <div className="  text-whiterounded-md p-4 mb-4">
           <p className="">
-          {article.slice(0,200)}......
+          {article?.slice(0,200)}......
           </p>
           <div className="mt-2 flex justify-between items-center">
             <div className="flex gap-4">

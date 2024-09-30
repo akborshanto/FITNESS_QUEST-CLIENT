@@ -6,6 +6,7 @@ import useAxiosSecure from "../../../../AxiosSecure/AxiosSecure";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import UseTitle from "../../../../hook/useTitle";
+import { Helmet } from "react-helmet-async";
 const image_hoisting_key = import.meta.env.VITE_IMGBB;
 const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_key}`;
 const AddNewForum = () => {
@@ -17,15 +18,18 @@ const AddNewForum = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = { text };
+    const data = { text,name:user?.displayName,email:user?.email,image:user?.photoURL };
     //  / const trainerName = form.name.value;
 
     /* save data  post Court Of Justice*/
-    const res = await axiosSecure.post("/fitness/forumFitness", data);
-    //consolelog(res.data)
-    if (res.status == 200) {
-      toast.success("Forum Added Successfully");
-    }
+    await axiosSecure.post("/fitness/forumFitness", data)
+    .then((res)=>{
+         
+         
+      toast.success("Successfully manage a slot")
+   e.target.reset()
+    })
+
   };
   console.log(text);
   return (
@@ -33,9 +37,9 @@ const AddNewForum = () => {
       <UseTitle heading="ADD NEW FOURM"></UseTitle>
 
       <div>
-        {/*     <Helmet>
+       <Helmet>
     <title>FITNESS_QUEST- Add Forum</title>
-  </Helmet> */}
+  </Helmet> 
         <div className="max-w-md mx-auto mt-10">
           <form
             onSubmit={handleSubmit}
