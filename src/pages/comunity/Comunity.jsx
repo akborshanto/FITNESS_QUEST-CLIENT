@@ -7,11 +7,12 @@ import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 const Comunity = () => {
 const {comunity,isLoading,refetch,error}=useForumNew()
 console.log(comunity)
+console.log(comunity)
 const handleBtn=(E)=>{}
   return (
     <div className=" pt-10 md:pt-0 bg-[#141414] min-h-screen pb-10 ">
     <Helmet>
-    <title>FIness - Community</title>
+    <title>Fitness - Community</title>
   </Helmet>
   <div className="relative  pt-16 w-full space-y-4">
     <h1 className="lg:text-6xl md:text-5xl text-2xl text-center text-white">

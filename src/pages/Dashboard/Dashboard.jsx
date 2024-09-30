@@ -13,6 +13,7 @@ import { RxActivityLog } from "react-icons/rx";
 import { SiGoogleclassroom } from "react-icons/si";
 import { GiTeacher } from "react-icons/gi";
 import useRoleNew from "../../hook/useRoleNew";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
@@ -39,9 +40,9 @@ const[isAdmin,isTrainer]=useRoleNew()
    
 
     <div className=" lg:pt-24 pt-20 bg-[#141414] ">
-{/*     <Helmet>
-    <title>Workout - Dashboard</title>
-  </Helmet> */}
+    <Helmet>
+    <title>Fitness - Dashboard</title>
+  </Helmet>
   {" "}
   <div className="flex h-screen  relative border-t-2">
     <aside
@@ -166,7 +167,7 @@ const[isAdmin,isTrainer]=useRoleNew()
                 } `
               }
             >
-              <SiGoogleclassroom className="mr-2" /> Add new Class
+              <SiGoogleclassroom className="mr-2" />manage class
             </NavLink>
           </>
         ) : isTrainer ? (
@@ -182,7 +183,7 @@ const[isAdmin,isTrainer]=useRoleNew()
                 } `
               }
             >
-              <SiGoogleclassroom className="mr-2" /> manage classes
+              <SiGoogleclassroom className="mr-2" /> manage class
             </NavLink>
             <NavLink
               to="/dashboard/add-new-session"

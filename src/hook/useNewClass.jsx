@@ -6,7 +6,7 @@ export const useNewClass = () => {
     const { data: newClass , isLoading, refetch, error } = useQuery({
         queryKey: ['new-class'],
         queryFn: async () => {
-          const { data } = await axiosSecure.get('/fitness/new-class');
+          const { data } = await axiosSecure.get('/fitness/classFitness');
 
           return data;
         },

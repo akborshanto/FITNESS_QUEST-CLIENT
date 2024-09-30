@@ -20,7 +20,7 @@ const AllTrainerCad = ({ trainer }) => {
     experience,
   } = trainer || {};
   /*  */
-console.log("DSf")
+
   return (
     <div>
       <div className=" pt-10 md:pt-0  max-w-7xl md:px-10 px-2 pb-10 mx-auto ">

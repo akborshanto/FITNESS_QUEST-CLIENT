@@ -6,6 +6,7 @@ import useAuth from "../../../../auth/Auth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../AxiosSecure/AxiosSecure";
 import toast from "react-hot-toast";
+import useBecomeTrainerNew from "../../../../hook/useBecomeTrainerNew";
 
 const sevenDays = [
   { value: "Sun", label: "Sunday" },
@@ -17,10 +18,16 @@ const sevenDays = [
   { value: "Sat", label: "Saturday" },
 ];
 const ManageSlots = () => {
+  const [classFitness, refetch, isLoading] = useBecomeTrainerNew();
   const axiosSecure = useAxiosSecure();
+  const [skill, setSkill] = useState([]);
   const [day, setAvailableDay] = useState([]);
   const { user } = useAuth();
-
+  const classNames = classFitness?.map((item) => item?.name) || [];
+  const options = classNames.map((name) => ({
+    value: name,
+    label: name,
+  }));
    
   const { data } = useQuery({
     queryKey: ["trainer-class-email", user?.email],
@@ -40,20 +47,27 @@ const handleSubmit =async (e) => {
 
   // Access the value of the specific input field for slotName
   const slotName = e.target.slotName.value;
+  const slotTime = e.target.slotTime.value;
 
-  console.log("slotName:", slotName);
 
   // Creating the mSloatData object
-  const mSloatData = {
+
+  const slotData ={ email:user?.email ,slot:{ name: slotName, time: slotTime}};
+
+
+
+
+{/*   const mSloatData = {
     name: user?.displayName,
     image:user?.photoURL,
     email: user?.email,
     day: availableDays,
-    class: data.skill,
-  };
+   skill,
+   slotName,slotTime
+  }; */}
 
       //console.log(trainerData)
-         await axiosSecure.post("/fitness/manage-slot", mSloatData)
+         await axiosSecure.post("/fitness/manage-slot", slotData)
          .then((res)=>{
          
          
@@ -131,24 +145,25 @@ const handleSubmit =async (e) => {
               </label>
               <input
                 type="text"
+                name="slotTime"
                 required
                 className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="Enter slot time (e.g., 11:00 AM - 12:00 pm)"
               />
             </div>
             {/* classSKILL */}
-      {/*       <div>
+          <div className="text-black">
               <label className="block text-gray-700 text-sm font-bold mb-2">
                 Classes
               </label>
               <Select
-              defaultValue={classes.map(i=> i)}
+                 options={options}
                 isMulti
-                required
+                onChange={setSkill}
                 className="basic-multi-select"
                 classNamePrefix="select"
               />
-            </div> */}
+            </div> 
             <button
               type="submit"
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

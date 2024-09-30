@@ -20,7 +20,7 @@ const TrainerBooking = () => {
   const queryParams = new URLSearchParams(location.search);
   const trainerId = queryParams.get("id");
   const bookingSlot = queryParams.get("slot");
-
+console.log(bookingSlot)
   const datas = [
     {
       id: 1,
