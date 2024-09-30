@@ -176,7 +176,7 @@ export const router = createBrowserRouter([
       },
       ,
       {
-        path: "add-new-slot",
+        path: "add-new-session",
         element: <AddNewSlot></AddNewSlot>,
       },
       ,

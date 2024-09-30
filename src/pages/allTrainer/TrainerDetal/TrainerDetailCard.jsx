@@ -17,7 +17,7 @@ const TrainerDetailCard = ({tDetail}) => {
         <div className="relative pt-28 pb-10 w-full space-y-4">
           <h1 className="lg:text-6xl md:text-5xl text-2xl text-center text-white uppercase">
             trainer
-            <span className="text-[#007BFF]"> detai</span>
+            <span className="text-[#007BFF]"> details</span>
           </h1>
         </div>
  {/*        {isLoading ? (

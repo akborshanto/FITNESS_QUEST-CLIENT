@@ -1,59 +1,163 @@
-import React from "react";
+import React, { useState } from "react";
+import Select from "react-select";
+import { Helmet } from "react-helmet-async";
 
-import TrainerTableRow from "./TrainerTableRow";
-import { useMutation } from "@tanstack/react-query";
+import useAuth from "../../../../auth/Auth";
+import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../AxiosSecure/AxiosSecure";
-import { toast } from "react-hot-toast";
-import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
-import UseButton from "../../../../component/button/Button";
+import toast from "react-hot-toast";
 
+const sevenDays = [
+  { value: "Sun", label: "Sunday" },
+  { value: "Mon", label: "Monday" },
+  { value: "Tue", label: "Tuesday" },
+  { value: "Wed", label: "Wednesday" },
+  { value: "Thu", label: "Thursday" },
+  { value: "Fri", label: "Friday" },
+  { value: "Sat", label: "Saturday" },
+];
 const ManageSlots = () => {
   const axiosSecure = useAxiosSecure();
-  const [allTrainerClass, refetch] = useTrainerBooking();
-
-  const { mutateAsync } = useMutation({
-    mutationFn: async (id) => {
-      const data = await axiosSecure.delete(`/manageSlot/${id}`);
-
-      return data;
-    },
-  });
-////consolelog(allTrainerClass)
-  const deleteSlot = async (id) => {
-    const { data } = await mutateAsync(id);
-
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (data.deletedCount > 0) {
-        toast.success("succefully dele");
-        refetch();
-      }
-    });
-  };
-  return (
-    <div>
-      <section class="container px-4 mx-auto">
-        <div class="flex items-center gap-x-3">
-          <h2 class="text-lg font-medium text-gray-800 dark:text-white">
-          MANAGE YOUR SLOT
-          </h2>
-
-          <span class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">
-MANAGE YOUR SLOT
-          </span>
-        </div>
+  const [day, setAvailableDay] = useState([]);
+  const { user } = useAuth();
 
    
-      </section>
+  const { data } = useQuery({
+    queryKey: ["trainer-class-email", user?.email],
+    queryFn: async () => {
+      const response = await axiosSecure.get(`/fitness/booked-trainser/${user?.email}`);
+      return response.data;
+    },
+  });
+  
+const classes = data?.skill?.map((classItem) => classItem.label) || [];
 
+const handleSubmit =async (e) => {
+  e.preventDefault();
+
+  // Assuming 'day' is an array of selected days
+  const availableDays = day.map((day) => day.value);
+
+  // Access the value of the specific input field for slotName
+  const slotName = e.target.slotName.value;
+
+  console.log("slotName:", slotName);
+
+  // Creating the mSloatData object
+  const mSloatData = {
+    name: user?.displayName,
+    image:user?.photoURL,
+    email: user?.email,
+    day: availableDays,
+    class: data.skill,
+  };
+
+      //console.log(trainerData)
+         await axiosSecure.post("/fitness/manage-slot", mSloatData)
+         .then((res)=>{
+         
+         
+           toast.success("Successfully manage a slot")
+        e.target.reset()
+         })
+
+
+
+};
+
+
+
+
+  return (
+    <div>
+      <div>
+        <Helmet>
+          <title>Fitness Quest- Add slot</title>
+        </Helmet>
+
+        <div className="w-full max-w-4xl mx-auto pb-20 bg-white shadow-lg rounded-lg overflow-hidden p-6">
+          <h2 className="text-2xl font-bold mb-4">Add New Slot</h2>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Name
+              </label>
+              <input
+                type="text"
+                defaultValue={user.displayName}
+                readOnly
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Email
+              </label>
+              <input
+                type="text"
+                defaultValue={user.email}
+                readOnly
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            <div className="text-black">
+              <label className="block  text-sm font-bold mb-2">
+                Select Days
+              </label>
+              <Select
+                isMulti
+                required
+                options={sevenDays}
+                onChange={setAvailableDay}
+                className="basic-multi-select"
+                classNamePrefix="select"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Slot Name
+              </label>
+              <input
+                type="text"
+                required
+                name="slotName"
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Enter slot name"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Slot Time
+              </label>
+              <input
+                type="text"
+                required
+                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                placeholder="Enter slot time (e.g., 11:00 AM - 12:00 pm)"
+              />
+            </div>
+            {/* classSKILL */}
+      {/*       <div>
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Classes
+              </label>
+              <Select
+              defaultValue={classes.map(i=> i)}
+                isMulti
+                required
+                className="basic-multi-select"
+                classNamePrefix="select"
+              />
+            </div> */}
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Add Slot
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
