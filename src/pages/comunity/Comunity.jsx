@@ -7,7 +7,6 @@ import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 const Comunity = () => {
 const {comunity,isLoading,refetch,error}=useForumNew()
 console.log(comunity)
-console.log(comunity)
 const handleBtn=(E)=>{}
   return (
     <div className=" pt-10 md:pt-0 bg-[#141414] min-h-screen pb-10 ">
@@ -27,18 +26,18 @@ const handleBtn=(E)=>{}
       {comunity?.map((post) => (
         
         <div className="max-w-lg mx-auto mt-8">
-        <div key={post._id} className="bg-white shadow-md rounded-md p-4 mb-4">
+        <div key={post._id} className="bg-white shadow-md rounded-md p-4 mb-4 text-black">
           <p className="text-gray-800">{post?.text}</p>
           <div className="mt-2 flex justify-between items-center">
             <div className="flex gap-4">
               <img
-                src={post?.image?.photoURL}
+                src={comunity?.image}
                 className="h-14 rounded-full"
-                alt=""
+                alt="sadfs"
               />
               <div>
-           {/*      <h1>{post?.user?.displayName}</h1> */}NAME
-             {/*    <p>{post.role}</p> */}ROLE
+         <h1 className='text-black'>{comunity?.name}</h1> 
+                ROLE
               </div>
             </div>
             <div className=" flex gap-5    ">

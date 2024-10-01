@@ -40,7 +40,7 @@ const TeamSection = () => {
     <div className=" pb-10 ">
       <div className="relative lg:py-28 md:py-16 py-10 w-full space-y-4 px-5">
         <h1 className="lg:block hidden  uppercase text-8xl -mt-10 absolute -rotate-90 -left-28 outline-text-gym top-1/2">
-          EXPERT
+
         </h1>
         <h1 className="lg:text-6xl md:text-5xl text-2xl text-center text-white uppercase">
           TEAM OF <span className="text-[#007BFF]">EXPERT</span>

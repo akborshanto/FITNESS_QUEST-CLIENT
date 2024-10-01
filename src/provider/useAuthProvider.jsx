@@ -12,13 +12,15 @@ import {
 } from "firebase/auth";
 import axios from "axios";
 import { app } from "../firebase/firebase";
+import useAxiosSecure from "../AxiosSecure/AxiosSecure";
+
 export const AuthContext = createContext();
 const UseAuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   console.log(user);
   const auth = getAuth(app);
-
+const axiosSecure=useAxiosSecure()
   const provider = new GoogleAuthProvider();
   /* create a user */
   const createUser = (email, password) => {
@@ -43,6 +45,25 @@ const UseAuthProvider = ({ children }) => {
   useEffect(() => {
     setLoading(true);
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+
+      if (currentUser) {
+        const userInfo = { email: currentUser.email };
+        axiosSecure
+          .post("/jwt", userInfo)
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.token) {
+              localStorage.setItem("access-token", res.data.token);
+              setLoading(false);
+            }
+          })
+          .catch((err) => console.log(err));
+      } else {
+        localStorage.removeItem("access-token");
+        setLoading(false);
+      }
+
+      
       setUser(currentUser);
 
       setLoading(false);

@@ -82,7 +82,7 @@ export default function UseSlider({ img }) {
           }}
         >
           <h1 className="lg:block hidden  uppercase text-6xl mt-0 absolute rotate-90 -right-20 outline-text-gym top-1/2  -z-30">
-         Fitness Quest
+     
           </h1>
         </div>
         <div
@@ -92,7 +92,7 @@ export default function UseSlider({ img }) {
           }}
         >
           <h1 className="lg:block hidden  uppercase text-6xl mt-0 absolute rotate-90 -right-20 outline-text-gym top-1/2  -z-30">
-         Fitness Quest
+
           </h1>
         </div>
         <div
@@ -102,7 +102,7 @@ export default function UseSlider({ img }) {
           }}
         >
           <h1 className="lg:block hidden  uppercase text-6xl mt-0 absolute rotate-90 -right-20 outline-text-gym top-1/2  -z-30">
-         Fitness Quest
+ 
           </h1>
         </div>
        

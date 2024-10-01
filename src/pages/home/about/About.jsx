@@ -31,7 +31,7 @@ const About = () => {
           and positive tone of the whole body
         </p>
         <div>
-          <Link to={"/classes"}>
+          <Link to={"/all-class"}>
             <button className=" md:text-base text-sm px-4 p-2 rounded-full border bg-[#007BFF] font-bold border-[#007BFF]  text-white hover:bg-transparent hover:text-[#007BFF] duration-500">
               {" "}
               Join Now

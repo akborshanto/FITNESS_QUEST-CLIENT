@@ -7,15 +7,18 @@ import useAuth from '../../auth/Auth';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import useAxiosAdmin from '../../hook/useAxiosAdmin';
 
 const AllTrainer = () => {
 const {user}=useAuth()
 
-  const axiosSecure=useAxiosSecure()
+const useAxios=useAxiosAdmin()
+
+  // const axiosSecure=useAxiosSecure()
   const { data: trainers, isLoading, refetch, error } = useQuery({
     queryKey: ['trainera'],
     queryFn: async () => {
-      const { data } = await axiosSecure.get('/fitness/allTrainerNew');
+      const { data } = await useAxios.get('/fitness/allTrainerNew');
       return data; // Ensure that data is returned here
     },
   });

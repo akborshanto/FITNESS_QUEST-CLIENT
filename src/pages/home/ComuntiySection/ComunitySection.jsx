@@ -20,7 +20,7 @@ const {comunity}=useForumNew()
   >
     <div className="relative py-10 w-full space-y-4 max-w-7xl m-auto px-5 md:px-10">
       <h1 className="lg:block hidden  uppercase text-7xl mt-0  absolute -left-0 outline-text-gym bottom-0 opacity-30">
-        Features
+      
       </h1>
       <h1 className="lg:text-6xl md:text-5xl text-2xl text-center text-white uppercase">
         Explore Our <br /> Recent{" "}

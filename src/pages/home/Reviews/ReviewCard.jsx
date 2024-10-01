@@ -108,7 +108,7 @@ const ReviewCard = () => {
     <div>
     <div className="max-w-7xl md:px-10 px-5  text-center m-auto mt-10 md:mt-28 md:mb-20 mb-10 relative">
       <h1 className="lg:block hidden  uppercase text-9xl mt-0 absolute -rotate-90 -right-60 outline-text-gym top-36">
-        REVIEWS
+   
       </h1>
       <div>
         <h1 className="lg:text-6xl md:text-5xl text-2xl text-center text-white">
