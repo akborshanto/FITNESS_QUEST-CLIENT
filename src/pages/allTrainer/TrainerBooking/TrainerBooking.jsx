@@ -1,11 +1,45 @@
 import React, { useState } from "react";
 import UseButton from "./../../../component/button/Button";
-import { Link, json, useLocation, useNavigate } from "react-router-dom";
+import { Link, json, useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Select } from "@chakra-ui/react";
 
 import useAxiosSecure from "../../../AxiosSecure/AxiosSecure";
 import useAuth from "../../../auth/Auth";
-
+import { Helmet } from "react-helmet-async";
+import { useQuery } from '@tanstack/react-query';
+import Loading from './../../../component/Loading/Loading';
+const datas = [
+  {
+    id: 1,
+    name: "Basic Membership",
+    price: 10,
+    benefits: [
+      "Access to gym facilities during regular operating hours.",
+      "Access to locker rooms and showers.",
+      "Use of cardio and strength training equipment",
+    ],
+  },
+  {
+    id: 2,
+    name: "Standard Membership",
+    price: 50,
+    benefits: [
+      "All benefits of the basic membership.",
+      "Use of additional amenities like a sauna or steam room.",
+      "Access to group fitness classes such as yoga, spinning, and Zumba.",
+    ],
+  },
+  {
+    name: "Premium Membership",
+    price: 100,
+    id: 3,
+    benefits: [
+      "All benefits of the standard membership.",
+      "Access to personal training sessions with certified trainers.",
+      "Discounts on additional services such as massage therapy or nutrition counseling.",
+    ],
+  },
+];
 const TrainerBooking = () => {
   const navigate=useNavigate()
   const axiosSecure = useAxiosSecure();
@@ -20,39 +54,29 @@ const TrainerBooking = () => {
   const queryParams = new URLSearchParams(location.search);
   const trainerId = queryParams.get("id");
   const bookingSlot = queryParams.get("slot");
-console.log(bookingSlot)
-  const datas = [
-    {
-      id: 1,
-      name: "Basic Membership",
-      price: 10,
-      benefits: [
-        "Access to gym facilities during regular operating hours.",
-        "Access to locker rooms and showers.",
-        "Use of cardio and strength training equipment",
-      ],
-    },
-    {
-      id: 2,
-      name: "Standard Membership",
-      price: 50,
-      benefits: [
-        "All benefits of the basic membership.",
-        "Use of additional amenities like a sauna or steam room.",
-        "Access to group fitness classes such as yoga, spinning, and Zumba.",
-      ],
-    },
-    {
-      name: "Premium Membership",
-      price: 100,
-      id: 3,
-      benefits: [
-        "All benefits of the standard membership.",
-        "Access to personal training sessions with certified trainers.",
-        "Discounts on additional services such as massage therapy or nutrition counseling.",
-      ],
-    },
-  ];
+
+  const [searchParams] = useSearchParams();
+  const slot = searchParams.get('slot'); // 
+const {id}=useParams();
+const {data,isLoading}=useQuery({
+  queryKey:['trainer-detail'],
+  queryFn:async ()=>{
+
+      const {data}=await axiosSecure.get(`/fitness/single-slot-id/${id}`)
+
+      return data
+  }
+})
+  
+  console.log(data)
+  const handleClick = (index, price, name) => {
+    setSelectedCard(index === selectedCard ? null : index);
+    setSelectedCardPrice(price);
+    setSelectedCardPackage(name);
+  };
+  const handleClassChange = (event) => {
+    setSelectedClass(event.target.value);
+  };
 
   return (
     <div>
@@ -61,9 +85,9 @@ console.log(bookingSlot)
 
 
     <div className="min-h-screen  bg-[#141414] pb-10">
-{/*     <Helmet>
-  <title>Workout - Book A Trainer</title>
-</Helmet> */}
+    <Helmet>
+  <title>FItness - Book A Trainer</title>
+</Helmet>
 {" "}
 <div className="relative pt-28 pb-10 w-full space-y-4">
   <h1 className="lg:text-6xl md:text-5xl text-2xl text-center text-white uppercase">
@@ -72,19 +96,19 @@ console.log(bookingSlot)
   </h1>
 </div>
 <div className=" bg-[#29272738] container m-auto p-5 rounded-lg">
-{/*   {isLoading ? (
+  {isLoading ? (
     <Loading/>
-  ) : ( */}
+  ) : ( 
     <div className="container mx-auto px-4 py-8 text-white">
       <h1 className="text-3xl font-bold mb-4">Trainer Info</h1>
       <div className=" rounded-lg p-6">
         <div className="mb-4 text-xl flex gap-5">
           <p className="font-semibold">Trainer name:</p>
-        {/*   <p>{trainer.name}</p >*/}
+        <p>{data.name}</p >
         </div>
         <div className="mb-4 text-xl flex gap-5">
           <p className="font-semibold">Selected slot:</p>
-     {/*      <p>{bookingSlot}</p> */}
+    <p>{slot}</p> 
         </div>
         <div className="mb-4 flex gap-3 text-xl items-center bg-transparent">
           <p className="font-semibold">Classes :</p>
@@ -95,23 +119,22 @@ console.log(bookingSlot)
             className="bg-transparent border-white rounded-lg"
           >
             <option value="selectOne">Select One</option>
-      {/*       {trainer.specialties.map((specialty) => (
+       {data.skill.map((specialty) => (
               <option
                 className="bg-transparent text-black"
                 key={specialty}
-                value={specialty}
-                 value={selectedClass}
-            onChange={handleClassChange}
+              
+      
               >
-                {specialty}
+                {specialty.label}
               </option>
-            ))} */}
+            ))}
           </select>
              {/*      */}
         </div>
       </div>
     </div>
-{/*   )} */}
+ )} 
   <h1 className="text-3xl font-bold mb-4 text-white">
     Select one package
   </h1>
@@ -161,17 +184,17 @@ console.log(bookingSlot)
     ))}
   </div>
   <div className="text-center mt-10">
-    <button
-     
-      disabled={selectedCardPrice === 0 && selectedClass === ""}
-      className={`${
-        selectedCardPrice === 0 || selectedClass === ""
-          ? "bg-gray-400 cursor-not-allowed"
-          : "bg-blue-500 hover:bg-blue-700"
-      } text-white font-bold py-2 px-4 rounded`}
-    >
-    Join Now 
-    </button> 
+      <button
+          
+            disabled={selectedCardPrice === 0 && selectedClass === ""}
+            className={`${
+              selectedCardPrice === 0 || selectedClass === ""
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-blue-500 hover:bg-blue-700"
+            } text-white font-bold py-2 px-4 rounded`}
+          >
+          Join Now 
+          </button>
   </div>
 </div>
 </div>

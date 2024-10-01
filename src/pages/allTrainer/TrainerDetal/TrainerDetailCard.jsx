@@ -2,17 +2,32 @@ import React from "react";
 import UseButton from "../../../component/button/Button";
 import { Link } from "react-router-dom";
 import { GrYoga } from "react-icons/gr";
+import { Helmet } from "react-helmet-async";
+import { useQuery } from "@tanstack/react-query";
+import { axiosSecure } from "../../../AxiosSecure/AxiosSecure";
 
 const TrainerDetailCard = ({ tDetail, manageSlot, isLoading }) => {
   //consolelog(tDetail)
-  const { name, skill, image, experience, day ,slots} = tDetail || {};
-  console.log(slots)
+  console.log(manageSlot)
+  const {_id, name, skill, image, experience, day ,slots} = tDetail || {};
+
+
+  const {data:bookingData}=useQuery({
+    queryKey:['trainer-booking-data'],
+    queryFn:async ()=>{
+
+        const {data}=await axiosSecure.get(`/fitness/single-slot/${_id}`)
+
+        return data
+    }
+})
+console.log(bookingData)
   return (
     <div>
       <div className="min-h-screen  bg-[#141414]">
-        {/*      <Helmet>
-        <title>Workout - Trainer Details Page</title>
-      </Helmet> */}
+    <Helmet>
+        <title>Fitness - Trainer Details Page</title>
+      </Helmet> 
         <div className="">
           <div className="relative pt-28 pb-10 w-full space-y-4">
             <h1 className="lg:text-6xl md:text-5xl text-2xl text-center text-white uppercase">
@@ -123,7 +138,7 @@ const TrainerDetailCard = ({ tDetail, manageSlot, isLoading }) => {
                           <td className="px-4 py-4">{slot.time}</td>
 
                           <td className="px-4 py-4">
-                            <Link to={`/trainer-booking?slot=${slot.name}`}>
+                            <Link to={`/trainer-booking/${_id}?slot=${slot.name}`}>
                               <button className="inline-flex items-center px-3 py-2 text-base font-medium text-center text-white rounded-lg bg-blue-500 hover:bg-blue-700 border-none">
                                 Book Now
                               </button>

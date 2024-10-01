@@ -10,14 +10,15 @@ const TrainerDetail = () => {
   const axiosSecure=useAxiosSecure()
 
   const  {id}=useParams()
+  console.log(id)
 const{user}=useAuth()
 //consolelog(id)
   const {data}=useQuery({
     queryKey:['trainer-detail'],
     queryFn:async ()=>{
 
-        const {data}=await axiosSecure.get(`/fitness/single-trainer/${id}`)
-
+        const {data}=await axiosSecure.get(`/fitness/single-slot-id/${id}`)
+console.log("datat",data)
         return data
     }
 })

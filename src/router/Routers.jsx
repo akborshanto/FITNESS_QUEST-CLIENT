@@ -71,7 +71,7 @@ export const router = createBrowserRouter([
         //loader:({params})=>fetch(`${import.meta.env>VITE_API_URL}/trainer-detail/${params.id}`)
       },
       {
-        path: "/trainer-booking",
+        path: "/trainer-booking/:id",
         element: (
    
             <TrainerBooking></TrainerBooking>

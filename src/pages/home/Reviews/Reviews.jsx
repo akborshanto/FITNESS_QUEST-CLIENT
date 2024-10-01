@@ -67,7 +67,6 @@ const Reviews = () => {
 
 
   <div className="glide-09 relative w-full overflow-hidden">
-  <UseTitle heading={"REVIEW"} description={'His effort for making me fit is awesome. His knowledge about maintaining good health and sharing & communication is really helping out a lot to stay fit.'}></UseTitle>
         {/* <!-- Slides --> */}
         <div data-glide-el="track">
           <ul className="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0">
@@ -174,7 +173,7 @@ const Reviews = () => {
                         />
                         <div className="flex flex-col gap-1">
                           <span className="font-bold uppercase">
-                         {review?.name}
+                    
                           </span>
                           <cite className="not-italic">
                             <a href="#">{review?.date}</a>
