@@ -1,7 +1,7 @@
 import React from "react";
 import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import UseButton from "../../../../component/button/Button";
+// import UseButton from "../../../../component/button/Button";
 
 const AllTrainerAdminCard = ({ trainer,TrainerSingleData }) => {
   const  {

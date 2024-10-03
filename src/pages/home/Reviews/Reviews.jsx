@@ -23,7 +23,6 @@ const Reviews = () => {
     queryKey: ["redview"],
     queryFn: async () => {
       const { data } = await axiosSecure.get("/rating");
-      console.log(data);
       return data;
     },
   });

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import UseButton from "../../../../component/button/Button";
+// import UseButton from "../../../../component/button/Button";
 import UseTitle from "../../../../hook/useTitle";
 
 const Be_A_Trainer = () => {

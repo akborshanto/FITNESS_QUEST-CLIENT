@@ -10,7 +10,7 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-  Button,
+  // Button,
 
 } from "@chakra-ui/react";
 import { FaEye } from "react-icons/fa";
@@ -23,7 +23,7 @@ import { Link, useParams } from "react-router-dom";
 const AppliedTrainerAdmin = () => {
 const [id, setId] = useState(null);
   // const {id}=useParams()
-  // console.log(id)
+
   const { pendingTrainer, isLoading } = useAppliedNew();
   const axiosSecure = useAxiosSecure();
 

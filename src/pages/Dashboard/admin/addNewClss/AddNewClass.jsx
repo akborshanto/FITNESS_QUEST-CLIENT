@@ -1,6 +1,6 @@
 import { Select } from "@chakra-ui/react";
 import React from "react";
-import UseButton from "../../../../component/button/Button";
+// import UseButton from "../../../../component/button/Button";
 import useAxiosSecure from "../../../../AxiosSecure/AxiosSecure";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -66,7 +66,6 @@ const handleFormData = (e) => {
   const image = form.image.value;
   const bookings = 0;
   const data = { name, title, description, image, bookings };
-  console.log(data);
 
   
   axiosSecure

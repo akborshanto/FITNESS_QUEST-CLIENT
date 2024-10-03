@@ -8,7 +8,7 @@ import { axiosSecure } from "../../../AxiosSecure/AxiosSecure";
 
 const TrainerDetailCard = ({ tDetail, manageSlot, isLoading }) => {
   //consolelog(tDetail)
-  console.log(manageSlot)
+
   const {_id, name, skill, image, experience, day ,slots} = tDetail || {};
 
 
@@ -21,7 +21,7 @@ const TrainerDetailCard = ({ tDetail, manageSlot, isLoading }) => {
         return data
     }
 })
-console.log(bookingData)
+
   return (
     <div>
       <div className="min-h-screen  bg-[#141414]">

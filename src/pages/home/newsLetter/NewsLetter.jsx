@@ -1,5 +1,5 @@
 import React from "react";
-import UseButton from "../../../component/button/Button";
+// import UseButton from "../../../component/button/Button";
 import useAxiosSecure from "../../../AxiosSecure/AxiosSecure";
 import { toast } from "react-hot-toast";
 import useAuth from './../../../auth/Auth';
@@ -17,7 +17,7 @@ const NewsLetter = () => {
       email,
     img:user?.photoURL
     };
-console.log(userInfo)
+// console.log(userInfo)
     /* user axios secure */
     const data = await axiosSecure.post("/fitness/subsciber", userInfo).then((res) => {
       if (res.status == 200) {

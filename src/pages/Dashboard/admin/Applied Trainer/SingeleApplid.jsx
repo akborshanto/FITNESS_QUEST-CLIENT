@@ -16,7 +16,7 @@ import {
 import useAuth from "../../../../auth/Auth";
 import useAxiosSecure from "../../../../AxiosSecure/AxiosSecure";
 
-import UseButton from "../../../../component/button/Button";
+// import UseButton from "../../../../component/button/Button";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 const SingeleApplid = ({ refetcha }) => {

@@ -31,13 +31,13 @@ const handleBtn=(E)=>{}
           <div className="mt-2 flex justify-between items-center">
             <div className="flex gap-4">
               <img
-                src={comunity?.image}
+                src={post?.image}
                 className="h-14 rounded-full"
-                alt="sadfs"
+                alt="Comunity image"
               />
               <div>
-         <h1 className='text-black'>{comunity?.name}</h1> 
-                ROLE
+         <h1 className='text-black'>{post?.name}</h1> 
+            
               </div>
             </div>
             <div className=" flex gap-5    ">

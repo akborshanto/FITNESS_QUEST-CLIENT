@@ -66,7 +66,7 @@ const handleSubmit =async (e) => {
    slotName,slotTime
   }; */}
 
-      //console.log(trainerData)
+
          await axiosSecure.post("/fitness/manage-slot", slotData)
          .then((res)=>{
          

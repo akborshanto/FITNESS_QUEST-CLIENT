@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UseButton from "./../../../component/button/Button";
+// import UseButton from "./../../../component/button/Button";
 import { Link, json, useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Select } from "@chakra-ui/react";
 
@@ -68,7 +68,6 @@ const {data,isLoading}=useQuery({
   }
 })
   
-  console.log(data)
   const handleClick = (index, price, name) => {
     setSelectedCard(index === selectedCard ? null : index);
     setSelectedCardPrice(price);

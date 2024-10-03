@@ -1,7 +1,7 @@
 import React from "react";
-import Card from "../../component/cardHome/Card";
+// import Card from "../../component/cardHome/Card";
 import { Link } from "react-router-dom";
-import UseButton from "../../component/button/Button";
+// import UseButton from "../../component/button/Button";
 import { CiFacebook } from "react-icons/ci";
 import { GrYoga } from "react-icons/gr";
 const AllTrainerCad = ({ trainer }) => {

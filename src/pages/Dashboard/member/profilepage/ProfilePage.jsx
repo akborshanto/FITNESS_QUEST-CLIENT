@@ -1,18 +1,9 @@
 import React from "react";
 import useAuth from "../../../../auth/Auth";
-import UseButton from "../../../../component/button/Button";
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from "@chakra-ui/react";
+// import UseButton from "../../../../component/button/Button";
 
 import ProfileModal from "./ProfileModal";
-import { axiosSecure } from "../../../../AxiosSecure/AxiosSecure";
+import useAxiosSecure, { axiosSecure } from "../../../../AxiosSecure/AxiosSecure";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Loading from "./../../../../component/Loading/Loading";
@@ -22,7 +13,7 @@ const image_hoisting_Api = `https://api.imgbb.com/1/upload?key=${image_hoisting_
 const ProfilePage = () => {
   const { user, updateProfiles, loading } = useAuth();
 const[isAdmin, isTrainer, isRoleLoading, role]=useRoleNew()
-  
+  const axiosSecure=useAxiosSecure()
   const handleUpdate = async (e) => {
     e.preventDefault();
 
@@ -30,17 +21,43 @@ const[isAdmin, isTrainer, isRoleLoading, role]=useRoleNew()
     const form = e.target;
     const name = form.name.value;
     const image = form.photo.files[0];
+    const imageFile = { image: data.image[0] };
 
     const formData = new FormData();
     formData.append("image", image);
-
-    const { data } = await axios.post(image_hoisting_Api, formData);
-
-    updateProfiles(name, data?.data?.display_url).then((res) => {
-      if (data.data.success) {
-        toast.success("successfully Updated profile");
+    axios.post(
+      `https://api.imgbb.com/1/upload?key=e9b3cb55e11b48d4142caf366d77cea6`,
+      imageFile,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       }
+    )
+
+    updateProfiles(data.name, image).then((res) => {
+      const dataInfo = { name: data.name, email: data.email,image };
+
+      axiosSecure
+        .post(`/fitness/userFitness`, dataInfo)
+        .then((res) => {
+   
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     });
+
+
+
+
+    // const { data } = await axios.post(image_hoisting_Api, formData);
+
+    // updateProfiles(name, data?.data?.display_url).then((res) => {
+    //   if (data.data.success) {
+    //     toast.success("successfully Updated profile");
+    //   }
+    // });
   };
 
   return (

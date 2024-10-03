@@ -1,31 +1,13 @@
 import React, { useEffect } from "react";
 
-import UseButton from "../button/Button";
+// import UseButton from "../button/Button";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader requires a loader
 import { Link } from "react-router-dom";
 
 
 export default function UseSlider({ img }) {
-/*   useEffect(() => {
-    const slider = new Glide(".glide-01", {
-      type: "slider",
-      focusAt: "center",
-      perView: 1,
-      autoplay: 3000,
-      animationDuration: 700,
-      gap: 0,
-      classes: {
-        nav: {
-          active: "[&>*]:bg-wuiSlate-700",
-        },
-      },
-    }).mount();
-
-    return () => {
-      slider.destroy();
-    };
-  }, []);
+/*
  */
   return (
     <>

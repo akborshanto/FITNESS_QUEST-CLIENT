@@ -1,5 +1,5 @@
 import React from "react";
-import UseButton from "../../component/button/Button";
+// import UseButton from "../../component/button/Button";
 
 import Banner from "./banner/Banner";
 import Feture from "./feature/Feture";
@@ -10,14 +10,13 @@ import Reviews from "./Reviews/Reviews";
 import NewsLetter from "./newsLetter/NewsLetter";
 import TeamSection from "./teamSection/TeamSection";
 import ComunitySection from "./ComuntiySection/ComunitySection";
-import Card from "../../component/cardHome/Card";
+// import Card from "../../component/cardHome/Card";
 
 import ReviewCard from "./Reviews/ReviewCard";
 import useRoleNew from "../../hook/useRoleNew";
 
 const Home = () => {
   const [role, isAdmin, isTrainer] = useRoleNew();
-  console.log(isTrainer, "ROLE");
   //consolelog(role)
   return (
     <div className=" overflow-hidden">

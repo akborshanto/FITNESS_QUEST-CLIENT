@@ -3,7 +3,7 @@ import React from 'react'
 import ActivityTaable from './ActivityTaable'
 import { FaEye, FaRegEye } from "react-icons/fa";
 
-import UseButton from '../../../../component/button/Button';
+// import UseButton from '../../../../component/button/Button';
 import toast from 'react-hot-toast';
 import { MdDelete } from "react-icons/md";
 import useAppliedNew from '../../../../hook/useAppliedNew';
@@ -14,7 +14,7 @@ import useAuth from '../../../../auth/Auth';
 import { ImCross } from 'react-icons/im';
 const ActivateLog = () => {
 const {user}=useAuth()
-console.log(user.email)
+
   // const { isOpen, onOpen, onClose } = useDisclosure()
 
   const axiosSecure=useAxiosSecure()

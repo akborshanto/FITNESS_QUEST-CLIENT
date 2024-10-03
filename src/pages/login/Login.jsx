@@ -37,6 +37,7 @@ navigate(location?.state ? location.state:"/")
 .then((res)=>{
 
   toast.success("Successfully Google logged in")
+  navigate(location?.state ? location.state:"/")
 })
 
   }

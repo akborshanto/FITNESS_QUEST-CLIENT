@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import UseButton from "../../../component/button/Button";
+// import UseButton from "../../../component/button/Button";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../auth/Auth";
 import useAxiosSecure from "../../../AxiosSecure/AxiosSecure";

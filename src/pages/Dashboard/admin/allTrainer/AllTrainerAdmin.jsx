@@ -20,11 +20,11 @@ const { data, isLoading, refetch, error } = useQuery({
     return data; // Ensure that data is returned here
   },
 });
-console.log("DSFDD",data)
+
 
 const handleDelete=(email)=>{
 
-console.log(email)
+
   axiosSecure.delete(`/fitness/allTrainerNewDelete/${email}`)
   .then((res)=>{
 

@@ -7,7 +7,7 @@ import useAxiosSecure from "../AxiosSecure/AxiosSecure";
 const useRoleNew = () => {
     const { user, loading } = useAuth();
     const axiosSecure = useAxiosSecure();
-    console.log(user?.email)
+
     const { data: role, isPending: isRoleLoading } = useQuery({
         
         queryKey: [user?.email, "userRole"],
@@ -23,7 +23,7 @@ const useRoleNew = () => {
 
     const isAdmin = role === "admin";
     const isTrainer = role === "trainer";
-console.log(isTrainer)
+
     return [isAdmin, isTrainer, isRoleLoading, role];
 };
 

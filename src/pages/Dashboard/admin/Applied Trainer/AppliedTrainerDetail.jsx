@@ -16,7 +16,6 @@ const AppliedTrainerDetail = () => {
   const [trainerData, setTrainerData] = useState(null);
   const [isError, setIsError] = useState("");
   const [openModal, setIsOpenModal] = useState(false);
-  console.log(trainerData);
   // Function to fetch trainer details
   const fetchTrainerDetail = async () => {
     try {
@@ -57,7 +56,7 @@ const data={...datails,statusData};
 axiosSecure.post(`/applictionBecameTrainerUpdata/${datails._id}`)
 .then((res)=>{
 toast.success("Successfully Approved the role")
-console.log(res.data)
+
 })
 .catch((err)=>{
   console.log(err)
@@ -71,7 +70,6 @@ const handleReject=(id)=>{
 axiosSecure.delete(`/applictionBecameTrainerDelete/${id}`)
 .then((res)=>{
 toast.success("Successfully Reject the role")
-console.log(res.data)
 })
 .catch((err)=>{
   console.log(err)

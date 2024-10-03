@@ -29,7 +29,6 @@ const Register = () => {
     const email = data.email;
     const imageFile = { image: data.image[0] };
 
-    console.log(imageFile);
 
     createUser(email, password)
       .then((res) => {
@@ -52,7 +51,7 @@ const Register = () => {
               axiosSecure
                 .post(`/fitness/userFitness`, dataInfo)
                 .then((res) => {
-                  console.log(res.data);
+              
                 })
                 .catch((err) => {
                   console.log(err);

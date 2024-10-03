@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useAuth from "../../../../auth/Auth";
-import UseButton from "../../../../component/button/Button";
+// import UseButton from "../../../../component/button/Button";
 
 import useAxiosSecure from "../../../../AxiosSecure/AxiosSecure";
 import { toast } from "react-hot-toast";
@@ -31,7 +31,7 @@ const AddNewForum = () => {
     })
 
   };
-  console.log(text);
+
   return (
     <div>
       <UseTitle heading="ADD NEW FOURM"></UseTitle>

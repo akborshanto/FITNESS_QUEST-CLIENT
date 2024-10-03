@@ -6,8 +6,6 @@ import Loading from '../../component/Loading/Loading'
 const AllClassPage = () => {
   const{newClass,isLoading,refetch,error}=useNewClass()
 
-console.log(newClass)
-
 const handleSubmit=(e)=>{
   e.preventDefault()
 }

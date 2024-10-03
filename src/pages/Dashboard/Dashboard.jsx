@@ -18,11 +18,11 @@ import { Helmet } from "react-helmet-async";
 const Dashboard = () => {
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
 
-const[isAdmin,isTrainer]=useRoleNew()
+const[isAdmin,isTrainer,isRoleLoading]=useRoleNew()
 
 
   // const [isAdmin, isTrainer] = useRole();
-  console.log(isAdmin, isTrainer);
+
   // const [applictionBecameTrainer] = UseAplicationFiner();
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -43,7 +43,10 @@ const[isAdmin,isTrainer]=useRoleNew()
     <Helmet>
     <title>Fitness - Dashboard</title>
   </Helmet>
-  {" "}
+
+{
+
+  isRoleLoading? <Loading></Loading>:
   <div className="flex h-screen  relative border-t-2">
     <aside
       className={`absolute inset-y-0 left-0 z-10 border-r-2  w-64 overflow-y-auto transition duration-300 transform bg-[#141414]  dark:bg-gray-800 ${
@@ -234,6 +237,10 @@ const[isAdmin,isTrainer]=useRoleNew()
       </main>
     </div>
   </div>
+}
+
+
+
 </div>
 
 

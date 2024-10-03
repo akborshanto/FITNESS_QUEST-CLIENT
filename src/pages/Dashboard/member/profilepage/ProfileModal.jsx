@@ -9,10 +9,16 @@ import {
   useDisclosure,
   Button,
 } from "@chakra-ui/react";
+import { useForm } from "react-hook-form";
 
 const ProfileModal = ({ handleUpdate, user }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { register, handleSubmit } = useForm();
 
+
+
+
+  
   return (
     <div>
       {" "}
@@ -62,7 +68,9 @@ const ProfileModal = ({ handleUpdate, user }) => {
                   <input
                     id="id-b02"
                     type="file"
-                    name="photo"
+                   name="image"
+                          accept="image/*"
+                          {...register("image", { required: true })}
                     placeholder={user?.photoURL}
                     className="file-input file-input-bordered file-input-accent w-full max-w-xs"
                   />

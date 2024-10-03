@@ -3,7 +3,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import useAuth from "../../auth/Auth";
 import { Link, NavLink } from "react-router-dom";
 import { Avatar } from "@chakra-ui/react";
-import UseButton from "../../component/button/Button";
+//import UseButton from "../../component/button/Button";
 import { FaBarsProgress } from "react-icons/fa6";
 import Loading from "../../component/Loading/Loading";
 const Navbar = () => {

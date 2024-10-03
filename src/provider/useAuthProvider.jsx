@@ -18,7 +18,6 @@ export const AuthContext = createContext();
 const UseAuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
-  console.log(user);
   const auth = getAuth(app);
 const axiosSecure=useAxiosSecure()
   const provider = new GoogleAuthProvider();
@@ -51,7 +50,6 @@ const axiosSecure=useAxiosSecure()
         axiosSecure
           .post("/jwt", userInfo)
           .then((res) => {
-            console.log(res.data);
             if (res.data.token) {
               localStorage.setItem("access-token", res.data.token);
               setLoading(false);

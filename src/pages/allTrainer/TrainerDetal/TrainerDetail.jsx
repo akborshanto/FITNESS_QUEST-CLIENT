@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import TrainerDetailCard from './TrainerDetailCard'
+// import TrainerDetailCard from './TrainerDetailCard'
 import Be_A_Trainer from './Be A Trainer/Be_A_Trainer'
 import { useParams } from 'react-router-dom'
 import useAxiosSecure from '../../../AxiosSecure/AxiosSecure'
@@ -10,7 +10,7 @@ const TrainerDetail = () => {
   const axiosSecure=useAxiosSecure()
 
   const  {id}=useParams()
-  console.log(id)
+
 const{user}=useAuth()
 //consolelog(id)
   const {data}=useQuery({
@@ -18,7 +18,7 @@ const{user}=useAuth()
     queryFn:async ()=>{
 
         const {data}=await axiosSecure.get(`/fitness/single-slot-id/${id}`)
-console.log("datat",data)
+
         return data
     }
 })
