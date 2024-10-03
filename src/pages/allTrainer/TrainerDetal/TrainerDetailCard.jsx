@@ -1,5 +1,5 @@
 import React from "react";
-import UseButton from "../../../component/button/Button";
+//import UseButton from "../../../component/button/Button";
 import { Link } from "react-router-dom";
 import { GrYoga } from "react-icons/gr";
 import { Helmet } from "react-helmet-async";
@@ -139,8 +139,15 @@ const TrainerDetailCard = ({ tDetail, manageSlot, isLoading }) => {
 
                           <td className="px-4 py-4">
                             <Link to={`/trainer-booking/${_id}?slot=${slot.name}`}>
-                              <button className="inline-flex items-center px-3 py-2 text-base font-medium text-center text-white rounded-lg bg-blue-500 hover:bg-blue-700 border-none">
-                                Book Now
+                              <button       onClick={book}
+                              disabled={selectedCardPrice === 0 && selectedClass === ""}
+                              className={`${
+                                selectedCardPrice === 0 || selectedClass === ""
+                                  ? "bg-gray-400 cursor-not-allowed"
+                                  : "bg-blue-500 hover:bg-blue-700"
+                              } text-white font-bold py-2 px-4 rounded`}
+                            >
+                            Join Now 
                               </button>
                             </Link>
                           </td>

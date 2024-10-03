@@ -28,7 +28,7 @@ const useAxiosAdmin = () => {
     async (err) => {
       const status = err.response.status;
       if (status === 403 || status === 401) {
-        navigate("/login");
+    navigate("/login");
         await logOut();
       }
       return Promise.reject(err);

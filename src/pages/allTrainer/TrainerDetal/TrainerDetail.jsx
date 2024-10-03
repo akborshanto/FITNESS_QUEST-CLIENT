@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-// import TrainerDetailCard from './TrainerDetailCard'
+import TrainerDetailCard from './TrainerDetailCard'
 import Be_A_Trainer from './Be A Trainer/Be_A_Trainer'
 import { useParams } from 'react-router-dom'
 import useAxiosSecure from '../../../AxiosSecure/AxiosSecure'
