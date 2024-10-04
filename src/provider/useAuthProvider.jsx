@@ -16,6 +16,7 @@ import useAxiosSecure from "../AxiosSecure/AxiosSecure";
 
 export const AuthContext = createContext();
 const UseAuthProvider = ({ children }) => {
+  const [id,setId]=useState('')
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const auth = getAuth(app);
@@ -112,6 +113,7 @@ const axiosSecure=useAxiosSecure()
     GoogleLogin,
     updateProfiles,
     logOut,
+    id,setId
   };
 
   return (

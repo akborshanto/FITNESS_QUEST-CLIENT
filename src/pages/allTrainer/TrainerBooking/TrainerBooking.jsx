@@ -50,7 +50,8 @@ const TrainerBooking = () => {
   const [selectedCardPackage, setSelectedCardPackage] = useState("");
   const location = useLocation();
   
-  const { user } = useAuth();
+  const { user,setId } = useAuth();
+
   const queryParams = new URLSearchParams(location.search);
   const trainerId = queryParams.get("id");
   const bookingSlot = queryParams.get("slot");
@@ -67,7 +68,8 @@ const {data,isLoading}=useQuery({
       return data
   }
 })
-  
+
+
   const handleClick = (index, price, name) => {
     setSelectedCard(index === selectedCard ? null : index);
     setSelectedCardPrice(price);
@@ -185,17 +187,18 @@ const {data,isLoading}=useQuery({
 
   </div>
   <div className="text-center mt-10">
-      <button
-          
-            disabled={selectedCardPrice === 0 && selectedClass === ""}
-            className={`${
-              selectedCardPrice === 0 || selectedClass === ""
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-blue-500 hover:bg-blue-700"
-            } text-white font-bold py-2 px-4 rounded`}
-          >
-          Join Now 
-          </button>
+  <Link to='/payment'>      <button
+          onClick={()=>setId(id)}
+  disabled={selectedCardPrice === 0 && selectedClass === ""}
+  className={`${
+    selectedCardPrice === 0 || selectedClass === ""
+      ? "bg-gray-400 cursor-not-allowed"
+      : "bg-blue-500 hover:bg-blue-700"
+  } text-white font-bold py-2 px-4 rounded`}
+>
+Join Now 
+</button></Link>
+
   </div>
 </div>
 </div>

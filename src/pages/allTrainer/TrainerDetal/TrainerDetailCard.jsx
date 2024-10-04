@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { useState } from "react";
 //import UseButton from "../../../component/button/Button";
 import { Link } from "react-router-dom";
 import { GrYoga } from "react-icons/gr";
@@ -10,10 +11,14 @@ const TrainerDetailCard = ({ tDetail, manageSlot, isLoading }) => {
   //consolelog(tDetail)
 
   const {_id, name, skill, image, experience, day ,slots} = tDetail || {};
+  const [selectedCard, setSelectedCard] = useState(null);
+  
+  const [selectedClass, setSelectedClass] = useState("");
+  const [selectedCardPrice, setSelectedCardPrice] = useState();
+  const [selectedCardPackage, setSelectedCardPackage] = useState("");
 
-
-  const {data:bookingData}=useQuery({
-    queryKey:['trainer-booking-data'],
+  const {data:payment}=useQuery({
+    queryKey:['trainer-payment-data'],
     queryFn:async ()=>{
 
         const {data}=await axiosSecure.get(`/fitness/single-slot/${_id}`)
@@ -21,7 +26,10 @@ const TrainerDetailCard = ({ tDetail, manageSlot, isLoading }) => {
         return data
     }
 })
+const book=()=>{
 
+  
+}
   return (
     <div>
       <div className="min-h-screen  bg-[#141414]">
