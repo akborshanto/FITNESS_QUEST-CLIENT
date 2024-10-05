@@ -29,7 +29,7 @@ export const Payment = () => {
   const packageName = queryParams.get('packageName');
   const packagePrice = queryParams.get('packagePrice');
   const packageSlot = queryParams.get('slot');
-  console.log(packageName,packagePrice,pac)
+
   return (
     <div className="bg-[#141414] pb-10">
     <Helmet>

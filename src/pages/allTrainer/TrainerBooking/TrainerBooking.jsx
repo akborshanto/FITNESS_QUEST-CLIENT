@@ -59,7 +59,7 @@ const TrainerBooking = () => {
   const bookingSlot = queryParams.get("slot");
 
   const [searchParams] = useSearchParams();
-  const slot = searchParams.get('slot'); // 
+   
 const {id}=useParams();
 const {data,isLoading}=useQuery({
   queryKey:['trainer-detail'],
@@ -117,7 +117,7 @@ const {data,isLoading}=useQuery({
         </div>
         <div className="mb-4 text-xl flex gap-5">
           <p className="font-semibold">Selected slot:</p>
-    <p>{slot}</p> 
+    <p>{bookingSlot}</p> 
         </div>
         <div className="mb-4 flex gap-3 text-xl items-center bg-transparent">
           <p className="font-semibold">Classes :</p>
@@ -152,7 +152,7 @@ const {data,isLoading}=useQuery({
   {datas.map((data, i) => (
     <div 
       key={i}
-      className={`w-full max-w-sm p-4 border border-gray-200 rounded-lg shadow flex flex-col sm:p-8 ${
+      className={`w-full max-w-sm p-4 border hover:border-red-600 border-gray-200 rounded-lg shadow flex flex-col sm:p-8 ${
         selectedCard === i + 1 ? "bg-[#ffffff34]" : ""
       } duration-500`}
       onClick={() => handleClick(data, data.price, data.name)}
@@ -195,13 +195,13 @@ const {data,isLoading}=useQuery({
 
   </div>
   <div className="text-center mt-10">
-  <Link to={`/payment?packageName=${selectedCardPackage}&packagePrice=${selectedCardPrice}&slot=${slot}`}>      <button
+  <Link to={`/payment?packageName=${selectedCardPackage}&packagePrice=${selectedCardPrice}&slot=${bookingSlot}`}>      <button
           onClick={()=>setId(id)}
   disabled={selectedCardPrice === 0 && selectedClass === ""}
   className={`${
     selectedCardPrice === 0 || selectedClass === ""
-      ? "bg-blue-400 "
-      : "bg-red-500 hover:bg-blue-700"
+      ? "bg-gray-400 "
+      : "bg-blue-500 hover:bg-blue-700"
   } text-white font-bold py-2 px-4 rounded`}
 >
 Join Now 
