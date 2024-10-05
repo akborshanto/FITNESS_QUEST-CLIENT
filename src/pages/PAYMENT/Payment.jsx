@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async'
 import useAuth from '../../auth/Auth';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../AxiosSecure/AxiosSecure';
+import { useLocation } from 'react-router-dom';
 const stripePromise = loadStripe(
   "pk_test_51PLSF52NHkygt9EvW5PNK63NKBr6kkBTgkG4tl7TmdFHGow5zH3sSxzCDExJEkTgkxbDwxbPJcB8CZ2HQR8UE5C9005BIaeGcY"
 );
@@ -19,7 +20,16 @@ export const Payment = () => {
         return data
     }
   })
-console.log(data)
+  const location = useLocation();
+  
+  // Create a URLSearchParams object with the query string
+  const queryParams = new URLSearchParams(location.search);
+  
+  // Get the values of packageName and packagePrice from the query params
+  const packageName = queryParams.get('packageName');
+  const packagePrice = queryParams.get('packagePrice');
+  const packageSlot = queryParams.get('slot');
+  console.log(packageName,packagePrice,pac)
   return (
     <div className="bg-[#141414] pb-10">
     <Helmet>
@@ -58,15 +68,15 @@ console.log(data)
             </li>
             <li className="flex justify-between items-center">
               <span className="text-gray-500 font-bold">Slot:</span>
-           {/*    <span className="font-bold">{data.slotName}</span> */}
+          <span className="font-bold">{packageSlot}</span> 
             </li>
             <li className="flex justify-between items-center">
               <span className="text-gray-500 font-bold">Package:</span>
-      {/*         <span className="font-bold">{data.packageName}</span> */}
+        <span className="font-bold">{packageName}</span>
             </li>
             <li className="flex justify-between items-center">
               <span className="text-gray-500 font-bold">Price:</span>
-             {/*  <span className="font-bold">${data.price}</span> */}
+             <span className="font-bold">${packagePrice}</span> 
             </li>
 
             <>

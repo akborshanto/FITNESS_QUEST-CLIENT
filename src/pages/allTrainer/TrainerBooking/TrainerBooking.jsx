@@ -41,12 +41,14 @@ const datas = [
   },
 ];
 const TrainerBooking = () => {
-  const navigate=useNavigate()
+  const navigate=useNavigate();
+
   const axiosSecure = useAxiosSecure();
   const [selectedCard, setSelectedCard] = useState(null);
   
   const [selectedClass, setSelectedClass] = useState("");
   const [selectedCardPrice, setSelectedCardPrice] = useState(0);
+
   const [selectedCardPackage, setSelectedCardPackage] = useState("");
   const location = useLocation();
   
@@ -74,11 +76,17 @@ const {data,isLoading}=useQuery({
     setSelectedCard(index === selectedCard ? null : index);
     setSelectedCardPrice(price);
     setSelectedCardPackage(name);
+    console.log(price,name)
+
   };
   const handleClassChange = (event) => {
     setSelectedClass(event.target.value);
+
   };
 
+  const handleCard=(e)=>{
+    console.log(e)
+  }
   return (
     <div>
 
@@ -121,10 +129,10 @@ const {data,isLoading}=useQuery({
             className="bg-transparent border-white rounded-lg"
           >
             <option value="selectOne">Select One</option>
-       {data.skill.map((specialty) => (
-              <option
+       {data.skill.map((specialty,i) => (
+              <option 
                 className="bg-transparent text-black"
-                key={specialty}
+                key={i}
               
       
               >
@@ -142,12 +150,12 @@ const {data,isLoading}=useQuery({
   </h1>
   <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 container m-auto gap-3 ">
   {datas.map((data, i) => (
-    <div
-      key={data.name}
+    <div 
+      key={i}
       className={`w-full max-w-sm p-4 border border-gray-200 rounded-lg shadow flex flex-col sm:p-8 ${
         selectedCard === i + 1 ? "bg-[#ffffff34]" : ""
       } duration-500`}
-      onClick={() => handleClick(data.id, data.price, data.name)}
+      onClick={() => handleClick(data, data.price, data.name)}
     >
       <h5 className="mb-4 text-2xl font-bold text-white">
         {data.name}
@@ -165,7 +173,7 @@ const {data,isLoading}=useQuery({
         </div>
         <ul role="list" className="space-y-5 my-7 ">
           {data.benefits.map((benefit, index) => (
-            <li key={index} className="flex items-center gap-2 ">
+            <li key={index} className="flex items-center gap-2 " >
               <svg
                 className="flex-shrink-0 w-4 h-4 text-green-500 "
                 aria-hidden="true"
@@ -187,13 +195,13 @@ const {data,isLoading}=useQuery({
 
   </div>
   <div className="text-center mt-10">
-  <Link to='/payment'>      <button
+  <Link to={`/payment?packageName=${selectedCardPackage}&packagePrice=${selectedCardPrice}&slot=${slot}`}>      <button
           onClick={()=>setId(id)}
   disabled={selectedCardPrice === 0 && selectedClass === ""}
   className={`${
     selectedCardPrice === 0 || selectedClass === ""
-      ? "bg-gray-400 cursor-not-allowed"
-      : "bg-blue-500 hover:bg-blue-700"
+      ? "bg-blue-400 "
+      : "bg-red-500 hover:bg-blue-700"
   } text-white font-bold py-2 px-4 rounded`}
 >
 Join Now 

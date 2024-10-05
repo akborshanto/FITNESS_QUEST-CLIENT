@@ -1,9 +1,7 @@
 import React from 'react'
 
-const ChekOut = () => {
+export const ChekOut = () => {
   return (
     <div>ChekOut</div>
   )
 }
-
-export default ChekOut
