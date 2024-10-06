@@ -20,7 +20,7 @@ const AppliedTrainerDetail = () => {
   const fetchTrainerDetail = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/fitness/pending-trainers/${id}`
+        ` baseURL:"https://trainer-quest.vercel.app/fitness/pending-trainers/${id}`
       );
       setTrainerData(response.data); // Set the data in the state
     } catch (err) {

@@ -1,6 +1,6 @@
 ## Live Link
 
-[FITNESS QUEST](https://fitness-5ee62.web.app/)
+[FITNESS QUEST](https://kaleidoscopic-douhua-18096f.netlify.app/)
 
 <<<<<<< HEAD
 

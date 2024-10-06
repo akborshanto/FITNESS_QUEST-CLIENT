@@ -3,8 +3,8 @@ import axios from 'axios'
 
 
 export const axiosSecure= axios.create({
-baseURL:"http://localhost:5000",
-//  baseURL:"https://trainer-quest.vercel.app",
+  baseURL: "https://fitness-quest-server.vercel.app",
+//  baseURL:"https://fitness-quest-server-geizbgrf4-akbor-shantos-projects.vercel.app",
  //timeout:1000,
 
 

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "./../auth/Auth";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://fitness-quest-server.vercel.app",
   // baseURL: "http://localhost:4000/",
 });
 const useAxiosAdmin = () => {
