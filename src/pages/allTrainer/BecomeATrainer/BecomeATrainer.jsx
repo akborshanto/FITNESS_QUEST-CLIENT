@@ -66,14 +66,17 @@ const BecomeATrainer = () => {
 
 
     
-    }
+    } || {}
       //console.log(trainerData)
      await axiosSecure.post("/fitness/pending-trainer", trainerData)
 .then((res)=>{
 
 
   toast.success("Successfully applied trainer")
-  navigate('/dashboard')
+  // navigate('/dashboard')
+})
+.catch((err)=>{
+  toast.error("Error while applying trainer")
 })
 
   };

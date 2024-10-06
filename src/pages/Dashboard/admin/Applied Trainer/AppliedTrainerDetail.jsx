@@ -2,30 +2,29 @@ import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import useAppliedNew from "./../../../../hook/useAppliedNew";
 import { useParams } from "react-router-dom";
-
 import Loading from "./../../../../component/Loading/Loading";
-import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../AxiosSecure/AxiosSecure";
-import axios from "axios";
 import toast from "react-hot-toast";
 
 const AppliedTrainerDetail = () => {
   const { error } = useAppliedNew();
   const axiosSecure = useAxiosSecure();
-  const { id } = useParams() || {}; // Correctly destructuring the `id` from useParams
+  const { id } = useParams();
   const [trainerData, setTrainerData] = useState(null);
-  const [isError, setIsError] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [openModal, setIsOpenModal] = useState(false);
+
   // Function to fetch trainer details
   const fetchTrainerDetail = async () => {
     try {
-      const response = await axios.get(
-        ` baseURL:"https://trainer-quest.vercel.app/fitness/pending-trainers/${id}`
-      );
-      setTrainerData(response.data); // Set the data in the state
+      const response = await axiosSecure.get(`/fitness/pending-trainers/${id}`);
+      setTrainerData(response.data);
     } catch (err) {
-      //console.error('Error fetching trainer detail:', err);
-      setIsError("ERROR...........");
+      setIsError(true);
+      console.error("Error fetching trainer detail:", err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -34,59 +33,53 @@ const AppliedTrainerDetail = () => {
     if (id) {
       fetchTrainerDetail();
     }
-  }, [id]); // Only refetch when `id` changes
+  }, [id]); // Ensure that only the `id` is the dependency
+  
 
   const toggleModal1 = () => {
-    setIsOpenModal(!isOpen);
+    setIsOpenModal(prevState => !prevState);
   };
-
+  
   const closeModal = () => {
     setIsOpenModal(false);
   };
-  const isOpen = () => {
-    setIsOpenModal(!setIsOpenModal);
+  
+
+  const handleApproveBtn = (details) => {
+    const statusData = "approved";
+    const data = { ...details, statusData };
+    axiosSecure
+      .post(`/applictionBecameTrainerUpdata/${details._id}`, data)
+      .then(() => {
+        toast.success("Successfully Approved the role");
+      })
+      .catch((err) => {
+        console.error("Error approving the role:", err);
+        toast.error("Failed to approve the role");
+      });
   };
 
-
-const handleApproveBtn=(datails)=>{
-
-const statusData="approved";
-
-const data={...datails,statusData};
-axiosSecure.post(`/applictionBecameTrainerUpdata/${datails._id}`)
-.then((res)=>{
-toast.success("Successfully Approved the role")
-
-})
-.catch((err)=>{
-  console.log(err)
-})
-
-
-}
-const handleReject=(id)=>{
-
-
-axiosSecure.delete(`/applictionBecameTrainerDelete/${id}`)
-.then((res)=>{
-toast.success("Successfully Reject the role")
-})
-.catch((err)=>{
-  console.log(err)
-})
-
-
-}
-
-
+  const handleReject = (id) => {
+    axiosSecure
+      .delete(`/applictionBecameTrainerDelete/${id}`)
+      .then(() => {
+        toast.success("Successfully Rejected the role");
+      })
+      .catch((err) => {
+        console.error("Error rejecting the role:", err);
+        toast.error("Failed to reject the role");
+      });
+  };
 
   return (
     <div>
       <Helmet>
-        <title>Workout - Application data</title>
+        <title>Fitness - Applied data</title>
       </Helmet>
-      {isError ? (
+      {isLoading ? (
         <Loading />
+      ) : isError ? (
+        <div>Error loading trainer data.</div>
       ) : (
         <div className="w-full max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
           <div className="flex justify-center mt-3 items-center px-10">
@@ -114,9 +107,9 @@ toast.success("Successfully Reject the role")
                 </p>
                 <ul className="list-disc list-inside mb-4">
                   {trainerData?.day?.length > 0 ? (
-                    trainerData?.day?.map((day, index) => (
+                    trainerData.day.map((day, index) => (
                       <li key={index} className="text-gray-700">
-                        {day?.label}
+                        {day.label}
                       </li>
                     ))
                   ) : (
@@ -132,9 +125,9 @@ toast.success("Successfully Reject the role")
                 </p>
                 <ul className="list-disc list-inside mb-4">
                   {trainerData?.skill?.length > 0 ? (
-                    trainerData?.skill?.map((specialty, index) => (
+                    trainerData.skill.map((specialty, index) => (
                       <li key={index} className="text-gray-700">
-                        {specialty?.value}
+                        {specialty.value}
                       </li>
                     ))
                   ) : (
@@ -164,9 +157,7 @@ toast.success("Successfully Reject the role")
             <div className="flex justify-between mt-4">
               <button
                 className="bg-[#d84c58d3] rounded-full px-5 py-2 capitalize"
-                onClick={() =>
-              handleReject(trainerData?._id)
-                }
+                onClick={() => handleReject(trainerData?._id)}
               >
                 Reject
               </button>
@@ -180,46 +171,17 @@ toast.success("Successfully Reject the role")
             </div>
 
             {/* Feedback Modal */}
-
-            {/* Open the modal using document.getElementById('ID').showModal() method */}
-    {        <dialog
-              id="my_modal_5"
-              className="modal modal-bottom sm:modal-middle"
-            >
+            <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
               <div className="modal-box">
-             {/*    <form
-                  onSubmit={(e) => handleReject(e)}
-                  className="p-4 text-center"
-                >
-                  <div className="mb-4">
-                    <label
-                      className="block text-gray-700 text-sm font-bold mb-2"
-                      htmlFor="description"
-                    >
-                      Feedback
-                    </label>
-                    <textarea
-                      required={true}
-                      className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      name="feedback"
-                      placeholder="Enter description"
-                    ></textarea>
+                <form>
+                  <div className="modal-action">
+                    <button className="btn" onClick={toggleModal}>
+                      Close
+                    </button>
                   </div>
-                  <button
-                    type="submit"
-                    className="bg-rose-500 px-4 rounded-full py-2"
-                  >
-                    Submit
-                  </button>
-                </form> */}
-                <div className="modal-action">
-                  <form method="dialog">
-                    {/* if there is a button in form, it will close the modal */}
-                    <button className="btn">Close</button>
-                  </form>
-                </div>
+                </form>
               </div>
-            </dialog>}
+            </dialog>
           </div>
         </div>
       )}

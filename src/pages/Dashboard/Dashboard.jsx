@@ -20,7 +20,7 @@ const Dashboard = () => {
 
 const[isAdmin,isTrainer,isRoleLoading]=useRoleNew()
 
-
+console.log(isAdmin,isTrainer)
   // const [isAdmin, isTrainer] = useRole();
 
   // const [applictionBecameTrainer] = UseAplicationFiner();

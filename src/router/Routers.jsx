@@ -67,7 +67,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/trainer/:id",
-        element: <TrainerDetail></TrainerDetail>,
+        element: <PrivateRoute><TrainerDetail></TrainerDetail></PrivateRoute>,
         //loader:({params})=>fetch(`${import.meta.env>VITE_API_URL}/trainer-detail/${params.id}`)
       },
       {
