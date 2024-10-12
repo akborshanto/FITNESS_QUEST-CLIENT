@@ -27,7 +27,7 @@ const Footer = () => {
                       alt=""
                     />
                     <p className=" text-white font-bold  inter headline1 text-3xl">
-                 Fitness Quest
+                 Fitness Quests
                     </p>
                   </a>
                 </div>
